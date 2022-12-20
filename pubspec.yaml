@@ -1,7 +1,7 @@
 name: tnk_flutter_rwd
-description: A new Flutter plugin project.
+description: tnk rwd sdk flutter plugin support android.
 version: 0.0.1
-homepage:
+homepage: https://github.com/tnkfactory/tnk_flutter_rwd_plugin
 
 environment:
   sdk: '>=2.18.5 <3.0.0'
@@ -37,8 +37,8 @@ flutter:
       android:
         package: com.tnkfactory.flutter.rwd.tnk_flutter_rwd
         pluginClass: TnkFlutterRwdPlugin
-      ios:
-        pluginClass: TnkFlutterRwdPlugin
+#      ios:
+#        pluginClass: TnkFlutterRwdPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
