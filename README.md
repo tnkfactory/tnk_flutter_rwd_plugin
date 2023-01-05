@@ -1,4 +1,4 @@
-# tnk_flutter_pub
+# tnk_flutter_rwd
 
 티엔케이팩토리 오퍼월 광고 flutter plugin 입니다.
 
