@@ -230,7 +230,6 @@ TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄
 
 ```objective-c
 TnkFlutterRwd().showAdList("무료 충전소"];
-}
 ```
 
 ---
