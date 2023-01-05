@@ -107,6 +107,37 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 
 [테스트 단말기 등록하는 방법](https://tnkfactory.github.io/incentive/reg_test_device)
 
+다음과 같이 호출하여 광고 목록을 출력 하실 수 있습니다.
+
+```dart
+class _MyAppState extends State<MyApp> {
+  final _tnkFlutterRwdPlugin = TnkFlutterRwd();
+
+  Future<void> showAdList() async {
+    String platformVersion;
+
+    try {
+      await _tnkFlutterRwdPlugin.setUserName("testUser");
+      platformVersion =
+          await _tnkFlutterRwdPlugin.showAdList("타이틀") ??
+              'Unknown platform version';
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+  }
+  // ...
+  // ...
+  // ...
+  
+  // 버튼 구현
+  OutlinedButton( onPressed: (){ showAdList(); },
+    style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
+    child: const Text('show adlist'),
+    ) // OutlineButton
+  
+  // ...
+}
+```
 
 #### 유저 식별 값 설정
 
