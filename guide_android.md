@@ -107,8 +107,6 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 
 [테스트 단말기 등록하는 방법](https://tnkfactory.github.io/incentive/reg_test_device)
 
-iOS는 기기에서 IDFA를 확인 할 방법이 없기 때문에 아래와 같은 코드를 사용 하시거나 IDFA를 확인 할 수 있는 앱을 설치해서 확인 하셔야 합니다.
-[[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
 
 #### 유저 식별 값 설정
 
