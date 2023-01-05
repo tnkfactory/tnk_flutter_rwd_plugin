@@ -228,7 +228,7 @@ TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄
 
 ##### 적용예시
 
-```objective-c
+```dart
 TnkFlutterRwd().showAdList("무료 충전소"];
 ```
 
