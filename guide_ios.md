@@ -180,6 +180,39 @@ Xcode 프로젝트의 info.plist 파일을 찾아서 아래와 같이 "tnkad_app
 iOS는 기기에서 IDFA를 확인 할 방법이 없기 때문에 아래와 같은 코드를 사용 하시거나 IDFA를 확인 할 수 있는 앱을 설치해서 확인 하셔야 합니다.
 [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString]
 
+
+다음과 같이 호출하여 광고 목록을 출력 하실 수 있습니다.
+
+```dart
+class _MyAppState extends State<MyApp> {
+  final _tnkFlutterRwdPlugin = TnkFlutterRwd();
+
+  Future<void> showAdList() async {
+    String platformVersion;
+
+    try {
+      await _tnkFlutterRwdPlugin.setUserName("testUser");
+      platformVersion =
+          await _tnkFlutterRwdPlugin.showAdList("타이틀") ??
+              'Unknown platform version';
+    } on PlatformException {
+      platformVersion = 'Failed to get platform version.';
+    }
+  }
+  // ...
+  // ...
+  // ...
+  
+  // 버튼 구현
+  OutlinedButton( onPressed: (){ showAdList(); },
+    style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
+    child: const Text('show adlist'),
+    ) // OutlineButton
+  
+  // ...
+}
+```
+
 #### 유저 식별 값 설정
 
 앱이 실행되면 우선 앱 내에서 사용자를 식별하는 고유한 ID를 아래의 API를 사용하시어 Tnk SDK에 설정하시기 바랍니다. 
