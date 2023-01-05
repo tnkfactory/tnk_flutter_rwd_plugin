@@ -30,8 +30,9 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
+      await _tnkFlutterRwdPlugin.setUserName("testUser");
       platformVersion =
-          await _tnkFlutterRwdPlugin.showAdList() ?? 'Unknown platform version';
+          await _tnkFlutterRwdPlugin.showAdList("타이틀") ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }

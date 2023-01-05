@@ -15,8 +15,18 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
   @override
-  Future<String?> showAdList() async {
-    final version = await methodChannel.invokeMethod<String>('showAdList');
+  Future<String?> showAdList(String title) async {
+    final version = await methodChannel.invokeMethod<String>('showAdList', <String, dynamic>{ "title": title });
+    return version;
+  }
+  @override
+  Future<String?> setUserName(String user_name) async {
+    final version = await methodChannel.invokeMethod<String>('setUserName', <String, dynamic>{"user_name":user_name});
+    return version;
+  }
+  @override
+  Future<String?> setCOPPA(bool coppa) async {
+    final version = await methodChannel.invokeMethod<String>('setCOPPA', <String, dynamic>{"coppa":coppa});
     return version;
   }
 }

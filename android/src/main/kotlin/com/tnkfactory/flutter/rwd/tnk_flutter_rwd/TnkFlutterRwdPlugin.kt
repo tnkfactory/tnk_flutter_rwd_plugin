@@ -13,6 +13,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import com.tnkfactory.ad.TnkSession
+import java.lang.Exception
 
 /** TnkFlutterRwdPlugin */
 class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -29,23 +30,31 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-        TnkSession.applicationStarted(mActivity)
-        TnkSession.setUserName(mActivity, "asdf")
-        TnkSession.setCOPPA(mActivity, false)
 
-        Logger.enableLogging(true)
-      when (call.method) {
-          "getPlatformVersion" -> {
-              result.success("Android ${android.os.Build.VERSION.RELEASE}")
-          }
-          "showAdList" -> {
-              TnkSession.showAdListByType(mActivity, AdListType.ALL, AdListType.PPI, AdListType.CPS)
-              result.success("onSuccess")
-          }
-          else -> {
-              result.notImplemented()
-          }
-      }
+        try {
+            when (call.method) {
+                "getPlatformVersion" -> {
+                    result.success("Android ${android.os.Build.VERSION.RELEASE}")
+                }
+                "setCOPPA" -> {
+                    TnkSession.setCOPPA(mActivity, call.argument("coppa") as? Boolean ?: false)
+                    result.success("success")
+                }
+                "setUserName" -> {
+                    TnkSession.setUserName(mActivity, call.argument("user_name") as? String ?: "")
+                    result.success("success")
+                }
+                "showAdList" -> {
+                    TnkSession.showAdListByType(mActivity, call.argument("title") ?: "충전소", AdListType.ALL, AdListType.PPI, AdListType.CPS)
+                    result.success("success")
+                }
+                else -> {
+                    result.notImplemented()
+                }
+            }
+        } catch (e: Exception) {
+            result.success(e.message)
+        }
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {

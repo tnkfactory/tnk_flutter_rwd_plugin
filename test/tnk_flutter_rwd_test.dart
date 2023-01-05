@@ -10,6 +10,13 @@ class MockTnkFlutterRwdPlatform
 
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
+
+  @override
+  Future<String?> showAdList() => Future.value('onShow');
+  @override
+  Future<String?> setUserName(String user_name) => Future.value('onShow');
+  @override
+  Future<String?> setCOPPA(bool coppa) => Future.value('onShow');
 }
 
 void main() {
