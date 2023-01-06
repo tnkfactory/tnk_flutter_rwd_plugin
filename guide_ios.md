@@ -194,16 +194,8 @@ class _MyAppState extends State<MyApp> {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
 
   Future<void> showAdList() async {
-    String platformVersion;
-
-    try {
       await _tnkFlutterRwdPlugin.setUserName("testUser");
-      platformVersion =
-          await _tnkFlutterRwdPlugin.showAdList("타이틀") ??
-              'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
+      await _tnkFlutterRwdPlugin.showAdList("타이틀");
   }
   // ...
   // ...
