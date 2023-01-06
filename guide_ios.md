@@ -184,6 +184,12 @@ iOS는 기기에서 IDFA를 확인 할 방법이 없기 때문에 아래와 같�
 다음과 같이 호출하여 광고 목록을 출력 하실 수 있습니다.
 
 ```dart
+// tnk rwd sdk를  import 합니다.
+import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
+
+// ...
+// ...
+
 class _MyAppState extends State<MyApp> {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
 
