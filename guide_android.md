@@ -110,6 +110,12 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 다음과 같이 호출하여 광고 목록을 출력 하실 수 있습니다.
 
 ```dart
+// tnk rwd sdk를  import 합니다.
+import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
+
+// ...
+// ...
+
 class _MyAppState extends State<MyApp> {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
 
