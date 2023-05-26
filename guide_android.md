@@ -107,26 +107,39 @@ build.gradle에 아래와 같이 https://repository.tnkad.net:8443/repository/pu
 
 **예시**
 ```gradle
-pluginManagement {
+buildscript {
+    ext.kotlin_version = '1.6.10'
     repositories {
-        gradlePluginPortal()
         google()
         mavenCentral()
     }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
 }
-dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+
+allprojects {
     repositories {
         google()
         mavenCentral()
-        
-        // 경로를 추가해 주시기 바랍니다.
         maven { url "https://jitpack.io" }
         maven { url "https://repository.tnkad.net:8443/repository/public/" }
     }
 }
-rootProject.name = "project_name"
-include ':app'
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
 ```
 
 ### Proguard 사용
