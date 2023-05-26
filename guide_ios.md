@@ -89,6 +89,7 @@ class _MyAppState extends State<MyApp> {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
 
   Future<void> showAdList() async {
+      await _tnkFlutterRwdPlugin.showATTPopup();
       await _tnkFlutterRwdPlugin.setUserName("testUser");
       await _tnkFlutterRwdPlugin.showAdList("타이틀");
   }
@@ -104,6 +105,32 @@ class _MyAppState extends State<MyApp> {
   
   // ...
 }
+```
+
+#### IDFA를 수집하기 위한 동의 팝업 출력
+
+기기의 광고 아이디를 얻기 위해서는 사용자의 동의를 얻어야 합니다.
+
+해당 함수를 호출해서 사용자의 동의를 받지 않으면 IDFA를 얻을 수 없으며 
+
+출력되는 광고 목록과 참여 가능한 광고에 제한이 있을 수 있습니다.
+
+오퍼월 화면에 진입하기 전에 해당 함수를 호출해서 사용자의 동의를 얻는 것을 권장합니다.
+
+##### Method
+
+- String showATTPopup()
+
+##### Parameters
+
+| 파라메터 명칭 | 내용                                                         |
+| ------------- | ------------------------------------------------------------ |
+| -      | - |
+
+##### 적용예시
+
+```dart
+TnkFlutterRwd().showATTPopup()
 ```
 
 #### 유저 식별 값 설정
