@@ -98,6 +98,46 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 ```
 
 
+### 라이브러리 등록
+TNK SDK는 Maven Central에 배포되어 있습니다.
+
+프로젝트 파일 내에 {projectroot}/android/build.gradle 파일이 있습니다.
+
+build.gradle에 아래와 같이 https://repository.tnkad.net:8443/repository/public/ 를 추가해 주시기 바랍니다.
+
+**예시**
+```gradle
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        
+        // 경로를 추가해 주시기 바랍니다.
+        maven { url "https://jitpack.io" }
+        maven { url "https://repository.tnkad.net:8443/repository/public/" }
+    }
+}
+rootProject.name = "project_name"
+include ':app'
+```
+
+### Proguard 사용
+
+Proguard를 사용하실 경우 Proguard 설정내에 아래 내용을 반드시 넣어주세요.
+
+```
+-keep class com.tnkfactory.** { *;}
+```
+
+
 위와같은 과정을 마치고 나면 플러터 프로젝트에서 광고 페이지를 호출 하실 수 있습니다.
 
 
@@ -120,6 +160,7 @@ class _MyAppState extends State<MyApp> {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
 
   Future<void> showAdList() async {
+      await _tnkFlutterRwdPlugin.showATTPopup();  // android에서는 해당 함수는 아무 동작도 하지 않습니다. ios를 위해 호출 할 필요가 있습니다.
       await _tnkFlutterRwdPlugin.setUserName("testUser");
       await _tnkFlutterRwdPlugin.showAdList("타이틀");
   }
