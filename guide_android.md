@@ -243,6 +243,38 @@ TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄
 TnkFlutterRwd().showAdList("무료 충전소"];
 ```
 
+#### 현재적립가능한 포인트 조회 
+
+현재 적립가능한 총 포인트를 조회할 수 있습니다.
+
+##### Method
+
+- Int getEarnPoint()
+
+##### 적용예시
+```dart
+TnkFlutterRwd().getEarnPoint()
+```
+
+
+
+#### 오퍼월 커스터마이징 
+
+1. 오퍼월 진입시 개인정보 수집 동의 모달창을 비활성화할 수 있습니다.
+2. 오퍼월에서 노출되는 포인트 아이콘의 노출을 비활성화할 수 있습니다.
+
+* showAdList() 함수 호출전 호출해야합니다.
+
+##### Method
+
+- setNoUseUsePointIcon()
+
+##### 적용예시
+```dart
+TnkFlutterRwd().setNoUseUsePointIcon()    // 포인트아이콘 비활성화 
+```
+
+
 ---
 ## 포인트 관리
 
