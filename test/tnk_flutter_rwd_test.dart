@@ -12,11 +12,24 @@ class MockTnkFlutterRwdPlatform
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<String?> showAdList() => Future.value('onShow');
+  Future<String?> showAdList(String title) => Future.value('onShow');
   @override
-  Future<String?> setUserName(String user_name) => Future.value('onShow');
+  Future<String?> setUserName(String userName) => Future.value('onShow');
   @override
   Future<String?> setCOPPA(bool coppa) => Future.value('onShow');
+  @override
+  Future<String?> showATTPopup() => Future.value('onShow');
+  @override
+  Future<int?> getEarnPoint() => Future.value();
+  @override
+  Future<String?> setNoUsePrivacyAlert() {
+    throw UnimplementedError();
+  }
+  @override
+  Future<String?> setNoUseUsePointIcon() {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

@@ -20,8 +20,8 @@ tnkfactory rwd sdk for flutter
   # Flutter.framework does not contain a i386 slice.
     s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
     s.swift_version = '5.0'
-  #   s.preserve_paths = 'TnkRwdSdk.xcframework/**/*'
-    s.preserve_paths = 'TnkRwdSdk.xcframework/**/*'
-      s.xcconfig = { 'OTHER_LDFLAGS' => '-framework TnkRwdSdk' }
-      s.vendored_frameworks = 'TnkRwdSdk.xcframework'
+  #   s.preserve_paths = 'TnkRwdSdk2.xcframework/**/*'
+    s.preserve_paths = 'TnkRwdSdk2.xcframework/**/*'
+      s.xcconfig = { 'OTHER_LDFLAGS' => '-framework TnkRwdSdk2' }
+      s.vendored_frameworks = 'TnkRwdSdk2.xcframework'
 end

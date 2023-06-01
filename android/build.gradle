@@ -47,5 +47,7 @@ android {
 
 
 dependencies {
-    implementation "com.tnkfactory:rwd:7.30.8"
+    //implementation "com.tnkfactory:rwd:7.30.8"
+    implementation "com.tnkfactory:rwd:8.02.01"
+    //implementation 'com.tnkfactory:rwd:8.01.91'
 }

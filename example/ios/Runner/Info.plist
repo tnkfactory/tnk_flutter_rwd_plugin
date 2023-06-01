@@ -39,6 +39,8 @@
 	<true/>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>사용자에게 적합한 광고를 제공하고 참여여부를 확인하기 위하여 광고ID를 수집합니다. 광고ID는 오퍼월 서비스를 제공하기 위해서 필수적인 항목으로 추적허용을 해주셔야 사용이 가능합니다.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict/>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>

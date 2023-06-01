@@ -1,3 +1,5 @@
+
+
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'tnk_flutter_rwd_method_channel.dart';
@@ -31,10 +33,22 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
     throw UnimplementedError('showAdList() has not been implemented.');
   }
 
-  Future<String?> setUserName(String user_name) {
+  Future<String?> setUserName(String userName) {
     throw UnimplementedError('showAdList() has not been implemented.');
   }
   Future<String?> setCOPPA(bool coppa) {
     throw UnimplementedError('showAdList() has not been implemented.');
+  }
+  Future<String?> showATTPopup() {
+    throw UnimplementedError('showATTPopup() has not been implemented.');
+  }
+  Future<int?> getEarnPoint() {
+    throw UnimplementedError('getEarnPoint() has not been implemented.');
+  }
+  Future<String?> setNoUseUsePointIcon() {
+    throw UnimplementedError('setNoUseUsePointIcon() has not been implemented.');
+  }
+  Future<String?> setNoUsePrivacyAlert() {
+    throw UnimplementedError('setNoUsePrivacyAlert() has not been implemented.');
   }
 }

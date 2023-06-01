@@ -1,10 +1,10 @@
 package com.tnkfactory.flutter.rwd.tnk_flutter_rwd
 
-import android.app.Activity
-import androidx.annotation.NonNull
 
-import com.tnkfactory.ad.AdListType
-import com.tnkfactory.ad.Logger
+import android.app.Activity
+import android.util.Log
+import androidx.annotation.NonNull
+import com.tnkfactory.ad.TnkAdConfig
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -12,8 +12,9 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import com.tnkfactory.ad.TnkOfferwall
 import com.tnkfactory.ad.TnkSession
-import java.lang.Exception
+
 
 /** TnkFlutterRwdPlugin */
 class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -23,6 +24,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     /// when the Flutter Engine is detached from the Activity
     private lateinit var channel: MethodChannel
     private lateinit var mActivity: Activity
+    private lateinit var offerwall: TnkOfferwall
+
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "tnk_flutter_rwd")
@@ -37,15 +40,33 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     result.success("Android ${android.os.Build.VERSION.RELEASE}")
                 }
                 "setCOPPA" -> {
-                    TnkSession.setCOPPA(mActivity, call.argument("coppa") as? Boolean ?: false)
+                    offerwall.setCOPPA(call.argument("coppa") as? Boolean ?: false)
                     result.success("success")
                 }
                 "setUserName" -> {
-                    TnkSession.setUserName(mActivity, call.argument("user_name") as? String ?: "")
+                    offerwall.setUserName( call.argument("user_name") as? String ?: "")
                     result.success("success")
                 }
                 "showAdList" -> {
-                    TnkSession.showAdListByType(mActivity, call.argument("title") ?: "충전소", AdListType.ALL, AdListType.PPI, AdListType.CPS)
+                    Log.d("start >>>>> ", "start")
+                    offerwall.startOfferwallActivity(mActivity)
+//                    TnkSession.showAdListByType(mActivity, call.argument("title") ?: "충전소", AdListType.ALL, AdListType.PPI, AdListType.CPS)
+                    result.success("success")
+                }
+                "showATTPopup" -> {
+                    result.success("success")
+                }
+                "getEarnPoint" -> {
+                    offerwall.getEarnPoint() {
+                        result.success(it)
+                        Log.d(">>getEarnPoint >> ", "$it")
+                    }
+                }
+                "setNoUseUsePointIcon" -> {
+                    TnkAdConfig.usePointUnit = true
+                    result.success("success")
+                }
+                "setNoUsePrivacyAlert" ->{
                     result.success("success")
                 }
                 else -> {
@@ -63,6 +84,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         mActivity = binding.activity
+        offerwall = TnkOfferwall(mActivity)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {
@@ -76,4 +98,5 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onDetachedFromActivity() {
 //        TODO("Not yet implemented")
     }
+
 }
