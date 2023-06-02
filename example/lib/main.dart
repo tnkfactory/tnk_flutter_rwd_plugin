@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -94,44 +94,70 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    Icon advIcon = const Icon(Icons.tv);
+    Icon pointIcon = const Icon(Icons.currency_bitcoin);
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
         body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text('result \n\n$_tnkResult\n'),
-                Text('적립가능한 Point :  $_myPoint'),
-                OutlinedButton(
-                  onPressed: (){ showAdList(); },
-                  style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-                  child: const Text('show adlist'),
-                ),
-                OutlinedButton(
-                  onPressed: (){ showATTPopup(); },
-                  style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-                  child: const Text('show attPopup'),
-                ),
-                OutlinedButton(
-                  onPressed: (){ getEarnPoint(); },
-                  style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-                  child: const Text('get point limit'),
-                ),
-                OutlinedButton(
-                  onPressed: (){ setNoUseUsePointIcon(); },
-                  style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-                  child: const Text('set no use pointIcon'),
-                ),
-                OutlinedButton(
-                  onPressed: (){ setNoUsePrivacyAlert(); },
-                  style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-                  child: const Text('set no use privacyAlert'),
-                ),
-              ],
-            ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text('result \n\n$_tnkResult\n'),
+              Text('적립가능한 Point :  $_myPoint'),
+              ButtonBar(
+                children: [
+                  Row (
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OutlinedButton.icon( onPressed: () { showAdList(); },icon: advIcon, label: const Text('adv list')),
+                      OutlinedButton.icon(onPressed: (){getEarnPoint(); }, icon: pointIcon, label: const Text('get earn point')),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OutlinedButton(onPressed: showATTPopup, child: const Text('show att popup')),
+                    ],
+                  ),
+                  Row (
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      OutlinedButton(onPressed: setNoUseUsePointIcon, child: const Text('No use point icon')),
+                      OutlinedButton(onPressed: setNoUsePrivacyAlert, child: const Text('No use privacy alert'))
+                    ],
+                  ),
+                ],
+              ),
+              // OutlinedButton(
+              //   onPressed: (){ showAdList(); },
+              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
+              //   child: const Text('show adlist'),
+              // ),
+              // OutlinedButton(
+              //   onPressed: (){ showATTPopup(); },
+              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
+              //   child: const Text('show attPopup'),
+              // ),
+              // OutlinedButton(
+              //   onPressed: (){ getEarnPoint(); },
+              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
+              //   child: const Text('get point limit'),
+              // ),
+              // OutlinedButton(
+              //   onPressed: (){ setNoUseUsePointIcon(); },
+              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
+              //   child: const Text('set no use pointIcon'),
+              // ),
+              // OutlinedButton(
+              //   onPressed: (){ setNoUsePrivacyAlert(); },
+              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
+              //   child: const Text('set no use privacyAlert'),
+              // ),
+            ],
+          ),
         ),
       ),
     );
