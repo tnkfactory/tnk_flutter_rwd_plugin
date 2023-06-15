@@ -45,10 +45,19 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<int?> getEarnPoint() {
     throw UnimplementedError('getEarnPoint() has not been implemented.');
   }
-  Future<String?> setNoUseUsePointIcon() {
-    throw UnimplementedError('setNoUseUsePointIcon() has not been implemented.');
+  Future<String?> setNoUsePointIcon() {
+    throw UnimplementedError('setNoUsePointIcon() has not been implemented.');
   }
   Future<String?> setNoUsePrivacyAlert() {
     throw UnimplementedError('setNoUsePrivacyAlert() has not been implemented.');
+  }
+  Future<int?> getQueryPoint() {
+    throw UnimplementedError('getQueryPoint() has not been implemented.');
+  }
+  Future<String?>purchaseItem(String itemId, int cost) {
+    throw UnimplementedError('purchaseItem() has not been implemented');
+  }
+  Future<String?> withdrawPoints(String description) {
+    throw UnimplementedError('withdrawPoints() has not been implemented');
   }
 }

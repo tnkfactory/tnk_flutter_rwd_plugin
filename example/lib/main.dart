@@ -18,20 +18,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  final _tnkFlutterRwdPlugin = TnkFlutterRwd();
+
   String _tnkResult = 'Unknown';
   int _myPoint = 0;
-  final _tnkFlutterRwdPlugin = TnkFlutterRwd();
+  int _queryPoint = 0;
+  final String _itemId = "item.0001";
+  final int _cost = 2;
+
+
+
+
 
   @override
   void initState() {
     super.initState();
   }
 
-  // Platform messages are asynchronous, so we initialize in an async method.
+
   Future<void> showAdList() async {
+
     String platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
+
     try {
       await _tnkFlutterRwdPlugin.setUserName("testUser");
       await _tnkFlutterRwdPlugin.setCOPPA(false);
@@ -41,9 +50,6 @@ class _MyAppState extends State<MyApp> {
       platformVersion = 'Failed to get platform version.';
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
     if (!mounted) return;
 
     setState(() {
@@ -75,9 +81,9 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  Future<void> setNoUseUsePointIcon() async {
+  Future<void> setNoUsePointIcon() async {
     try {
-      await _tnkFlutterRwdPlugin.setNoUseUsePointIcon();
+      await _tnkFlutterRwdPlugin.setNoUsePointIcon();
     } on Exception {
       return;
     }
@@ -91,29 +97,142 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  Future<void> getQueryPoint() async {
+    int point;
+    try {
+      point = await _tnkFlutterRwdPlugin.getQueryPoint() ?? 0 ;
+    } on PlatformException {
+      point = 0;
+    }
+
+    setState(() {
+      _queryPoint = point;
+    });
+  }
+
+  Future<void> purchaseItem(String itemId, int cost) async {
+    try {
+      await _tnkFlutterRwdPlugin.purchaseItem(itemId, cost);
+    } on Exception {
+      return;
+    }
+  }
+
+  Future<void> withdrawPoints(String description) async {
+    try {
+      await _tnkFlutterRwdPlugin.withdrawPoints(description);
+    } on Exception {
+      return;
+    }
+  }
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return const AlertDialog(
+            title:Text("abc"),
+            content: Text(' 항목을 선택했습니다.'),
+          );
+        }
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
     Icon advIcon = const Icon(Icons.tv);
-    Icon pointIcon = const Icon(Icons.currency_bitcoin);
+    Icon pointIcon = const Icon(Icons.paid_rounded);
+    Icon moneyIcon = const Icon(Icons.attach_money);
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Flutter Plugin Example'),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            padding:EdgeInsets.zero,
+            children: <Widget>[
+              const UserAccountsDrawerHeader(
+                currentAccountPicture: CircleAvatar(
+                  backgroundColor: Colors.white,
+                ),
+                accountName: Text("flutter"),
+                accountEmail: Text('flutter@tnkfactory.com'),
+
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(40.0),
+                        bottomRight: Radius.circular(40.0))),
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.tv,
+                  color: Colors.blueGrey,
+                ),
+                title: const Text('OfferW==========================all'),
+                onTap: () => showAdList(),
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.store,
+                  color: Colors.blueGrey,
+                ),
+                title: const Text('적립가능한 포인트'),
+                onTap: () => getEarnPoint(),
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.attach_money,
+                  color: Colors.blueGrey,
+                ),
+                title: const Text('내 포인트'),
+                onTap: () => getQueryPoint(),
+              )
+
+            ],
+          ),
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text('result \n\n$_tnkResult\n'),
-              Text('적립가능한 Point :  $_myPoint'),
+              DataTable(
+                columns: const [
+                  DataColumn(label: Text('적립가능한 Point')),
+                  DataColumn(label: Text('사용가능한 Point')),
+                ],
+                rows: [
+                  DataRow(
+                      cells: [
+                        DataCell(Text('$_myPoint')),
+                        DataCell(Text('$_queryPoint'))
+                      ]
+                  ),
+                ],
+
+              ),
+              // Text('result \n\n$_tnkResult\n'),
+              // Text('적립가능한 Point :  $_myPoint'),
+              // Text('사용가능한 Point :  $_queryPoint'),
               ButtonBar(
                 children: [
+                  // Row (
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     OutlinedButton.icon( onPressed: () { showAdList(); },icon: advIcon, label: const Text('adv list')),
+                  //     OutlinedButton.icon(onPressed: (){getEarnPoint(); }, icon: pointIcon, label: const Text('earnPoint')),
+                  //     OutlinedButton.icon(onPressed: (){getQueryPoint(); }, icon: pointIcon, label: const Text('queryPoint')),
+                  //   ],
+                  // ),
                   Row (
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      OutlinedButton.icon( onPressed: () { showAdList(); },icon: advIcon, label: const Text('adv list')),
-                      OutlinedButton.icon(onPressed: (){getEarnPoint(); }, icon: pointIcon, label: const Text('get earn point')),
+                      OutlinedButton.icon( onPressed: () { purchaseItem(_itemId, _cost); },icon: moneyIcon, label: const Text('purchase')),
+                      OutlinedButton.icon( onPressed: () { withdrawPoints("테스트 인출"); },icon: moneyIcon, label: const Text('withdraw')),
+
                     ],
                   ),
                   Row(
@@ -125,37 +244,12 @@ class _MyAppState extends State<MyApp> {
                   Row (
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      OutlinedButton(onPressed: setNoUseUsePointIcon, child: const Text('No use point icon')),
+                      OutlinedButton(onPressed: setNoUsePointIcon, child: const Text('No use point icon')),
                       OutlinedButton(onPressed: setNoUsePrivacyAlert, child: const Text('No use privacy alert'))
                     ],
                   ),
                 ],
               ),
-              // OutlinedButton(
-              //   onPressed: (){ showAdList(); },
-              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-              //   child: const Text('show adlist'),
-              // ),
-              // OutlinedButton(
-              //   onPressed: (){ showATTPopup(); },
-              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-              //   child: const Text('show attPopup'),
-              // ),
-              // OutlinedButton(
-              //   onPressed: (){ getEarnPoint(); },
-              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-              //   child: const Text('get point limit'),
-              // ),
-              // OutlinedButton(
-              //   onPressed: (){ setNoUseUsePointIcon(); },
-              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-              //   child: const Text('set no use pointIcon'),
-              // ),
-              // OutlinedButton(
-              //   onPressed: (){ setNoUsePrivacyAlert(); },
-              //   style: OutlinedButton.styleFrom(foregroundColor: Colors.black),
-              //   child: const Text('set no use privacyAlert'),
-              // ),
             ],
           ),
         ),

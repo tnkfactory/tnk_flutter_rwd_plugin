@@ -42,13 +42,30 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return point;
   }
   @override
-  Future<String?>setNoUseUsePointIcon () {
-    final version = methodChannel.invokeMethod<String>('setNoUseUsePointIcon', <String, dynamic>{});
+  Future<String?>setNoUsePointIcon () async {
+    final version = await methodChannel.invokeMethod<String>('setNoUsePointIcon', <String, dynamic>{});
     return version;
   }
   @override
-  Future<String?>setNoUsePrivacyAlert() {
-    final version = methodChannel.invokeMethod<String>('setNoUsePrivacyAlert', <String,dynamic>{});
+  Future<String?>setNoUsePrivacyAlert() async {
+    final version = await methodChannel.invokeMethod<String>('setNoUsePrivacyAlert', <String,dynamic>{});
     return version;
   }
+  @override
+  Future<int?>getQueryPoint() async {
+    final point = await methodChannel.invokeMethod<int>('getQueryPoint', <int,dynamic>{});
+    return point;
+  }
+  @override
+  Future<String?>purchaseItem(String itemId, int cost) async {
+    final version =  await methodChannel.invokeMethod<String>('purchaseItem', <String, dynamic>{"item_id" : itemId, "cost" : cost});
+    return version;
+  }
+  @override
+  Future<String?>withdrawPoints(String description) async {
+    final version = await methodChannel.invokeMethod<String>('withdrawPoints', <String, dynamic>{"description" :description});
+    return version;
+  }
+
+
 }

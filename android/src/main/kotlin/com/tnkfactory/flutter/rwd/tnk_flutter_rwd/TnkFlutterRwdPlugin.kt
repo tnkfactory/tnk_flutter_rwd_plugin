@@ -2,9 +2,13 @@ package com.tnkfactory.flutter.rwd.tnk_flutter_rwd
 
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.annotation.NonNull
+import com.tnkfactory.ad.ServiceCallback
 import com.tnkfactory.ad.TnkAdConfig
+import com.tnkfactory.ad.TnkOfferwall
+import com.tnkfactory.ad.TnkSession
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -12,8 +16,6 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import com.tnkfactory.ad.TnkOfferwall
-import com.tnkfactory.ad.TnkSession
 
 
 /** TnkFlutterRwdPlugin */
@@ -62,12 +64,55 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         Log.d(">>getEarnPoint >> ", "$it")
                     }
                 }
-                "setNoUseUsePointIcon" -> {
+                "setNoUsePointIcon" -> {
                     TnkAdConfig.usePointUnit = true
                     result.success("success")
                 }
                 "setNoUsePrivacyAlert" ->{
                     result.success("success")
+                }
+                "getQueryPoint" -> {
+                    TnkSession.queryPoint(mActivity, object :ServiceCallback(){
+                        override fun onReturn(context: Context?, point: Any?) {
+                            result.success(point as Int)
+                            Log.d(">>getQueryPoint >> ", "$point")
+                        }
+                    })
+
+                }
+                "purchaseItem" -> {
+
+                    val cost = call.argument("cost") as? Int ?: 0
+                    val itemId = call.argument("item_id") as? String
+                    Log.d("param", "$cost //  $itemId")
+
+                    TnkSession.purchaseItem(mActivity, cost, itemId,
+                        object : ServiceCallback() {
+                            override fun onReturn(context: Context, pArr: Any) {
+                                val ret = pArr as LongArray
+                                if (ret[1] < 0) {
+                                    //error
+                                    Log.d("purchaseItem error", "current point = " + ret[0] + ", transaction id = " + ret[1] )// error
+                                    result.success("fail")
+                                } else {
+                                    Log.d("purchaseItem", "current point = " + ret[0] + ", transaction id = " + ret[1] )
+                                    result.success("success")
+                                }
+                            }
+                        })
+                }
+                "withdrawPoints" -> {
+
+                    val description = call.argument("description") as? String ?: ""
+
+                    TnkSession.withdrawPoints(mActivity, description,
+                        object : ServiceCallback() {
+                            override fun onReturn(context: Context, point: Any) {
+                                val pPoint = point as Int
+                                Log.d("withdrawPoints", "withdraw point = $pPoint")
+                                result.success("success")
+                            }
+                        })
                 }
                 else -> {
                     result.notImplemented()

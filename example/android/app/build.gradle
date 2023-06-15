@@ -68,5 +68,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.tnkfactory:rwd:8.02.01"
+    implementation "com.tnkfactory:rwd:8.02.12"
 }
