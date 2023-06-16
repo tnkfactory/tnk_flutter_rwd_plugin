@@ -273,11 +273,11 @@ TnkFlutterRwd().withdrawPoints("포인트 전체 인출")
 
 ##### Method
 
-- setNoUseUsePointIcon() 
+- setNoUsePointIcon() 
 
 ##### 적용예시
 ```dart
-TnkFlutterRwd().setNoUseUsePointIcon()    // 포인트아이콘 비활성화 
+TnkFlutterRwd().setNoUsePointIcon()    // 포인트아이콘 비활성화 
 ```
 
 ##### Method
