@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd_platform_interface.dart';
@@ -27,6 +29,31 @@ class MockTnkFlutterRwdPlatform
   }
   @override
   Future<String?> setNoUseUsePointIcon() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<int?> getQueryPoint() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> purchaseItem(String itemId, int cost) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> setNoUsePointIcon() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> withdrawPoints(String description) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> setCustomUI(HashMap<String, String> colorMap) {
     throw UnimplementedError();
   }
 

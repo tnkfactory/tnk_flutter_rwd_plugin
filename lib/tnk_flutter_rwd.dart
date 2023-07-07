@@ -1,6 +1,8 @@
 
 
 
+import 'dart:collection';
+
 import 'tnk_flutter_rwd_platform_interface.dart';
 
 class TnkFlutterRwd {
@@ -36,6 +38,9 @@ class TnkFlutterRwd {
   }
   Future<String?> withdrawPoints(String description) {
     return TnkFlutterRwdPlatform.instance.withdrawPoints(description);
+  }
+  Future<String?> setCustomUI(HashMap<String,String> colorMap) {
+    return TnkFlutterRwdPlatform.instance.setCustomUI(colorMap);
   }
 
 

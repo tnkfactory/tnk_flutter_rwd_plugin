@@ -28,7 +28,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             
             
         case "showAdList":
-                    
             if let args = call.arguments as? Dictionary<String, Any>,
                let title = args["title"] as? String {
                 showOfferwall(viewController: viewController!, pTitle: title)
@@ -134,6 +133,19 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             }
             
             break;
+            
+        case "setCustomUI" :
+            if let args = call.arguments as? Dictionary<String, Any>,
+               let map = args["map"] as? Dictionary<String,String> {
+                
+                setCustomUI(param: map)
+                print("#### setCustomUI")
+                result("success")
+            } else {
+                result("fail")
+            }
+            
+            break;
                     
         default:
             result("iOS method : " + call.method)
@@ -169,27 +181,137 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         TnkStyles.shared.adListItem.pointIconImage.imageHighlighted = nil
         // 재화 단위 노출
         let detailViewLayout = TnkLayout.shared.detailViewLayout
+        detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
         detailViewLayout.buttonFrameLayout.pointUnitVisible = true
+        
+        
+    }
+    
+    func setCustomUI(param:Dictionary<String,String>) {
+        
+        // Darkmode 를 지원하지 않으므로 앱의 info.plist 파일에 Appearance 항목을 light 로 설정한다.
+        
+        //print(param)
+        
+        let cateSelectedColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["category_select_font"]!))
+        let filterSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_background"]!))
+        let filterSelectedFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_font"]!))
+        let filterNotSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_not_select_background"]!))
+        let filterNotSelectedFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_not_select_font"]!))
+        let adListTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_title_font"]!))
+        let adListDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_desc_font"]!))
+        let adListPointUnitFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_point_unit_font"]!))
+        let adListPointAmtFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_point_amount_font"]!))
+        let adInfoTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_title_font"]!))
+        let adInfoDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_desc_font"]!))
+        let adInfoPointUnitFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_point_unit_font"]!))
+        let adInfoPointAmtFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_point_amount_font"]!))
+        let adInfoButtonBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_background"]!))
+        let pointIconImgName = param["point_icon_name"]!
+        let pointIconUseYn = param["point_icon_use_yn"]!
+        
+        
+        // 광고 리스트
+        TnkStyles.shared.adListItem.titleLabel.color = adListTitleFontColor
+        TnkStyles.shared.adListItem.descLabel.color = adListDescFontColor
+        TnkStyles.shared.adListItem.pointAmountLabel.color = adListPointAmtFontColor
+        TnkStyles.shared.adListItem.pointUnitLabel.color = adListPointUnitFontColor
+        
+        
+        if( pointIconImgName != "" ) {
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: pointIconImgName)
+        }
+        if( pointIconUseYn == "Y" ) {
+            TnkStyles.shared.adListItem.pointUnitVisible = false
+            
+        } else {
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil // 아이콘 표시하지 않는다
+        }
+        
+        
+        
+    
+        // 카테고리 레이아웃
+        let categoryMenuLayout = AdListMenuViewLayout() // 카테고리 설정
+        categoryMenuLayout.itemButton.colorSelected = cateSelectedColor // 선택된 메뉴의 폰트 색상
+        TnkLayout.shared.registerMenuViewLayout( type: .menu,
+                                                 viewClass: DefaultAdListMenuView.self,
+                                                 viewLayout: categoryMenuLayout)
+        
+        // 획득가능한 포인트 레이아웃
+        let kidsningMenuLayout = KidsningMenuViewHeaderLayout()
+        TnkLayout.shared.registerMenuViewLayout( type: .sub1,
+                                                 viewClass: KidsningMenuViewHeader.self,
+                                                 viewLayout: kidsningMenuLayout)
+        
+
+        
+        TnkLayout.shared.menuMenuTypes = [.menu, .sub1]
+        TnkLayout.shared.menuPinToVisibleBounds = .menu // 카테고리 메뉴 고정
+        TnkLayout.shared.menuFilterHidden = true    // 필터메뉴는 숨긴다.
+        
+        
+        
+        
+        // 키즈닝 경우 필터 메뉴 사용안함
+        let filterMenuLayout = AdListFilterViewLayout() // 필터 설정
+        // 선택된 메뉴
+        filterMenuLayout.itemButton.colorSelected = filterSelectedFontColor
+        filterMenuLayout.itemButton.backgroundSelected = filterSelectedBgColor
+
+        // 선택안된 메뉴
+        filterMenuLayout.itemButton.colorNormal = filterNotSelectedFontColor
+        filterMenuLayout.itemButton.backgroundNormal = filterNotSelectedBgColor
+
+        TnkLayout.shared.registerMenuViewLayout(type: .filter, viewClass: ScrollAdListMenuView.self, viewLayout: filterMenuLayout)
+        
+        
+        
+        
+        // 광고 상세 화면
+        let detailViewLayout = DefaultAdDetailViewLayout()
+        detailViewLayout.titleTitleLabel.color = adInfoTitleFontColor
+        detailViewLayout.titleDescLabel.color = adInfoDescFontColor
+        detailViewLayout.titlePointAmountLabel.color = adInfoPointAmtFontColor
+        detailViewLayout.titlePointUnitLabel.color = adInfoPointUnitFontColor
+        //detailViewLayout.titlePointIconImage.imageNormal = nil
+        //detailViewLayout.titlePointUnitVisible = false // 포인트 단위 숨기기
+        
+        if( pointIconUseYn == "Y" ) {
+            detailViewLayout.titlePointUnitVisible = false
+            detailViewLayout.buttonFrameLayout.pointUnitVisible = false
+            if( pointIconImgName != "" ) {
+                // 상단 타이틀 point icon
+                detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: pointIconImgName)
+                // 하단 버튼 point icon
+                detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: pointIconImgName)
+            }
+        } else {
+            detailViewLayout.titlePointIconImage.imageNormal = nil
+            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
+        }
+        
+        detailViewLayout.buttonFrameLayout.frameBackgroundColor = adInfoButtonBgColor
+        TnkLayout.shared.detailViewLayout = detailViewLayout
+        
+        
         
     }
     
     
-//    func showOfferwall() {
-//            let vc = AdOfferwallViewController()
-//            vc.title = "무료 충전소"
-//            vc.offerwallListener = self
-//
-//            let navController = UINavigationController(rootViewController: vc)
-//            navController.modalPresentationStyle = .fullScreen
-//            //navController.navigationBar.barTintColor = .systemRed
-//    //        navController.navigationBar.backgroundColor = .white
-//    //       navController.navigationBar.isTranslucent = false
-//            navController.navigationBar.titleTextAttributes = [.foregroundColor: TnkColor.semantic(argb1: 0xff505050, argb2: 0xffd3d3d3)]
-//            //navController.hidesBarsOnSwipe = true  // 스크롤할때 네비게이션바도 같이 올라가도록 설정하기, status bar 가 투명이라 뒤로 다보임. 별로 안이쁨. 하지 말자.
-//            //navController.navigationBar.isHidden = true
-//            //navController.navigationBar.prefersLargeTitles = true
-//            //navController.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-//            self.present(navController, animated: true)
-//        }
+    
+    private func hexaStringToInt( _hexaStr: String ) -> Int {
+        if( _hexaStr.hasPrefix("#") ) {
+            let tmp = _hexaStr.trimmingCharacters(in: ["#"])
+            let result = "ff" + tmp
+            return Int(result, radix:16)!
+        } else {
+            return 0
+        }
+ 
+    }
+    
+
+    
     
 }

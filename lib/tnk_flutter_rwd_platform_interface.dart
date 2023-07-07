@@ -1,5 +1,6 @@
 
 
+import 'dart:collection';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'tnk_flutter_rwd_method_channel.dart';
@@ -59,5 +60,8 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   }
   Future<String?> withdrawPoints(String description) {
     throw UnimplementedError('withdrawPoints() has not been implemented');
+  }
+  Future<String?> setCustomUI(HashMap<String,String>colorMap) {
+    throw UnimplementedError('setCustomUI has not benn implemented');
   }
 }

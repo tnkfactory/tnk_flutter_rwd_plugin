@@ -1,5 +1,6 @@
 
 
+import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -66,6 +67,14 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     final version = await methodChannel.invokeMethod<String>('withdrawPoints', <String, dynamic>{"description" :description});
     return version;
   }
+  @override
+  Future<String?>setCustomUI(HashMap<String,String> colorMap) async {
+    final version = await methodChannel.invokeMethod<String>('setCustomUI', <String, dynamic>{"map" :colorMap});
+    return version;
+  }
+
+
+
 
 
 }

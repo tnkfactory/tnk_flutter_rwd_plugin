@@ -1,5 +1,8 @@
 
 
+import 'dart:collection';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -138,6 +141,34 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  Future<void> setCustomUI() async {
+    try {
+      HashMap<String,String> paramMap = HashMap();
+      //0xff252542
+      paramMap.addAll({
+            "category_select_font":"#f00707", // 카테고리 폰트 컬러
+            "filter_select_background":"#f00707", // 선택된 필터 배경색
+            "filter_select_font":"#ffffff", // 선택된 필터 폰트 컬러
+            "filter_not_select_font":"#808090", // 선택안한 필터 폰트 컬러
+            "filter_not_select_background":"#66e1e1e4", // 선택안한 필터 배경색
+            "adlist_title_font":"#3d3d57", // 광고리스트 광고타이틀 폰트 컬러
+            "adlist_desc_font":"#3d3d57", // 광고리스트 광고액션 폰트 컬러
+            "adlist_point_unit_font":"#f58d05", // 광고리스트 포인트 단위 폰트 컬러
+            "adlist_point_amount_font":"#3df505", // 광고리스트 포인트 액수 폰트 컬러
+            "adinfo_title_font":"#f00707", // 광고상세페이지 광고타이틀 폰트 컬러
+            "adinfo_desc_font":"#f00707", // 광고상세페이지 광고액션 폰트 컬러
+            "adinfo_point_unit_font":"#f00707", // 광고상세페이지 포인트 단위 컬러
+            "adinfo_point_amount_font":"#f00707", // 광고상세페이지 포인트 액수 폰트 컬러
+            "adinfo_button_background":"#f00707", // 광고상세페이지 버튼 백그라운드 컬러
+            "point_icon_name":"dndn_check_on", // 포인트 아이콘 이미지 이름
+            "point_icon_use_yn":"Y", // 포인트 아이콘 사용여부 ( 포인트아이콘 사용시 포인트 단위는 사용못함 )
+          });
+      await _tnkFlutterRwdPlugin.setCustomUI( paramMap );
+    } on Exception {
+      return;
+    }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +202,7 @@ class _MyAppState extends State<MyApp> {
                   Icons.tv,
                   color: Colors.blueGrey,
                 ),
-                title: const Text('OfferW==========================all'),
+                title: const Text('OfferWall'),
                 onTap: () => showAdList(),
               ),
               ListTile(
@@ -189,6 +220,14 @@ class _MyAppState extends State<MyApp> {
                 ),
                 title: const Text('내 포인트'),
                 onTap: () => getQueryPoint(),
+              ),
+              ListTile(
+                leading: const Icon(
+                  Icons.settings,
+                  color: Colors.blueGrey,
+                ),
+                title: const Text('UI(키즈닝)'),
+                onTap: () => setCustomUI(),
               )
 
             ],
@@ -245,7 +284,7 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       OutlinedButton(onPressed: setNoUsePointIcon, child: const Text('No use point icon')),
-                      OutlinedButton(onPressed: setNoUsePrivacyAlert, child: const Text('No use privacy alert'))
+                      OutlinedButton(onPressed: setNoUsePrivacyAlert, child: const Text('No use privacy alert')),
                     ],
                   ),
                 ],

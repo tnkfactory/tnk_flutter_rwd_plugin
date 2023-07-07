@@ -1,6 +1,6 @@
 name: tnk_flutter_rwd
 description: tnk rwd sdk flutter plugin support android.
-version: 0.1.0
+version: 0.1.2
 homepage: https://github.com/tnkfactory/tnk_flutter_rwd_plugin
 
 environment:
@@ -70,3 +70,4 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
+
