@@ -160,8 +160,8 @@ class _MyAppState extends State<MyApp> {
             "adinfo_point_unit_font":"#f00707", // 광고상세페이지 포인트 단위 컬러
             "adinfo_point_amount_font":"#f00707", // 광고상세페이지 포인트 액수 폰트 컬러
             "adinfo_button_background":"#f00707", // 광고상세페이지 버튼 백그라운드 컬러
-            "point_icon_name":"dndn_check_on", // 포인트 아이콘 이미지 이름
-            "point_icon_use_yn":"Y", // 포인트 아이콘 사용여부 ( 포인트아이콘 사용시 포인트 단위는 사용못함 )
+            "point_icon_name":"", // 포인트 아이콘 이미지 이름
+            "point_icon_use_yn":"N", // 포인트 아이콘 사용여부 ( 포인트아이콘 사용시 포인트 단위는 사용못함 )
           });
       await _tnkFlutterRwdPlugin.setCustomUI( paramMap );
     } on Exception {
@@ -226,7 +226,7 @@ class _MyAppState extends State<MyApp> {
                   Icons.settings,
                   color: Colors.blueGrey,
                 ),
-                title: const Text('UI(키즈닝)'),
+                title: const Text('UI Custom'),
                 onTap: () => setCustomUI(),
               )
 

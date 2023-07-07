@@ -212,22 +212,25 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         
         
         // 광고 리스트
-        TnkStyles.shared.adListItem.titleLabel.color = adListTitleFontColor
-        TnkStyles.shared.adListItem.descLabel.color = adListDescFontColor
-        TnkStyles.shared.adListItem.pointAmountLabel.color = adListPointAmtFontColor
-        TnkStyles.shared.adListItem.pointUnitLabel.color = adListPointUnitFontColor
+        let adListItemLayout = AdListItemViewLayout()
+        adListItemLayout.titleLabel.color = adListTitleFontColor
+        adListItemLayout.descLabel.color = adListDescFontColor
+        adListItemLayout.pointAmountLabel.color = adListPointAmtFontColor
+        adListItemLayout.pointUnitLabel.color = adListPointUnitFontColor
         
         
         if( pointIconImgName != "" ) {
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: pointIconImgName)
+            adListItemLayout.pointIconImage.imageNormal = UIImage(named: pointIconImgName)
         }
         if( pointIconUseYn == "Y" ) {
-            TnkStyles.shared.adListItem.pointUnitVisible = false
+            adListItemLayout.pointUnitVisible = false
             
         } else {
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil // 아이콘 표시하지 않는다
+            adListItemLayout.pointIconImage.imageNormal = nil // 아이콘 표시하지 않는다
         }
-        
+        TnkLayout.shared.registerItemViewLayout(type: .normal,
+                                                viewClass: DefaultAdListItemView.self,
+                                                viewLayout: adListItemLayout)
         
         
     
