@@ -218,7 +218,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         adListItemLayout.pointAmountLabel.color = adListPointAmtFontColor
         adListItemLayout.pointUnitLabel.color = adListPointUnitFontColor
         
-        
         if( pointIconImgName != "" ) {
             adListItemLayout.pointIconImage.imageNormal = UIImage(named: pointIconImgName)
         }
