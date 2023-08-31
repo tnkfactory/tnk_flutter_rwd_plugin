@@ -164,9 +164,6 @@ class _MyAppState extends State<MyApp> {
             "adinfo_button_desc_font":"#FFFFFF", // 광고상세페이지 버튼 백그라운드 컬러
             "point_icon_name":"", // 포인트 아이콘 이미지 이름
             "point_icon_use_yn":"N", // 포인트 아이콘 사용여부 ( 포인트아이콘 사용시 포인트 단위는 사용못함 )
-            "total_point_container_background":"#E0E0E0",
-            "total_point_container_msg_font":"#666666",
-            "total_point_container_point_font":"#000000",
             "adinfo_button_gradient_option":"L"
           });
       await _tnkFlutterRwdPlugin.setCustomUI( paramMap );

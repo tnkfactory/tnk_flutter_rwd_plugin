@@ -41,13 +41,13 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 19
     }
 }
 
 
 dependencies {
     //implementation "com.tnkfactory:rwd:7.30.8"
-    implementation "com.tnkfactory:rwd:8.02.01"
+    implementation "com.tnkfactory:rwd:8.03.01"
     //implementation 'com.tnkfactory:rwd:8.01.91'
 }
