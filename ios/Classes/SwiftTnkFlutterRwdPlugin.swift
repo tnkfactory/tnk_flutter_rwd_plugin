@@ -3,6 +3,7 @@ import UIKit
 import TnkRwdSdk2
 
 
+
 public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "tnk_flutter_rwd", binaryMessenger: registrar.messenger())
@@ -12,7 +13,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         //오퍼월 화면 시스템 화면 모드에 따라 다크/라이트 모드 설정
-        TnkColor.enableDarkMode = true
+        TnkColor.enableDarkMode = false
         
         let viewController = UIApplication.shared.keyWindow?.rootViewController
         
@@ -191,7 +192,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         
         // Darkmode 를 지원하지 않으므로 앱의 info.plist 파일에 Appearance 항목을 light 로 설정한다.
         
-        //print(param)
         
         let cateSelectedColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["category_select_font"]!))
         let filterSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_background"]!))
@@ -209,6 +209,9 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         let adInfoButtonBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_background"]!))
         let pointIconImgName = param["point_icon_name"]!
         let pointIconUseYn = param["point_icon_use_yn"]!
+        let adInfoButtonDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_desc_font"]!))
+        let adInfoButtonTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_title_font"]!))
+        let adInfoButtonFramLayoutGradientOption = param["adinfo_button_gradient_option"]
         
         
         // 광고 리스트
@@ -223,7 +226,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         }
         if( pointIconUseYn == "Y" ) {
             adListItemLayout.pointUnitVisible = false
-            
         } else {
             adListItemLayout.pointIconImage.imageNormal = nil // 아이콘 표시하지 않는다
         }
@@ -240,11 +242,12 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
                                                  viewClass: DefaultAdListMenuView.self,
                                                  viewLayout: categoryMenuLayout)
         
+        
         // 획득가능한 포인트 레이아웃
-        let kidsningMenuLayout = KidsningMenuViewHeaderLayout()
+        let offerwallMenuLayout = OfferWallMenuViewHeaderLayout()
         TnkLayout.shared.registerMenuViewLayout( type: .sub1,
-                                                 viewClass: KidsningMenuViewHeader.self,
-                                                 viewLayout: kidsningMenuLayout)
+                                                 viewClass: OfferWallMenuViewHeader.self,
+                                                 viewLayout: offerwallMenuLayout)
         
 
         
@@ -255,13 +258,12 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         
         
         
-        // 키즈닝 경우 필터 메뉴 사용안함
         let filterMenuLayout = AdListFilterViewLayout() // 필터 설정
-        // 선택된 메뉴
+        // 선택된 필터메뉴
         filterMenuLayout.itemButton.colorSelected = filterSelectedFontColor
         filterMenuLayout.itemButton.backgroundSelected = filterSelectedBgColor
 
-        // 선택안된 메뉴
+        // 선택안된 필터메뉴
         filterMenuLayout.itemButton.colorNormal = filterNotSelectedFontColor
         filterMenuLayout.itemButton.backgroundNormal = filterNotSelectedBgColor
 
@@ -272,36 +274,109 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         
         // 광고 상세 화면
         let detailViewLayout = DefaultAdDetailViewLayout()
-        detailViewLayout.titleTitleLabel.color = adInfoTitleFontColor
-        detailViewLayout.titleDescLabel.color = adInfoDescFontColor
-        detailViewLayout.titlePointAmountLabel.color = adInfoPointAmtFontColor
-        detailViewLayout.titlePointUnitLabel.color = adInfoPointUnitFontColor
-        //detailViewLayout.titlePointIconImage.imageNormal = nil
-        //detailViewLayout.titlePointUnitVisible = false // 포인트 단위 숨기기
+        detailViewLayout.titleTitleLabel.color = adInfoTitleFontColor // 타이틀
+        detailViewLayout.titleDescLabel.color = adInfoDescFontColor // 액션
+        detailViewLayout.titlePointAmountLabel.color = adInfoPointAmtFontColor // 포인트 금액
+        detailViewLayout.titlePointUnitLabel.color = adInfoPointUnitFontColor // 포인트 단위
+        detailViewLayout.buttonFrameLayout.frameBackgroundColor = adInfoButtonBgColor // 버튼 색상
+        detailViewLayout.buttonFrameLayout.descLabel.color = adInfoButtonDescFontColor // 버튼 액션 폰트 색상
+        detailViewLayout.buttonFrameLayout.titleLabel.color = adInfoButtonTitleFontColor // 버튼 포인트금액, 포인트단위 폰트 색상
         
+        
+        
+        // 버튼 프레임아웃 gradient 백그라운드 설정
+        let gradient = CAGradientLayer()
+        // default
+        var startColor = TnkColor.semantic(UIColor.white.withAlphaComponent(1), UIColor.white.withAlphaComponent(1))
+        var endColor = TnkColor.semantic(UIColor.white.withAlphaComponent(0), UIColor.white.withAlphaComponent(0))
+        // dark mode
+        if( adInfoButtonFramLayoutGradientOption == "D" ) {
+
+            startColor = TnkColor.semantic(UIColor.black.withAlphaComponent(1), UIColor.black.withAlphaComponent(1))
+            endColor = TnkColor.semantic(UIColor.black.withAlphaComponent(0), UIColor.black.withAlphaComponent(0))
+        }
+        gradient.colors = [startColor.cgColor, endColor.cgColor]
+        gradient.locations = [0.85 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+        detailViewLayout.buttonFrameLayout.backgroundGradient = gradient
+        
+        detailViewLayout.actionInfoLayout.iconImage.imageNormal = nil // 참여방식 아이콘 삭제
+        detailViewLayout.joinInfoLayout.iconImage.imageNormal = nil // 유의사항 아이콘 삭제
+
+        // 포인트아이콘 사용시
         if( pointIconUseYn == "Y" ) {
             detailViewLayout.titlePointUnitVisible = false
             detailViewLayout.buttonFrameLayout.pointUnitVisible = false
             if( pointIconImgName != "" ) {
-                // 상단 타이틀 point icon
-                detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: pointIconImgName)
-                // 하단 버튼 point icon
-                detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: pointIconImgName)
+                detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: pointIconImgName)// 상단 타이틀 point icon
+                detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: pointIconImgName)// 하단 버튼 point icon
             }
         } else {
-            detailViewLayout.titlePointIconImage.imageNormal = nil
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
+            // 포인트아이콘 미사용시
+            detailViewLayout.titlePointIconImage.imageNormal = nil // 타이틀 포인트 아이콘 제거
+            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil // 버튼 포인트아이콘 제거
+            detailViewLayout.buttonFrameLayout.pointUnitVisible = true // 버튼 포인트단위 활성
         }
         
-        detailViewLayout.buttonFrameLayout.frameBackgroundColor = adInfoButtonBgColor
         TnkLayout.shared.detailViewLayout = detailViewLayout
         
         
-        
+        //testCustomize(adDetailView:detailViewLayout, adListMenuView:categoryMenuLayout)
     }
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private func testCustomize(adDetailView:DefaultAdDetailViewLayout, adListMenuView:AdListMenuViewLayout) {
+        // 포인금액 뒤쪽으로 이미지표시 하도록 설정
+        TnkStyles.shared.adListItem.pointAmountTrailImage.width = 16
+        TnkStyles.shared.adListItem.pointAmountTrailImage.height = 16
+        TnkStyles.shared.adListItem.pointAmountTrailImage.imageNormal = UIImage(named:"dndn_check_on")
+        
+        // 상단 닫기 버튼을 이미지로 교체
+        TnkLayout.shared.closeBarButtonImage = UIImage(named:"close_btn")
+
+        // 광고상세화면
+        adDetailView.actionInfoLayout.iconImage.imageNormal = nil // 참여방식 아이콘삭제
+        adDetailView.joinInfoLayout.iconImage.imageNormal = nil // 유의사항 아이콘삭제
+        
+        
+        // 개잉정보 수집 동의 alert 창
+        let alertViewLayout = AlertViewLayout()
+                
+        alertViewLayout.titleLabel.font = TnkFonts.shared.fontManager.getFont(ofSize: 14)   // 2023.07.21
+                
+        alertViewLayout.confirmButton.backgroundNormal = TnkColor.argb(0xff5F0D80)
+        alertViewLayout.confirmButton.strokeWidth = 0
+        alertViewLayout.confirmButton.cornerRadius = 6
+                
+        alertViewLayout.rejectButton.colorNormal = TnkColor.argb(0xff000000)
+        alertViewLayout.rejectButton.colorHighlighted = TnkColor.argb(0xff000000)
+        alertViewLayout.rejectButton.backgroundNormal = TnkColor.argb(0xffffffff)
+        alertViewLayout.rejectButton.backgroundHighlighted = TnkColor.argb(0xffffffff)
+        
+        alertViewLayout.rejectButton.strokeColor = TnkColor.argb(0xff000000)
+        alertViewLayout.rejectButton.strokeWidth = 1
+        alertViewLayout.rejectButton.cornerRadius = 6
+                
+        TnkLayout.shared.alertViewLayout = alertViewLayout
+
+
+    }
+    
+
+    // Color hexString -> Int
     private func hexaStringToInt( _hexaStr: String ) -> Int {
         if( _hexaStr.hasPrefix("#") ) {
             let tmp = _hexaStr.trimmingCharacters(in: ["#"])
@@ -310,6 +385,23 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         } else {
             return 0
         }
+ 
+    }
+    
+    // Color hexString -> UIColor
+    private func hexaStringToColor( _hexaStr: String ) -> UIColor {
+        if( _hexaStr.hasPrefix("#") ) {
+            let tmp = _hexaStr.trimmingCharacters(in: ["#"])
+            let result = "ff" + tmp
+            return TnkColor.argb(Int(result, radix:16)!)
+        } else {
+            return TnkColor.argb(0xffffff)
+
+        }
+        
+        
+        // Dictionary<String,String>
+//        TnkStyles.shared.CustomizeSet
  
     }
     

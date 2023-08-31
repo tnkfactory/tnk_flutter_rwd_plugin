@@ -17,7 +17,7 @@ import Flutter
           self.window.rootViewController = self.navigationController
           self.navigationController.setNavigationBarHidden(true, animated: false)
           self.window.makeKeyAndVisible()
-      
+
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

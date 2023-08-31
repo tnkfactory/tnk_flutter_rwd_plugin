@@ -146,22 +146,28 @@ class _MyAppState extends State<MyApp> {
       HashMap<String,String> paramMap = HashMap();
       //0xff252542
       paramMap.addAll({
-            "category_select_font":"#f00707", // 카테고리 폰트 컬러
-            "filter_select_background":"#f00707", // 선택된 필터 배경색
-            "filter_select_font":"#ffffff", // 선택된 필터 폰트 컬러
-            "filter_not_select_font":"#808090", // 선택안한 필터 폰트 컬러
-            "filter_not_select_background":"#66e1e1e4", // 선택안한 필터 배경색
-            "adlist_title_font":"#3d3d57", // 광고리스트 광고타이틀 폰트 컬러
-            "adlist_desc_font":"#3d3d57", // 광고리스트 광고액션 폰트 컬러
-            "adlist_point_unit_font":"#f58d05", // 광고리스트 포인트 단위 폰트 컬러
-            "adlist_point_amount_font":"#3df505", // 광고리스트 포인트 액수 폰트 컬러
-            "adinfo_title_font":"#f00707", // 광고상세페이지 광고타이틀 폰트 컬러
-            "adinfo_desc_font":"#f00707", // 광고상세페이지 광고액션 폰트 컬러
-            "adinfo_point_unit_font":"#f00707", // 광고상세페이지 포인트 단위 컬러
-            "adinfo_point_amount_font":"#f00707", // 광고상세페이지 포인트 액수 폰트 컬러
-            "adinfo_button_background":"#f00707", // 광고상세페이지 버튼 백그라운드 컬러
+            "category_select_font":"#495057", // 카테고리 폰트 컬러
+            "filter_select_background":"#495057", // 선택된 필터 배경색
+            "filter_select_font":"#FFFFFF", // 선택된 필터 폰트 컬러
+            "filter_not_select_font":"#495057", // 선택안한 필터 폰트 컬러
+            "filter_not_select_background":"#FFFFFF", // 선택안한 필터 배경색
+            "adlist_title_font":"#212529", // 광고리스트 광고타이틀 폰트 컬러
+            "adlist_desc_font":"#61666A", // 광고리스트 광고액션 폰트 컬러
+            "adlist_point_unit_font":"#5F0D80", // 광고리스트 포인트 단위 폰트 컬러
+            "adlist_point_amount_font":"#5F0D80", // 광고리스트 포인트 액수 폰트 컬러
+            "adinfo_title_font":"#212529", // 광고상세페이지 광고타이틀 폰트 컬러
+            "adinfo_desc_font":"#5F0D80", // 광고상세페이지 광고액션 폰트 컬러
+            "adinfo_point_unit_font":"#5F0D80", // 광고상세페이지 포인트 단위 컬러
+            "adinfo_point_amount_font":"#5F0D80", // 광고상세페이지 포인트 액수 폰트 컬러
+            "adinfo_button_background":"#5F0D80", // 광고상세페이지 버튼 백그라운드 컬러
+            "adinfo_button_title_font":"#FFFFFF", // 광고상세페이지 버튼 백그라운드 컬러
+            "adinfo_button_desc_font":"#FFFFFF", // 광고상세페이지 버튼 백그라운드 컬러
             "point_icon_name":"", // 포인트 아이콘 이미지 이름
             "point_icon_use_yn":"N", // 포인트 아이콘 사용여부 ( 포인트아이콘 사용시 포인트 단위는 사용못함 )
+            "total_point_container_background":"#E0E0E0",
+            "total_point_container_msg_font":"#666666",
+            "total_point_container_point_font":"#000000",
+            "adinfo_button_gradient_option":"L"
           });
       await _tnkFlutterRwdPlugin.setCustomUI( paramMap );
     } on Exception {
@@ -228,8 +234,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 title: const Text('UI Custom'),
                 onTap: () => setCustomUI(),
-              )
-
+              ),
             ],
           ),
         ),

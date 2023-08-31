@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - tnk_flutter_rwd (0.0.1):
+  - tnk_flutter_rwd (0.1.7):
     - Flutter
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  tnk_flutter_rwd: 410464139799f9e0b8f97bf08fa889bba740597f
+  tnk_flutter_rwd: 4a2892a6fbd466e88df91d88d1b2d2e1dacc954f
 
 PODFILE CHECKSUM: 77741674a9b77ac95136f9282344b56becb161ca
 
