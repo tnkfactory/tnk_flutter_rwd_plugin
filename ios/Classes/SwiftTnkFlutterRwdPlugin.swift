@@ -325,6 +325,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         detailViewLayout.buttonFrameLayout.descLabel.color = adInfoButtonDescFontColor // 버튼 액션 폰트 색상
         detailViewLayout.buttonFrameLayout.titleLabel.color = adInfoButtonTitleFontColor // 버튼 포인트금액, 포인트단위 폰트 색상
         
+        // 멀티액션 체크이미지, 포인트폰트
         detailViewLayout.actionItemLayout.itemCheckImage.imageNormal = UIImage(named: "ic_choice")
         detailViewLayout.actionItemLayout.itemCheckImage.imageDisabled = UIImage(named: "ic_unchoice")
         detailViewLayout.actionItemLayout.itemPointAmountLabel.color = TnkColor.argb(0xff5F0D80)
