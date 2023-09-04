@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
 
 
 
+  int _selectedIndex = 0;
 
 
   @override
@@ -151,10 +152,6 @@ class _MyAppState extends State<MyApp> {
             "filter_select_font":"#FFFFFF", // 선택된 필터 폰트 컬러
             "filter_not_select_font":"#495057", // 선택안한 필터 폰트 컬러
             "filter_not_select_background":"#FFFFFF", // 선택안한 필터 배경색
-            "adlist_title_font":"#212529", // 광고리스트 광고타이틀 폰트 컬러
-            "adlist_desc_font":"#61666A", // 광고리스트 광고액션 폰트 컬러
-            "adlist_point_unit_font":"#5F0D80", // 광고리스트 포인트 단위 폰트 컬러
-            "adlist_point_amount_font":"#5F0D80", // 광고리스트 포인트 액수 폰트 컬러
             "adinfo_title_font":"#212529", // 광고상세페이지 광고타이틀 폰트 컬러
             "adinfo_desc_font":"#5F0D80", // 광고상세페이지 광고액션 폰트 컬러
             "adinfo_point_unit_font":"#5F0D80", // 광고상세페이지 포인트 단위 컬러
@@ -162,9 +159,15 @@ class _MyAppState extends State<MyApp> {
             "adinfo_button_background":"#5F0D80", // 광고상세페이지 버튼 백그라운드 컬러
             "adinfo_button_title_font":"#FFFFFF", // 광고상세페이지 버튼 백그라운드 컬러
             "adinfo_button_desc_font":"#FFFFFF", // 광고상세페이지 버튼 백그라운드 컬러
-            "point_icon_name":"", // 포인트 아이콘 이미지 이름
-            "point_icon_use_yn":"N", // 포인트 아이콘 사용여부 ( 포인트아이콘 사용시 포인트 단위는 사용못함 )
             "adinfo_button_gradient_option":"L"
+
+            // "adlist_title_font":"#212529", // 광고리스트 광고타이틀 폰트 컬러
+            // "adlist_desc_font":"#61666A", // 광고리스트 광고액션 폰트 컬러
+            // "adlist_point_unit_font":"#5F0D80", // 광고리스트 포인트 단위 폰트 컬러
+            // "adlist_point_amount_font":"#5F0D80", // 광고리스트 포인트 액수 폰트 컬러
+            // "point_icon_name":"", // 포인트 아이콘 이미지 이름
+            // "point_icon_use_yn":"N", // 포인트 아이콘 사용여부 ( 포인트아이콘 사용시 포인트 단위는 사용못함 )
+
           });
       await _tnkFlutterRwdPlugin.setCustomUI( paramMap );
     } on Exception {
@@ -181,7 +184,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Plugin Example'),
+          title: const Text('Flutter RWD Plugin'),
+          actions: [
+            IconButton(
+                onPressed: (){
+                  // setNoUsePointIcon();
+                  setCustomUI();
+                },
+                icon: const Icon(Icons.dashboard_customize)
+            )
+          ],
         ),
         drawer: Drawer(
           child: ListView(
@@ -191,7 +203,7 @@ class _MyAppState extends State<MyApp> {
                 currentAccountPicture: CircleAvatar(
                   backgroundColor: Colors.white,
                 ),
-                accountName: Text("flutter"),
+                accountName: Text("tnkfactory"),
                 accountEmail: Text('flutter@tnkfactory.com'),
 
                 decoration: BoxDecoration(
@@ -206,39 +218,17 @@ class _MyAppState extends State<MyApp> {
                   color: Colors.blueGrey,
                 ),
                 title: const Text('OfferWall'),
-                onTap: () => showAdList(),
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.store,
-                  color: Colors.blueGrey,
-                ),
-                title: const Text('적립가능한 포인트'),
-                onTap: () => getEarnPoint(),
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.attach_money,
-                  color: Colors.blueGrey,
-                ),
-                title: const Text('내 포인트'),
-                onTap: () => getQueryPoint(),
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.settings,
-                  color: Colors.blueGrey,
-                ),
-                title: const Text('UI Custom'),
-                onTap: () => setCustomUI(),
+                onTap: () => "aaa",
               ),
             ],
           ),
         ),
+
+
+
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               DataTable(
                 columns: const [
@@ -253,48 +243,77 @@ class _MyAppState extends State<MyApp> {
                       ]
                   ),
                 ],
-
               ),
-              // Text('result \n\n$_tnkResult\n'),
-              // Text('적립가능한 Point :  $_myPoint'),
-              // Text('사용가능한 Point :  $_queryPoint'),
               ButtonBar(
                 children: [
-                  // Row (
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: [
-                  //     OutlinedButton.icon( onPressed: () { showAdList(); },icon: advIcon, label: const Text('adv list')),
-                  //     OutlinedButton.icon(onPressed: (){getEarnPoint(); }, icon: pointIcon, label: const Text('earnPoint')),
-                  //     OutlinedButton.icon(onPressed: (){getQueryPoint(); }, icon: pointIcon, label: const Text('queryPoint')),
-                  //   ],
-                  // ),
                   Row (
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      OutlinedButton.icon( onPressed: () { purchaseItem(_itemId, _cost); },icon: moneyIcon, label: const Text('purchase')),
-                      OutlinedButton.icon( onPressed: () { withdrawPoints("테스트 인출"); },icon: moneyIcon, label: const Text('withdraw')),
-
+                      OutlinedButton(
+                          onPressed: () { purchaseItem(_itemId, _cost); },
+                          style: OutlinedButton.styleFrom(foregroundColor: Colors.redAccent, shadowColor: Colors.redAccent, ),
+                          child: const Text('테스트구매')
+                      ),
+                      OutlinedButton(
+                          onPressed: () { withdrawPoints("테스트 인출"); },
+                          style: OutlinedButton.styleFrom(foregroundColor: Colors.redAccent, shadowColor: Colors.redAccent),
+                          child: const Text('테스트인출')
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      OutlinedButton(onPressed: showATTPopup, child: const Text('show att popup')),
+                      OutlinedButton(
+                          onPressed: showATTPopup,
+                          style: OutlinedButton.styleFrom(foregroundColor: Colors.redAccent, shadowColor: Colors.redAccent),
+                          child: const Text('ATT Popup')
+                      ),
+                      OutlinedButton(
+                          onPressed: setNoUsePointIcon,
+                          style: OutlinedButton.styleFrom(foregroundColor: Colors.redAccent, shadowColor: Colors.redAccent),
+                          child: const Text('포인트아이콘 사용안함')
+                      ),
                     ],
-                  ),
-                  Row (
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      OutlinedButton(onPressed: setNoUsePointIcon, child: const Text('No use point icon')),
-                      OutlinedButton(onPressed: setNoUsePrivacyAlert, child: const Text('No use privacy alert')),
-                    ],
-                  ),
+                  )
                 ],
               ),
             ],
           ),
         ),
+        bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          unselectedItemColor: Colors.blueGrey,
+          items:const<BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: '홈',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.tv),
+                label: 'Offerwall'
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notifications),
+                label: '알림'
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.blue,
+          onTap: _onItemTapped,
+        ),
       ),
     );
+  }
+
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    if(_selectedIndex == 1) {
+      showAdList();
+    }
   }
 }

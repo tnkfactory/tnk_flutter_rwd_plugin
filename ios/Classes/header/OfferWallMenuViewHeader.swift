@@ -23,19 +23,16 @@ class OfferWallMenuViewHeader : AdListMenuView {
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            containerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 16),
-            containerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -16),
-            containerView.topAnchor.constraint(equalTo: topAnchor, constant: 4),
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 4),
-            containerView.heightAnchor.constraint(equalToConstant: 40),
+            containerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20), // 16 -> 20
+            containerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20), // -16 -> -20
+            containerView.topAnchor.constraint(equalTo: topAnchor, constant: 8),    // 4 -> 8
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8), // 4 -> -8
+            containerView.heightAnchor.constraint(equalToConstant: 33), // 40 -> 33
             messageLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             messageLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16)
         ])
         
-       
-        
-        
-        containerView.backgroundColor = TnkColor.argb(0xffe0e0e0)
+        containerView.backgroundColor = TnkColor.argb(0xfff1f3f5)
         containerView.layer.cornerRadius = 4
         
         messageLabel.font = TnkFonts.shared.fontManager.getBoldFont(ofSize: 16)
@@ -58,8 +55,9 @@ class OfferWallMenuViewHeader : AdListMenuView {
         numberFormatter.groupingSize = 3
         let formattedPoint = numberFormatter.string(from: NSNumber(value:totalPoint)) ?? "\(totalPoint)"
         
+        let pointColor = TnkColor.argb(0xff5f0d80)
         let attrPoint = NSAttributedString(string: formattedPoint,
-                                           attributes: [.foregroundColor : UIColor.black,
+                                           attributes: [.foregroundColor : pointColor,
                                                         .font : TnkFonts.shared.fontManager.getBoldFont(ofSize: 17)])
         
         let attrMessage = NSMutableAttributedString(string: "최대 ")
@@ -82,7 +80,7 @@ class OfferWallMenuViewHeaderLayout : AdListMenuViewLayout {
     }
     
     override public func viewHeight(_ parentSize:CGSize) -> CGFloat {
-        return 33   // 높이
+        return 49  // 높이 33 -> 49
     }
     
     override public func menuView(_ frame:CGRect) -> AdListMenuView {
