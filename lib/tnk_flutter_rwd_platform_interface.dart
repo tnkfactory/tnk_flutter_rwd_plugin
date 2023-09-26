@@ -1,6 +1,7 @@
 
 
 import 'dart:collection';
+import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'tnk_flutter_rwd_method_channel.dart';
@@ -64,4 +65,9 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<String?> setCustomUI(HashMap<String,String>colorMap) {
     throw UnimplementedError('setCustomUI has not benn implemented');
   }
+  Future<String?> getOfferWallEvent(MethodCall methodCall) {
+    throw UnimplementedError('getOfferWallEvent has not benn implemented');
+  }
+
+
 }

@@ -5,10 +5,12 @@ import TnkRwdSdk2
 
 
 public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
+    
+    static var channel:FlutterMethodChannel? = nil
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "tnk_flutter_rwd", binaryMessenger: registrar.messenger())
+        channel = FlutterMethodChannel(name: "tnk_flutter_rwd", binaryMessenger: registrar.messenger())
         let instance = SwiftTnkFlutterRwdPlugin()
-        registrar.addMethodCallDelegate(instance, channel: channel)
+        registrar.addMethodCallDelegate(instance, channel: channel!)
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -31,13 +33,13 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         case "showAdList":
             if let args = call.arguments as? Dictionary<String, Any>,
                let title = args["title"] as? String {
-                showOfferwall(viewController: viewController!, pTitle: title)
+                showOfferwall(viewController: viewController!, pTitle: title, listener:self)
                 
             } else{
-                showOfferwall(viewController: viewController!, pTitle: "무료충전소")
+                showOfferwall(viewController: viewController!, pTitle: "무료충전소", listener:self)
             }
-            result("success")
             
+            result("success")
             
         case "setUserName":
             if let args = call.arguments as? Dictionary<String, Any>{
@@ -164,9 +166,10 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         return flutterViewController;
     }
     
-    func showOfferwall(viewController:UIViewController, pTitle:String) {
+    func showOfferwall(viewController:UIViewController, pTitle:String, listener:OfferwallEventListener) {
         let vc = AdOfferwallViewController()
         vc.title = pTitle
+        vc.offerwallListener = listener
         
         let navController = UINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .fullScreen
@@ -174,6 +177,9 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         navController.navigationBar.titleTextAttributes = [.foregroundColor: TnkColor.semantic(argb1: 0xff505050, argb2: 0xffd3d3d3)]
         
         viewController.present(navController, animated: true)
+        
+        
+        
     }
     
     func setNoUsePoinIcon() {
@@ -585,8 +591,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         
         return newImage
     }
-    
-    
     
     
 }

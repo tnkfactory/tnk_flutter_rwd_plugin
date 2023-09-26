@@ -26,7 +26,7 @@ class OfferWallMenuViewHeader : AdListMenuView {
             containerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20), // 16 -> 20
             containerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20), // -16 -> -20
             containerView.topAnchor.constraint(equalTo: topAnchor, constant: 8),    // 4 -> 8
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8), // 4 -> -8
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16), // 4 -> -8 -> -16
             containerView.heightAnchor.constraint(equalToConstant: 33), // 40 -> 33
             messageLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             messageLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16)
@@ -35,7 +35,7 @@ class OfferWallMenuViewHeader : AdListMenuView {
         containerView.backgroundColor = TnkColor.argb(0xfff1f3f5)
         containerView.layer.cornerRadius = 4
         
-        messageLabel.font = TnkFonts.shared.fontManager.getBoldFont(ofSize: 16)
+        messageLabel.font = TnkFonts.shared.fontManager.getBoldFont(ofSize: 12)
         messageLabel.textColor = TnkColor.argb(0xff666666)
         messageLabel.text = ""
         
@@ -58,7 +58,7 @@ class OfferWallMenuViewHeader : AdListMenuView {
         let pointColor = TnkColor.argb(0xff5f0d80)
         let attrPoint = NSAttributedString(string: formattedPoint,
                                            attributes: [.foregroundColor : pointColor,
-                                                        .font : TnkFonts.shared.fontManager.getBoldFont(ofSize: 17)])
+                                                        .font : TnkFonts.shared.fontManager.getBoldFont(ofSize: 12)])
         
         let attrMessage = NSMutableAttributedString(string: "최대 ")
        
@@ -80,7 +80,7 @@ class OfferWallMenuViewHeaderLayout : AdListMenuViewLayout {
     }
     
     override public func viewHeight(_ parentSize:CGSize) -> CGFloat {
-        return 49  // 높이 33 -> 49
+        return 57  // 높이 33 -> 49 -> 57
     }
     
     override public func menuView(_ frame:CGRect) -> AdListMenuView {

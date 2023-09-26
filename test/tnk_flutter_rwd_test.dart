@@ -1,5 +1,6 @@
 import 'dart:collection';
 
+import 'package:flutter/src/services/message_codec.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd_platform_interface.dart';
@@ -54,6 +55,11 @@ class MockTnkFlutterRwdPlatform
 
   @override
   Future<String?> setCustomUI(HashMap<String, String> colorMap) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> getOfferWallEvent(MethodCall methodCall) {
     throw UnimplementedError();
   }
 
