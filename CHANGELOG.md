@@ -30,4 +30,6 @@
 ## 0.2.4
 * 매체사 대응
 ## 0.2.5
-* OfferWall CallBack 함수 구현
+* IOS OfferWall CallBack 함수 구현
+## 0.2.6
+* AOS OfferWall CallBack 함수 구현

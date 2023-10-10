@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'tnk_flutter_rwd'
-  s.version          = '0.2.5'
+  s.version          = '0.2.6'
   s.summary          = 'tnkfactory rwd sdk for flutter'
   s.description      = <<-DESC
 tnkfactory rwd sdk for flutter
