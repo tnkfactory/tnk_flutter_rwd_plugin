@@ -39,27 +39,12 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  Future<dynamic> tnkInvokedMethods(MethodCall methodCall) async {
-    switch (methodCall.method) {
-      case "tnkAnalytics":
-        Map<String, dynamic> JSonObj = jsonDecode(methodCall.arguments);
-        if (JSonObj["event"] == TnkRwdAnalyticsEvent.ACTIVITY_FINISH) {
-
-        }
-        print(JSonObj.toString());
-    }
-  }
-
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
 
-    switch (methodCall.method) {
-
-      case "didOfferwallRemoved":
-        //TODO 오퍼월 close callback
-        print( methodCall.arguments );
-        break;
-      default:
-        throw ("method not defined");
+    if(TnkMethodChannelEvent.didOfferwallRemoved(methodCall))
+    {
+      // TODO 오퍼월 close callback
+      print( "offer window closed" );
     }
 
     setState(() {

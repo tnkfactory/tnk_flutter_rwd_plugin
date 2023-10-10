@@ -1,4 +1,9 @@
 
+import 'dart:convert';
+import 'dart:ffi';
+
+import 'package:flutter/services.dart';
+
 class TnkRwdAnalyticsEvent {                              // 이벤트명              // 파라미터(item_id, item_name)
   static const String SELECT_CATEGORY = "tnk_ev_category";       // 카테고리 선택          // 카테고리 아이디, 카테고리명
   static const String SELECT_FILTER = "tnk_ev_filter";           // 필터 선택            // 필터 아이디, 필터명
@@ -14,3 +19,25 @@ class TnkRwdAnalyticsParam {
   static const String ITEM_ID = "item_id";
   static const String ITEM_NAME = "item_name";
 }
+
+
+class TnkMethodChannelEvent {
+
+  static bool didOfferwallRemoved(MethodCall methodCall){
+    switch (methodCall.method) {
+      // android rwd event
+      case "tnkAnalytics":
+        Map<String, dynamic> JSonObj = jsonDecode(methodCall.arguments);
+        // finish event
+        if (JSonObj["event"] == TnkRwdAnalyticsEvent.ACTIVITY_FINISH) {
+          return true;
+        }
+        break;
+      case "didOfferwallRemoved":
+        return true;
+    }
+    return false;
+  }
+}
+
+
