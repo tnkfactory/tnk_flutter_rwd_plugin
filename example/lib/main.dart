@@ -1,11 +1,12 @@
 import 'dart:collection';
-import 'dart:ffi';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
+import 'tnk_flutter_rwd_analytics.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,17 +39,13 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
 
-    switch (methodCall.method) {
-
-      case "didOfferwallRemoved":
-        //TODO 오퍼월 close callback
-        print( methodCall.arguments );
-        break;
-      default:
-        throw ("method not defined");
+    if(TnkMethodChannelEvent.didOfferwallRemoved(methodCall))
+    {
+      // TODO 오퍼월 close callback
+      print( "offer window closed" );
+      print(methodCall.arguments);
     }
 
     setState(() {
@@ -243,7 +240,7 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Row(children: [
                 DataTable(
                   columns: const [
                     DataColumn(label: Text('tnkResult')),

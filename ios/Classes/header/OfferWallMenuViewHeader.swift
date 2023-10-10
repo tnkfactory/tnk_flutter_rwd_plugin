@@ -26,7 +26,7 @@ class OfferWallMenuViewHeader : AdListMenuView {
             containerView.leftAnchor.constraint(equalTo: leftAnchor, constant: 20), // 16 -> 20
             containerView.rightAnchor.constraint(equalTo: rightAnchor, constant: -20), // -16 -> -20
             containerView.topAnchor.constraint(equalTo: topAnchor, constant: 8),    // 4 -> 8
-            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16), // 4 -> -8 -> -16
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0), // 4 -> -8 -> -16
             containerView.heightAnchor.constraint(equalToConstant: 33), // 40 -> 33
             messageLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             messageLabel.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 16)

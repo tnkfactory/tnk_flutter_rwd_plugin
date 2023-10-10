@@ -7,6 +7,7 @@ import android.content.Context
 import android.util.Log
 import androidx.annotation.NonNull
 import com.tnkfactory.ad.ServiceCallback
+import com.tnkfactory.ad.TnkAdAnalytics
 import com.tnkfactory.ad.TnkAdConfig
 import com.tnkfactory.ad.TnkOfferwall
 import com.tnkfactory.ad.TnkSession
@@ -17,6 +18,8 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
+import org.json.JSONArray
+import org.json.JSONObject
 
 
 /** TnkFlutterRwdPlugin */
@@ -33,6 +36,24 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "tnk_flutter_rwd")
         channel.setMethodCallHandler(this)
+        setTnkAnalytics()
+    }
+
+    fun setTnkAnalytics() {
+        TnkAdAnalytics.setEventListener(object : TnkAdAnalytics.TnkAdEVentListener {
+            override fun onEvent(event: String, params: HashMap<String, String>) {
+                val jParams = JSONArray()
+                params.keys.forEach {
+                    jParams.put(
+                        JSONObject().put(it, params[it])
+                    )
+                }
+                val jEvent = JSONObject()
+                jEvent.put("event", event)
+                jEvent.put("params", jParams)
+                channel.invokeMethod("tnkAnalytics", jEvent.toString())
+            }
+        })
     }
 
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
