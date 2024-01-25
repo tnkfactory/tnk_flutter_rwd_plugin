@@ -41,13 +41,16 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
+        multiDexEnabled true
     }
 }
 
 
 dependencies {
+    // android appcompat
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     //implementation "com.tnkfactory:rwd:7.30.8"
-    implementation "com.tnkfactory:rwd:8.03.01"
+    implementation "com.tnkfactory:rwd:8.05.02"
     //implementation 'com.tnkfactory:rwd:8.01.91'
 }

@@ -31,3 +31,7 @@
 * 매체사 대응
 ## 0.2.5
 * OfferWall CallBack 함수 구현
+## 0.2.7
+* placement 광고 가져오는 기능 추가
+## 0.2.8
+* 약관 팝업 출력 옵션 추가( TnkFlutterRwd.setUseTermsPopup(bool) )

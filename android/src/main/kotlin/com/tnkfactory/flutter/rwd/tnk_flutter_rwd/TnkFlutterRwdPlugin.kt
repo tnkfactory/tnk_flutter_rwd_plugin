@@ -6,11 +6,9 @@ import android.app.Service
 import android.content.Context
 import android.util.Log
 import androidx.annotation.NonNull
-import com.tnkfactory.ad.ServiceCallback
-import com.tnkfactory.ad.TnkAdAnalytics
-import com.tnkfactory.ad.TnkAdConfig
-import com.tnkfactory.ad.TnkOfferwall
-import com.tnkfactory.ad.TnkSession
+import androidx.fragment.app.FragmentActivity
+import com.tnkfactory.ad.*
+import com.tnkfactory.ad.basic.AdPlacementView
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -31,7 +29,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel
     private lateinit var mActivity: Activity
     private lateinit var offerwall: TnkOfferwall
-
+    private lateinit var placementView: AdPlacementView
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "tnk_flutter_rwd")
@@ -63,50 +61,55 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "getPlatformVersion" -> {
                     result.success("Android ${android.os.Build.VERSION.RELEASE}")
                 }
+
                 "setCOPPA" -> {
                     offerwall.setCOPPA(call.argument("coppa") as? Boolean ?: false)
                     result.success("success")
                 }
+
                 "setUserName" -> {
-                    offerwall.setUserName( call.argument("user_name") as? String ?: "")
+                    offerwall.setUserName(call.argument("user_name") as? String ?: "")
                     result.success("success")
                 }
+
                 "showAdList" -> {
-                    Log.d("start >>>>> ", "start")
                     offerwall.startOfferwallActivity(mActivity)
 //                    TnkSession.showAdListByType(mActivity, call.argument("title") ?: "충전소", AdListType.ALL, AdListType.PPI, AdListType.CPS)
                     result.success("success")
                 }
+
                 "showATTPopup" -> {
                     result.success("success")
                 }
+
                 "getEarnPoint" -> {
                     offerwall.getEarnPoint() {
                         result.success(it)
-                        Log.d(">>getEarnPoint >> ", "$it")
                     }
                 }
+
                 "setNoUsePointIcon" -> {
                     TnkAdConfig.usePointUnit = true
                     result.success("success")
                 }
-                "setNoUsePrivacyAlert" ->{
+
+                "setNoUsePrivacyAlert" -> {
                     result.success("success")
                 }
+
                 "getQueryPoint" -> {
-                    TnkSession.queryPoint(mActivity, object :ServiceCallback(){
+                    TnkSession.queryPoint(mActivity, object : ServiceCallback() {
                         override fun onReturn(context: Context?, point: Any?) {
                             result.success(point as Int)
-                            Log.d(">>getQueryPoint >> ", "$point")
                         }
                     })
 
                 }
+
                 "purchaseItem" -> {
 
                     val cost = call.argument("cost") as? Int ?: 0
                     val itemId = call.argument("item_id") as? String
-                    Log.d("param", "$cost //  $itemId")
 
                     TnkSession.purchaseItem(mActivity, cost, itemId,
                         object : ServiceCallback() {
@@ -114,15 +117,14 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                                 val ret = pArr as LongArray
                                 if (ret[1] < 0) {
                                     //error
-                                    Log.d("purchaseItem error", "current point = " + ret[0] + ", transaction id = " + ret[1] )// error
                                     result.success("fail")
                                 } else {
-                                    Log.d("purchaseItem", "current point = " + ret[0] + ", transaction id = " + ret[1] )
                                     result.success("success")
                                 }
                             }
                         })
                 }
+
                 "withdrawPoints" -> {
 
                     val description = call.argument("description") as? String ?: ""
@@ -131,11 +133,68 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         object : ServiceCallback() {
                             override fun onReturn(context: Context, point: Any) {
                                 val pPoint = point as Int
-                                Log.d("withdrawPoints", "withdraw point = $pPoint")
                                 result.success("success")
                             }
                         })
                 }
+
+                "onItemClick" -> {
+                    placementView.onItemClick(
+                        (call.argument("app_id") as? String ?: "0").toLong()
+                    ) { success, errorMessage ->
+                        JSONObject().apply {
+                            if (success) {
+                                put("res_code", "1")
+                                put("res_message", "success")
+                            } else {
+                                put("res_code", "-1")
+                                put("res_message", errorMessage)
+                            }
+                        }.also {
+                            result.success(it.toString())
+                        }
+                    }
+                }
+
+                "getPlacementJsonData" -> {
+                    placementView = offerwall.getAdPlacementView(mActivity)
+
+                    placementView.placementEventListener = object : PlacementEventListener {
+                        override fun didAdDataLoaded(placementId: String, customData: String?) {
+//                            result.success(placementView.getAdListJson())
+                            JSONObject().apply {
+                                put("pub_info", JSONObject(placementView.getPubInfoJson()))
+                                put("ad_list", JSONArray(placementView.getAdListJson()))
+                                put("res_code", "1")
+                                put("res_message", "success")
+                            }.also {
+                                result.success(it.toString())
+                            }
+
+                        }
+
+                        override fun didAdItemClicked(appId: String, appName: String) {
+                        }
+
+                        override fun didFailedToLoad(placementId: String) {
+                            JSONObject().apply {
+                                put("res_code", "-99")
+                                put("res_message", "광고 로드 실패 id " + placementId)
+                            }.also {
+                                result.success(it.toString())
+                            }
+                        }
+
+                        override fun didMoreLinkClicked() {
+                        }
+                    }
+                    placementView.loadAdList(call.argument("placement_id") as? String ?: "")
+                }
+
+                "setUseTermsPopup" -> {
+                    TnkAdConfig.useTermsPopup = call.argument("use_yn") as? Boolean ?: false
+                }
+
                 else -> {
                     result.notImplemented()
                 }

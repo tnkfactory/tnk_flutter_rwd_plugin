@@ -73,8 +73,21 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
 
-
-
+  @override
+  Future<String?> getPlacementJsonData(String placementId) async {
+    final version = await methodChannel.invokeMethod<String>('getPlacementJsonData', <String, dynamic>{"placement_id":placementId});
+    return version;
+  }
+  @override
+  Future<String?> onItemClick(String app_id) async {
+    final version = await methodChannel.invokeMethod<String>('onItemClick', <String, dynamic>{"app_id":app_id});
+    return version;
+  }
+  @override
+  Future<String?> setUseTermsPopup(bool isUse) async {
+    final version = await methodChannel.invokeMethod<String>('setUseTermsPopup', <String, dynamic>{"is_use":isUse});
+    return version;
+  }
 
 
 }
