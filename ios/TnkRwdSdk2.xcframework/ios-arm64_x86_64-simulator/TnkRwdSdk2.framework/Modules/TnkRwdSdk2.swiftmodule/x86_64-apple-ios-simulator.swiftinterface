@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.8.1 (swiftlang-5.8.0.124.5 clang-1403.0.22.11.100)
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
 // swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name TnkRwdSdk2
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
@@ -7,13 +7,17 @@ import AdSupport
 import AppTrackingTransparency
 import CommonCrypto
 import CoreTelephony
+import DeveloperToolsSupport
 import Foundation
+import Photos
 import Swift
+import SwiftUI
 @_exported import TnkRwdSdk2
 import UIKit
 import WebKit
 import _Concurrency
 import _StringProcessing
+import _SwiftConcurrencyShims
 import zlib
 @_inheritsConvenienceInitializers @objc public class EventViewLayout : ObjectiveC.NSObject {
   @objc public var backgroundColor: UIKit.UIColor
@@ -47,8 +51,32 @@ import zlib
   override open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TmapRwdPlus : TnkRwdSdk2.TnkRwdPlus {
+  @objc override public class func initSession(appId: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @objc override public func showOfferwall(_ viewController: UIKit.UIViewController)
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc public class TnkStyles : ObjectiveC.NSObject {
+  @_inheritsConvenienceInitializers @objc public class AlertOption : ObjectiveC.NSObject {
+    @objc public var closeWithAlert: Swift.Bool
+    @objc override dynamic public init()
+    @objc deinit
+  }
+  @_inheritsConvenienceInitializers @objc public class NaviMenuStyle : ObjectiveC.NSObject {
+    public var menuType: TnkRwdSdk2.MyMenuType
+    @objc public func setMenuType(typeValue: Swift.Int)
+    public var infoType: TnkRwdSdk2.MyMenuType
+    @objc public func setInfoType(typeValue: Swift.Int)
+    @objc override dynamic public init()
+    @objc deinit
+  }
   @_inheritsConvenienceInitializers @objc public class AdListItemStyle : ObjectiveC.NSObject {
+    @objc public var emptyIconBackImage: TnkRwdSdk2.ImageAttribute
+    @objc public var emptyIconImage: TnkRwdSdk2.ImageAttribute
+    @objc public var listViewBackgroundColor: UIKit.UIColor
+    @objc public var detailViewBackgroundColor: UIKit.UIColor
+    @objc public var listViewBackgroundGray: UIKit.UIColor
+    @objc public var filterButton: TnkRwdSdk2.ButtonAttribute
     @objc public var titleLabel: TnkRwdSdk2.LabelAttribute
     @objc public var descLabel: TnkRwdSdk2.LabelAttribute
     @objc public var descPointLabel: TnkRwdSdk2.LabelAttribute
@@ -59,8 +87,11 @@ import zlib
     @objc public var pointAmountFormat: Swift.String
     @objc public var pointAmountDisabledColor: UIKit.UIColor
     @objc public var pointAmountConfirmColor: UIKit.UIColor
+    @objc public var itemBackgroundColor: UIKit.UIColor
+    @objc public var itemHighlightedColor: UIKit.UIColor
     @objc public var pointAmountTrailImage: TnkRwdSdk2.ImageAttribute
     @objc public var adItemTrailImage: TnkRwdSdk2.ImageAttribute
+    @objc public var adItemTrailTagLabel: TnkRwdSdk2.LabelAttribute
     @objc public var footerButton: TnkRwdSdk2.ButtonAttribute
     @objc public var favoriteButton: TnkRwdSdk2.ButtonAttribute
     @objc public var productPriceLabel: TnkRwdSdk2.LabelAttribute
@@ -71,7 +102,17 @@ import zlib
     @objc override dynamic public init()
     @objc deinit
   }
+  @_inheritsConvenienceInitializers @objc public class AdDetailStyle : ObjectiveC.NSObject {
+    @objc public var detailButtomFrameGradientStart: UIKit.UIColor
+    public var detailButtomFrameGradientEnd: UIKit.UIColor
+    @objc override dynamic public init()
+    @objc deinit
+  }
   @objc public var adListItem: TnkRwdSdk2.TnkStyles.AdListItemStyle
+  @objc public var adDetailItem: TnkRwdSdk2.TnkStyles.AdDetailStyle
+  @objc public var storeItem: TnkRwdSdk2.TnkStyles.AdListItemStyle
+  @objc public var naviStyle: TnkRwdSdk2.TnkStyles.NaviMenuStyle
+  @objc public var alertStyle: TnkRwdSdk2.TnkStyles.AlertOption
   @objc public static let shared: TnkRwdSdk2.TnkStyles
   @objc override dynamic public init()
   @objc deinit
@@ -109,6 +150,7 @@ import zlib
   @objc public var messageLabel: TnkRwdSdk2.LabelAttribute
   @objc public var buttonAreaInset: UIKit.UIEdgeInsets
   @objc public var buttonInterSpace: CoreFoundation.CGFloat
+  @objc public var buttonWidthMax: CoreFoundation.CGFloat
   @objc public var confirmButton: TnkRwdSdk2.ButtonAttribute
   @objc public var rejectButton: TnkRwdSdk2.ButtonAttribute
   @objc public func viewSize(message: Swift.String, title: Swift.String? = nil) -> CoreFoundation.CGSize
@@ -336,6 +378,36 @@ import zlib
   @objc override dynamic public init()
   @objc deinit
 }
+@_inheritsConvenienceInitializers @objc public class TnkCouponDetailViewLayout : ObjectiveC.NSObject {
+  @objc public var confirmBtn: TnkRwdSdk2.ButtonAttribute
+  @objc public var couponImage: TnkRwdSdk2.ImageAttribute
+  @objc public var guideLb: TnkRwdSdk2.LabelAttribute
+  @objc public var productNmLb: TnkRwdSdk2.LabelAttribute
+  @objc public var corpNmLb: TnkRwdSdk2.LabelAttribute
+  @objc public var exDateLb: TnkRwdSdk2.LabelAttribute
+  @objc public var pinCodeLb: TnkRwdSdk2.LabelAttribute
+  @objc public var copyBtn: TnkRwdSdk2.ButtonAttribute
+  @objc public var productDescLb: TnkRwdSdk2.LabelAttribute
+  @objc public var productDescGuideLb: TnkRwdSdk2.LabelAttribute
+  @objc public var productDescGuideImg: UIKit.UIImage?
+  @objc public var productDescBackGroundColor: UIKit.UIColor
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class TnkCouponViewLayout : ObjectiveC.NSObject {
+  @objc public var detailLayout: TnkRwdSdk2.TnkCouponDetailViewLayout
+  @objc public var titleLb: TnkRwdSdk2.LabelAttribute
+  @objc public var descLb: TnkRwdSdk2.LabelAttribute
+  @objc public var rightArrowImg: UIKit.UIImage?
+  @objc public var couponTitleLb: TnkRwdSdk2.LabelAttribute
+  @objc public var couponDescLb: TnkRwdSdk2.LabelAttribute
+  @objc public var couponPurchaseDateLb: TnkRwdSdk2.LabelAttribute
+  @objc public var couponExDateLb: TnkRwdSdk2.LabelAttribute
+  @objc public var couponImage: TnkRwdSdk2.ImageAttribute
+  @objc public var underLineColor: UIKit.UIColor
+  @objc override dynamic public init()
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc open class CpsBoxItemPageViewLayout : TnkRwdSdk2.CpsItemPageViewLayout {
   @objc override dynamic public init()
   override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
@@ -348,19 +420,30 @@ import zlib
   @_Concurrency.MainActor(unsafe) override open func setData(_ sectionData: TnkRwdSdk2.AdSection?)
   @objc deinit
 }
-@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class AdOfferwallViewController : UIKit.UIViewController, TnkRwdSdk2.OfferwallEventListener {
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class AdOfferwallViewController : TnkRwdSdk2.TnkBaseViewController {
   @objc @_Concurrency.MainActor(unsafe) weak public var offerwallListener: (any TnkRwdSdk2.OfferwallEventListener)?
+  @objc deinit
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) @objc public func didAdDataLoaded(headerMessage: Swift.String?, totalPoint: Swift.Int, totalCount: Swift.Int, multiRewardPoint: Swift.Int, multiRewardCount: Swift.Int)
-  @_Concurrency.MainActor(unsafe) @objc public func didMenuSelected(menuId: Swift.Int, menuName: Swift.String, filterId: Swift.Int, filterName: Swift.String)
-  @_Concurrency.MainActor(unsafe) @objc public func didAdItemClicked(appId: Swift.Int, appName: Swift.String)
-  @_Concurrency.MainActor(unsafe) @objc public func didOfferwallRemoved()
   @_Concurrency.MainActor(unsafe) public func loadOfferwall()
+  @_Concurrency.MainActor(unsafe) public func setLoginDelegate(delegate: any TnkRwdSdk2.TnkRwdPlusLoginDelegate)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
-  @objc deinit
+}
+extension TnkRwdSdk2.AdOfferwallViewController {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func didCloseButtonPressed(_ sender: Any)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func didHelpButtonPressed(_ sender: Any)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func didInfoButtonPressed(_ sender: Any)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func didBackButtonPressed(_ sender: Any)
+}
+extension TnkRwdSdk2.AdOfferwallViewController : TnkRwdSdk2.OfferwallEventListener {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func didAdDataLoaded(headerMessage: Swift.String?, totalPoint: Swift.Int, totalCount: Swift.Int, multiRewardPoint: Swift.Int, multiRewardCount: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func didMenuSelected(menuId: Swift.Int, menuName: Swift.String, filterId: Swift.Int, filterName: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func didAdItemClicked(appId: Swift.Int, appName: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func didOfferwallRemoved()
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func didDetailViewShow(appId: Swift.Int, appName: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func didActionButtonClicked(appId: Swift.Int, appName: Swift.String)
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class AdSectionSupplementaryView : UIKit.UICollectionReusableView {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -456,8 +539,15 @@ import zlib
 }
 @_hasMissingDesignatedInitializers @objc public class TnkSession : ObjectiveC.NSObject {
   @objc public static var shared: TnkRwdSdk2.TnkSession?
-  @objc public static func initInstance(appId: Swift.String)
+  @discardableResult
+  @objc public static func initInstance(appId: Swift.String) -> TnkRwdSdk2.TnkSession
   @objc public static func sharedInstance() -> TnkRwdSdk2.TnkSession?
+  public var userId: Swift.String? {
+    get
+    set
+  }
+  public var join_dt: Swift.Int
+  @objc public func plusInstance() -> TnkRwdSdk2.TnkRwdPlus
   @objc public func presentAdDetailView(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, completion: @escaping (Swift.Bool) -> Swift.Void)
   @objc public func applicationStarted()
   @objc public func actionCompleted()
@@ -474,16 +564,36 @@ import zlib
   @objc public func purchaseItem(_ itemId: Swift.String, cost: Swift.Int, target: ObjectiveC.NSObject, action: ObjectiveC.Selector)
   @objc public func withdrawPoints(_ desc: Swift.String, completion: @escaping (Swift.Int, Swift.Int) -> Swift.Void)
   @objc public func withdrawPoints(_ desc: Swift.String, target: ObjectiveC.NSObject, action: ObjectiveC.Selector)
-  @objc public func setUserName(_ name: Swift.String)
+  @discardableResult
+  @objc public func setUserName(_ name: Swift.String) -> TnkRwdSdk2.TnkSession
   @objc public func getUserName() -> Swift.String?
-  @objc public func setCOPPA(_ coppa: Swift.Bool)
-  @objc public func setGDPRConsent(_ gdpr: Swift.Bool)
-  @objc public func setAgreePrivacyPolicy(_ agreed: Swift.Bool = true)
+  @discardableResult
+  @objc public func setPhoneNumber(_ phoneNumber: Swift.String) -> TnkRwdSdk2.TnkSession
+  @discardableResult
+  @objc public func setCOPPA(_ coppa: Swift.Bool) -> TnkRwdSdk2.TnkSession
+  @discardableResult
+  @objc public func setGDPRConsent(_ gdpr: Swift.Bool) -> TnkRwdSdk2.TnkSession
+  @discardableResult
+  @objc public func setAgreePrivacyPolicy(_ agreed: Swift.Bool = true) -> TnkRwdSdk2.TnkSession
   @objc public func sdkVersion() -> Swift.String
   @objc public func getFaqPageUrl() -> Swift.String
   @objc public func getHelpDeskUrl() -> Swift.String
   @objc public func getRewardHistoryUrl() -> Swift.String
+  @objc public func getUseHistoryUrl() -> Swift.String
+  @objc public func getContactUsUrl() -> Swift.String
   @objc public func getCpsMyPageUrl() -> Swift.String
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class TnkToastLayout : ObjectiveC.NSObject {
+  @objc public var messageLb: TnkRwdSdk2.LabelAttribute
+  @objc public var backgroundColor: UIKit.UIColor
+  @objc public var toastCornerRadius: CoreFoundation.CGFloat
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CustomOfferwall {
+  public static func setupRewardBox()
+  public static func setCuOfferwall(width: CoreFoundation.CGFloat)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class AdSectionNoAdHeaderView : TnkRwdSdk2.AdSectionSupplementaryView {
@@ -523,6 +633,7 @@ import zlib
 }
 @_inheritsConvenienceInitializers @objc open class CpsSearchViewLayout : ObjectiveC.NSObject {
   @objc public var backgroundColor: UIKit.UIColor
+  @objc public var dividerLineColor: UIKit.UIColor
   @objc public var headerInset: UIKit.UIEdgeInsets
   @objc public var searchHeight: CoreFoundation.CGFloat
   @objc public var searchInterSpace: CoreFoundation.CGFloat
@@ -577,6 +688,31 @@ import zlib
   @_Concurrency.MainActor(unsafe) override open func setData(_ sectionData: TnkRwdSdk2.AdSection?)
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers public class TextFieldAttribute : ObjectiveC.NSObject {
+  @objc public var width: CoreFoundation.CGFloat
+  @objc public var height: CoreFoundation.CGFloat
+  @objc public var font: UIKit.UIFont
+  @objc public var color: UIKit.UIColor
+  @objc public var backgroundColor: UIKit.UIColor
+  @objc public var tintColor: UIKit.UIColor
+  @objc public var cornerRadius: CoreFoundation.CGFloat
+  @objc public var strokeColor: UIKit.UIColor
+  @objc public var strokeWidth: CoreFoundation.CGFloat
+  @objc public var interSpace: CoreFoundation.CGFloat
+  @objc public var leadingSpace: CoreFoundation.CGFloat
+  @objc public var text: Swift.String
+  @objc public var textAlignment: UIKit.NSTextAlignment
+  @objc public var keyboardType: UIKit.UIKeyboardType
+  @objc public var placeHolder: Swift.String
+  @objc public var placeHolderColor: UIKit.UIColor
+  @objc override dynamic public init()
+  public init(width: CoreFoundation.CGFloat = TnkLayout.wrapContent, height: CoreFoundation.CGFloat = 10, font: UIKit.UIFont = UIFont.systemFont(ofSize: 14), color: UIKit.UIColor = .clear, backgroundColor: UIKit.UIColor = .clear, cornerRadius: CoreFoundation.CGFloat = 0, strokeColor: UIKit.UIColor = .clear, strokeWidth: CoreFoundation.CGFloat = 0, interSpace: CoreFoundation.CGFloat = 0, leadingSpace: CoreFoundation.CGFloat = 0, text: Swift.String = "", textAlignment: UIKit.NSTextAlignment = .natural, keyboardType: UIKit.UIKeyboardType = .default, tintColor: UIKit.UIColor = .clear, placeHolder: Swift.String = "", placeHolderColor: UIKit.UIColor = .clear)
+  public func clone() -> TnkRwdSdk2.TextFieldAttribute
+  public func layoutHeight() -> CoreFoundation.CGFloat
+  public func apply(_ textField: UIKit.UITextField?)
+  public func applySizeConstraints(_ textField: UIKit.UITextField?)
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers public class LabelAttribute : ObjectiveC.NSObject {
   @objc public var width: CoreFoundation.CGFloat
   @objc public var height: CoreFoundation.CGFloat
@@ -589,8 +725,11 @@ import zlib
   @objc public var interSpace: CoreFoundation.CGFloat
   @objc public var leadingSpace: CoreFoundation.CGFloat
   @objc public var numberOfLines: Swift.Int
+  @objc public var lineBreakMode: UIKit.NSLineBreakMode
+  @objc public var text: Swift.String
+  @objc public var textAlignment: UIKit.NSTextAlignment
   @objc override dynamic public init()
-  public init(width: CoreFoundation.CGFloat = TnkLayout.wrapContent, height: CoreFoundation.CGFloat = 10, font: UIKit.UIFont = UIFont.systemFont(ofSize: 14), color: UIKit.UIColor = .clear, backgroundColor: UIKit.UIColor = .clear, cornerRadius: CoreFoundation.CGFloat = 0, strokeColor: UIKit.UIColor = .clear, strokeWidth: CoreFoundation.CGFloat = 0, interSpace: CoreFoundation.CGFloat = 0, leadingSpace: CoreFoundation.CGFloat = 0, numberOfLines: Swift.Int = 1)
+  public init(width: CoreFoundation.CGFloat = TnkLayout.wrapContent, height: CoreFoundation.CGFloat = 10, font: UIKit.UIFont = UIFont.systemFont(ofSize: 14), color: UIKit.UIColor = .clear, backgroundColor: UIKit.UIColor = .clear, cornerRadius: CoreFoundation.CGFloat = 0, strokeColor: UIKit.UIColor = .clear, strokeWidth: CoreFoundation.CGFloat = 0, interSpace: CoreFoundation.CGFloat = 0, leadingSpace: CoreFoundation.CGFloat = 0, numberOfLines: Swift.Int = 1, text: Swift.String = "", textAlignment: UIKit.NSTextAlignment = .natural, lineBreakMode: UIKit.NSLineBreakMode = .byTruncatingTail)
   public func clone() -> TnkRwdSdk2.LabelAttribute
   public func layoutHeight() -> CoreFoundation.CGFloat
   public func apply(_ label: UIKit.UILabel?)
@@ -632,12 +771,14 @@ import zlib
   @objc public var backgroundNormal: Any?
   @objc public var backgroundHighlighted: Any?
   @objc public var backgroundSelected: Any?
+  @objc public var backgroundDisable: Any?
   @objc public var inset: UIKit.UIEdgeInsets
   @objc public var iconImage: UIKit.UIImage?
   @objc public var strokeColorSelected: UIKit.UIColor
   @objc public var strokeWidthSelected: CoreFoundation.CGFloat
+  @objc public var fontSelected: UIKit.UIFont?
   @objc override dynamic public init()
-  public init(width: CoreFoundation.CGFloat = 10, height: CoreFoundation.CGFloat = 10, font: UIKit.UIFont = UIFont.systemFont(ofSize: 15), colorNormal: UIKit.UIColor = .blue, colorHighlighted: UIKit.UIColor = .black, colorSelected: UIKit.UIColor = .black, cornerRadius: CoreFoundation.CGFloat = 0, strokeColor: UIKit.UIColor = .clear, strokeWidth: CoreFoundation.CGFloat = 0, interSpace: CoreFoundation.CGFloat = 0, leadingSpace: CoreFoundation.CGFloat = 0, backgroundNormal: Any? = nil, backgroundHighlighted: Any? = nil, backgroundSelected: Any? = nil, inset: UIKit.UIEdgeInsets = UIEdgeInsets.zero, iconImage: UIKit.UIImage? = nil, strokeColorSelected: UIKit.UIColor = .clear, strokeWidthSelected: CoreFoundation.CGFloat = 0)
+  public init(width: CoreFoundation.CGFloat = 10, height: CoreFoundation.CGFloat = 10, font: UIKit.UIFont = UIFont.systemFont(ofSize: 15), colorNormal: UIKit.UIColor = .blue, colorHighlighted: UIKit.UIColor = .black, colorSelected: UIKit.UIColor = .black, cornerRadius: CoreFoundation.CGFloat = 0, strokeColor: UIKit.UIColor = .clear, strokeWidth: CoreFoundation.CGFloat = 0, interSpace: CoreFoundation.CGFloat = 0, leadingSpace: CoreFoundation.CGFloat = 0, backgroundNormal: Any? = nil, backgroundHighlighted: Any? = nil, backgroundSelected: Any? = nil, backgroundDisable: Any? = nil, inset: UIKit.UIEdgeInsets = UIEdgeInsets.zero, iconImage: UIKit.UIImage? = nil, strokeColorSelected: UIKit.UIColor = .clear, strokeWidthSelected: CoreFoundation.CGFloat = 0, fontSelected: UIKit.UIFont? = nil)
   public func clone() -> TnkRwdSdk2.ButtonAttribute
   public func apply(_ button: UIKit.UIButton?)
   public func applySizeConstraints(_ button: UIKit.UIButton?)
@@ -673,6 +814,7 @@ import zlib
   @objc public var pointUnitLabel: TnkRwdSdk2.LabelAttribute
   @objc public var pointAmountTrailImage: TnkRwdSdk2.ImageAttribute
   @objc public var adItemTrailImage: TnkRwdSdk2.ImageAttribute
+  @objc public var adItemTrailTagLabel: TnkRwdSdk2.LabelAttribute
   @objc public var dividerHeight: CoreFoundation.CGFloat
   @objc public var dividerColor: UIKit.UIColor
   @objc public var dividerLeadingSpace: CoreFoundation.CGFloat
@@ -686,7 +828,7 @@ import zlib
   @objc public var orderNumberVisible: Swift.Bool
   @objc public var sectionHeaderViewClass: Swift.AnyClass?
   @objc public var sectionFooterViewClass: Swift.AnyClass?
-  @objc public var sectionDecorationViewClass: Swift.AnyClass
+  @objc public var sectionDecorationViewClass: Swift.AnyClass?
   @objc public var sectionHeaderHeight: CoreFoundation.CGFloat
   @objc public var sectionFooterHeight: CoreFoundation.CGFloat
   @objc public var sectionFooterMinHeight: CoreFoundation.CGFloat
@@ -697,6 +839,10 @@ import zlib
   @objc public var footerDividerHeight: CoreFoundation.CGFloat
   @objc public var footerDividerColor: UIKit.UIColor
   @objc public var footerButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var emptyIconTopInset: CoreFoundation.CGFloat
+  @objc public var emptyIconBackImage: TnkRwdSdk2.ImageAttribute
+  @objc public var emptyIconImage: TnkRwdSdk2.ImageAttribute
+  @objc public var emptyDescLabel: TnkRwdSdk2.LabelAttribute
   open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
   open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
   @objc override dynamic public init()
@@ -733,6 +879,7 @@ import zlib
   case noCampaignId = 112
   case noContentsUrl = 113
   case invocationError = 200
+  case storeApiError = 201
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -757,19 +904,35 @@ import zlib
   }
   @objc deinit
 }
+@_hasMissingDesignatedInitializers public class AdListModel : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  @objc deinit
+}
 @objc public protocol OfferwallEventListener : ObjectiveC.NSObjectProtocol {
   @objc optional func didAdDataLoaded(headerMessage: Swift.String?, totalPoint: Swift.Int, totalCount: Swift.Int, multiRewardPoint: Swift.Int, multiRewardCount: Swift.Int)
   @objc optional func didMenuSelected(menuId: Swift.Int, menuName: Swift.String, filterId: Swift.Int, filterName: Swift.String)
   @objc optional func didAdItemClicked(appId: Swift.Int, appName: Swift.String)
   @objc optional func didOfferwallRemoved()
+  @objc optional func didDetailViewShow(appId: Swift.Int, appName: Swift.String)
+  @objc optional func didActionButtonClicked(appId: Swift.Int, appName: Swift.String)
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class AdOfferwallView : UIKit.UIView, UIKit.UICollectionViewDelegate, TnkRwdSdk2.EventViewListener {
+@objc public protocol AdMenuSelectionDelegate : ObjectiveC.NSObjectProtocol {
+  @objc func didMenuItemSelected(menuType: TnkRwdSdk2.MenuType, index: Swift.Int)
+  @objc func didMyMenuButtonClicked()
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class AdOfferwallView : UIKit.UIView, UIKit.UICollectionViewDelegate, TnkRwdSdk2.AdMenuSelectionDelegate, TnkRwdSdk2.EventViewListener {
   @objc @_Concurrency.MainActor(unsafe) weak public var offerwallListener: (any TnkRwdSdk2.OfferwallEventListener)?
+  @_Concurrency.MainActor(unsafe) public func getAdlistModel() -> TnkRwdSdk2.AdListModel
   @objc @_Concurrency.MainActor(unsafe) public init(frame: CoreFoundation.CGRect, viewController: UIKit.UIViewController)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToSuperview()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToWindow()
   @_Concurrency.MainActor(unsafe) public func didEventViewClosed()
   @objc @_Concurrency.MainActor(unsafe) public func loadData()
+  @_Concurrency.MainActor(unsafe) @objc public func didMyMenuButtonClicked()
+  @_Concurrency.MainActor(unsafe) public func didMenuItemSelected(menuId: Swift.Int, filterId: Swift.Int)
+  @_Concurrency.MainActor(unsafe) @objc public func didMenuItemSelected(menuType: TnkRwdSdk2.MenuType, index: Swift.Int)
   @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
   @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didHighlightItemAt indexPath: Foundation.IndexPath)
   @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didUnhighlightItemAt indexPath: Foundation.IndexPath)
@@ -792,7 +955,24 @@ import zlib
   override open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TnkBaseViewController : TnkRwdSdk2.TnkBaseStyleViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension TnkRwdSdk2.TnkBaseViewController {
+  @_Concurrency.MainActor(unsafe) public func isPresented() -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TnkBaseStyleViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc public class TnkColor : ObjectiveC.NSObject {
+  @objc public static var PRIMARY_COLOR: UIKit.UIColor
+  @objc public static var MAIN_BACKGROUND_COLOR: UIKit.UIColor
+  @objc public static var UI_DEFAULT_COLOR: UIKit.UIColor
   @objc public static var enableDarkMode: Swift.Bool
   @objc public static func semantic(_ light: UIKit.UIColor, _ dark: UIKit.UIColor?) -> UIKit.UIColor
   @objc public static func semantic(argb1: Swift.Int, argb2: Swift.Int) -> UIKit.UIColor
@@ -804,6 +984,7 @@ import zlib
   @objc public static func getImage(ofName: Swift.String) -> UIKit.UIImage?
   @objc public static func semanticImage(_ lightName: Swift.String, _ darkName: Swift.String) -> UIKit.UIImage?
   @objc public static func semanticImage(ofName: Swift.String, argb1: Swift.Int, argb2: Swift.Int) -> UIKit.UIImage?
+  @objc public static func semanticImage(ofName: Swift.String, sementicColor: UIKit.UIColor) -> UIKit.UIImage?
   @objc public static func getResizableImage(ofName: Swift.String, inset: CoreFoundation.CGFloat) -> UIKit.UIImage?
   @objc override dynamic public init()
   @objc deinit
@@ -812,6 +993,20 @@ import zlib
   @_Concurrency.MainActor(unsafe) @objc override public func applyLayout(_ parentSize: CoreFoundation.CGSize, adItem: TnkRwdSdk2.AdDetailItem, viewLayout: TnkRwdSdk2.AdDetailViewLayout) -> CoreFoundation.CGSize
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public struct TnkPlacementAdItem : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+public struct TnkPlacementPubInfo : Swift.Codable {
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class AdSectionEmtpyItemHeaderView : TnkRwdSdk2.AdSectionSupplementaryView {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) override open func applyLayout(_ viewLayout: TnkRwdSdk2.AdListItemViewLayout)
+  @_Concurrency.MainActor(unsafe) override open func setData(_ sectionData: TnkRwdSdk2.AdSection?)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class MyMenuViewLayout : ObjectiveC.NSObject {
@@ -827,6 +1022,7 @@ import zlib
   @objc public var menuItemIndicatorColor: UIKit.UIColor
   @objc public var dividerHeight: CoreFoundation.CGFloat
   @objc public var dividerColor: UIKit.UIColor
+  @objc public var emptyItemViewLayout: TnkRwdSdk2.EmptyListItemLayout
   @objc public var noAdItemViewLayout: TnkRwdSdk2.AdListItemViewLayout
   @objc public var listItemViewLayout: TnkRwdSdk2.AdListItemViewLayout
   @objc public var infoItemViewLayout: TnkRwdSdk2.AdListItemViewLayout
@@ -843,6 +1039,11 @@ import zlib
 }
 @_inheritsConvenienceInitializers @objc public class TnkStrings : ObjectiveC.NSObject {
   public static let shared: TnkRwdSdk2.TnkStrings
+  public static var customStrings: TnkRwdSdk2.TnkStrings?
+  public var label_goto_setting: Swift.String
+  public var label_goto_setting_cancel: Swift.String
+  public var need_att_allow: Swift.String
+  public var need_att_allow_title: Swift.String
   public func formatNumber(_ value: Swift.Int) -> Swift.String
   public func formatCurrenty(_ value: Swift.Int) -> Swift.String
   public func getCampaginTypeLabel(_ value: Swift.Int) -> Swift.String
@@ -853,6 +1054,20 @@ import zlib
 @_inheritsConvenienceInitializers @objc open class RoundAdListItemViewLayout : TnkRwdSdk2.AdListItemViewLayout {
   @objc override dynamic public init()
   override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class CUMenuViewHeader : TnkRwdSdk2.AdListMenuView {
+  @_Concurrency.MainActor(unsafe) override public func setTotalPoint(totalAdsPoint: Swift.Int, totalAdsCount: Swift.Int, totalCpsPoint: Swift.Int, totalCpsCount: Swift.Int)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class CUMenuViewHeaderLayout : TnkRwdSdk2.AdListMenuViewLayout {
+  @objc override dynamic public init()
+  override public func viewHeight(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGFloat
+  override public func menuView(_ frame: CoreFoundation.CGRect) -> TnkRwdSdk2.AdListMenuView
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class EmptyListItemLayout : TnkRwdSdk2.AdListItemViewLayout {
+  @objc override dynamic public init()
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc open class PlacementFeedViewLayout : TnkRwdSdk2.PlacementBaseViewLayout {
@@ -906,6 +1121,8 @@ import zlib
   @objc public var menuAreaCornerRadius: CoreFoundation.CGFloat
   @objc public var itemButton: TnkRwdSdk2.ButtonAttribute
   @objc public var itemSpace: CoreFoundation.CGFloat
+  @objc public var itemButtonBottomLineHeight: CoreFoundation.CGFloat
+  @objc public var itemButtonBottomLineColor: UIKit.UIColor
   @objc public var helpButtonLayoutSize: CoreFoundation.CGSize
   @objc public var helpButtonLayoutPosition: Swift.Int
   @objc public var helpButton: TnkRwdSdk2.ButtonAttribute
@@ -919,6 +1136,10 @@ import zlib
   @objc public var messagePointUnitColor: UIKit.UIColor
   @objc public var messagePointAmountFormat: Swift.String
   @objc public var messageBackgroundImage: UIKit.UIImage?
+  @objc public var dividerHeight: CoreFoundation.CGFloat
+  @objc public var dividerColor: UIKit.UIColor
+  @objc public var dividerLeadingSpace: CoreFoundation.CGFloat
+  @objc public var dividerTrailingSpace: CoreFoundation.CGFloat
   open func viewHeight(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGFloat
   open func menuView(_ frame: CoreFoundation.CGRect) -> TnkRwdSdk2.AdListMenuView
   @objc override dynamic public init()
@@ -928,6 +1149,11 @@ import zlib
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) override open func applyLayout(_ viewLayout: TnkRwdSdk2.AdListItemViewLayout)
   @_Concurrency.MainActor(unsafe) override open func setData(_ sectionData: TnkRwdSdk2.AdSection?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc open class PlacementFixedSizeFeedViewLayout : TnkRwdSdk2.PlacementBaseViewLayout {
+  @objc override dynamic public init()
+  override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class RightIconAdListItemView : TnkRwdSdk2.BaseAdListItemViewInternal {
@@ -940,9 +1166,18 @@ import zlib
   override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class KaKaoTnkRwdPlus : TnkRwdSdk2.TnkRwdPlus {
+  @objc override public class func initSession(appId: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @objc override public func showOfferwall(_ viewController: UIKit.UIViewController)
+  @objc deinit
+}
+extension TnkRwdSdk2.KaKaoTnkRwdPlus {
+  public static func proceedUrlAppDelegate(open url: Foundation.URL) -> Swift.Bool
+  @available(iOS 13.0, *)
+  public static func proceedUrlSceneDelegate(openURLContexts URLContexts: Swift.Set<UIKit.UIOpenURLContext>) -> Swift.Bool
+}
 @_inheritsConvenienceInitializers @objc open class CpsListItemViewLayout : TnkRwdSdk2.CpsItemViewLayout {
   @objc override dynamic public init()
-  override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
   override open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
   @objc deinit
 }
@@ -951,6 +1186,37 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
 }
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class EventView : UIKit.UIView {
   @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class StoreLayout : ObjectiveC.NSObject {
+  @objc public static let shared: TnkRwdSdk2.StoreLayout
+  @objc public var multipleLeftBarButtonItem: [Swift.Int]
+  @objc public var multipleRightBarButtonItem: [Swift.Int]
+  @objc public var leftBarButtonItem: TnkRwdSdk2.BarButtonItem
+  @objc public var rightBarButtonItem: TnkRwdSdk2.BarButtonItem
+  public var listViewGlobalHeaderView: [TnkRwdSdk2.MenuType]
+  public var menuTypes: [TnkRwdSdk2.MenuType]
+  public var stickyMenuTypes: [TnkRwdSdk2.MenuType]
+  public var stickyOffset: CoreFoundation.CGFloat
+  public var menuMenuAreaBackgroundColor: UIKit.UIColor
+  @objc public var defaultPointUnit: Swift.String
+  @objc public var listViewTopMargin: CoreFoundation.CGFloat
+  @objc public var listViewBottomMargin: CoreFoundation.CGFloat
+  @objc public var detailViewLayout: TnkRwdSdk2.AdDetailViewLayout
+  @objc public var mymenuViewLayout: TnkRwdSdk2.MyMenuViewLayout
+  @objc public var searchViewLayout: TnkRwdSdk2.CpsSearchViewLayout
+  @objc public var eventViewLayout: TnkRwdSdk2.EventViewLayout
+  @objc public var infoViewLayout: TnkRwdSdk2.ProductInfoLayout
+  @objc public var purchaseAlertLayout: TnkRwdSdk2.PurchaseAlertLayout
+  @objc deinit
+}
+extension TnkRwdSdk2.StoreLayout {
+  @objc dynamic public func registerItemViewLayout(type: TnkRwdSdk2.LayoutType, viewClass: Swift.AnyClass, viewLayout: TnkRwdSdk2.AdListItemViewLayout)
+  @objc dynamic public func registerMenuViewLayout(type: TnkRwdSdk2.MenuType, viewClass: Swift.AnyClass, viewLayout: TnkRwdSdk2.AdListMenuViewLayout)
+  @objc dynamic public func registerDetailViewLayout(_ viewLayout: TnkRwdSdk2.AdDetailViewLayout)
+  @objc dynamic public func getItemViewLayout(type: TnkRwdSdk2.LayoutType) -> TnkRwdSdk2.AdListItemViewLayout
+  @objc dynamic public func getMenuViewLayout(type: TnkRwdSdk2.MenuType) -> TnkRwdSdk2.AdListMenuViewLayout?
+  @objc dynamic public func registerPlacementViewLayout(placementId: Swift.String, viewClass: Swift.AnyClass, viewLayout: TnkRwdSdk2.AdListItemViewLayout)
+  @objc dynamic public func getPlacementViewLayout(placementId: Swift.String) -> TnkRwdSdk2.AdListItemViewLayout
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class BaseAdListItemView : TnkRwdSdk2.AdListItemView {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -1007,10 +1273,12 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   case recommend = 15
   case search = 16
   case nocps = 19
+  case empty = 20
   case topbanner = 21
   case listbanner = 22
   case bottombanner = 23
   case newslist = 31
+  case storeList = 40
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -1056,6 +1324,9 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   case none = 0
   case help = 1
   case close = 2
+  case helpWithBadge = 3
+  case info = 4
+  case back = 5
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -1103,16 +1374,29 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   @objc public var forceLagacyView: Swift.Bool
   @objc public var alertControl: (any TnkRwdSdk2.AlertControl)?
   @objc public var alertViewLayout: TnkRwdSdk2.AlertViewLayout
+  @objc public var termLayout: TnkRwdSdk2.TnkTermLayout
+  @objc public var couponLayout: TnkRwdSdk2.TnkCouponViewLayout
+  @objc public var toastLayout: TnkRwdSdk2.TnkToastLayout
   @objc public var loadingIndicatorFactory: TnkRwdSdk2.ImageLoadingIndicatorFactory
+  @objc public var multipleLeftBarButtonItem: [Swift.Int]
+  @objc public var multipleRightBarButtonItem: [Swift.Int]
   @objc public var leftBarButtonItem: TnkRwdSdk2.BarButtonItem
   @objc public var rightBarButtonItem: TnkRwdSdk2.BarButtonItem
   @objc public var closeBarButtonImage: UIKit.UIImage?
   @objc public var closeBarButtonTitle: Swift.String
+  @objc public var infoBarButtonNormalImage: UIKit.UIImage?
+  @objc public var backBarButtonNormalImage: UIKit.UIImage?
   @objc public var helpBarButtonNormalImage: UIKit.UIImage?
   @objc public var helpBarButtonBadgeImage: UIKit.UIImage?
   @objc public var helpBarButtonTitle: Swift.String
   @objc public var navigationBarItemTintColor: UIKit.UIColor?
   @objc public var navigationBarTitle: Swift.String
+  @objc public var navigationItemWidth: CoreFoundation.CGFloat
+  @objc public var navigationItemHeight: CoreFoundation.CGFloat
+  @objc public var helpButtonBadgePosition: Swift.Int
+  @objc public var helpButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var helpBadge: TnkRwdSdk2.ButtonAttribute
+  @objc public var helpButtonLayoutSize: CoreFoundation.CGSize
   @objc public var loadingErrorInfoImage: TnkRwdSdk2.ImageAttribute
   @objc public var privacyNotAgreedInfoImage: TnkRwdSdk2.ImageAttribute
   @objc public var menuPinToVisibleBounds: TnkRwdSdk2.MenuBound
@@ -1120,14 +1404,21 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   @objc public var menuFilterHidden: Swift.Bool
   public var menuMenuTypes: [TnkRwdSdk2.MenuType]
   public var menuFilterTypes: [TnkRwdSdk2.MenuType]
+  public var menuMenuAreaBackgroundColor: UIKit.UIColor
+  public var menuFilterAreaBackgroundColor: UIKit.UIColor
+  public var menuStickyMenuTypes: [TnkRwdSdk2.MenuType]
+  public var menuStickyFilterTypes: [TnkRwdSdk2.MenuType]
+  public var menuStickyOffset: CoreFoundation.CGFloat
   @objc public var listViewTopMargin: CoreFoundation.CGFloat
   @objc public var listViewBottomMargin: CoreFoundation.CGFloat
   @objc public var listViewMaxWidth: CoreFoundation.CGFloat
-  @objc public var listViewBackgroundColor: UIKit.UIColor
+  @objc public var listViewMinWidth: CoreFoundation.CGFloat
   @objc public var listViewTopButtonImage: UIKit.UIImage?
   @objc public var listViewTopButtonSize: CoreFoundation.CGSize
   @objc public var detailViewPresentationStyle: TnkRwdSdk2.DetailViewPresentationStyle
   @objc public var detailViewNavigationBarTintColor: UIKit.UIColor?
+  @objc public var detailViewNavigationBarBackButtonImage: UIKit.UIImage?
+  @objc public var detailviewNavigationBarBackButtonTitle: Swift.String?
   @objc public var detailViewLayout: TnkRwdSdk2.AdDetailViewLayout
   @objc public var mymenuViewLayout: TnkRwdSdk2.MyMenuViewLayout
   @objc public var searchViewLayout: TnkRwdSdk2.CpsSearchViewLayout
@@ -1145,6 +1436,20 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   @objc override dynamic public init()
   override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
   override open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class PurchaseAlertLayout : ObjectiveC.NSObject {
+  @objc public var titleLb: TnkRwdSdk2.LabelAttribute
+  @objc public var infoKeyLb: TnkRwdSdk2.LabelAttribute
+  @objc public var infoValueLb: TnkRwdSdk2.LabelAttribute
+  @objc public var infoLbHeight: CoreFoundation.CGFloat
+  @objc public var confirmButtonColor: UIKit.UIColor
+  @objc public var confirmButtonCornerRadius: CoreFoundation.CGFloat
+  @objc public var confirmButtonLb: TnkRwdSdk2.LabelAttribute
+  @objc public var confirmButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var cancelButtonLb: TnkRwdSdk2.LabelAttribute
+  @objc public var cancelButton: TnkRwdSdk2.ButtonAttribute
+  @objc override dynamic public init()
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class AdDetailFrameView : TnkRwdSdk2.AdDetailView {
@@ -1189,9 +1494,27 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class UplusCustomMenuHeader : TnkRwdSdk2.AdListMenuView {
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) override public init(frame: CoreFoundation.CGRect, viewLayout: TnkRwdSdk2.AdListMenuViewLayout)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) override public func setTotalPoint(totalAdsPoint: Swift.Int, totalAdsCount: Swift.Int, totalCpsPoint: Swift.Int, totalCpsCount: Swift.Int)
+}
+@objc @_inheritsConvenienceInitializers public class UplusCustomMenuHeaderLayout : TnkRwdSdk2.AdListMenuViewLayout {
+  @objc override dynamic public init()
+  override public func viewHeight(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGFloat
+  override public func menuView(_ frame: CoreFoundation.CGRect) -> TnkRwdSdk2.AdListMenuView
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class AdSectionGrayBackgroundView : TnkRwdSdk2.AdSectionDecorationView {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class KakaoCustomHeaderLayout : TnkRwdSdk2.AdListMenuViewLayout {
+  @objc override dynamic public init()
+  override public func viewHeight(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGFloat
+  override public func menuView(_ frame: CoreFoundation.CGRect) -> TnkRwdSdk2.AdListMenuView
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc open class BannerItemListViewLayout : TnkRwdSdk2.BannerItemViewLayout {
@@ -1223,10 +1546,52 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   @_Concurrency.MainActor(unsafe) override open func applyLayout(_ viewLayout: TnkRwdSdk2.AdListItemViewLayout)
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers public class ProductInfoLayout : ObjectiveC.NSObject {
+  @objc public var bottomFieldBackground: UIKit.UIColor
+  @objc public var bottomFieldBorderColor: UIKit.UIColor
+  @objc public var bottomFieldBorderWidth: CoreFoundation.CGFloat
+  @objc public var bottomFieldCornerRadius: CoreFoundation.CGFloat
+  @objc public var guideLb1: TnkRwdSdk2.LabelAttribute
+  @objc public var guideLb2: TnkRwdSdk2.LabelAttribute
+  @objc public var pointLb: TnkRwdSdk2.LabelAttribute
+  @objc public var inputTf: TnkRwdSdk2.TextFieldAttribute
+  @objc public var inputFieldBackgroundDisable: UIKit.UIColor
+  @objc public var inputTfDisableColor: UIKit.UIColor
+  @objc public var inputFieldBackground: UIKit.UIColor
+  @objc public var inputFieldBorderColor: UIKit.UIColor
+  @objc public var inputFieldTintBorderColor: UIKit.UIColor
+  @objc public var inputFieldBorderWidth: CoreFoundation.CGFloat
+  @objc public var inputFieldCornerRadius: CoreFoundation.CGFloat
+  @objc public var leftButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var rightButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var imgBorderColor: UIKit.UIColor
+  @objc public var imgBackGroundColor: UIKit.UIColor
+  @objc public var imgCornerRadius: CoreFoundation.CGFloat
+  @objc public var imgBorderWidth: CoreFoundation.CGFloat
+  @objc public var titleGuideLb: TnkRwdSdk2.LabelAttribute
+  @objc public var corpNmLb: TnkRwdSdk2.LabelAttribute
+  @objc public var productNmLb: TnkRwdSdk2.LabelAttribute
+  @objc public var productPointLb: TnkRwdSdk2.LabelAttribute
+  @objc public var pointAmountFormat: Swift.String
+  @objc public var extraBtnBackGroundColor: UIKit.UIColor
+  @objc public var extraBtnCornerRadius: CoreFoundation.CGFloat
+  @objc public var extraBtnBorderWidth: CoreFoundation.CGFloat
+  @objc public var extraBtnBorderColor: UIKit.UIColor
+  @objc public var extraBtnTitleText: Swift.String
+  @objc public var extraBtnTitleLb: TnkRwdSdk2.LabelAttribute
+  @objc public var extraBtnImg: UIKit.UIImage?
+  @objc public var productDescLb: TnkRwdSdk2.LabelAttribute
+  @objc public var productDescGuideLb: TnkRwdSdk2.LabelAttribute
+  @objc public var productDescGuideImg: UIKit.UIImage?
+  @objc public var productDescBackGroundColor: UIKit.UIColor
+  @objc override dynamic public init()
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) public class ScrollAdListMenuView : TnkRwdSdk2.BaseAdListMenuView {
   @objc deinit
 }
 @objc @_Concurrency.MainActor(unsafe) open class AdListMenuView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) weak public var menuSelectionDelegate: (any TnkRwdSdk2.AdMenuSelectionDelegate)?
   @_Concurrency.MainActor(unsafe) public init(frame: CoreFoundation.CGRect, viewLayout: TnkRwdSdk2.AdListMenuViewLayout)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) public func applyLayout()
@@ -1308,9 +1673,159 @@ public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
   @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didUnhighlightItemAt indexPath: Foundation.IndexPath)
   @objc deinit
 }
+extension TnkRwdSdk2.AdPlacementView {
+  @_Concurrency.MainActor(unsafe) public func getAdList() -> [TnkRwdSdk2.TnkPlacementAdItem]
+  @_Concurrency.MainActor(unsafe) public func getAdListJson() -> Swift.String?
+  @_Concurrency.MainActor(unsafe) public func getPubInfo() -> TnkRwdSdk2.TnkPlacementPubInfo
+  @_Concurrency.MainActor(unsafe) public func getPubInfoJson() -> Swift.String?
+  @_Concurrency.MainActor(unsafe) public func onItemClick(appId: Swift.Int, completion: @escaping (Swift.Bool, TnkRwdSdk2.TnkError?) -> ())
+}
+@_inheritsConvenienceInitializers @objc public class TnkTermLayout : ObjectiveC.NSObject {
+  @objc public var titleLb: TnkRwdSdk2.LabelAttribute
+  @objc public var descLb: TnkRwdSdk2.LabelAttribute
+  @objc public var allCheckLb: TnkRwdSdk2.LabelAttribute
+  @objc public var allCheckButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var termTitleLb: TnkRwdSdk2.LabelAttribute
+  @objc public var termCheckButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var termUrlButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var confirmButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var confrimEnableTextColor: UIKit.UIColor
+  @objc public var confrimDisableTextColor: UIKit.UIColor
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TnkBaseNaviController : UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) public var fixToPortrait: Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var shouldAutorotate: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @available(iOS 5.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class UplusCustomStoreMenuLayout : TnkRwdSdk2.AdListMenuViewLayout {
+  @objc override dynamic public init()
+  override public func viewHeight(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGFloat
+  override public func menuView(_ frame: CoreFoundation.CGRect) -> TnkRwdSdk2.AdListMenuView
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TnkTermWebViewController : TnkRwdSdk2.TnkBaseStyleViewController {
+  @_Concurrency.MainActor(unsafe) public var webUrl: Swift.String
+  @_Concurrency.MainActor(unsafe) public var titleText: Swift.String
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension TnkRwdSdk2.TnkTermWebViewController : WebKit.WKNavigationDelegate, WebKit.WKUIDelegate {
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class TmapCustomMenuHeader : TnkRwdSdk2.AdListMenuView {
+  @_Concurrency.MainActor(unsafe) override public func setTotalPoint(totalAdsPoint: Swift.Int, totalAdsCount: Swift.Int, totalCpsPoint: Swift.Int, totalCpsCount: Swift.Int)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class TmapCustomMenuHeaderLayout : TnkRwdSdk2.AdListMenuViewLayout {
+  @objc override dynamic public init()
+  override public func viewHeight(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGFloat
+  override public func menuView(_ frame: CoreFoundation.CGRect) -> TnkRwdSdk2.AdListMenuView
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc open class PlacementFeedOnlyViewLayout : TnkRwdSdk2.PlacementFeedViewLayout {
   @objc override dynamic public init()
   @objc deinit
+}
+@_hasMissingDesignatedInitializers public class AES256 {
+  public func encrypt(_ data: Foundation.Data) -> Foundation.Data?
+  public func decrypt(_ data: Foundation.Data) -> Foundation.Data?
+  public func encrypt(_ str: Swift.String) -> Foundation.Data?
+  public func encryptToBase64(_ data: Foundation.Data) -> Swift.String?
+  public func encryptToBase64(_ str: Swift.String) -> Swift.String?
+  public func decryptFromBase64(base64: Swift.String) -> Swift.String?
+  public func decryptFromHex(hex: Swift.String) -> Swift.String?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class AES256EBC : TnkRwdSdk2.AES256 {
+  override final public func encrypt(_ data: Foundation.Data) -> Foundation.Data?
+  override final public func decrypt(_ data: Foundation.Data) -> Foundation.Data?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class AES256CBC : TnkRwdSdk2.AES256 {
+  override final public func encrypt(_ data: Foundation.Data) -> Foundation.Data?
+  override final public func decrypt(_ data: Foundation.Data) -> Foundation.Data?
+  @objc deinit
+}
+@objc public protocol StoreEventListener : ObjectiveC.NSObjectProtocol {
+  @objc optional func didStoreDataLoaded()
+  @objc optional func didMenuSelected(menuId: Swift.Int, menuName: Swift.String)
+  @objc optional func didProductItemClicked(prdId: Swift.Int, prdName: Swift.String)
+  @objc optional func didStoreViewRemoved()
+}
+@objc public protocol TnkRwdPlusCustomDelegate {
+  @objc func setCustomStyle(style: TnkRwdSdk2.TnkStyles)
+  @objc func setCustomLayout(layout: TnkRwdSdk2.TnkLayout)
+}
+@objc public protocol TnkRwdPlusLoginDelegate {
+  @objc func requireLoginProcess() -> Swift.Bool
+  @objc func doLoginProcess()
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class TnkRwdPlus : ObjectiveC.NSObject {
+  weak public var customDelegate: (any TnkRwdSdk2.TnkRwdPlusCustomDelegate)?
+  public var title: Swift.String
+  public var offerwallListener: (any TnkRwdSdk2.OfferwallEventListener)? {
+    get
+    set
+  }
+  weak public var storeListener: (any TnkRwdSdk2.StoreEventListener)?
+  @discardableResult
+  @objc public class func initSession(appId: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @discardableResult
+  @objc public func setUserName(_ name: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @discardableResult
+  @objc public func setPhoneNumber(_ phoneNumber: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @discardableResult
+  @objc public func setCOPPA(_ coppa: Swift.Bool) -> TnkRwdSdk2.TnkRwdPlus
+  @discardableResult
+  @objc public func setGDPRConsent(_ gdpr: Swift.Bool) -> TnkRwdSdk2.TnkRwdPlus
+  @discardableResult
+  @objc public func setUserNameEncrypted(_ encryptedName: Swift.String, _ key: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @discardableResult
+  @objc public func setPhoneNumberEncrypted(_ encryptedPhoneNumber: Swift.String, _ key: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @discardableResult
+  @objc public func setUrlScheme(_ scheme: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @discardableResult
+  @objc public func setCutomFontManager(fontManager: any TnkRwdSdk2.FontManager) -> TnkRwdSdk2.TnkRwdPlus
+  @objc public func showOfferwall(_ viewController: UIKit.UIViewController)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class TnkTermCallBack {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class LgRwdPlus : TnkRwdSdk2.TnkRwdPlus {
+  @objc override public class func initSession(appId: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @objc override public func showOfferwall(_ viewController: UIKit.UIViewController)
+  @objc override public func setUserNameEncrypted(_ encryptedName: Swift.String, _ key: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @objc override public func setPhoneNumberEncrypted(_ encryptedPhoneNumber: Swift.String, _ key: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
+  @objc deinit
+}
+public enum MyMenuType : Swift.Int {
+  case app
+  case cps
+  case history
+  case infoDesk
+  case helpdesk
+  case historyFull
+  case contactUs
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 extension TnkRwdSdk2.AdState : Swift.Equatable {}
 extension TnkRwdSdk2.AdState : Swift.Hashable {}
@@ -1345,3 +1860,6 @@ extension TnkRwdSdk2.DetailViewPresentationStyle : Swift.RawRepresentable {}
 extension TnkRwdSdk2.TnkLogger.LogLevel : Swift.Equatable {}
 extension TnkRwdSdk2.TnkLogger.LogLevel : Swift.Hashable {}
 extension TnkRwdSdk2.TnkLogger.LogLevel : Swift.RawRepresentable {}
+extension TnkRwdSdk2.MyMenuType : Swift.Equatable {}
+extension TnkRwdSdk2.MyMenuType : Swift.Hashable {}
+extension TnkRwdSdk2.MyMenuType : Swift.RawRepresentable {}

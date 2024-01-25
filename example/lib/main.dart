@@ -1,5 +1,5 @@
 import 'dart:collection';
-import 'dart:convert';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -17,7 +17,6 @@ class MyApp extends StatefulWidget {
 
   @override
   State<MyApp> createState() => _MyAppState();
-
 }
 
 class _MyAppState extends State<MyApp> {
@@ -31,7 +30,6 @@ class _MyAppState extends State<MyApp> {
 
   int _selectedIndex = 0;
 
-
   @override
   void initState() {
     MethodChannel channel = const MethodChannel('tnk_flutter_rwd');
@@ -40,12 +38,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
-
-    if(TnkMethodChannelEvent.didOfferwallRemoved(methodCall))
-    {
+    if (TnkMethodChannelEvent.didOfferwallRemoved(methodCall)) {
       // TODO 오퍼월 close callback
-      print( "offer window closed" );
-      print(methodCall.arguments);
+      print("offer window closed");
     }
 
     setState(() {
@@ -60,6 +55,8 @@ class _MyAppState extends State<MyApp> {
     try {
       await _tnkFlutterRwdPlugin.setUserName("testUser");
       await _tnkFlutterRwdPlugin.setCOPPA(false);
+
+      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
       platformVersion = await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
           'Unknown platform version';
     } on PlatformException {
@@ -94,6 +91,64 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> test() async {
+    try {
+      String? placementData =
+          await _tnkFlutterRwdPlugin.getPlacementJsonData("offer_nor");
+      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
+
+      if (placementData != null) {
+        Map<String, dynamic> jsonObject = jsonDecode(placementData);
+        String resCode = jsonObject["res_code"];
+        String resMessage = jsonObject["res_message"];
+        List<TnkPlacementAdItem> adList =
+            praserJsonToTnkPlacementAdItem(jsonObject["ad_list"]);
+
+        setState(() {
+          this.adList.addAll(adList);
+          // _tnkResult = placementData ?? "null";
+        });
+      }
+    } on PlatformException {
+      setState(() {
+        _tnkResult = "excetpion";
+      });
+      return;
+    }
+  }
+
+  // praser json to List<TnkPlacementAdItem>
+  List<TnkPlacementAdItem> praserJsonToTnkPlacementAdItem(
+      List<dynamic> adList) {
+    List<TnkPlacementAdItem> tnkPlacementAdItemList = [];
+    for (var adItem in adList) {
+      TnkPlacementAdItem tnkPlacementAdItem = TnkPlacementAdItem();
+      tnkPlacementAdItem.app_id = adItem["app_id"];
+      tnkPlacementAdItem.app_nm = adItem["app_nm"];
+      tnkPlacementAdItem.img_url = adItem["img_url"];
+      tnkPlacementAdItem.pnt_amt = adItem["pnt_amt"];
+      tnkPlacementAdItem.org_amt = adItem["org_amt"];
+      tnkPlacementAdItem.pnt_unit = adItem["pnt_unit"];
+      tnkPlacementAdItem.prd_price = adItem["prd_price"];
+      tnkPlacementAdItem.org_prd_price = adItem["org_prd_price"];
+      tnkPlacementAdItem.sale_dc_rate = adItem["sale_dc_rate"];
+      tnkPlacementAdItem.multi_yn = adItem["multi_yn"];
+      tnkPlacementAdItem.cmpn_type = adItem["cmpn_type"];
+      tnkPlacementAdItem.cmpn_type_name = adItem["cmpn_type_name"];
+      tnkPlacementAdItem.like_yn = adItem["like_yn"];
+
+      tnkPlacementAdItemList.add(tnkPlacementAdItem);
+    }
+
+    return tnkPlacementAdItemList;
+  }
+  Future<void> onAdItemClick(String appId) async {
+    try {
+      await _tnkFlutterRwdPlugin.onItemClick(appId);
+    } on Exception {
+      return;
+    }
+  }
   Future<void> setNoUsePointIcon() async {
     try {
       await _tnkFlutterRwdPlugin.setNoUsePointIcon();
@@ -194,8 +249,22 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  var datas = {1, 2, 3};
+  List<TnkPlacementAdItem> adList = [];
+
   @override
   Widget build(BuildContext context) {
+    List<DataRow> cells = [];
+    cells = adList
+        .map((e) => DataRow(cells: [
+              DataCell(Image(image: NetworkImage(e.img_url), width: 100,), onLongPress: () {
+                onAdItemClick(e.app_id.toString());
+              },),
+              DataCell(Text(e.app_nm,),),
+              DataCell(Text(e.pnt_amt.toString())),
+            ]))
+        .toList();
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -240,20 +309,21 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Row(children: [
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 DataTable(
                   columns: const [
-                    DataColumn(label: Text('tnkResult')),
-                    DataColumn(label: Text('적립가능한 Point')),
-                    DataColumn(label: Text('사용가능한 Point')),
+                    DataColumn(label: Text('img')),
+                    DataColumn(label: Text('title')),
+                    DataColumn(label: Text('point')),
                   ],
-                  rows: [
-                    DataRow(cells: [
-                      DataCell(Text(_tnkResult)),
-                      DataCell(Text('$_myPoint')),
-                      DataCell(Text('$_queryPoint')),
-                    ]),
-                  ],
+                  rows: cells,
+                  // rows: [
+                  //   DataRow(cells: [
+                  //     DataCell(Text(_tnkResult)),
+                  //     DataCell(Text('$_myPoint')),
+                  //     DataCell(Text('$_queryPoint')),
+                  //   ]),
+                  // ],
                 ),
               ]),
               ButtonBar(
@@ -272,7 +342,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                       ElevatedButton(
                           onPressed: () {
-                            getEarnPoint();
+                            test();
                           },
                           style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
@@ -337,13 +407,13 @@ class _MyAppState extends State<MyApp> {
                               elevation: 10),
                           child: const Text('포인트아이콘 사용안함')),
                       ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor:Colors.white,
-                          backgroundColor:Colors.amberAccent,
-                          shadowColor:Colors.amberAccent,
-                          elevation: 10),
-                        child: const Text("abc"))
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.amberAccent,
+                              shadowColor: Colors.amberAccent,
+                              elevation: 10),
+                          child: const Text("abc"))
                     ],
                   )
                 ],
@@ -380,4 +450,20 @@ class _MyAppState extends State<MyApp> {
       showAdList();
     }
   }
+}
+
+class TnkPlacementAdItem {
+  int app_id = 0; // Int 광고 고유 식별값
+  String app_nm = ""; // String 광고 제목
+  String img_url = ""; // String 이미지 url
+  int pnt_amt = 0; // Int 지급 포인트 (이벤트 진행시 이벤트 배율 적용된 포인트)
+  int org_amt = 0; // Int 배율 이벤트 진행 시 원래의 포인트(이벤트 기간 아닐경우 0)
+  String pnt_unit = ""; // String 포인트 재화 단위
+  int prd_price = 0; // Int CPS상품 가격
+  int org_prd_price = 0; // Int CPS상품 할인 전 가격
+  int sale_dc_rate = 0; // Int CPS 상품 할인율
+  bool multi_yn = false; // Bool 멀티 미션 광고 여부
+  int cmpn_type = 0; // Int 광고 유형코드
+  String cmpn_type_name = ""; // String 광고 유형 이름
+  String like_yn = ""; // String 즐겨찾기 상품 여부
 }

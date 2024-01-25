@@ -63,6 +63,20 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> getPlacementJsonData(String placementId) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> onItemClick(String app_id) {
+    throw UnimplementedError();
+  }
+  @override
+  Future<String?> setUseTermsPopup(bool bUse) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

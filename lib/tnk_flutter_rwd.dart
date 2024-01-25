@@ -57,4 +57,15 @@ class TnkFlutterRwd {
   Future<String?> getOfferWallEvent(MethodCall methodCall) {
     return TnkFlutterRwdPlatform.instance.getOfferWallEvent(methodCall);
   }
+
+  Future<String?> getPlacementJsonData(String placementId) {
+    return TnkFlutterRwdPlatform.instance.getPlacementJsonData(placementId);
+  }
+
+  Future<String?> onItemClick(String app_id) {
+    return TnkFlutterRwdPlatform.instance.onItemClick(app_id);
+  }
+  Future<String?> setUseTermsPopup(bool isUse) {
+    return TnkFlutterRwdPlatform.instance.setUseTermsPopup(isUse);
+  }
 }

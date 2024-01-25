@@ -7,6 +7,10 @@ import TnkRwdSdk2
 public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     
     static var channel:FlutterMethodChannel? = nil
+    static var placementView:FlutterPlacementView? = nil
+    
+    typealias tempListener = (Bool,TnkError?) -> Void
+    
     public static func register(with registrar: FlutterPluginRegistrar) {
         channel = FlutterMethodChannel(name: "tnk_flutter_rwd", binaryMessenger: registrar.messenger())
         let instance = SwiftTnkFlutterRwdPlugin()
@@ -74,7 +78,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         case "getEarnPoint" :
             TnkSession.sharedInstance()?.queryAdvertiseCount() {
                 (count, point) in
-                print("### queryAdvertiseCount \(count) \(point)")
                 result( point )
             }
             
@@ -82,20 +85,17 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             
         case "setNoUsePointIcon" :
             setNoUsePoinIcon()
-            print("##### set no use point icon" )
             result("setNoUsePointIcon")
             break;
             
         case "setNoUsePrivacyAlert" :
             TnkSession.sharedInstance()?.setAgreePrivacyPolicy(true)
-            print("##### agree privacy true" )
             result("setNoUsePrivacyAlert")
             break;
             
         case "getQueryPoint" :
             TnkSession.sharedInstance()?.queryPoint() {
                 (point) in
-                print("#### queryPoint \(point)")
                 result( point )
             }
             break;
@@ -105,12 +105,10 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             if let args = call.arguments as? Dictionary<String, Any>,
                let itemId = args["item_id"] as? String,
                let cost = args["cost"] as? Int {
-                print ("####### itemId : \(itemId) // cost : \(cost)")
-                
+
                 TnkSession.sharedInstance()?.purchaseItem(itemId, cost:cost) {
                     // remail
                     (remainPoint, trId) in
-                    print("#### purchaseItem \(remainPoint) \(trId)")
                 }
                 
                 result("success")
@@ -127,7 +125,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
                 
                 TnkSession.sharedInstance()?.withdrawPoints(description) {
                     (point, trId) in
-                    print("#### withdrawPoints \(point) \(trId)")
                 }
                 
                 result("success")
@@ -144,7 +141,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
                 //                setCustomUI(param: map)
                 //setKidsningOfferwall()
                 setKidsningCustomUI(param:map)
-                print("#### setCustomUI")
                 result("success")
             } else {
                 result("fail")
@@ -152,6 +148,56 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             
             break;
             
+            ///////////////
+        case  "onItemClick":
+            if let args = call.arguments as? Dictionary<String, Any>{
+                if let placement_id = args["app_id"] as? String {
+                    SwiftTnkFlutterRwdPlugin.placementView?.clickItem(appid: placement_id){ issuccess, error in
+                        if(issuccess){
+                            result("{\"res_code\":\"1\",\"res_message\":\"success\"}")
+                        }else{
+                            if(error != nil) {
+                                result("{\"res_code\":\"-1\",\"res_message\":\"" + error!.errorMessage + "\"}")
+                            }else{
+                                result("{\"res_code\":\"-1\",\"res_message\":\"오류가 발생했습니다.\"}")
+                            }
+                        }
+                    }
+                }
+            }
+            break;
+        case "getPlacementJsonData":
+            if let args = call.arguments as? Dictionary<String, Any>{
+                if let placement_id = args["placement_id"] as? String {
+                    SwiftTnkFlutterRwdPlugin.placementView = FlutterPlacementView(frame: viewController!.view.frame,
+                                                                                  viewController: viewController!,
+                                                                                  placementId: placement_id
+                    ){ res in
+                        result(res)
+                    }
+                    SwiftTnkFlutterRwdPlugin.placementView!.loadItem()
+                } else {
+                    result("fail")
+                }
+            }
+            break;
+        case "setUseTermsPopup":
+            if let args = call.arguments as? Dictionary<String, Any>{
+                if let isUse = args["is_use"] as? Bool {
+                    if(!isUse){
+                        TnkSession.shared?.setAgreePrivacyPolicy(true);
+                        // else
+                        // TnkSession.shared?.setAgreePrivacyPolicy(false);
+                        result("success")
+                        return
+                    }
+                }
+                    
+            }else{
+                result("false")
+            }
+            
+            break;
         default:
             result("iOS method : " + call.method)
             break;
@@ -232,9 +278,9 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         
         
         
-        TnkLayout.shared.registerItemViewLayout(type: .normal,
-                                                viewClass: KidsningAdListItemView.self,
-                                                viewLayout:  KidsningAdListItemViewLayout())
+//        TnkLayout.shared.registerItemViewLayout(type: .normal,
+//                                                viewClass: KidsningAdListItemView.self,
+//                                                viewLayout:  KidsningAdListItemViewLayout())
         
         
         // 카테고리 레이아웃
@@ -504,56 +550,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    private func testCustomize(adDetailView:DefaultAdDetailViewLayout, adListMenuView:AdListMenuViewLayout) {
-//        // 포인금액 뒤쪽으로 이미지표시 하도록 설정
-//        TnkStyles.shared.adListItem.pointAmountTrailImage.width = 16
-//        TnkStyles.shared.adListItem.pointAmountTrailImage.height = 16
-//        TnkStyles.shared.adListItem.pointAmountTrailImage.imageNormal = UIImage(named:"dndn_check_on")
-//
-//        // 상단 닫기 버튼을 이미지로 교체
-//        TnkLayout.shared.closeBarButtonImage = UIImage(named:"close_btn")
-//
-//        // 광고상세화면
-//        adDetailView.actionInfoLayout.iconImage.imageNormal = nil // 참여방식 아이콘삭제
-//        adDetailView.joinInfoLayout.iconImage.imageNormal = nil // 유의사항 아이콘삭제
-//
-//
-//        // 개잉정보 수집 동의 alert 창
-//        let alertViewLayout = AlertViewLayout()
-//
-//        alertViewLayout.titleLabel.font = TnkFonts.shared.fontManager.getFont(ofSize: 14)   // 2023.07.21
-//
-//        alertViewLayout.confirmButton.backgroundNormal = TnkColor.argb(0xff5F0D80)
-//        alertViewLayout.confirmButton.strokeWidth = 0
-//        alertViewLayout.confirmButton.cornerRadius = 6
-//
-//        alertViewLayout.rejectButton.colorNormal = TnkColor.argb(0xff000000)
-//        alertViewLayout.rejectButton.colorHighlighted = TnkColor.argb(0xff000000)
-//        alertViewLayout.rejectButton.backgroundNormal = TnkColor.argb(0xffffffff)
-//        alertViewLayout.rejectButton.backgroundHighlighted = TnkColor.argb(0xffffffff)
-//
-//        alertViewLayout.rejectButton.strokeColor = TnkColor.argb(0xff000000)
-//        alertViewLayout.rejectButton.strokeWidth = 1
-//        alertViewLayout.rejectButton.cornerRadius = 6
-//
-//        TnkLayout.shared.alertViewLayout = alertViewLayout
-//
-//
-//    }
-    
-    
     // Color hexString -> Int
     private func hexaStringToInt( _hexaStr: String ) -> Int {
         if( _hexaStr.hasPrefix("#") ) {
@@ -593,4 +589,79 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     }
     
     
+    
+}
+
+
+
+public class FlutterPlacementView : NSObject, PlacementEventListener{
+    
+    var placementView:AdPlacementView? = nil
+    var placementId:String? = nil
+    init(frame: CGRect, viewController: UIViewController, placementId:String, onLoadListener: @escaping(_ res:String)->()){
+        self.onLoadListener = onLoadListener
+        let viewController = UIApplication.shared.keyWindow?.rootViewController
+        placementView = AdPlacementView(frame: viewController!.view.frame, viewController: viewController!)
+        self.placementId = placementId
+        
+    }
+    
+    var onLoadListener:(_ res:String)->()
+    var onItemClickListener : (Bool, TnkRwdSdk2.TnkError?) -> () = { isSuccess, error in
+        
+    }
+
+    
+    public func loadItem(){
+        placementView?.placementListener = self
+        placementView?.loadData(placementId: placementId!)
+    }
+    
+    public func clickItem(appid:String, callback: @escaping (Bool, TnkRwdSdk2.TnkError?) -> ()){
+        onItemClickListener = callback
+        let adid:Int? = Int(appid)
+        placementView?.onItemClick(appId: adid!, completion:callback)
+    }
+    
+    
+    
+    /// AdPlacementView 에 광고가 로딩되는 시점에 호출됩니다.
+    ///
+    /// - Parameters:
+    ///    - placementId: 광고 로딩을 요청한 placement Id 값
+    ///    - customData : 플레이스먼트 설정시 customData 항목에 입력한 값
+    public func didAdDataLoaded(placementId: String, customData: String?){
+//        let viewController = UIApplication.shared.keyWindow?.rootViewController
+        let pubInfoJson:String = placementView!.getPubInfoJson()!
+        let adListJson:String = placementView!.getAdListJson()!
+        /*
+         put("res_code", "1")
+                                         put("res_message", "success")
+         */
+        let resJson = "{\"res_code\":\"1\", \"res_message\":\"success\", \"pub_info\":" + pubInfoJson + ", \"ad_list\":" + adListJson + "}"
+        onLoadListener(resJson)
+    }
+
+    /// AdPlacementView 에 광고 로딩이 실패하는 시점에 호출됩니다.
+    ///
+    /// - Parameters:
+    ///   - placementId: 광고 로딩을 요청한 placement Id 값
+    public func didFailedToLoad(placementId: String){
+        let resJson = "{\"res_code\":\"-99\", \"res_message\":\"광고 로드 실패\"}"
+        onLoadListener(resJson)
+    }
+
+    /// AdPlacementView 의 광고를 클릭하면 호출됩니다.
+    ///
+    /// - Parameters:
+    ///   - appId : 클릭한 광고의 appId
+    ///   - appName : 클릭한 광고의 명칭
+    public func didAdItemClicked(placementId: String, appId: Int, appName: String){
+        
+    }
+
+    /// 더보기 링크를 클릭하면 호출됩니다.
+    public func didMoreLinkClicked(placementId: String){
+        
+    }
 }
