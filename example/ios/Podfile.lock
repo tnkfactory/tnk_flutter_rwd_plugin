@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - tnk_flutter_rwd (0.2.5):
+  - tnk_flutter_rwd (0.2.6):
     - Flutter
 
 DEPENDENCIES:
@@ -14,9 +14,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/tnk_flutter_rwd/ios"
 
 SPEC CHECKSUMS:
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  tnk_flutter_rwd: ca862de3a8a452df1a6efba71d0dd1011c8c4ec8
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  tnk_flutter_rwd: 2fec290f0cdac7b02b58d686072ca1df3b280c12
 
-PODFILE CHECKSUM: 77741674a9b77ac95136f9282344b56becb161ca
+PODFILE CHECKSUM: f637bb4b6043f98485951ef0ad7407ef0841bda6
 
 COCOAPODS: 1.12.1

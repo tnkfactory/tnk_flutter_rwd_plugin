@@ -198,6 +198,23 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             }
             
             break;
+            
+        case "setCustomUnitIcon":
+            if let args = call.arguments as? Dictionary<String, Any>,
+               let map = args["map"] as? Dictionary<String,String> {
+                
+                var res = setCustomUnitIcon(param: map)
+                if( res ) {
+                    result("success")
+                } else {
+                    result("error")
+                }
+                
+            } else {
+                result("fail")
+            }
+            
+            break;
         default:
             result("iOS method : " + call.method)
             break;
@@ -232,12 +249,39 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         
         // 캠페인 리스트 point 아이콘 미노출
         TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil
-        // 캠페인 상세페이지 버튼 point 아이콘 미노출
         TnkStyles.shared.adListItem.pointIconImage.imageHighlighted = nil
         // 재화 단위 노출
+        // 캠페인 상세페이지 버튼 point 아이콘 미노출
         let detailViewLayout = TnkLayout.shared.detailViewLayout
         detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
         detailViewLayout.buttonFrameLayout.pointUnitVisible = true
+        
+        
+    }
+    
+    
+    func setCustomUnitIcon(param:Dictionary<String,String>)->Bool {
+        
+
+        let defPointIconImage = param["point_icon_name"]!
+        let subPointIconImage = param["point_icon_name_sub"]!
+        
+        
+        if( defPointIconImage != "" && subPointIconImage != "" ) {
+            
+            // 캠페인 리스트 point 아이콘 미노출
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
+        
+            // 캠페인 상세페이지 버튼 point 아이콘 미노출
+            let detailViewLayout = TnkLayout.shared.detailViewLayout
+            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
+            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
+            detailViewLayout.buttonFrameLayout.pointUnitVisible = true
+            
+            return true
+        } else {
+            return false
+        }
         
         
     }

@@ -68,4 +68,8 @@ class TnkFlutterRwd {
   Future<String?> setUseTermsPopup(bool isUse) {
     return TnkFlutterRwdPlatform.instance.setUseTermsPopup(isUse);
   }
+
+  Future<String?> setCustomUnitIcon(HashMap<String, String> map) {
+    return TnkFlutterRwdPlatform.instance.setCustomUnitIcon(map);
+  }
 }

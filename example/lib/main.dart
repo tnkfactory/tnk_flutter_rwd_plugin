@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:convert';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
@@ -249,6 +250,22 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+  Future<void> setCustomUnitIcon() async {
+    try {
+      HashMap<String, String> paramMap = HashMap();
+      //0xff252542
+      paramMap.addAll({
+        // 포인트 아이콘 이미지 이름
+        "point_icon_name":"apart_i_blue",
+        "point_icon_name_sub":"apart_i_white"
+      });
+      await _tnkFlutterRwdPlugin.setCustomUnitIcon(paramMap);
+
+    } on Exception {
+      return;
+    }
+  }
+
   var datas = {1, 2, 3};
   List<TnkPlacementAdItem> adList = [];
 
@@ -414,6 +431,19 @@ class _MyAppState extends State<MyApp> {
                               shadowColor: Colors.amberAccent,
                               elevation: 10),
                           child: const Text("abc"))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: setCustomUnitIcon,
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.grey,
+                              shadowColor: Colors.grey,
+                              elevation: 10),
+                          child: const Text('아이콘 커스텀')),
                     ],
                   )
                 ],

@@ -89,5 +89,11 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
 
+  @override
+  Future<String?>setCustomUnitIcon(HashMap<String,String> map) async {
+    final version = await methodChannel.invokeMethod<String>('setCustomUnitIcon', <String, dynamic>{"map" :map});
+    return version;
+  }
+
 
 }
