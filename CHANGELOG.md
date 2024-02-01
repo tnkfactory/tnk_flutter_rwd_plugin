@@ -36,4 +36,6 @@
 ## 0.2.8
 * 약관 팝업 출력 옵션 추가( TnkFlutterRwd.setUseTermsPopup(bool) )
 ## 0.2.9
-* 재화 아이콘 커스텀 기능 추가
+* 재화 아이콘 커스텀 기능 추가 (ios)
+## 0.3.0
+* 재화 아이콘 커스텀 기능 추가 (android)
