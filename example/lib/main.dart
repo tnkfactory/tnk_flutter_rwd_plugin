@@ -7,6 +7,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
+import 'package:tnk_flutter_rwd_example/tnk_flutter_rwd_point_effect.dart';
 import 'tnk_flutter_rwd_analytics.dart';
 
 void main() {
@@ -250,17 +251,29 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  Future<void> setCustomUnitIcon() async {
+  Future<void> useCustomIcon() async {
+    return setCustomUnitIcon(TnkFlutterRwdPointEffectType.ICON);
+  }
+  Future<void> useCustomIconAndUnit() async {
+    return setCustomUnitIcon(TnkFlutterRwdPointEffectType.ICON_N_UNIT);
+  }
+  Future<void> useUnit() async {
+    return setCustomUnitIcon(TnkFlutterRwdPointEffectType.UNIT);
+  }
+  Future<void> useEffectNone() async {
+    return setCustomUnitIcon(TnkFlutterRwdPointEffectType.NONE);
+  }
+  Future<void> setCustomUnitIcon(String type) async {
     try {
       HashMap<String, String> paramMap = HashMap();
       //0xff252542
       paramMap.addAll({
-
-        "option":"4",
+        "option":type,
         // 포인트 아이콘 이미지 이름
         "point_icon_name":"apart_i_blue",
         "point_icon_name_sub":"apart_i_white"
       });
+      print(paramMap);
       await _tnkFlutterRwdPlugin.setCustomUnitIcon(paramMap);
 
     } on Exception {
@@ -439,13 +452,37 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                          onPressed: setCustomUnitIcon,
+                          onPressed: useCustomIcon,
                           style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.grey,
                               shadowColor: Colors.grey,
                               elevation: 10),
-                          child: const Text('아이콘 커스텀')),
+                          child: const Text('커스텀아이콘')),
+                      ElevatedButton(
+                          onPressed: useCustomIconAndUnit,
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.grey,
+                              shadowColor: Colors.grey,
+                              elevation: 10),
+                          child: const Text('커스텀아이콘+유닛')),
+                      ElevatedButton(
+                          onPressed: useUnit,
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.grey,
+                              shadowColor: Colors.grey,
+                              elevation: 10),
+                          child: const Text('유닛')),
+                      ElevatedButton(
+                          onPressed: useEffectNone,
+                          style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.grey,
+                              shadowColor: Colors.grey,
+                              elevation: 10),
+                          child: const Text('숫자만')),
                     ],
                   )
                 ],

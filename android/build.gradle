@@ -51,6 +51,6 @@ dependencies {
     // android appcompat
     implementation 'androidx.appcompat:appcompat:1.6.1'
     //implementation "com.tnkfactory:rwd:7.30.8"
-    implementation "com.tnkfactory:rwd:8.05.02"
+    implementation "com.tnkfactory:rwd:8.05.03"
     //implementation 'com.tnkfactory:rwd:8.01.91'
 }

@@ -2,11 +2,9 @@ package com.tnkfactory.flutter.rwd.tnk_flutter_rwd
 
 
 import android.app.Activity
-import android.app.Service
 import android.content.Context
 import android.util.Log
 import androidx.annotation.NonNull
-import androidx.fragment.app.FragmentActivity
 import com.tnkfactory.ad.*
 import com.tnkfactory.ad.basic.AdPlacementView
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -118,10 +116,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                                 val ret = pArr as LongArray
                                 if (ret[1] < 0) {
                                     //error
-                                    Log.d("purchaseItem error", "current point = " + ret[0] + ", transaction id = " + ret[1] )// error
                                     result.success("fail")
                                 } else {
-                                    Log.d("purchaseItem", "current point = " + ret[0] + ", transaction id = " + ret[1] )
                                     result.success("success")
                                 }
                             }
@@ -199,6 +195,18 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     TnkAdConfig.useTermsPopup = call.argument("use_yn") as? Boolean ?: false
                 }
 
+                "setCustomUnitIcon" -> {
+                    call.argument<HashMap<String, String>>("map")?.let {
+                        val res = setCustomUnitIcon(it)
+                        if (res) {
+                            result.success("success")
+                        } else {
+                            result.success("error")
+                        }
+                    } ?: result.success("fail")
+
+                }
+
                 else -> {
                     result.notImplemented()
                 }
@@ -206,6 +214,19 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         } catch (e: Exception) {
             result.success(e.message)
         }
+    }
+
+    fun setCustomUnitIcon(param: HashMap<String, String>): Boolean {
+        val option = param["option"] ?: "2"
+
+        TnkAdConfig.pointEffectType = when (option) {
+            "1" -> TNK_POINT_EFFECT_TYPE.ICON_N_UNIT    // 재화 이이콘, 단위 둘다 표시
+            "2" -> TNK_POINT_EFFECT_TYPE.ICON           // 재화 아이콘만 표시
+            "3" -> TNK_POINT_EFFECT_TYPE.UNIT           // 재화 단위만 표시
+            "4" -> TNK_POINT_EFFECT_TYPE.NONE           // 둘다 표시 안함
+            else -> return false
+        }
+        return true
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
