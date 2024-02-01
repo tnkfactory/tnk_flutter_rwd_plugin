@@ -77,6 +77,11 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> setCustomUnitIcon(HashMap<String, String> map) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

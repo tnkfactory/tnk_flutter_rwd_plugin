@@ -203,7 +203,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             if let args = call.arguments as? Dictionary<String, Any>,
                let map = args["map"] as? Dictionary<String,String> {
                 
-                var res = setCustomUnitIcon(param: map)
+                let res = setCustomUnitIcon(param: map)
                 if( res ) {
                     result("success")
                 } else {
@@ -260,31 +260,117 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     }
     
     
-    func setCustomUnitIcon(param:Dictionary<String,String>)->Bool {
+    // 매체세 재화 아이콘, 단위 커스텀 메소드
+    func setCustomUnitIcon(param:Dictionary<String,String>) -> Bool {
         
 
+        // 1 - 재화 아이콘, 단위 둘다 표시
+        // 2 - 재화 아이콘만 표시
+        // 3 - 재화 단위만 표시
+        // 4 - 둘다 표시 안함
+        let option = param["option", default: "1"]
         let defPointIconImage = param["point_icon_name"]!
         let subPointIconImage = param["point_icon_name_sub"]!
-        
-        
-        if( defPointIconImage != "" && subPointIconImage != "" ) {
             
-            // 캠페인 리스트 point 아이콘 미노출
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
         
-            // 캠페인 상세페이지 버튼 point 아이콘 미노출
+        print( "option : \(option)")
+        print( "defPointIconImage: \(defPointIconImage)")
+        print( "subPointIconImage: \(subPointIconImage)")
+        
+
+        
+        
+        
+    
+        switch option {
+           
+            // 재화 이이콘, 단위 둘다 표시
+        case "1" :
+            print( "option : >>> 1")
+            print( "defPointIconImage: >>>  \(defPointIconImage)")
+            print( "subPointIconImage: >>> \(subPointIconImage)")
+            // 광고 리스트 제어
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
+            TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
+            TnkStyles.shared.adListItem.pointUnitVisible = false
+            
+            
+            
+            // 광고상세 제어
             let detailViewLayout = TnkLayout.shared.detailViewLayout
+            
             detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
             detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
-            detailViewLayout.buttonFrameLayout.pointUnitVisible = true
+            detailViewLayout.pointAmountFormat = "{point}{unit}"
+            detailViewLayout.titlePointUnitVisible = false
+            
+            TnkLayout.shared.detailViewLayout = detailViewLayout
+            
             
             return true
-        } else {
-            return false
+            
+            
+            
+            // 재화 아이콘만 표시
+        case "2" :
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
+            TnkStyles.shared.adListItem.pointUnitVisible = false
+            
+            // 광고상세 제어
+            let detailViewLayout = TnkLayout.shared.detailViewLayout
+            
+            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
+            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
+            detailViewLayout.titlePointUnitVisible = false
+            
+            TnkLayout.shared.detailViewLayout = detailViewLayout
+            
+            return true
+            
+            
+            // 재화 단위만 표시
+        case "3" :
+            
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil
+            TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
+            TnkStyles.shared.adListItem.pointUnitVisible = false
+            
+            // 광고상세 제어
+            let detailViewLayout = TnkLayout.shared.detailViewLayout
+            detailViewLayout.titlePointIconImage.imageNormal = nil
+            detailViewLayout.pointAmountFormat = "{point}{unit}"
+            detailViewLayout.titlePointUnitVisible = false
+            
+            TnkLayout.shared.detailViewLayout = detailViewLayout
+            
+            return true
+            
+            // 둘다 표시 안함
+        case "4" :
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil
+            TnkStyles.shared.adListItem.pointUnitVisible = false
+            
+            // 광고상세 제어
+            let detailViewLayout = TnkLayout.shared.detailViewLayout
+            detailViewLayout.titlePointIconImage.imageNormal = nil
+            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
+            detailViewLayout.titlePointUnitVisible = false
+            
+            TnkLayout.shared.detailViewLayout = detailViewLayout
+            
+            return true
+            
+        default:
+            
+            break
         }
+    
         
         
+        return false
     }
+    
+ 
 
 
     // 키즈닝 매체 커스텀

@@ -255,6 +255,8 @@ class _MyAppState extends State<MyApp> {
       HashMap<String, String> paramMap = HashMap();
       //0xff252542
       paramMap.addAll({
+
+        "option":"4",
         // 포인트 아이콘 이미지 이름
         "point_icon_name":"apart_i_blue",
         "point_icon_name_sub":"apart_i_white"
