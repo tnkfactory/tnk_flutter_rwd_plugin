@@ -92,6 +92,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "setNoUsePrivacyAlert" -> {
+                    TnkAdConfig.useTermsPopup = false
                     result.success("success")
                 }
 
