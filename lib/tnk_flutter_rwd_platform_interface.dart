@@ -80,6 +80,9 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<String?> setCustomUnitIcon(HashMap<String,String>map) {
     throw UnimplementedError('setCustomUnitIcon has not benn implemented');
   }
+  Future<String?> closeAdDetail() {
+    throw UnimplementedError('closeAdDetail has not benn implemented');
+  }
 
 
 }

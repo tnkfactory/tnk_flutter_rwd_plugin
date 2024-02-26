@@ -72,4 +72,7 @@ class TnkFlutterRwd {
   Future<String?> setCustomUnitIcon(HashMap<String, String> map) {
     return TnkFlutterRwdPlatform.instance.setCustomUnitIcon(map);
   }
+  Future<String?> closeAdDetail() {
+    return TnkFlutterRwdPlatform.instance.closeAdDetail();
+  }
 }

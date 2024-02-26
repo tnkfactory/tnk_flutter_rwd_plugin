@@ -94,6 +94,11 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     final version = await methodChannel.invokeMethod<String>('setCustomUnitIcon', <String, dynamic>{"map" :map});
     return version;
   }
+  @override
+  Future<String?>closeAdDetail() async {
+    final version = await methodChannel.invokeMethod<String>('closeAdDetail');
+    return version;
+  }
 
 
 }
