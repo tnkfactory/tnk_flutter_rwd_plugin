@@ -952,7 +952,16 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     
 }
 
-
+extension UIViewController {
+    var frameworkName: String? {
+        let className = NSStringFromClass(type(of: self))
+        if let range = className.range(of: ".", options: .backwards) {
+            let frameworkName = String(className[..<range.lowerBound])
+            return frameworkName
+        }
+        return nil
+    }
+}
 
 public class FlutterPlacementView : NSObject, PlacementEventListener{
     
@@ -983,11 +992,29 @@ public class FlutterPlacementView : NSObject, PlacementEventListener{
         let adid:Int? = Int(appid)
         placementView?.onItemClick(appId: adid!, completion:callback)
     }
-    
+
+    public func setAttAlertMsg(){
+        let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "앱이름"
+        TnkStrings.shared.need_att_allow = "추적허용이 활성화되어야 참여가 가능한 광고입니다.\n\n[설정 > \(appName) > 추적 허용 > 켜기]"
+    }
+
     public func closeAdItem(){
-        if(rootViewContorller?.children.count ?? 0 > 0){
-            rootViewContorller?.dismiss(animated: false)
+        if let presentVC = rootViewContorller?.presentedViewController
+        {
+            print(String(describing: presentVC.frameworkName))
+            if( presentVC.frameworkName == "TnkRwdSdk2"){
+                rootViewContorller?.dismiss(animated: false)
+            }
         }
+//        if let presentVC = rootViewController.presentedViewController
+//                    {
+//                        print(String(describing: presentVC.frameworkName))
+//                        
+//                        
+//                    }
+//        if(rootViewContorller?.children.count ?? 0 > 0){
+//            rootViewContorller?.dismiss(animated: false)
+//        }
     }
     
     

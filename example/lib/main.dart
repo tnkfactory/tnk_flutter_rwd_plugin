@@ -65,6 +65,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
   final int _cost = 2;
 
   int _selectedIndex = 0;
+  String _tnkResult = "";
 
 
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
@@ -118,9 +119,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       point = 0;
     }
 
-    setState(() {
-      _myPoint = point;
-    });
+    // setState(() {
+    //   _myPoint = point;
+    // });
   }
 
   Future<void> test() async {
@@ -207,9 +208,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       point = 0;
     }
 
-    setState(() {
-      _queryPoint = point;
-    });
+    // setState(() {
+    //   _queryPoint = point;
+    // });
   }
 
   Future<void> purchaseItem(String itemId, int cost) async {
