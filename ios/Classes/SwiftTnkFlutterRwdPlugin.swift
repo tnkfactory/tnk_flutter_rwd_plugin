@@ -169,6 +169,10 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
                 }
             }
             break;
+        case "closeAdDetail":
+            SwiftTnkFlutterRwdPlugin.placementView?.closeAdItem()
+            result("success")
+            break;
         case "getPlacementJsonData":
             if let args = call.arguments as? Dictionary<String, Any>{
                 if let placement_id = args["placement_id"] as? String {
@@ -954,10 +958,11 @@ public class FlutterPlacementView : NSObject, PlacementEventListener{
     
     var placementView:AdPlacementView? = nil
     var placementId:String? = nil
+    var rootViewContorller:UIViewController? = nil
     init(frame: CGRect, viewController: UIViewController, placementId:String, onLoadListener: @escaping(_ res:String)->()){
         self.onLoadListener = onLoadListener
-        let viewController = UIApplication.shared.keyWindow?.rootViewController
-        placementView = AdPlacementView(frame: viewController!.view.frame, viewController: viewController!)
+        rootViewContorller = UIApplication.shared.keyWindow?.rootViewController
+        placementView = AdPlacementView(frame: rootViewContorller!.view.frame, viewController: rootViewContorller!)
         self.placementId = placementId
         
     }
@@ -977,6 +982,12 @@ public class FlutterPlacementView : NSObject, PlacementEventListener{
         onItemClickListener = callback
         let adid:Int? = Int(appid)
         placementView?.onItemClick(appId: adid!, completion:callback)
+    }
+    
+    public func closeAdItem(){
+        if(rootViewContorller?.children.count ?? 0 > 0){
+            rootViewContorller?.dismiss(animated: false)
+        }
     }
     
     

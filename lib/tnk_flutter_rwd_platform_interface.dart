@@ -83,6 +83,9 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<String?> setCustomUIDefault(HashMap<String,String>map) {
     throw UnimplementedError('setCustomUIDefault has not benn implemented');
   }
+  Future<String?> closeAdDetail() {
+    throw UnimplementedError('closeAdDetail has not benn implemented');
+  }
 
 
 }

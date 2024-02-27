@@ -81,6 +81,10 @@ class MockTnkFlutterRwdPlatform
   Future<String?> setCustomUnitIcon(HashMap<String, String> map) {
     throw UnimplementedError();
   }
+  @override
+  Future<String?> closeAdDetail() {
+    throw UnimplementedError();
+  }
 
 }
 

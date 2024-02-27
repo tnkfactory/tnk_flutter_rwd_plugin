@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/tnk_flutter_rwd/ios"
 
 SPEC CHECKSUMS:
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   tnk_flutter_rwd: 2fec290f0cdac7b02b58d686072ca1df3b280c12
 
 PODFILE CHECKSUM: f637bb4b6043f98485951ef0ad7407ef0841bda6

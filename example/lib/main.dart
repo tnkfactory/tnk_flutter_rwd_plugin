@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -21,23 +22,50 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태변화를 감지하기 위한 observer 사용
+{
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
-
-  String _tnkResult = 'Unknown';
-  int _myPoint = 0;
-  int _queryPoint = 0;
-  final String _itemId = "item.0001";
-  final int _cost = 2;
-
-  int _selectedIndex = 0;
 
   @override
   void initState() {
     MethodChannel channel = const MethodChannel('tnk_flutter_rwd');
     channel.setMethodCallHandler(getOfferWallEvent);
+
+    WidgetsBinding.instance.addObserver(this);// 앱 상태변화를 감지하기 위한 observer 등록
     super.initState();
   }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);// 앱 상태변화를 감지하기 위한 observer 해제
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print('state = $state');
+    if (state == AppLifecycleState.resumed) {
+      // 앱이 활성화 될때
+      print('앱이 활성화 될때');
+      _tnkFlutterRwdPlugin.closeAdDetail();
+    } else if (state == AppLifecycleState.inactive) {
+      // 앱이 비활성화 될때
+      print('앱이 비활성화 될때');
+    } else if (state == AppLifecycleState.paused) {
+      // 앱이 일시정지 될때
+      print('앱이 일시정지 될때');
+    } else if (state == AppLifecycleState.detached) {
+      // 앱이 종료될때
+      print('앱이 종료될때');
+    }
+  }
+
+
+  final String _itemId = "item.0001";
+  final int _cost = 2;
+
+  int _selectedIndex = 0;
+
 
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
     if (TnkMethodChannelEvent.didOfferwallRemoved(methodCall)) {
@@ -149,6 +177,8 @@ class _MyAppState extends State<MyApp> {
   Future<void> onAdItemClick(String appId) async {
     try {
       await _tnkFlutterRwdPlugin.onItemClick(appId);
+      // sleep(const Duration(seconds:5));
+      // _tnkFlutterRwdPlugin.closeAdDetail();
     } on Exception {
       return;
     }
@@ -394,7 +424,7 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () { test();},
                         style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
                             backgroundColor: Colors.redAccent,
