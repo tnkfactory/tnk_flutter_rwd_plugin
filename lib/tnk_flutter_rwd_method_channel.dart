@@ -95,5 +95,11 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
 
+  @override
+  Future<String?>setCustomUIDefault(HashMap<String,String> map) async {
+    final version = await methodChannel.invokeMethod<String>('setCustomUIDefault', <String, dynamic>{"map" :map});
+    return version;
+  }
+
 
 }

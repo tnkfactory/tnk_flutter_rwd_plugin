@@ -43,6 +43,8 @@ class _MyAppState extends State<MyApp> {
     if (TnkMethodChannelEvent.didOfferwallRemoved(methodCall)) {
       // TODO 오퍼월 close callback
       print("offer window closed");
+
+
     }
 
     setState(() {
@@ -213,39 +215,54 @@ class _MyAppState extends State<MyApp> {
       //0xff252542
       paramMap.addAll({
         // 카테고리 컬러
-        "category_select_font": "#495057",
+        "category_select_font": "#26DACA",
         // 선택된 필터 배경색
-        "filter_select_background": "#495057",
+        "filter_select_background": "#26DACA",
         // 선택된 필터 폰트 컬러
         "filter_select_font": "#FFFFFF",
         // 선택안한 필터 폰트 컬러
-        "filter_not_select_font": "#495057",
+        "filter_not_select_font": "#515151",
         // 선택안한 필터 배경색
         "filter_not_select_background": "#FFFFFF",
         // 광고상세페이지 광고타이틀 폰트 컬러
-        "adinfo_title_font": "#212529",
+        "adinfo_title_font": "#26DACA",
         // 광고상세페이지 광고액션 폰트 컬러
-        "adinfo_desc_font": "#5F0D80",
+        "adinfo_desc_font": "#26DACA",
         // 광고상세페이지 포인트 단위 컬러
-        "adinfo_point_unit_font": "#5F0D80",
+        "adinfo_point_unit_font": "#26DACA",
         // 광고상세페이지 포인트 액수 폰트 컬러
-        "adinfo_point_amount_font": "#5F0D80",
+        "adinfo_point_amount_font": "#26DACA",
         // 광고상세페이지 버튼 백그라운드 컬러
-        "adinfo_button_background": "#5F0D80",
-        // 광고상세페이지 버튼 백그라운드 컬러
+        "adinfo_button_background": "#26DACA",
+        // 광고상세페이지 버튼 폰트 컬러
         "adinfo_button_title_font": "#FFFFFF",
         // 광고상세페이지 버튼 백그라운드 컬러
         "adinfo_button_desc_font": "#FFFFFF",
+
         "adinfo_button_gradient_option": "L",
 
-        // "adlist_title_font":"#212529", // 광고리스트 광고타이틀 폰트 컬러
-        // "adlist_desc_font":"#61666A", // 광고리스트 광고액션 폰트 컬러
-        // "adlist_point_unit_font":"#5F0D80", // 광고리스트 포인트 단위 폰트 컬러
-        // "adlist_point_amount_font":"#5F0D80", // 광고리스트 포인트 액수 폰트 컬러
-        // "point_icon_name":"", // 포인트 아이콘 이미지 이름
-        // "point_icon_use_yn":"N", // 포인트 아이콘 사용여부 ( 포인트아이콘 사용시 포인트 단위는 사용못함 )
+        // 광고리스트 광고타이틀 폰트 컬러
+        "adlist_title_font":"#26DACA",
+        // 광고리스트 광고액션 폰트 컬러
+        "adlist_desc_font":"#515151",
+        // 광고리스트 포인트 단위 폰트 컬러
+        "adlist_point_unit_font":"##26DACA",
+        // 광고리스트 포인트 액수 폰트 컬러
+        "adlist_point_amount_font":"##26DACA",
+
+
+        // 1 - 재화 아이콘, 단위 둘다 표시
+        // 2 - 재화 아이콘만 표시
+        // 3 - 재화 단위만 표시
+        // 4 - 둘다 표시 안함
+        "option":"1",
+
+        // 포인트 아이콘 이미지 이름
+        "point_icon_name":"star_icon",
+        "point_icon_name_sub":"star_icon_white"
+
       });
-      await _tnkFlutterRwdPlugin.setCustomUI(paramMap);
+      await _tnkFlutterRwdPlugin.setCustomUIDefault(paramMap);
     } on Exception {
       return;
     }
@@ -263,23 +280,36 @@ class _MyAppState extends State<MyApp> {
   Future<void> useEffectNone() async {
     return setCustomUnitIcon(TnkFlutterRwdPointEffectType.NONE);
   }
+
+
+
   Future<void> setCustomUnitIcon(String type) async {
     try {
       HashMap<String, String> paramMap = HashMap();
-      //0xff252542
       paramMap.addAll({
+
+        // 1 - 재화 아이콘, 단위 둘다 표시
+        // 2 - 재화 아이콘만 표시
+        // 3 - 재화 단위만 표시
+        // 4 - 둘다 표시 안함
         "option":type,
+
+
         // 포인트 아이콘 이미지 이름
         "point_icon_name":"apart_i_blue",
         "point_icon_name_sub":"apart_i_white"
       });
-      print(paramMap);
       await _tnkFlutterRwdPlugin.setCustomUnitIcon(paramMap);
 
     } on Exception {
       return;
     }
   }
+
+
+
+
+
 
   var datas = {1, 2, 3};
   List<TnkPlacementAdItem> adList = [];

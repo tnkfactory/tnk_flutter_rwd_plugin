@@ -9,7 +9,10 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     static var channel:FlutterMethodChannel? = nil
     static var placementView:FlutterPlacementView? = nil
     
+    
     typealias tempListener = (Bool,TnkError?) -> Void
+    
+    static let tnkCustomUI:TnkCustomUI = TnkCustomUI()
     
     public static func register(with registrar: FlutterPluginRegistrar) {
         channel = FlutterMethodChannel(name: "tnk_flutter_rwd", binaryMessenger: registrar.messenger())
@@ -138,7 +141,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             if let args = call.arguments as? Dictionary<String, Any>,
                let map = args["map"] as? Dictionary<String,String> {
                 
-                //                setCustomUI(param: map)
+//                setCustomUI(param: map)
                 //setKidsningOfferwall()
                 setKidsningCustomUI(param:map)
                 result("success")
@@ -215,6 +218,20 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             }
             
             break;
+            
+        case "setCustomUIDefault":
+            if let args = call.arguments as? Dictionary<String, Any>,
+               let map = args["map"] as? Dictionary<String,String> {
+                
+                SwiftTnkFlutterRwdPlugin.tnkCustomUI.setCustomUIDefault(param: map)
+                result("success")
+
+                
+            } else {
+                result("fail")
+            }
+            
+            break;
         default:
             result("iOS method : " + call.method)
             break;
@@ -240,6 +257,10 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         navController.navigationBar.titleTextAttributes = [.foregroundColor: TnkColor.semantic(argb1: 0xff505050, argb2: 0xffd3d3d3)]
         
         viewController.present(navController, animated: true)
+        
+       
+        
+//        vc.dismiss(animated: true)
         
         
         
@@ -268,16 +289,9 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         // 2 - 재화 아이콘만 표시
         // 3 - 재화 단위만 표시
         // 4 - 둘다 표시 안함
-        let option = param["option", default: "1"]
+        let option = param["option", default: "2"]
         let defPointIconImage = param["point_icon_name"]!
         let subPointIconImage = param["point_icon_name_sub"]!
-            
-        
-        print( "option : \(option)")
-        print( "defPointIconImage: \(defPointIconImage)")
-        print( "subPointIconImage: \(subPointIconImage)")
-        
-
         
         
         
@@ -286,9 +300,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
            
             // 재화 이이콘, 단위 둘다 표시
         case "1" :
-            print( "option : >>> 1")
-            print( "defPointIconImage: >>>  \(defPointIconImage)")
-            print( "subPointIconImage: >>> \(subPointIconImage)")
+            
             // 광고 리스트 제어
             TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
             TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
@@ -338,6 +350,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             // 광고상세 제어
             let detailViewLayout = TnkLayout.shared.detailViewLayout
             detailViewLayout.titlePointIconImage.imageNormal = nil
+            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
             detailViewLayout.pointAmountFormat = "{point}{unit}"
             detailViewLayout.titlePointUnitVisible = false
             
@@ -368,6 +381,112 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         
         
         return false
+    }
+    
+    
+    
+    func setCustomUI(param:Dictionary<String,String>) {
+        
+        // Darkmode 를 지원하지 않으므로 앱의 info.plist 파일에 Appearance 항목을 light 로 설정한다.
+        
+        
+        let cateSelectedColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["category_select_font"]!))
+        let filterSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_background"]!))
+        let filterSelectedFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_font"]!))
+        let filterNotSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_not_select_background"]!))
+        let filterNotSelectedFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_not_select_font"]!))
+        let adListTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_title_font"]!))
+        let adListDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_desc_font"]!))
+        let adListPointUnitFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_point_unit_font"]!))
+        let adListPointAmtFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_point_amount_font"]!))
+        let adInfoTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_title_font"]!))
+        let adInfoDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_desc_font"]!))
+        let adInfoPointUnitFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_point_unit_font"]!))
+        let adInfoPointAmtFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_point_amount_font"]!))
+        let adInfoButtonBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_background"]!))
+        let adInfoButtonDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_desc_font"]!))
+        let adInfoButtonTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_title_font"]!))
+        let adInfoButtonFramLayoutGradientOption = param["adinfo_button_gradient_option"]
+        
+        let defPointIconImage = param["point_icon_name"]!
+        let subPointIconImage = param["point_icon_name_sub"]!
+        
+        
+        // 광고 리스트
+        let adListItemLayout = AdListItemViewLayout()
+        adListItemLayout.titleLabel.color = adListTitleFontColor
+        adListItemLayout.descLabel.color = adListDescFontColor
+        adListItemLayout.pointAmountLabel.color = adListPointAmtFontColor
+        adListItemLayout.pointUnitLabel.color = adListPointUnitFontColor
+        
+
+        TnkLayout.shared.registerItemViewLayout(type: .normal,
+                                                viewClass: DefaultAdListItemView.self,
+                                                viewLayout: adListItemLayout)
+        
+        
+        
+        // 카테고리 레이아웃
+        let categoryMenuLayout = AdListMenuViewLayout() // 카테고리 설정
+        categoryMenuLayout.itemButton.colorSelected = cateSelectedColor // 선택된 메뉴의 폰트 색상
+        TnkLayout.shared.registerMenuViewLayout( type: .menu,
+                                                 viewClass: DefaultAdListMenuView.self,
+                                                 viewLayout: categoryMenuLayout)
+        
+    
+        
+        
+        let filterMenuLayout = AdListFilterViewLayout() // 필터 설정
+        // 선택된 필터메뉴
+        filterMenuLayout.itemButton.colorSelected = filterSelectedFontColor
+        filterMenuLayout.itemButton.backgroundSelected = filterSelectedBgColor
+        
+        // 선택안된 필터메뉴
+        filterMenuLayout.itemButton.colorNormal = filterNotSelectedFontColor
+        filterMenuLayout.itemButton.backgroundNormal = filterNotSelectedBgColor
+        
+        TnkLayout.shared.registerMenuViewLayout(type: .filter, viewClass: ScrollAdListMenuView.self, viewLayout: filterMenuLayout)
+        
+        
+        
+        
+        // 광고 상세 화면
+        let detailViewLayout = DefaultAdDetailViewLayout()
+        detailViewLayout.titleTitleLabel.color = adInfoTitleFontColor // 타이틀
+        detailViewLayout.titleDescLabel.color = adInfoDescFontColor // 액션
+        detailViewLayout.titlePointAmountLabel.color = adInfoPointAmtFontColor // 포인트 금액
+        detailViewLayout.titlePointUnitLabel.color = adInfoPointUnitFontColor // 포인트 단위
+        detailViewLayout.buttonFrameLayout.frameBackgroundColor = adInfoButtonBgColor // 버튼 색상
+        detailViewLayout.buttonFrameLayout.descLabel.color = adInfoButtonDescFontColor // 버튼 액션 폰트 색상
+        detailViewLayout.buttonFrameLayout.titleLabel.color = adInfoButtonTitleFontColor // 버튼 포인트금액, 포인트단위 폰트 색상
+        
+        
+        
+        
+//        // 버튼 프레임아웃 gradient 백그라운드 설정
+//        let gradient = CAGradientLayer()
+//        // default
+//        var startColor = TnkColor.semantic(UIColor.white.withAlphaComponent(1), UIColor.white.withAlphaComponent(1))
+//        var endColor = TnkColor.semantic(UIColor.white.withAlphaComponent(0), UIColor.white.withAlphaComponent(0))
+//        // dark mode
+//        if( adInfoButtonFramLayoutGradientOption == "D" ) {
+//            
+//            startColor = TnkColor.semantic(UIColor.black.withAlphaComponent(1), UIColor.black.withAlphaComponent(1))
+//            endColor = TnkColor.semantic(UIColor.black.withAlphaComponent(0), UIColor.black.withAlphaComponent(0))
+//        }
+//        gradient.colors = [startColor.cgColor, endColor.cgColor]
+//        gradient.locations = [0.85 , 1.0]
+//        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+//        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+//        detailViewLayout.buttonFrameLayout.backgroundGradient = gradient
+//        
+//        detailViewLayout.actionInfoLayout.iconImage.imageNormal = nil // 참여방식 아이콘 삭제
+//        detailViewLayout.joinInfoLayout.iconImage.imageNormal = nil // 유의사항 아이콘 삭제
+        
+        
+        TnkLayout.shared.detailViewLayout = detailViewLayout
+        
+        
     }
     
  
@@ -541,143 +660,250 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     
     
     
+ 
     
-    func setCustomUI(param:Dictionary<String,String>) {
-        
-        // Darkmode 를 지원하지 않으므로 앱의 info.plist 파일에 Appearance 항목을 light 로 설정한다.
-        
-        
-        let cateSelectedColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["category_select_font"]!))
-        let filterSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_background"]!))
-        let filterSelectedFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_font"]!))
-        let filterNotSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_not_select_background"]!))
-        let filterNotSelectedFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_not_select_font"]!))
-        let adListTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_title_font"]!))
-        let adListDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_desc_font"]!))
-        let adListPointUnitFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_point_unit_font"]!))
-        let adListPointAmtFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_point_amount_font"]!))
-        let adInfoTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_title_font"]!))
-        let adInfoDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_desc_font"]!))
-        let adInfoPointUnitFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_point_unit_font"]!))
-        let adInfoPointAmtFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_point_amount_font"]!))
-        let adInfoButtonBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_background"]!))
-        let pointIconImgName = param["point_icon_name"]!
-        let pointIconUseYn = param["point_icon_use_yn"]!
-        let adInfoButtonDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_desc_font"]!))
-        let adInfoButtonTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_title_font"]!))
-        let adInfoButtonFramLayoutGradientOption = param["adinfo_button_gradient_option"]
-        
-        
-        // 광고 리스트
-        let adListItemLayout = AdListItemViewLayout()
-        adListItemLayout.titleLabel.color = adListTitleFontColor
-        adListItemLayout.descLabel.color = adListDescFontColor
-        adListItemLayout.pointAmountLabel.color = adListPointAmtFontColor
-        adListItemLayout.pointUnitLabel.color = adListPointUnitFontColor
-        
-        if( pointIconImgName != "" ) {
-            adListItemLayout.pointIconImage.imageNormal = UIImage(named: pointIconImgName)
-        }
-        if( pointIconUseYn == "Y" ) {
-            adListItemLayout.pointUnitVisible = false
-        } else {
-            adListItemLayout.pointIconImage.imageNormal = nil // 아이콘 표시하지 않는다
-        }
-        TnkLayout.shared.registerItemViewLayout(type: .normal,
-                                                viewClass: DefaultAdListItemView.self,
-                                                viewLayout: adListItemLayout)
-        
-        
-        
-        // 카테고리 레이아웃
-        let categoryMenuLayout = AdListMenuViewLayout() // 카테고리 설정
-        categoryMenuLayout.itemButton.colorSelected = cateSelectedColor // 선택된 메뉴의 폰트 색상
-        TnkLayout.shared.registerMenuViewLayout( type: .menu,
-                                                 viewClass: DefaultAdListMenuView.self,
-                                                 viewLayout: categoryMenuLayout)
-        
-        
-        // 획득가능한 포인트 레이아웃
-        let offerwallMenuLayout = OfferWallMenuViewHeaderLayout()
-        TnkLayout.shared.registerMenuViewLayout( type: .sub1,
-                                                 viewClass: OfferWallMenuViewHeader.self,
-                                                 viewLayout: offerwallMenuLayout)
-        
-        
-        
-        TnkLayout.shared.menuMenuTypes = [.menu, .sub1]
-        TnkLayout.shared.menuPinToVisibleBounds = .menu // 카테고리 메뉴 고정
-        TnkLayout.shared.menuFilterHidden = true    // 필터메뉴는 숨긴다.
-        
-        
-        
-        
-        let filterMenuLayout = AdListFilterViewLayout() // 필터 설정
-        // 선택된 필터메뉴
-        filterMenuLayout.itemButton.colorSelected = filterSelectedFontColor
-        filterMenuLayout.itemButton.backgroundSelected = filterSelectedBgColor
-        
-        // 선택안된 필터메뉴
-        filterMenuLayout.itemButton.colorNormal = filterNotSelectedFontColor
-        filterMenuLayout.itemButton.backgroundNormal = filterNotSelectedBgColor
-        
-        TnkLayout.shared.registerMenuViewLayout(type: .filter, viewClass: ScrollAdListMenuView.self, viewLayout: filterMenuLayout)
-        
-        
-        
-        
-        // 광고 상세 화면
-        let detailViewLayout = DefaultAdDetailViewLayout()
-        detailViewLayout.titleTitleLabel.color = adInfoTitleFontColor // 타이틀
-        detailViewLayout.titleDescLabel.color = adInfoDescFontColor // 액션
-        detailViewLayout.titlePointAmountLabel.color = adInfoPointAmtFontColor // 포인트 금액
-        detailViewLayout.titlePointUnitLabel.color = adInfoPointUnitFontColor // 포인트 단위
-        detailViewLayout.buttonFrameLayout.frameBackgroundColor = adInfoButtonBgColor // 버튼 색상
-        detailViewLayout.buttonFrameLayout.descLabel.color = adInfoButtonDescFontColor // 버튼 액션 폰트 색상
-        detailViewLayout.buttonFrameLayout.titleLabel.color = adInfoButtonTitleFontColor // 버튼 포인트금액, 포인트단위 폰트 색상
-        
-        
-        
-        // 버튼 프레임아웃 gradient 백그라운드 설정
-        let gradient = CAGradientLayer()
-        // default
-        var startColor = TnkColor.semantic(UIColor.white.withAlphaComponent(1), UIColor.white.withAlphaComponent(1))
-        var endColor = TnkColor.semantic(UIColor.white.withAlphaComponent(0), UIColor.white.withAlphaComponent(0))
-        // dark mode
-        if( adInfoButtonFramLayoutGradientOption == "D" ) {
-            
-            startColor = TnkColor.semantic(UIColor.black.withAlphaComponent(1), UIColor.black.withAlphaComponent(1))
-            endColor = TnkColor.semantic(UIColor.black.withAlphaComponent(0), UIColor.black.withAlphaComponent(0))
-        }
-        gradient.colors = [startColor.cgColor, endColor.cgColor]
-        gradient.locations = [0.85 , 1.0]
-        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
-        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
-        detailViewLayout.buttonFrameLayout.backgroundGradient = gradient
-        
-        detailViewLayout.actionInfoLayout.iconImage.imageNormal = nil // 참여방식 아이콘 삭제
-        detailViewLayout.joinInfoLayout.iconImage.imageNormal = nil // 유의사항 아이콘 삭제
-        
-        // 포인트아이콘 사용시
-        if( pointIconUseYn == "Y" ) {
-            detailViewLayout.titlePointUnitVisible = false
-            detailViewLayout.buttonFrameLayout.pointUnitVisible = false
-            if( pointIconImgName != "" ) {
-                detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: pointIconImgName)// 상단 타이틀 point icon
-                detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: pointIconImgName)// 하단 버튼 point icon
-            }
-        } else {
-            // 포인트아이콘 미사용시
-            detailViewLayout.titlePointIconImage.imageNormal = nil // 타이틀 포인트 아이콘 제거
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil // 버튼 포인트아이콘 제거
-            detailViewLayout.buttonFrameLayout.pointUnitVisible = true // 버튼 포인트단위 활성
-        }
-        
-        TnkLayout.shared.detailViewLayout = detailViewLayout
-        
-        
-        
-    }
+//    private func customBodyUI(param:Dictionary<String,String>, type: LayoutType, viewClass: AnyClass, viewLayout:AdListItemViewLayout) {
+//        
+//        
+//        let adListTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_title_font"]!))
+//        let adListDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_desc_font"]!))
+//        let adListPointUnitFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_point_unit_font"]!))
+//        let adListPointAmtFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adlist_point_amount_font"]!))
+//        let pointIconDefault = param["point_icon_name"]!
+//        let option = param["option"]!
+//        
+//        
+//        
+//        
+//        
+//            switch option {
+//               
+//                // 재화 이이콘, 단위 둘다 표시
+//            case "1" :
+//                viewLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
+//                viewLayout.pointAmountFormat = "{point}{unit}"
+//                viewLayout.pointUnitVisible = false
+//                
+//
+//                // 재화 아이콘만 표시
+//            case "2" :
+//                viewLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
+//                viewLayout.pointUnitVisible = false
+//                
+//
+//                // 재화 단위만 표시
+//            case "3" :
+//                viewLayout.pointIconImage.imageNormal = nil
+//                viewLayout.pointAmountFormat = "{point}{unit}"
+//                viewLayout.pointUnitVisible = false
+//                
+//                
+//                // 둘다 표시 안함
+//            case "4" :
+//                viewLayout.pointIconImage.imageNormal = nil
+//                viewLayout.pointUnitVisible = false
+//                
+//       
+//            default:
+//                
+//                break
+//            }
+//        
+//        
+//        
+//        
+//        viewLayout.titleLabel.color = adListTitleFontColor
+//        viewLayout.descLabel.color = adListDescFontColor
+//        viewLayout.pointAmountLabel.color = adListPointAmtFontColor
+//        viewLayout.pointUnitLabel.color = adListPointUnitFontColor
+//        viewLayout.discountRateLabel.color = adListPointAmtFontColor
+//            
+//    
+//        
+//        TnkLayout.shared.registerItemViewLayout(type: type, viewClass: viewClass, viewLayout: viewLayout)
+//        
+//    }
+    
+    
+    
+//    func setCustomUIDefault(param:Dictionary<String,String>) {
+//
+//        let cateSelectedColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["category_select_font"]!))
+//        let filterSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_background"]!))
+//        let filterSelectedFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_font"]!))
+//        let filterNotSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_not_select_background"]!))
+//        let filterNotSelectedFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_not_select_font"]!))
+//        
+//        let adInfoTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_title_font"]!))
+//        let adInfoDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_desc_font"]!))
+//        let adInfoPointUnitFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_point_unit_font"]!))
+//        let adInfoPointAmtFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_point_amount_font"]!))
+//        let adInfoButtonBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_background"]!))
+//        let adInfoButtonDescFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_desc_font"]!))
+//        let adInfoButtonTitleFontColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["adinfo_button_title_font"]!))
+//        let adInfoButtonFramLayoutGradientOption = param["adinfo_button_gradient_option"]
+//        let pointIconDefault = param["point_icon_name"]!
+//        let pointIconSub = param["point_icon_name_sub"]!
+//        let option = param["option"]!
+//        
+//        
+//        // 카테고리 레이아웃
+//        let categoryMenuLayout = AdListMenuViewLayout()
+//        // 선택된 메뉴의 폰트 색상
+//        categoryMenuLayout.itemButton.colorSelected = cateSelectedColor
+//        TnkLayout.shared.registerMenuViewLayout( type: .menu,
+//                                                 viewClass: DefaultAdListMenuView.self,
+//                                                 viewLayout: categoryMenuLayout)
+//        
+//        
+//        // 필터 레이아웃
+//        let filterMenuLayout = AdListFilterViewLayout()
+//        // 선택된 필터메뉴
+//        filterMenuLayout.itemButton.colorSelected = filterSelectedFontColor
+//        filterMenuLayout.itemButton.backgroundSelected = filterSelectedBgColor
+//        
+//        // 선택안된 필터메뉴
+//        filterMenuLayout.itemButton.colorNormal = filterNotSelectedFontColor
+//        filterMenuLayout.itemButton.backgroundNormal = filterNotSelectedBgColor
+//        
+//        TnkLayout.shared.registerMenuViewLayout( type: .filter,
+//                                                 viewClass: ScrollAdListMenuView.self,
+//                                                 viewLayout: filterMenuLayout)
+//        
+//        
+//        
+//        
+//        
+//        // 일반광고 viewLayout
+//        let adListItemLayout = AdListItemViewLayout()
+//        customBodyUI(param:param, type:.normal, viewClass:DefaultAdListItemView.self, viewLayout:adListItemLayout)
+//        
+//        let feedAdItemPageViewLayout = FeedAdItemPageViewLayout()
+//        customBodyUI(param:param, type:.promotion, viewClass:FeedAdListItemView.self, viewLayout:feedAdItemPageViewLayout)
+//        
+//        let roundAdItemPageViewLayout = RoundAdItemPageViewLayout()
+//        customBodyUI(param:param, type:.newapps, viewClass:RightIconAdListItemView.self, viewLayout:roundAdItemPageViewLayout)
+//        
+//        let feedAdItemScrollViewLayout = FeedAdItemScrollViewLayout()
+//        customBodyUI(param:param, type:.suggest, viewClass:FeedAdListItemView.self, viewLayout:feedAdItemScrollViewLayout)
+//        
+//        let iconOnlyAdItemScrollViewLayout = IconOnlyAdItemScrollViewLayout()
+//        customBodyUI(param:param, type:.multi, viewClass:IconOnlyAdListItemView.self, viewLayout:iconOnlyAdItemScrollViewLayout)
+//        
+//        
+//        // 구매형 viewLayout
+//        let cpsBoxItemViewLayout = CpsBoxItemViewLayout()
+//        customBodyUI(param:param, type:.cpslist, viewClass:CpsBoxItemView.self, viewLayout:cpsBoxItemViewLayout)
+//        
+//        let cpsBoxItemScrollViewLayout = CpsBoxItemScrollViewLayout()
+//        customBodyUI(param:param, type:.favorite, viewClass:CpsBoxItemView.self, viewLayout:cpsBoxItemScrollViewLayout)
+//        customBodyUI(param:param, type:.recommend, viewClass:CpsBoxItemView.self, viewLayout:cpsBoxItemScrollViewLayout)
+//        
+//        
+//        let cpsListItemPageViewLayout = CpsListItemPageViewLayout()
+//        customBodyUI(param:param, type:.popular, viewClass:CpsListItemView.self, viewLayout:cpsListItemPageViewLayout)
+//        customBodyUI(param:param, type:.reward, viewClass:CpsListItemView.self, viewLayout:cpsListItemPageViewLayout)
+//        
+//        let cpsBoxItemPageGrayLayout = CpsBoxItemPageGrayLayout()
+//        customBodyUI(param:param, type:.newitem, viewClass:CpsBoxItemView.self, viewLayout:cpsBoxItemPageGrayLayout)
+//        
+//        let noCpsItemViewLayout = NoCpsItemViewLayout()
+//        customBodyUI(param:param, type:.nocps, viewClass:CpsBoxItemView.self, viewLayout:noCpsItemViewLayout)
+//        
+//        
+//         
+//
+//        // 광고 상세 화면
+//        let detailViewLayout = DefaultAdDetailViewLayout()
+//        detailViewLayout.titleTitleLabel.color = adInfoTitleFontColor // 타이틀
+//        detailViewLayout.titleDescLabel.color = adInfoDescFontColor // 액션
+//        detailViewLayout.titlePointAmountLabel.color = adInfoPointAmtFontColor // 포인트 금액
+//        detailViewLayout.titlePointUnitLabel.color = adInfoPointUnitFontColor // 포인트 단위
+//        detailViewLayout.titlePointIconImage.imageNormal = UIImage(named:pointIconDefault)
+//        
+//        
+//
+//        detailViewLayout.buttonFrameLayout.frameBackgroundColor = adInfoButtonBgColor // 버튼 색상
+//        detailViewLayout.buttonFrameLayout.descLabel.color = adInfoButtonDescFontColor // 버튼 액션 폰트 색상
+//        detailViewLayout.buttonFrameLayout.titleLabel.color = adInfoButtonTitleFontColor // 버튼 포인트금액, 포인트단위 폰트 색상
+//        detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: pointIconSub)
+//        
+//        
+//        
+//        
+//        
+//        
+//        switch option {
+//           
+//            // 재화 이이콘, 단위 둘다 표시
+//        case "1" :
+//           
+//            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: pointIconDefault)
+//            detailViewLayout.pointAmountFormat = "{point}{unit}"
+//            detailViewLayout.titlePointUnitVisible = false
+//            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: pointIconSub)
+//            detailViewLayout.buttonFrameLayout.pointAmountFormat = "{point}{unit}"
+//            detailViewLayout.buttonFrameLayout.pointUnitVisible = false
+//            
+//            
+//           
+//            // 재화 아이콘만 표시
+//        case "2" :
+//            
+//            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: pointIconDefault)
+//            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: pointIconSub)
+//            detailViewLayout.titlePointUnitVisible = false
+//            detailViewLayout.buttonFrameLayout.pointUnitVisible = false
+//            
+//        
+//            // 재화 단위만 표시
+//        case "3" :
+//
+//            detailViewLayout.titlePointIconImage.imageNormal = nil
+//            detailViewLayout.pointAmountFormat = "{point}{unit}"
+//            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
+//            detailViewLayout.buttonFrameLayout.pointAmountFormat = "{point}{unit}"
+//            detailViewLayout.titlePointUnitVisible = false
+//            detailViewLayout.buttonFrameLayout.pointUnitVisible = false
+//            
+//    
+//            // 둘다 표시 안함
+//        case "4" :
+//
+//            detailViewLayout.titlePointIconImage.imageNormal = nil
+//            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
+//            detailViewLayout.titlePointUnitVisible = false
+//            detailViewLayout.buttonFrameLayout.pointUnitVisible = false
+//            
+//         
+//            
+//        default:
+//            
+//            break
+//        }
+//        
+//
+//        // 버튼 프레임아웃 gradient 백그라운드 설정
+//        let gradient = CAGradientLayer()
+//        // default
+//        var startColor = TnkColor.semantic(UIColor.white.withAlphaComponent(1), UIColor.white.withAlphaComponent(1))
+//        var endColor = TnkColor.semantic(UIColor.white.withAlphaComponent(0), UIColor.white.withAlphaComponent(0))
+//        // dark mode
+//        if( adInfoButtonFramLayoutGradientOption == "D" ) {
+//            
+//            startColor = TnkColor.semantic(UIColor.black.withAlphaComponent(1), UIColor.black.withAlphaComponent(1))
+//            endColor = TnkColor.semantic(UIColor.black.withAlphaComponent(0), UIColor.black.withAlphaComponent(0))
+//        }
+//        gradient.colors = [startColor.cgColor, endColor.cgColor]
+//        gradient.locations = [0.85 , 1.0]
+//        gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+//        gradient.endPoint = CGPoint(x: 0.0, y: 0.0)
+//        detailViewLayout.buttonFrameLayout.backgroundGradient = gradient
+//        
+//        
+//        TnkLayout.shared.detailViewLayout = detailViewLayout
+//
+//    }
     
     
     // Color hexString -> Int
