@@ -169,8 +169,22 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
                 }
             }
             break;
+        case "closeAllView":
+            if let viewController{
+                closeAllView(viewController: viewController)
+            }
+            result("success")
+            break;
+        case "closeOfferwall":
+            if let viewController{
+                closeOfferwall(viewController: viewController)
+            }
+            result("success")
+            break;
         case "closeAdDetail":
-            SwiftTnkFlutterRwdPlugin.placementView?.closeAdItem()
+            if let viewController{
+                closeAdItem(viewController: viewController)
+            }
             result("success")
             break;
         case "getPlacementJsonData":
@@ -255,18 +269,12 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         vc.title = pTitle
         vc.offerwallListener = listener
         
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = TnkUINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .fullScreen
         //        navController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         navController.navigationBar.titleTextAttributes = [.foregroundColor: TnkColor.semantic(argb1: 0xff505050, argb2: 0xffd3d3d3)]
-        
         viewController.present(navController, animated: true)
-        
-       
-        
-//        vc.dismiss(animated: true)
-        
-        
+
         
     }
     
@@ -948,6 +956,37 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         return newImage
     }
     
+    public func closeAllView(viewController:UIViewController){
+        viewController.dismiss(animated: false)
+    }
+//    public func closeOfferwall(viewController:UIViewController){
+//        if let presentVC = viewController.presentedViewController
+//        {
+//            print(String(describing: presentVC.frameworkName))
+//            if(presentVC.frameworkName == "TnkRwdSdk2" || presentVC.self is TnkUINavigationController){
+//                viewController.dismiss(animated: false)
+//            }
+//        }
+//    }
+    public func closeOfferwall(viewController:UIViewController){
+        if let presentVC = viewController.presentedViewController
+        {
+            print(String(describing: presentVC.frameworkName))
+            if(presentVC.self is TnkUINavigationController){
+                viewController.dismiss(animated: false)
+            }
+        }
+    }
+    public func closeAdItem(viewController:UIViewController){
+        if let presentVC = viewController.presentedViewController
+        {
+            print(String(describing: presentVC.frameworkName))
+            if(presentVC.frameworkName == "TnkRwdSdk2"){
+                viewController.dismiss(animated: false)
+            }
+        }
+    }
+    
     
     
 }
@@ -961,6 +1000,10 @@ extension UIViewController {
         }
         return nil
     }
+}
+
+class TnkUINavigationController: UINavigationController{
+    
 }
 
 public class FlutterPlacementView : NSObject, PlacementEventListener{
@@ -998,24 +1041,7 @@ public class FlutterPlacementView : NSObject, PlacementEventListener{
         TnkStrings.shared.need_att_allow = "추적허용이 활성화되어야 참여가 가능한 광고입니다.\n\n[설정 > \(appName) > 추적 허용 > 켜기]"
     }
 
-    public func closeAdItem(){
-        if let presentVC = rootViewContorller?.presentedViewController
-        {
-            print(String(describing: presentVC.frameworkName))
-            if( presentVC.frameworkName == "TnkRwdSdk2"){
-                rootViewContorller?.dismiss(animated: false)
-            }
-        }
-//        if let presentVC = rootViewController.presentedViewController
-//                    {
-//                        print(String(describing: presentVC.frameworkName))
-//                        
-//                        
-//                    }
-//        if(rootViewContorller?.children.count ?? 0 > 0){
-//            rootViewContorller?.dismiss(animated: false)
-//        }
-    }
+    
     
     
     

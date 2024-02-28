@@ -95,6 +95,16 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
   @override
+  Future<String?>closeAllView() async {
+    final version = await methodChannel.invokeMethod<String>('closeAllView');
+    return version;
+  }
+  @override
+  Future<String?>closeOfferwall() async {
+    final version = await methodChannel.invokeMethod<String>('closeOfferwall');
+    return version;
+  }
+  @override
   Future<String?>closeAdDetail() async {
     final version = await methodChannel.invokeMethod<String>('closeAdDetail');
     return version;

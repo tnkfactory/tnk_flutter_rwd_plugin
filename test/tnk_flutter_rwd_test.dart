@@ -86,6 +86,20 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> closeAllView() {
+    throw UnimplementedError();
+  }
+  @override
+  Future<String?> closeOfferwall() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> setCustomUIDefault(HashMap<String, String> map) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {
