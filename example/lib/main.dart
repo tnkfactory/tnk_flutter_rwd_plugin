@@ -68,7 +68,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
   final int _cost = 2;
 
   int _selectedIndex = 0;
-  String _tnkResult = "";
 
 
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
@@ -335,12 +334,12 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
         // 2 - 재화 아이콘만 표시
         // 3 - 재화 단위만 표시
         // 4 - 둘다 표시 안함
-        "option":type,
+        "option":"2",
 
 
         // 포인트 아이콘 이미지 이름
-        "point_icon_name":"apart_i_blue",
-        "point_icon_name_sub":"apart_i_white"
+        // "point_icon_name":"star_icon",
+        // "point_icon_name_sub":"star_icon_white"
       });
       await _tnkFlutterRwdPlugin.setCustomUnitIcon(paramMap);
 
