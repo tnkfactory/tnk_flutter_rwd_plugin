@@ -169,8 +169,22 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
                 }
             }
             break;
+        case "closeAllView":
+            if let viewController{
+                closeAllView(viewController: viewController)
+            }
+            result("success")
+            break;
+        case "closeOfferwall":
+            if let viewController{
+                closeOfferwall(viewController: viewController)
+            }
+            result("success")
+            break;
         case "closeAdDetail":
-            SwiftTnkFlutterRwdPlugin.placementView?.closeAdItem()
+            if let viewController{
+                closeAdItem(viewController: viewController)
+            }
             result("success")
             break;
         case "getPlacementJsonData":
@@ -255,18 +269,12 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         vc.title = pTitle
         vc.offerwallListener = listener
         
-        let navController = UINavigationController(rootViewController: vc)
+        let navController = TnkUINavigationController(rootViewController: vc)
         navController.modalPresentationStyle = .fullScreen
         //        navController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         navController.navigationBar.titleTextAttributes = [.foregroundColor: TnkColor.semantic(argb1: 0xff505050, argb2: 0xffd3d3d3)]
-        
         viewController.present(navController, animated: true)
-        
-       
-        
-//        vc.dismiss(animated: true)
-        
-        
+
         
     }
     
@@ -294,96 +302,44 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         // 3 - 재화 단위만 표시
         // 4 - 둘다 표시 안함
         let option = param["option", default: "2"]
-        let defPointIconImage = param["point_icon_name"]!
-        let subPointIconImage = param["point_icon_name_sub"]!
         
         
-        
-    
+        // 재화 아이콘, 단위 표시 처리
         switch option {
-           
-            // 재화 이이콘, 단위 둘다 표시
-        case "1" :
-            
-            // 광고 리스트 제어
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
-            TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
-            TnkStyles.shared.adListItem.pointUnitVisible = false
-            
-            
-            
-            // 광고상세 제어
-            let detailViewLayout = TnkLayout.shared.detailViewLayout
-            
-            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
-            detailViewLayout.pointAmountFormat = "{point}{unit}"
-            detailViewLayout.titlePointUnitVisible = false
-            
-            TnkLayout.shared.detailViewLayout = detailViewLayout
-            
-            
-            return true
-            
-            
-            
-            // 재화 아이콘만 표시
-        case "2" :
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
-            TnkStyles.shared.adListItem.pointUnitVisible = false
-            
-            // 광고상세 제어
-            let detailViewLayout = TnkLayout.shared.detailViewLayout
-            
-            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
-            detailViewLayout.titlePointUnitVisible = false
-            
-            TnkLayout.shared.detailViewLayout = detailViewLayout
-            
-            return true
-            
-            
-            // 재화 단위만 표시
-        case "3" :
-            
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil
-            TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
-            TnkStyles.shared.adListItem.pointUnitVisible = false
-            
-            // 광고상세 제어
-            let detailViewLayout = TnkLayout.shared.detailViewLayout
-            detailViewLayout.titlePointIconImage.imageNormal = nil
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
-            detailViewLayout.pointAmountFormat = "{point}{unit}"
-            detailViewLayout.titlePointUnitVisible = false
-            
-            TnkLayout.shared.detailViewLayout = detailViewLayout
-            
-            return true
-            
-            // 둘다 표시 안함
-        case "4" :
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil
-            TnkStyles.shared.adListItem.pointUnitVisible = false
-            
-            // 광고상세 제어
-            let detailViewLayout = TnkLayout.shared.detailViewLayout
-            detailViewLayout.titlePointIconImage.imageNormal = nil
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
-            detailViewLayout.titlePointUnitVisible = false
-            
-            TnkLayout.shared.detailViewLayout = detailViewLayout
-            
-            return true
-            
-        default:
-            
-            break
+            case "1" : // 모두 표시
+                TnkStyles.shared.adListItem.pointUnitVisible = true
+                TnkLayout.shared.detailViewLayout.titlePointUnitVisible = true
+                TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
+                break;
+            case "2" : // 재화 아이콘만 표시
+                TnkStyles.shared.adListItem.pointUnitVisible = true
+                TnkLayout.shared.detailViewLayout.titlePointUnitVisible = true
+                TnkStyles.shared.adListItem.pointAmountFormat = "{point}"
+                break;
+            case "3" : // 재화 단위만 표시
+                TnkStyles.shared.adListItem.pointUnitVisible = false
+                TnkLayout.shared.detailViewLayout.titlePointUnitVisible = false
+                TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
+                break;
+            case "4" : // 둘다 표시 안함
+                TnkStyles.shared.adListItem.pointUnitVisible = false
+                TnkLayout.shared.detailViewLayout.titlePointUnitVisible = false
+                TnkStyles.shared.adListItem.pointAmountFormat = "{point}"
+                break;
+            default:
+                break;
         }
-    
         
+        let detailViewLayout = TnkLayout.shared.detailViewLayout
+        if let defPointIconImage = param["point_icon_name"] {
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)    
+            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
+        }
+        if let subPointIconImage = param["point_icon_name_sub"] {
+            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
+        }
         
+        TnkLayout.shared.detailViewLayout = detailViewLayout
         return false
     }
     
@@ -948,11 +904,55 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         return newImage
     }
     
+    public func closeAllView(viewController:UIViewController){
+        viewController.dismiss(animated: false)
+    }
+//    public func closeOfferwall(viewController:UIViewController){
+//        if let presentVC = viewController.presentedViewController
+//        {
+//            print(String(describing: presentVC.frameworkName))
+//            if(presentVC.frameworkName == "TnkRwdSdk2" || presentVC.self is TnkUINavigationController){
+//                viewController.dismiss(animated: false)
+//            }
+//        }
+//    }
+    public func closeOfferwall(viewController:UIViewController){
+        if let presentVC = viewController.presentedViewController
+        {
+            print(String(describing: presentVC.frameworkName))
+            if(presentVC.self is TnkUINavigationController){
+                viewController.dismiss(animated: false)
+            }
+        }
+    }
+    public func closeAdItem(viewController:UIViewController){
+        if let presentVC = viewController.presentedViewController
+        {
+            print(String(describing: presentVC.frameworkName))
+            if(presentVC.frameworkName == "TnkRwdSdk2"){
+                viewController.dismiss(animated: false)
+            }
+        }
+    }
+    
     
     
 }
 
+extension UIViewController {
+    var frameworkName: String? {
+        let className = NSStringFromClass(type(of: self))
+        if let range = className.range(of: ".", options: .backwards) {
+            let frameworkName = String(className[..<range.lowerBound])
+            return frameworkName
+        }
+        return nil
+    }
+}
 
+class TnkUINavigationController: UINavigationController{
+    
+}
 
 public class FlutterPlacementView : NSObject, PlacementEventListener{
     
@@ -983,12 +983,13 @@ public class FlutterPlacementView : NSObject, PlacementEventListener{
         let adid:Int? = Int(appid)
         placementView?.onItemClick(appId: adid!, completion:callback)
     }
-    
-    public func closeAdItem(){
-        if(rootViewContorller?.children.count ?? 0 > 0){
-            rootViewContorller?.dismiss(animated: false)
-        }
+
+    public func setAttAlertMsg(){
+        let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? "앱이름"
+        TnkStrings.shared.need_att_allow = "추적허용이 활성화되어야 참여가 가능한 광고입니다.\n\n[설정 > \(appName) > 추적 허용 > 켜기]"
     }
+
+    
     
     
     

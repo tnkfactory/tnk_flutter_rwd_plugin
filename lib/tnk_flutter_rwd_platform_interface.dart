@@ -86,6 +86,12 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<String?> closeAdDetail() {
     throw UnimplementedError('closeAdDetail has not benn implemented');
   }
+  Future<String?> closeAllView() {
+    throw UnimplementedError('closeAllView has not benn implemented');
+  }
+  Future<String?> closeOfferwall() {
+    throw UnimplementedError('closeOfferwall has not benn implemented');
+  }
 
 
 }

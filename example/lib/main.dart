@@ -1,6 +1,5 @@
 import 'dart:collection';
 import 'dart:convert';
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -48,6 +47,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       // 앱이 활성화 될때
       print('앱이 활성화 될때');
       _tnkFlutterRwdPlugin.closeAdDetail();
+      _tnkFlutterRwdPlugin.closeOfferwall();
     } else if (state == AppLifecycleState.inactive) {
       // 앱이 비활성화 될때
       print('앱이 비활성화 될때');
@@ -68,6 +68,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
   final int _cost = 2;
 
   int _selectedIndex = 0;
+  String _tnkResult = "";
 
 
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
@@ -98,11 +99,18 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       platformVersion = 'Failed to get platform version.';
     }
 
+    sleepAndClose();
     if (!mounted) return;
 
     setState(() {
       _tnkResult = platformVersion;
     });
+  }
+
+  Future<void> sleepAndClose() async {
+    sleep(const Duration(seconds: 10));
+    _tnkFlutterRwdPlugin.closeAdDetail();
+    _tnkFlutterRwdPlugin.closeOfferwall();
   }
 
   Future<void> showATTPopup() async {
@@ -121,9 +129,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       point = 0;
     }
 
-    setState(() {
-      _myPoint = point;
-    });
+    // setState(() {
+    //   _myPoint = point;
+    // });
   }
 
   Future<void> test() async {
@@ -182,6 +190,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       await _tnkFlutterRwdPlugin.onItemClick(appId);
       // sleep(const Duration(seconds:5));
       // _tnkFlutterRwdPlugin.closeAdDetail();
+
+      sleep(const Duration(seconds: 10));
+      _tnkFlutterRwdPlugin.closeAdDetail();
+      _tnkFlutterRwdPlugin.closeOfferwall();
     } on Exception {
       return;
     }
@@ -210,9 +222,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       point = 0;
     }
 
-    setState(() {
-      _queryPoint = point;
-    });
+    // setState(() {
+    //   _queryPoint = point;
+    // });
   }
 
   Future<void> purchaseItem(String itemId, int cost) async {
@@ -350,7 +362,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
     List<DataRow> cells = [];
     cells = adList
         .map((e) => DataRow(cells: [
-              DataCell(Image(image: NetworkImage(e.img_url), width: 100,), onLongPress: () {
+              DataCell(Container(
+                  width: 70, //SET width
+                  child: Image(image: NetworkImage(e.img_url), width: 70,)), onLongPress: () {
                 onAdItemClick(e.app_id.toString());
               },),
               DataCell(Text(e.app_nm,),),
