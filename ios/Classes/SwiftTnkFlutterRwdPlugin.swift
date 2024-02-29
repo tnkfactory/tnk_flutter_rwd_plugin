@@ -302,96 +302,44 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
         // 3 - 재화 단위만 표시
         // 4 - 둘다 표시 안함
         let option = param["option", default: "2"]
-        let defPointIconImage = param["point_icon_name"]!
-        let subPointIconImage = param["point_icon_name_sub"]!
         
         
-        
-    
+        // 재화 아이콘, 단위 표시 처리
         switch option {
-           
-            // 재화 이이콘, 단위 둘다 표시
-        case "1" :
-            
-            // 광고 리스트 제어
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
-            TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
-            TnkStyles.shared.adListItem.pointUnitVisible = false
-            
-            
-            
-            // 광고상세 제어
-            let detailViewLayout = TnkLayout.shared.detailViewLayout
-            
-            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
-            detailViewLayout.pointAmountFormat = "{point}{unit}"
-            detailViewLayout.titlePointUnitVisible = false
-            
-            TnkLayout.shared.detailViewLayout = detailViewLayout
-            
-            
-            return true
-            
-            
-            
-            // 재화 아이콘만 표시
-        case "2" :
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)
-            TnkStyles.shared.adListItem.pointUnitVisible = false
-            
-            // 광고상세 제어
-            let detailViewLayout = TnkLayout.shared.detailViewLayout
-            
-            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
-            detailViewLayout.titlePointUnitVisible = false
-            
-            TnkLayout.shared.detailViewLayout = detailViewLayout
-            
-            return true
-            
-            
-            // 재화 단위만 표시
-        case "3" :
-            
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil
-            TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
-            TnkStyles.shared.adListItem.pointUnitVisible = false
-            
-            // 광고상세 제어
-            let detailViewLayout = TnkLayout.shared.detailViewLayout
-            detailViewLayout.titlePointIconImage.imageNormal = nil
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
-            detailViewLayout.pointAmountFormat = "{point}{unit}"
-            detailViewLayout.titlePointUnitVisible = false
-            
-            TnkLayout.shared.detailViewLayout = detailViewLayout
-            
-            return true
-            
-            // 둘다 표시 안함
-        case "4" :
-            TnkStyles.shared.adListItem.pointIconImage.imageNormal = nil
-            TnkStyles.shared.adListItem.pointUnitVisible = false
-            
-            // 광고상세 제어
-            let detailViewLayout = TnkLayout.shared.detailViewLayout
-            detailViewLayout.titlePointIconImage.imageNormal = nil
-            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = nil
-            detailViewLayout.titlePointUnitVisible = false
-            
-            TnkLayout.shared.detailViewLayout = detailViewLayout
-            
-            return true
-            
-        default:
-            
-            break
+            case "1" : // 모두 표시
+                TnkStyles.shared.adListItem.pointUnitVisible = true
+                TnkLayout.shared.detailViewLayout.titlePointUnitVisible = true
+                TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
+                break;
+            case "2" : // 재화 아이콘만 표시
+                TnkStyles.shared.adListItem.pointUnitVisible = true
+                TnkLayout.shared.detailViewLayout.titlePointUnitVisible = true
+                TnkStyles.shared.adListItem.pointAmountFormat = "{point}"
+                break;
+            case "3" : // 재화 단위만 표시
+                TnkStyles.shared.adListItem.pointUnitVisible = false
+                TnkLayout.shared.detailViewLayout.titlePointUnitVisible = false
+                TnkStyles.shared.adListItem.pointAmountFormat = "{point}{unit}"
+                break;
+            case "4" : // 둘다 표시 안함
+                TnkStyles.shared.adListItem.pointUnitVisible = false
+                TnkLayout.shared.detailViewLayout.titlePointUnitVisible = false
+                TnkStyles.shared.adListItem.pointAmountFormat = "{point}"
+                break;
+            default:
+                break;
         }
-    
         
+        let detailViewLayout = TnkLayout.shared.detailViewLayout
+        if let defPointIconImage = param["point_icon_name"] {
+            TnkStyles.shared.adListItem.pointIconImage.imageNormal = UIImage(named: defPointIconImage)    
+            detailViewLayout.titlePointIconImage.imageNormal = UIImage(named: defPointIconImage)
+        }
+        if let subPointIconImage = param["point_icon_name_sub"] {
+            detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: subPointIconImage)
+        }
         
+        TnkLayout.shared.detailViewLayout = detailViewLayout
         return false
     }
     
