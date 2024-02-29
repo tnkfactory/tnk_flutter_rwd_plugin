@@ -61,6 +61,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
   }
 
 
+  String _tnkResult = 'Unknown';
+  int _myPoint = 0;
+  int _queryPoint = 0;
   final String _itemId = "item.0001";
   final int _cost = 2;
 
@@ -255,7 +258,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
         // 선택안한 필터 배경색
         "filter_not_select_background": "#FFFFFF",
         // 광고상세페이지 광고타이틀 폰트 컬러
-        "adinfo_title_font": "#26DACA",
+        "adinfo_title_font": "#161A1B",
         // 광고상세페이지 광고액션 폰트 컬러
         "adinfo_desc_font": "#26DACA",
         // 광고상세페이지 포인트 단위 컬러
@@ -268,11 +271,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
         "adinfo_button_title_font": "#FFFFFF",
         // 광고상세페이지 버튼 백그라운드 컬러
         "adinfo_button_desc_font": "#FFFFFF",
-
         "adinfo_button_gradient_option": "L",
-
         // 광고리스트 광고타이틀 폰트 컬러
-        "adlist_title_font":"#26DACA",
+        "adlist_title_font":"#161A1B",
         // 광고리스트 광고액션 폰트 컬러
         "adlist_desc_font":"#515151",
         // 광고리스트 포인트 단위 폰트 컬러

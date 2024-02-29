@@ -86,6 +86,12 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> setCustomUIDefault(HashMap<String, String> map) {
+    // TODO: implement setCustomUIDefault
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {
