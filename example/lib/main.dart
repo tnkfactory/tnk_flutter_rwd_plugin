@@ -83,7 +83,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
     });
   }
 
-
   Future<void> showAdList() async {
     String platformVersion;
 
@@ -98,7 +97,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       platformVersion = 'Failed to get platform version.';
     }
 
-    sleepAndClose();
+    // sleepAndClose();
     if (!mounted) return;
 
     setState(() {

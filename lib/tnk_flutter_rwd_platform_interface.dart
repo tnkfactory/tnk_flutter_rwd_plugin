@@ -31,7 +31,7 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> showAdList(String title) {
+  Future<String?> showAdList(String title, [int appId = 0]) {
     throw UnimplementedError('showAdList() has not been implemented.');
   }
 

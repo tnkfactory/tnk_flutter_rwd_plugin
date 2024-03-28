@@ -71,8 +71,12 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "showAdList" -> {
-                    offerwall.startOfferwallActivity(mActivity)
-//                    TnkSession.showAdListByType(mActivity, call.argument("title") ?: "충전소", AdListType.ALL, AdListType.PPI, AdListType.CPS)
+                    var appId = call.argument("app_id") ?: 0
+                    if (appId != 0) {
+                        offerwall.startOfferwallActivity(mActivity, appId.toLong())
+                    } else {
+                        offerwall.startOfferwallActivity(mActivity)
+                    }
                     result.success("success")
                 }
 
@@ -213,6 +217,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
             }
         } catch (e: Exception) {
+            e.printStackTrace()
             result.success(e.message)
         }
     }

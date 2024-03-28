@@ -18,8 +18,8 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
   @override
-  Future<String?> showAdList(String title) async {
-    final version = await methodChannel.invokeMethod<String>('showAdList', <String, dynamic>{ "title": title });
+  Future<String?> showAdList(String title, [int appId = 0]) async {
+    final version = await methodChannel.invokeMethod<String>('showAdList', <String, dynamic>{ "title": title, "app_id": appId });
     return version;
   }
   @override

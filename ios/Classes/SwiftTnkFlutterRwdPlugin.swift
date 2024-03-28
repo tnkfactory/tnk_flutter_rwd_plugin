@@ -4,7 +4,7 @@ import TnkRwdSdk2
 
 
 
-public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
+public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventListener {
     
     static var channel:FlutterMethodChannel? = nil
     static var placementView:FlutterPlacementView? = nil
@@ -38,12 +38,16 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
             
             
         case "showAdList":
-            if let args = call.arguments as? Dictionary<String, Any>,
-               let title = args["title"] as? String {
-                showOfferwall(viewController: viewController!, pTitle: title, listener:self)
-                
-            } else{
-                showOfferwall(viewController: viewController!, pTitle: "무료충전소", listener:self)
+            if let args = call.arguments as? Dictionary<String, Any>{
+                if let title = args["title"] as? String {
+                    showOfferwall(viewController: viewController!, pTitle: title, listener:self)
+                    
+                } else{
+                    showOfferwall(viewController: viewController!, pTitle: "무료충전소", listener:self)
+                }
+                if let appId = args["app_id"] as? Int {
+                    targetAppId = appId
+                }
             }
             
             result("success")
@@ -83,7 +87,6 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
                 (count, point) in
                 result( point )
             }
-            
             break;
             
         case "setNoUsePointIcon" :
@@ -265,18 +268,52 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin {
     }
     
     func showOfferwall(viewController:UIViewController, pTitle:String, listener:OfferwallEventListener) {
-        let vc = AdOfferwallViewController()
-        vc.title = pTitle
-        vc.offerwallListener = listener
+        vc = AdOfferwallViewController()
+        vc!.title = pTitle
+        vc!.offerwallListener = listener
         
-        let navController = TnkUINavigationController(rootViewController: vc)
+        let navController = TnkUINavigationController(rootViewController: vc!)
         navController.modalPresentationStyle = .fullScreen
         //        navController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         navController.navigationBar.titleTextAttributes = [.foregroundColor: TnkColor.semantic(argb1: 0xff505050, argb2: 0xffd3d3d3)]
         viewController.present(navController, animated: true)
-
         
     }
+    
+    var vc:AdOfferwallViewController? = nil
+    var targetAppId:Int = 0
+
+    public func didOfferwallRemoved() {
+        print("closed")
+        SwiftTnkFlutterRwdPlugin.channel?.invokeMethod("didOfferwallRemoved", arguments:"success")
+    }
+    
+    public func didAdDataLoaded(headerMessage: String?, totalPoint: Int, totalCount: Int, multiRewardPoint: Int, multiRewardCount: Int) {
+        if(targetAppId != 0){
+            TnkSession.sharedInstance()?.presentAdDetailView(vc!, appId: targetAppId, fullscreen: false) {
+                (isOkay) in
+            }
+        }
+        targetAppId = 0
+    }
+    
+    public func didMenuSelected(menuId: Int, menuName:String, filterId: Int, filterName:String) {
+        print("### menuId: \(menuId) \(menuName), filterId: \(filterId) \(filterName)")
+    }
+    
+    public func didAdItemClicked(appId: Int, appName: String) {
+        print("### adItem: \(appId) \(appName)")
+    }
+    
+    public func didDetailViewShow(appId: Int, appName: String) {
+        print("#### detailView show \(appId) \(appName)")
+    }
+    
+    public func didActionButtonClicked(appId: Int, appName: String) {
+        print("#### action button clicked \(appId) \(appName)")
+    }
+    
+    
     
     func setNoUsePoinIcon() {
         
