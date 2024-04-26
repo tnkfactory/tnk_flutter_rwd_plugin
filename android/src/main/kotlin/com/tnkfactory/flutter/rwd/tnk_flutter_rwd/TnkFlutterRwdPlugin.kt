@@ -166,16 +166,28 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
                     placementView.placementEventListener = object : PlacementEventListener {
                         override fun didAdDataLoaded(placementId: String, customData: String?) {
-//                            result.success(placementView.getAdListJson())
+                            try {
+                                if (placementView.adList.size > 1) {
+                                    JSONObject().apply {
+                                        put("pub_info", JSONObject(placementView.getPubInfoJson()))
+                                        put("ad_list", JSONArray(placementView.getAdListJson()))
+                                        put("res_code", "1")
+                                        put("res_message", "success")
+                                    }.also {
+                                        result.success(it.toString())
+                                    }
+                                    return
+                                }
+                            } catch (e: Exception) {
+
+                            }
                             JSONObject().apply {
-                                put("pub_info", JSONObject(placementView.getPubInfoJson()))
-                                put("ad_list", JSONArray(placementView.getAdListJson()))
-                                put("res_code", "1")
-                                put("res_message", "success")
+                                put("res_code", "-99")
+                                put("res_message", "광고 로드 실패 id " + placementId)
                             }.also {
                                 result.success(it.toString())
                             }
-
+                            return
                         }
 
                         override fun didAdItemClicked(appId: String, appName: String) {

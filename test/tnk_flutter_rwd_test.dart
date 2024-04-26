@@ -15,7 +15,7 @@ class MockTnkFlutterRwdPlatform
   Future<String?> getPlatformVersion() => Future.value('42');
 
   @override
-  Future<String?> showAdList(String title) => Future.value('onShow');
+  Future<String?> showAdList(String title, [int appId = 0]) => Future.value('onShow');
   @override
   Future<String?> setUserName(String userName) => Future.value('onShow');
   @override
@@ -26,10 +26,6 @@ class MockTnkFlutterRwdPlatform
   Future<int?> getEarnPoint() => Future.value();
   @override
   Future<String?> setNoUsePrivacyAlert() {
-    throw UnimplementedError();
-  }
-  @override
-  Future<String?> setNoUseUsePointIcon() {
     throw UnimplementedError();
   }
 
@@ -83,12 +79,6 @@ class MockTnkFlutterRwdPlatform
   }
   @override
   Future<String?> closeAdDetail() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<String?> setCustomUIDefault(HashMap<String, String> map) {
-    // TODO: implement setCustomUIDefault
     throw UnimplementedError();
   }
 
