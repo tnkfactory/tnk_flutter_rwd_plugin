@@ -47,6 +47,8 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
                 }
                 if let appId = args["app_id"] as? Int {
                     targetAppId = appId
+                    
+                    print("## targetAppId  \(targetAppId)")
                 }
             }
             

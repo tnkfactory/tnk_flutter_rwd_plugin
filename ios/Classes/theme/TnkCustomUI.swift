@@ -91,7 +91,8 @@ public class TnkCustomUI {
 
         let cpsBoxItemPageGrayLayout = CpsBoxItemPageGrayLayout()
         customBodyUI(param:param, type:.newitem, viewClass:CpsBoxItemView.self, viewLayout:cpsBoxItemPageGrayLayout)
-
+       
+        // cps 상품 없을 경우
         let noCpsItemViewLayout = NoCpsItemViewLayout()
         customBodyUI(param:param, type:.nocps, viewClass:CpsBoxItemView.self, viewLayout:noCpsItemViewLayout)
 
@@ -239,7 +240,8 @@ public class TnkCustomUI {
         let pointIconDefault = param["point_icon_name"]!
         let option = param["option"]!
         
-        
+        // cps 상품 검색 view layout
+        let searchViewLayout = TnkLayout.shared.searchViewLayout.listItemViewLayout
         
         
         
@@ -251,11 +253,19 @@ public class TnkCustomUI {
                 viewLayout.pointAmountFormat = "{point}{unit}"
                 viewLayout.pointUnitVisible = false
                 
+                
+                searchViewLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
+                searchViewLayout.pointAmountFormat = "{point}{unit}"
+                searchViewLayout.pointUnitVisible = false
+                
 
                 // 재화 아이콘만 표시
             case "2" :
                 viewLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
                 viewLayout.pointUnitVisible = false
+                
+                searchViewLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
+                searchViewLayout.pointUnitVisible = false
                 
 
                 // 재화 단위만 표시
@@ -264,11 +274,18 @@ public class TnkCustomUI {
                 viewLayout.pointAmountFormat = "{point}{unit}"
                 viewLayout.pointUnitVisible = false
                 
+                searchViewLayout.pointIconImage.imageNormal = nil
+                searchViewLayout.pointAmountFormat = "{point}{unit}"
+                searchViewLayout.pointUnitVisible = false
+                
                 
                 // 둘다 표시 안함
             case "4" :
                 viewLayout.pointIconImage.imageNormal = nil
                 viewLayout.pointUnitVisible = false
+                
+                searchViewLayout.pointIconImage.imageNormal = nil
+                searchViewLayout.pointUnitVisible = false
                 
        
             default:
@@ -284,6 +301,12 @@ public class TnkCustomUI {
         viewLayout.pointAmountLabel.color = adListPointAmtFontColor
         viewLayout.pointUnitLabel.color = adListPointUnitFontColor
         viewLayout.discountRateLabel.color = adListPointAmtFontColor
+        
+        searchViewLayout.titleLabel.color = adListTitleFontColor
+        searchViewLayout.descLabel.color = adListDescFontColor
+        searchViewLayout.pointAmountLabel.color = adListPointAmtFontColor
+        searchViewLayout.pointUnitLabel.color = adListPointUnitFontColor
+        searchViewLayout.discountRateLabel.color = adListPointAmtFontColor
             
     
         
