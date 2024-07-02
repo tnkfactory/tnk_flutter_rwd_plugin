@@ -12,6 +12,7 @@ public class TnkCustomUI {
     
     
     func setCustomUIDefault(param:Dictionary<String,String>) {
+        let mainColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["app_main_color"]!))
 
         let cateSelectedColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["category_select_font"]!))
         let filterSelectedBgColor = TnkColor.argb(hexaStringToInt(_hexaStr: param["filter_select_background"]!))
@@ -30,12 +31,16 @@ public class TnkCustomUI {
         let pointIconDefault = param["point_icon_name"]!
         let pointIconSub = param["point_icon_name_sub"]!
         let option = param["option"]!
+        
+
+        TnkColor.PRIMARY_COLOR = mainColor
 
 
         // 카테고리 레이아웃
         let categoryMenuLayout = AdListMenuViewLayout()
         // 선택된 메뉴의 폰트 색상
         categoryMenuLayout.itemButton.colorSelected = cateSelectedColor
+        categoryMenuLayout.messageShowSeconds = 0        
         TnkLayout.shared.registerMenuViewLayout( type: .menu,
                                                  viewClass: DefaultAdListMenuView.self,
                                                  viewLayout: categoryMenuLayout)
@@ -72,8 +77,8 @@ public class TnkCustomUI {
         let feedAdItemScrollViewLayout = FeedAdItemScrollViewLayout()
         customBodyUI(param:param, type:.suggest, viewClass:FeedAdListItemView.self, viewLayout:feedAdItemScrollViewLayout)
 
-        let iconOnlyAdItemScrollViewLayout = IconOnlyAdItemScrollViewLayout()
-        customBodyUI(param:param, type:.multi, viewClass:IconOnlyAdListItemView.self, viewLayout:iconOnlyAdItemScrollViewLayout)
+//        let iconOnlyAdItemScrollViewLayout = IconOnlyAdItemScrollViewLayout()
+//        customBodyUI(param:param, type:.multi, viewClass:IconOnlyAdListItemView.self, viewLayout:iconOnlyAdItemScrollViewLayout)
 
 
         // 구매형 viewLayout
@@ -113,6 +118,9 @@ public class TnkCustomUI {
         detailViewLayout.buttonFrameLayout.descLabel.color = adInfoButtonDescFontColor // 버튼 액션 폰트 색상
         detailViewLayout.buttonFrameLayout.titleLabel.color = adInfoButtonTitleFontColor // 버튼 포인트금액, 포인트단위 폰트 색상
         detailViewLayout.buttonFrameLayout.pointIconImage.imageNormal = UIImage(named: pointIconSub)
+        
+        
+        detailViewLayout.actionItemLayout.itemPointAmountLabel.color = adInfoPointAmtFontColor
 
 
 
@@ -242,8 +250,13 @@ public class TnkCustomUI {
         
         // cps 상품 검색 view layout
         let searchViewLayout = TnkLayout.shared.searchViewLayout.listItemViewLayout
+        // 참여중 내역 캠페인 제안 layout
+        let noAdItemViewLayout = TnkLayout.shared.mymenuViewLayout.noAdItemViewLayout
         
+//        let infoViewLayout = TnkLayout.shared.mymenuViewLayout.infoItemViewLayout
         
+        let myMenuListItemLayout = TnkLayout.shared.mymenuViewLayout.listItemViewLayout
+
         
             switch option {
                
@@ -258,6 +271,13 @@ public class TnkCustomUI {
                 searchViewLayout.pointAmountFormat = "{point}{unit}"
                 searchViewLayout.pointUnitVisible = false
                 
+                noAdItemViewLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
+                noAdItemViewLayout.pointAmountFormat = "{point}{unit}"
+                noAdItemViewLayout.pointUnitVisible = false
+                
+                myMenuListItemLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
+                myMenuListItemLayout.pointAmountFormat = "{point}{unit}"
+                myMenuListItemLayout.pointUnitVisible = false
 
                 // 재화 아이콘만 표시
             case "2" :
@@ -266,6 +286,12 @@ public class TnkCustomUI {
                 
                 searchViewLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
                 searchViewLayout.pointUnitVisible = false
+                
+                noAdItemViewLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
+                noAdItemViewLayout.pointUnitVisible = false
+                
+                myMenuListItemLayout.pointIconImage.imageNormal = UIImage(named: pointIconDefault)
+                myMenuListItemLayout.pointUnitVisible = false
                 
 
                 // 재화 단위만 표시
@@ -278,6 +304,14 @@ public class TnkCustomUI {
                 searchViewLayout.pointAmountFormat = "{point}{unit}"
                 searchViewLayout.pointUnitVisible = false
                 
+                noAdItemViewLayout.pointIconImage.imageNormal = nil
+                noAdItemViewLayout.pointAmountFormat = "{point}{unit}"
+                noAdItemViewLayout.pointUnitVisible = false
+                
+                myMenuListItemLayout.pointIconImage.imageNormal = nil
+                myMenuListItemLayout.pointAmountFormat = "{point}{unit}"
+                myMenuListItemLayout.pointUnitVisible = false
+                
                 
                 // 둘다 표시 안함
             case "4" :
@@ -286,6 +320,12 @@ public class TnkCustomUI {
                 
                 searchViewLayout.pointIconImage.imageNormal = nil
                 searchViewLayout.pointUnitVisible = false
+                
+                noAdItemViewLayout.pointIconImage.imageNormal = nil
+                noAdItemViewLayout.pointUnitVisible = false
+                
+                myMenuListItemLayout.pointIconImage.imageNormal = nil
+                myMenuListItemLayout.pointUnitVisible = false
                 
        
             default:
@@ -302,11 +342,27 @@ public class TnkCustomUI {
         viewLayout.pointUnitLabel.color = adListPointUnitFontColor
         viewLayout.discountRateLabel.color = adListPointAmtFontColor
         
+        
         searchViewLayout.titleLabel.color = adListTitleFontColor
         searchViewLayout.descLabel.color = adListDescFontColor
         searchViewLayout.pointAmountLabel.color = adListPointAmtFontColor
         searchViewLayout.pointUnitLabel.color = adListPointUnitFontColor
         searchViewLayout.discountRateLabel.color = adListPointAmtFontColor
+        
+        
+        noAdItemViewLayout.titleLabel.color = adListTitleFontColor
+        noAdItemViewLayout.descLabel.color = adListDescFontColor
+        noAdItemViewLayout.pointAmountLabel.color = adListPointAmtFontColor
+        noAdItemViewLayout.pointUnitLabel.color = adListPointUnitFontColor
+        noAdItemViewLayout.discountRateLabel.color = adListPointAmtFontColor
+        
+        myMenuListItemLayout.titleLabel.color = adListTitleFontColor
+        myMenuListItemLayout.descLabel.color = adListDescFontColor
+        myMenuListItemLayout.pointAmountLabel.color = adListPointAmtFontColor
+        myMenuListItemLayout.pointUnitLabel.color = adListPointUnitFontColor
+        myMenuListItemLayout.discountRateLabel.color = adListPointAmtFontColor
+        
+
             
     
         

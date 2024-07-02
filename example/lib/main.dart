@@ -296,6 +296,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
         // 광고리스트 포인트 액수 폰트 컬러
         "adlist_point_amount_font":"##26DACA",
 
+        "app_main_color":"#26DACA",
 
         // 1 - 재화 아이콘, 단위 둘다 표시
         // 2 - 재화 아이콘만 표시
