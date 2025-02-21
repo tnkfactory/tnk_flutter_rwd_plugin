@@ -57,3 +57,5 @@
 * IOS UI 커스터마이징 기능 추가
 ## 0.3.9
 * IOS UI 커스터마이징 기능 추가
+## 0.4.0
+* 필터/카테고리 선택 상태로 화면 진입 하도록 설정하는 setCategoryAndFilter(category:int, filter:int) 메소드 추가

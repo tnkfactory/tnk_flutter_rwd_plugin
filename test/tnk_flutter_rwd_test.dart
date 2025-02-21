@@ -96,6 +96,11 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> setCategoryAndFilter(int category, int filter) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

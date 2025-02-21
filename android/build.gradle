@@ -26,7 +26,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -52,6 +52,6 @@ dependencies {
     // android appcompat
     implementation 'androidx.appcompat:appcompat:1.6.1'
     //implementation "com.tnkfactory:rwd:7.30.8"
-    implementation "com.tnkfactory:rwd:8.06.15"
+    implementation "com.tnkfactory:rwd:8.07.15"
     //implementation 'com.tnkfactory:rwd:8.01.91'
 }
