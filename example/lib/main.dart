@@ -21,7 +21,8 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태변화를 감지하기 위한 observer 사용
+class _MyAppState extends State<MyApp>
+    with WidgetsBindingObserver // 앱 상태변화를 감지하기 위한 observer 사용
 {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
 
@@ -30,13 +31,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
     MethodChannel channel = const MethodChannel('tnk_flutter_rwd');
     channel.setMethodCallHandler(getOfferWallEvent);
 
-    WidgetsBinding.instance.addObserver(this);// 앱 상태변화를 감지하기 위한 observer 등록
+    WidgetsBinding.instance.addObserver(this); // 앱 상태변화를 감지하기 위한 observer 등록
     super.initState();
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);// 앱 상태변화를 감지하기 위한 observer 해제
+    WidgetsBinding.instance.removeObserver(this); // 앱 상태변화를 감지하기 위한 observer 해제
     super.dispose();
   }
 
@@ -60,7 +61,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
     }
   }
 
-
   String _tnkResult = 'Unknown';
   int _myPoint = 0;
   int _queryPoint = 0;
@@ -69,13 +69,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
 
   int _selectedIndex = 0;
 
-
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
     if (TnkMethodChannelEvent.didOfferwallRemoved(methodCall)) {
       // TODO 오퍼월 close callback
       print("offer window closed");
-
-
     }
 
     setState(() {
@@ -143,15 +140,15 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
         String resCode = jsonObject["res_code"];
         String resMessage = jsonObject["res_message"];
 
-        if(resCode == "1") {
+        if (resCode == "1") {
           List<TnkPlacementAdItem> adList =
-          praserJsonToTnkPlacementAdItem(jsonObject["ad_list"]);
+              praserJsonToTnkPlacementAdItem(jsonObject["ad_list"]);
 
           setState(() {
             this.adList.addAll(adList);
             // _tnkResult = placementData ?? "null";
           });
-        }else{
+        } else {
           // 광고 로드 실패
         }
       }
@@ -188,6 +185,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
 
     return tnkPlacementAdItemList;
   }
+
   Future<void> onAdItemClick(String appId) async {
     try {
       await _tnkFlutterRwdPlugin.onItemClick(appId);
@@ -201,6 +199,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       return;
     }
   }
+
   Future<void> setNoUsePointIcon() async {
     try {
       await _tnkFlutterRwdPlugin.setNoUsePointIcon();
@@ -288,26 +287,25 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
         "adinfo_button_desc_font": "#FFFFFF",
         "adinfo_button_gradient_option": "L",
         // 광고리스트 광고타이틀 폰트 컬러
-        "adlist_title_font":"#161A1B",
+        "adlist_title_font": "#161A1B",
         // 광고리스트 광고액션 폰트 컬러
-        "adlist_desc_font":"#515151",
+        "adlist_desc_font": "#515151",
         // 광고리스트 포인트 단위 폰트 컬러
-        "adlist_point_unit_font":"##26DACA",
+        "adlist_point_unit_font": "##26DACA",
         // 광고리스트 포인트 액수 폰트 컬러
-        "adlist_point_amount_font":"##26DACA",
+        "adlist_point_amount_font": "##26DACA",
 
-        "app_main_color":"#26DACA",
+        "app_main_color": "#26DACA",
 
         // 1 - 재화 아이콘, 단위 둘다 표시
         // 2 - 재화 아이콘만 표시
         // 3 - 재화 단위만 표시
         // 4 - 둘다 표시 안함
-        "option":"1",
+        "option": "1",
 
         // 포인트 아이콘 이미지 이름
-        "point_icon_name":"star_icon",
-        "point_icon_name_sub":"star_icon_white"
-
+        "point_icon_name": "star_icon",
+        "point_icon_name_sub": "star_icon_white"
       });
       await _tnkFlutterRwdPlugin.setCustomUIDefault(paramMap);
     } on Exception {
@@ -318,45 +316,38 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
   Future<void> useCustomIcon() async {
     return setCustomUnitIcon(TnkFlutterRwdPointEffectType.ICON);
   }
+
   Future<void> useCustomIconAndUnit() async {
     return setCustomUnitIcon(TnkFlutterRwdPointEffectType.ICON_N_UNIT);
   }
+
   Future<void> useUnit() async {
     return setCustomUnitIcon(TnkFlutterRwdPointEffectType.UNIT);
   }
+
   Future<void> useEffectNone() async {
     return setCustomUnitIcon(TnkFlutterRwdPointEffectType.NONE);
   }
-
-
 
   Future<void> setCustomUnitIcon(String type) async {
     try {
       HashMap<String, String> paramMap = HashMap();
       paramMap.addAll({
-
         // 1 - 재화 아이콘, 단위 둘다 표시
         // 2 - 재화 아이콘만 표시
         // 3 - 재화 단위만 표시
         // 4 - 둘다 표시 안함
-        "option":"2",
-
+        "option": "2",
 
         // 포인트 아이콘 이미지 이름
         // "point_icon_name":"star_icon",
         // "point_icon_name_sub":"star_icon_white"
       });
       await _tnkFlutterRwdPlugin.setCustomUnitIcon(paramMap);
-
     } on Exception {
       return;
     }
   }
-
-
-
-
-
 
   var datas = {1, 2, 3};
   List<TnkPlacementAdItem> adList = [];
@@ -366,12 +357,22 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
     List<DataRow> cells = [];
     cells = adList
         .map((e) => DataRow(cells: [
-              DataCell(Container(
-                  width: 70, //SET width
-                  child: Image(image: NetworkImage(e.img_url), width: 70,)), onLongPress: () {
-                onAdItemClick(e.app_id.toString());
-              },),
-              DataCell(Text(e.app_nm,),),
+              DataCell(
+                Container(
+                    width: 70, //SET width
+                    child: Image(
+                      image: NetworkImage(e.img_url),
+                      width: 70,
+                    )),
+                onLongPress: () {
+                  onAdItemClick(e.app_id.toString());
+                },
+              ),
+              DataCell(
+                Text(
+                  e.app_nm,
+                ),
+              ),
               DataCell(Text(e.pnt_amt.toString())),
             ]))
         .toList();
@@ -413,6 +414,19 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
                 title: const Text('OfferWall'),
                 onTap: () => "aaa",
               ),
+              ListTile(
+                leading: const Icon(
+                  Icons.ac_unit,
+                  color: Colors.blueGrey,
+                ),
+                title: const Text('new view'),
+                onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NewScreen()),
+                  )
+                },
+              ),
             ],
           ),
         ),
@@ -443,7 +457,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ElevatedButton(
-                        onPressed: () { test();},
+                        onPressed: () {
+                          test();
+                        },
                         style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
                             backgroundColor: Colors.redAccent,
@@ -563,6 +579,26 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
                               elevation: 10),
                           child: const Text('숫자만')),
                     ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => NewScreen()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            foregroundColor: Colors.white,
+                            backgroundColor: Colors.grey,
+                            shadowColor: Colors.grey,
+                            elevation: 10),
+                        child: const Text('새로운화면 이동'),
+                      )
+                    ],
                   )
                 ],
               ),
@@ -598,6 +634,26 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver // 앱 상태
       showAdList();
     }
   }
+
+
+
+
+
+
+
+
+
+}
+
+
+class NewScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('New Screen')),
+      body: Center(child: Text('This is a new screen')),
+    );
+  }
 }
 
 class TnkPlacementAdItem {
@@ -615,12 +671,17 @@ class TnkPlacementAdItem {
   String cmpn_type_name = ""; // String 광고 유형 이름
   String like_yn = ""; // String 즐겨찾기 상품 여부
 }
-class PlacementPubInfo{
- int ad_type = 0; //	지면에 설정되어 있는 광고 유형(0 : 보상형, 1 : CPS, 2 : 제휴몰, 3 : 뉴스, 4 : 이벤트)
- String title = ""; //	지면 타이틀
- String more_lbl = ""; //	더보기 라벨
- String cust_data = ""; //	매체 설정값
- String ctype_surl = ""; //	캠페인타입 정보 URL (해당 URL 호출시 json 반환) {list_count:int, list:[{cmpn_type:int, cmpn_type_nm:string},….]}
- String pnt_unit = ""; //	매체 포인트 명칭
- String plcmt_id = ""; //	매체 설정 지면 ID
+
+class PlacementPubInfo {
+  int ad_type =
+      0; //	지면에 설정되어 있는 광고 유형(0 : 보상형, 1 : CPS, 2 : 제휴몰, 3 : 뉴스, 4 : 이벤트)
+  String title = ""; //	지면 타이틀
+  String more_lbl = ""; //	더보기 라벨
+  String cust_data = ""; //	매체 설정값
+  String ctype_surl =
+      ""; //	캠페인타입 정보 URL (해당 URL 호출시 json 반환) {list_count:int, list:[{cmpn_type:int, cmpn_type_nm:string},….]}
+  String pnt_unit = ""; //	매체 포인트 명칭
+  String plcmt_id = ""; //	매체 설정 지면 ID
 }
+
+

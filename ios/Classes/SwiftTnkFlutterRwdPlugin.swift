@@ -272,6 +272,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
     func showOfferwall(viewController:UIViewController, pTitle:String, listener:OfferwallEventListener) {
         vc = AdOfferwallViewController()
         vc!.title = pTitle
+        vc?.landingData = "4//0"
         vc!.offerwallListener = listener
         
         let navController = TnkUINavigationController(rootViewController: vc!)

@@ -57,3 +57,7 @@
 * IOS UI 커스터마이징 기능 추가
 ## 0.3.9
 * IOS UI 커스터마이징 기능 추가
+## 0.4.1
+* flutter plugin agp update ( test )
+## 0.4.2
+* Ios SDK 버전 업데이트
