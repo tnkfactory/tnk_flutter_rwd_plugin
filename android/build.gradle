@@ -26,6 +26,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
+
+    namespace = 'com.tnkfactory.flutter.rwd.tnk_flutter_rwd'
     compileSdkVersion 31
 
     compileOptions {

@@ -63,3 +63,5 @@
 * Ios SDK 버전 업데이트
 ## 0.4.3
 * flutter plugin agp update
+## 0.4.4
+* flutter plugin agp update
