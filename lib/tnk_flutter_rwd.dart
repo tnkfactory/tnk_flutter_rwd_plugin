@@ -9,6 +9,9 @@ class TnkFlutterRwd {
     return TnkFlutterRwdPlatform.instance.getPlatformVersion();
   }
 
+  Future<String?> setCategoryAndFilter(int category, int filter) {
+    return TnkFlutterRwdPlatform.instance.setCategoryAndFilter(category, filter);
+  }
   Future<String?> showAdList(String title, [int appId = 0]) {
     return TnkFlutterRwdPlatform.instance.showAdList(title, appId);
   }

@@ -23,6 +23,11 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
   @override
+  Future<String?> setCategoryAndFilter(int category, int filter) async {
+    final version = await methodChannel.invokeMethod<String>('setCategoryAndFilter', <String, dynamic>{ "category": category, "filter": filter });
+    return version;
+  }
+  @override
   Future<String?> setUserName(String userName) async {
     final version = await methodChannel.invokeMethod<String>('setUserName', <String, dynamic>{"user_name":userName});
     return version;

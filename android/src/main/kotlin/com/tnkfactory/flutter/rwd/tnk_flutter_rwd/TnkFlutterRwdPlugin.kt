@@ -70,6 +70,11 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     result.success("success")
                 }
 
+                "setCategoryAndFilter" -> {
+                    TnkAdConfig.headerConfig.startCategory = call.argument("category") as? Int ?: 0
+                    TnkAdConfig.headerConfig.startFilter = call.argument("filter") as? Int ?: 0
+                    result.success("success")
+                }
                 "showAdList" -> {
                     var appId = call.argument("app_id") ?: 0
                     if (appId != 0) {

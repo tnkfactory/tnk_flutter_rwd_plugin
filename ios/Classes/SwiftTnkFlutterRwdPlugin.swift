@@ -9,6 +9,9 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
     static var channel:FlutterMethodChannel? = nil
     static var placementView:FlutterPlacementView? = nil
     
+    var vc:AdOfferwallViewController? = nil
+    var targetAppId:Int = 0
+    var landingData = ""
     
     typealias tempListener = (Bool,TnkError?) -> Void
     
@@ -36,7 +39,23 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
             }
             result("success")
             
-            
+        case "setCategoryAndFilter":
+            if let args = call.arguments as? Dictionary<String, Any>,
+               let category = args["category"] as? Int,
+               let filter = args["filter"] as? Int {
+               landingData = "\(category)//\(filter)"
+//                TnkSession.sharedInstance()?.setCategoryAndFilter(category, filter: filter)
+//                TnkSession.sharedInstance()?.setCategoryAndFilter(category, filter: filter)
+            } else{
+//                TnkSession.sharedInstance()?.setCategoryAndFilter("", filter: "")
+//                DaumOfferWallViewController
+            }
+            // let offerWall = DaumOfferWallViewController()
+            //offerWall.showWelcomeMsg = false
+            //offerWall.title = "광고보고 미션참여"
+            //offerWall.landingData = "4//0"
+            //self.navigationController?.pushViewController(offerWall, animated: true)
+            result("success")
         case "showAdList":
             if let args = call.arguments as? Dictionary<String, Any>{
                 if let title = args["title"] as? String {
@@ -275,6 +294,14 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
         vc?.landingData = "4//0"
         vc!.offerwallListener = listener
         
+        // let offerWall = DaumOfferWallViewController()
+        //offerWall.showWelcomeMsg = false
+        //offerWall.title = "광고보고 미션참여"
+        //offerWall.landingData = "4//0"
+        vc.landingData = landingData
+        landingData
+        //self.navigationController?.pushViewController(offerWall, animated: true)
+        
         let navController = TnkUINavigationController(rootViewController: vc!)
         navController.modalPresentationStyle = .fullScreen
         //        navController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
@@ -283,8 +310,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
         
     }
     
-    var vc:AdOfferwallViewController? = nil
-    var targetAppId:Int = 0
+    
 
     public func didOfferwallRemoved() {
         print("closed")

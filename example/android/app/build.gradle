@@ -37,6 +37,7 @@ android {
 //    compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
+    namespace 'com.tnkfactory.flutter.rwd.tnk_flutter_rwd_example'
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
