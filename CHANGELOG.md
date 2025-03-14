@@ -65,3 +65,5 @@
 * flutter plugin agp update
 ## 0.4.4
 * flutter plugin agp update
+## 0.4.5
+* 오퍼월 카테고리 index 지정 기능 추가

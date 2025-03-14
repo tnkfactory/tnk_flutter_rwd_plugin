@@ -1,0 +1,2 @@
+/Users/dongyoonkim/tnk/tnk_flutter_rwd_plugin/example/android/app/.cxx/RelWithDebInfo/a526o6c6/x86/CMakeFiles/rebuild_cache.dir
+/Users/dongyoonkim/tnk/tnk_flutter_rwd_plugin/example/android/app/.cxx/RelWithDebInfo/a526o6c6/x86/CMakeFiles/edit_cache.dir

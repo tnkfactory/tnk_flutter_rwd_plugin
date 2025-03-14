@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp>
       await _tnkFlutterRwdPlugin.setCOPPA(false);
 
       _tnkFlutterRwdPlugin.setUseTermsPopup(false);
-      _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
+      // _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
       platformVersion = await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
           'Unknown platform version';
     } on PlatformException {
