@@ -632,6 +632,7 @@ class _MyAppState extends State<MyApp>
     });
 
     if (_selectedIndex == 1) {
+      _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
       showAdList();
     }
   }
