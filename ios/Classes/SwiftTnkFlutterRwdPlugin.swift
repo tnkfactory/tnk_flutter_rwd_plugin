@@ -291,14 +291,14 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
     func showOfferwall(viewController:UIViewController, pTitle:String, listener:OfferwallEventListener) {
         vc = AdOfferwallViewController()
         vc!.title = pTitle
-        vc?.landingData = "4//0"
+//        vc?.landingData = "4//0"
         vc!.offerwallListener = listener
         
         // let offerWall = DaumOfferWallViewController()
         //offerWall.showWelcomeMsg = false
         //offerWall.title = "광고보고 미션참여"
         //offerWall.landingData = "4//0"
-        vc.landingData = landingData
+//        vc.landingData = landingData
         
         //self.navigationController?.pushViewController(offerWall, animated: true)
         
