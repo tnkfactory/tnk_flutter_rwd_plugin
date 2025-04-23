@@ -298,7 +298,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
         //offerWall.showWelcomeMsg = false
         //offerWall.title = "광고보고 미션참여"
         //offerWall.landingData = "4//0"
-//        vc.landingData = landingData
+        vc!.landingData = landingData
         
         //self.navigationController?.pushViewController(offerWall, animated: true)
         

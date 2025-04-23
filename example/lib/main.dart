@@ -7,7 +7,10 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
+import 'package:tnk_flutter_rwd_example/placement_data.dart';
+import 'package:tnk_flutter_rwd_example/placement_view.dart';
 import 'package:tnk_flutter_rwd_example/tnk_flutter_rwd_point_effect.dart';
+import 'offerwall.dart';
 import 'tnk_flutter_rwd_analytics.dart';
 
 void main() {
@@ -25,6 +28,12 @@ class _MyAppState extends State<MyApp>
     with WidgetsBindingObserver // 앱 상태변화를 감지하기 위한 observer 사용
 {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
+
+  final List<Widget> _pages = [
+    Center(child: Text('홈')), // Placeholder for Home tab
+    OfferwallItem(),
+    PlacementViewItem(type: 2),
+  ];
 
   @override
   void initState() {
@@ -355,29 +364,6 @@ class _MyAppState extends State<MyApp>
 
   @override
   Widget build(BuildContext context) {
-    List<DataRow> cells = [];
-    cells = adList
-        .map((e) => DataRow(cells: [
-              DataCell(
-                Container(
-                    width: 70, //SET width
-                    child: Image(
-                      image: NetworkImage(e.img_url),
-                      width: 70,
-                    )),
-                onLongPress: () {
-                  onAdItemClick(e.app_id.toString());
-                },
-              ),
-              DataCell(
-                Text(
-                  e.app_nm,
-                ),
-              ),
-              DataCell(Text(e.pnt_amt.toString())),
-            ]))
-        .toList();
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -391,299 +377,34 @@ class _MyAppState extends State<MyApp>
                 icon: const Icon(Icons.dashboard_customize))
           ],
         ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              const UserAccountsDrawerHeader(
-                currentAccountPicture: CircleAvatar(
-                  backgroundColor: Colors.white,
-                ),
-                accountName: Text("tnkfactory"),
-                accountEmail: Text('flutter@tnkfactory.com'),
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(40.0),
-                        bottomRight: Radius.circular(40.0))),
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.tv,
-                  color: Colors.blueGrey,
-                ),
-                title: const Text('OfferWall'),
-                onTap: () => "aaa",
-              ),
-              ListTile(
-                leading: const Icon(
-                  Icons.ac_unit,
-                  color: Colors.blueGrey,
-                ),
-                title: const Text('new view'),
-                onTap: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => NewScreen()),
-                  )
-                },
-              ),
-            ],
-          ),
+
+        body: IndexedStack(
+          index: _selectedIndex,
+          children: _pages,
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                DataTable(
-                  columns: const [
-                    DataColumn(label: Text('img')),
-                    DataColumn(label: Text('title')),
-                    DataColumn(label: Text('point')),
-                  ],
-                  rows: cells,
-                  // rows: [
-                  //   DataRow(cells: [
-                  //     DataCell(Text(_tnkResult)),
-                  //     DataCell(Text('$_myPoint')),
-                  //     DataCell(Text('$_queryPoint')),
-                  //   ]),
-                  // ],
-                ),
-              ]),
-              ButtonBar(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          test();
-                        },
-                        style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.redAccent,
-                            shadowColor: Colors.redAccent,
-                            elevation: 5),
-                        child: const Text("TEST"),
-                      ),
-                      ElevatedButton(
-                          onPressed: () {
-                            test();
-                          },
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.blueAccent,
-                              shadowColor: Colors.blueAccent,
-                              elevation: 10),
-                          child: const Text('적립가능한 포인트')),
-                      ElevatedButton(
-                          onPressed: () {
-                            getQueryPoint();
-                          },
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.blueAccent,
-                              shadowColor: Colors.blueAccent,
-                              elevation: 10),
-                          child: const Text('사용가능한 포인트')),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                          onPressed: () {
-                            purchaseItem(_itemId, _cost);
-                          },
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.redAccent,
-                              shadowColor: Colors.redAccent,
-                              elevation: 10),
-                          child: const Text('테스트구매')),
-                      ElevatedButton(
-                          onPressed: () {
-                            withdrawPoints("테스트 인출");
-                          },
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.redAccent,
-                              shadowColor: Colors.redAccent,
-                              elevation: 10),
-                          child: const Text('테스트인출')),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                          onPressed: showATTPopup,
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.grey,
-                              shadowColor: Colors.grey,
-                              elevation: 10),
-                          child: const Text('ATT Popup')),
-                      ElevatedButton(
-                          onPressed: setNoUsePointIcon,
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.grey,
-                              shadowColor: Colors.grey,
-                              elevation: 10),
-                          child: const Text('포인트아이콘 사용안함')),
-                      ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.amberAccent,
-                              shadowColor: Colors.amberAccent,
-                              elevation: 10),
-                          child: const Text("abc"))
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                          onPressed: useCustomIcon,
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.grey,
-                              shadowColor: Colors.grey,
-                              elevation: 10),
-                          child: const Text('커스텀아이콘')),
-                      ElevatedButton(
-                          onPressed: useCustomIconAndUnit,
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.grey,
-                              shadowColor: Colors.grey,
-                              elevation: 10),
-                          child: const Text('커스텀아이콘+유닛')),
-                      ElevatedButton(
-                          onPressed: useUnit,
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.grey,
-                              shadowColor: Colors.grey,
-                              elevation: 10),
-                          child: const Text('유닛')),
-                      ElevatedButton(
-                          onPressed: useEffectNone,
-                          style: ElevatedButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.grey,
-                              shadowColor: Colors.grey,
-                              elevation: 10),
-                          child: const Text('숫자만')),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => NewScreen()),
-                          );
-                        },
-                        style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.grey,
-                            shadowColor: Colors.grey,
-                            elevation: 10),
-                        child: const Text('새로운화면 이동'),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          unselectedItemColor: Colors.blueGrey,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: '홈',
-            ),
-            BottomNavigationBarItem(icon: Icon(Icons.tv), label: 'Offerwall'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.notifications), label: '알림'),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.blue,
-          onTap: _onItemTapped,
-        ),
+        bottomNavigationBar: Builder(
+          builder: (context) {
+            return BottomNavigationBar(
+              backgroundColor: Colors.white,
+              unselectedItemColor: Colors.blueGrey,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
+                BottomNavigationBarItem(icon: Icon(Icons.tv), label: '오퍼월'),
+                BottomNavigationBarItem(icon: Icon(Icons.picture_in_picture_alt), label: '플레이스먼트 뷰'),
+              ],
+              currentIndex: _selectedIndex,
+              selectedItemColor: Colors.blue,
+              onTap: onItemTapped,
+            );
+          }
+        )
       ),
     );
   }
 
-  void _onItemTapped(int index) {
+  void onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-
-    if (_selectedIndex == 1) {
-      _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
-      showAdList();
-    }
-  }
-
-
-
-
-
-
-
-
-
-}
-
-
-class NewScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('New Screen')),
-      body: Center(child: Text('This is a new screen')),
-    );
   }
 }
-
-class TnkPlacementAdItem {
-  int app_id = 0; // Int 광고 고유 식별값
-  String app_nm = ""; // String 광고 제목
-  String img_url = ""; // String 이미지 url
-  int pnt_amt = 0; // Int 지급 포인트 (이벤트 진행시 이벤트 배율 적용된 포인트)
-  int org_amt = 0; // Int 배율 이벤트 진행 시 원래의 포인트(이벤트 기간 아닐경우 0)
-  String pnt_unit = ""; // String 포인트 재화 단위
-  int prd_price = 0; // Int CPS상품 가격
-  int org_prd_price = 0; // Int CPS상품 할인 전 가격
-  int sale_dc_rate = 0; // Int CPS 상품 할인율
-  bool multi_yn = false; // Bool 멀티 미션 광고 여부
-  int cmpn_type = 0; // Int 광고 유형코드
-  String cmpn_type_name = ""; // String 광고 유형 이름
-  String like_yn = ""; // String 즐겨찾기 상품 여부
-}
-
-class PlacementPubInfo {
-  int ad_type =
-      0; //	지면에 설정되어 있는 광고 유형(0 : 보상형, 1 : CPS, 2 : 제휴몰, 3 : 뉴스, 4 : 이벤트)
-  String title = ""; //	지면 타이틀
-  String more_lbl = ""; //	더보기 라벨
-  String cust_data = ""; //	매체 설정값
-  String ctype_surl =
-      ""; //	캠페인타입 정보 URL (해당 URL 호출시 json 반환) {list_count:int, list:[{cmpn_type:int, cmpn_type_nm:string},….]}
-  String pnt_unit = ""; //	매체 포인트 명칭
-  String plcmt_id = ""; //	매체 설정 지면 ID
-}
-
-
