@@ -684,6 +684,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk220AdListItemViewLayout")
 @property (nonatomic) UIEdgeInsets footerInset;
 @property (nonatomic) CGFloat footerDividerHeight;
 @property (nonatomic, strong) UIColor * _Nonnull footerDividerColor;
+@property (nonatomic) BOOL useIndicatorView;
 @property (nonatomic, strong) ButtonAttribute * _Nonnull footerButton;
 @property (nonatomic) CGFloat emptyIconTopInset;
 @property (nonatomic, strong) ImageAttribute * _Nonnull emptyIconBackImage;
@@ -867,11 +868,14 @@ SWIFT_CLASS("_TtC10TnkRwdSdk29AdSection")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class UICollectionViewLayoutAttributes;
 
 SWIFT_CLASS("_TtC10TnkRwdSdk223AdSectionDecorationView")
 @interface AdSectionDecorationView : UICollectionReusableView
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)applyLayoutAttributes:(UICollectionViewLayoutAttributes * _Nonnull)layoutAttributes;
+- (void)prepareForReuse;
 @end
 
 
@@ -1883,6 +1887,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk221TnkBaseNaviController")
 @interface TnkBaseNaviController : UINavigationController
 @property (nonatomic, readonly) BOOL shouldAutorotate;
 @property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
+@property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=5.0);
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
@@ -2064,6 +2069,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkLayout * 
 @property (nonatomic, strong) CpsSearchViewLayout * _Nonnull searchViewLayout;
 @property (nonatomic, strong) AdListItemViewLayout * _Nonnull searchRecommendViewLayout;
 @property (nonatomic, strong) EventViewLayout * _Nonnull eventViewLayout;
+@property (nonatomic) BOOL useCpsFavoriteMsg;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (void)registerItemViewLayoutWithType:(enum LayoutType)type viewClass:(Class _Nonnull)viewClass viewLayout:(AdListItemViewLayout * _Nonnull)viewLayout;

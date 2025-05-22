@@ -302,7 +302,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
         
         //self.navigationController?.pushViewController(offerWall, animated: true)
         
-        let navController = TnkUINavigationController(rootViewController: vc!)
+        let navController = TnkBaseNaviController(rootViewController: vc!)
         navController.modalPresentationStyle = .fullScreen
         //        navController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         navController.navigationBar.titleTextAttributes = [.foregroundColor: TnkColor.semantic(argb1: 0xff505050, argb2: 0xffd3d3d3)]

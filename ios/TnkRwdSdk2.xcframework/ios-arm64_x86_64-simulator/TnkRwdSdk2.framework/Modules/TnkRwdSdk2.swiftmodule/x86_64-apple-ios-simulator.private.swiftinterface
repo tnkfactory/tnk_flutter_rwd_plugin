@@ -575,6 +575,9 @@ extension TnkRwdSdk2.AdOfferwallViewController : TnkRwdSdk2.OfferwallEventListen
   }
   public var join_dt: Swift.Int
   @objc public func plusInstance() -> TnkRwdSdk2.TnkRwdPlus
+  public func getApplicationId() -> Swift.String
+  public func getIdForAdvertising() -> Swift.String
+  public func showMenuViewController(from viewController: UIKit.UIViewController, menuType: TnkRwdSdk2.MyMenuType)
   @objc public func presentAdDetailView(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, completion: @escaping (Swift.Bool) -> Swift.Void)
   @objc public func applicationStarted()
   @objc public func actionCompleted()
@@ -689,6 +692,8 @@ extension TnkRwdSdk2.AdOfferwallViewController : TnkRwdSdk2.OfferwallEventListen
 @_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency open class AdSectionDecorationView : UIKit.UICollectionReusableView {
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func apply(_ layoutAttributes: UIKit.UICollectionViewLayoutAttributes)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func prepareForReuse()
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency open class AdSectionPrevNextFooterView : TnkRwdSdk2.AdSectionFooterView {
@@ -873,6 +878,7 @@ extension TnkRwdSdk2.AdOfferwallViewController : TnkRwdSdk2.OfferwallEventListen
   @objc public var footerInset: UIKit.UIEdgeInsets
   @objc public var footerDividerHeight: CoreFoundation.CGFloat
   @objc public var footerDividerColor: UIKit.UIColor
+  @objc public var useIndicatorView: Swift.Bool
   @objc public var footerButton: TnkRwdSdk2.ButtonAttribute
   @objc public var emptyIconTopInset: CoreFoundation.CGFloat
   @objc public var emptyIconBackImage: TnkRwdSdk2.ImageAttribute
@@ -1146,7 +1152,7 @@ extension UIKit.UIImage {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class AdSection : ObjectiveC.NSObject {
-  final public let title: Swift.String
+  public var title: Swift.String
   public var descMessage: Swift.String?
   @objc override dynamic public var description: Swift.String {
     @objc get
@@ -1529,6 +1535,7 @@ extension TnkRwdSdk2.StoreLayout {
   @objc public var searchViewLayout: TnkRwdSdk2.CpsSearchViewLayout
   @objc public var searchRecommendViewLayout: TnkRwdSdk2.AdListItemViewLayout
   @objc public var eventViewLayout: TnkRwdSdk2.EventViewLayout
+  @objc public var useCpsFavoriteMsg: Swift.Bool
   @objc public func registerItemViewLayout(type: TnkRwdSdk2.LayoutType, viewClass: Swift.AnyClass, viewLayout: TnkRwdSdk2.AdListItemViewLayout)
   @objc public func registerMenuViewLayout(type: TnkRwdSdk2.MenuType, viewClass: Swift.AnyClass, viewLayout: TnkRwdSdk2.AdListMenuViewLayout)
   @objc public func registerDetailViewLayout(_ viewLayout: TnkRwdSdk2.AdDetailViewLayout)
@@ -1774,7 +1781,7 @@ public protocol AdSectionDataDelegate : ObjectiveC.NSObjectProtocol {
   @objc optional func didAdItemClosed(placementId: Swift.String, appId: Swift.Int)
   @objc optional func didMoreLinkClicked(placementId: Swift.String)
 }
-@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor @preconcurrency public class AdPlacementView : UIKit.UIView, UIKit.UICollectionViewDelegate {
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor @preconcurrency public class AdPlacementView : UIKit.UIView, UIKit.UICollectionViewDelegate, UIKit.UIScrollViewDelegate {
   @objc @_Concurrency.MainActor @preconcurrency weak public var placementListener: (any TnkRwdSdk2.PlacementEventListener)?
   @objc @_Concurrency.MainActor @preconcurrency public init(frame: CoreFoundation.CGRect, viewController: UIKit.UIViewController)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didMoveToSuperview()
@@ -1817,6 +1824,9 @@ extension TnkRwdSdk2.AdPlacementView {
     @objc get
   }
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var preferredStatusBarStyle: UIKit.UIStatusBarStyle {
     @objc get
   }
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()

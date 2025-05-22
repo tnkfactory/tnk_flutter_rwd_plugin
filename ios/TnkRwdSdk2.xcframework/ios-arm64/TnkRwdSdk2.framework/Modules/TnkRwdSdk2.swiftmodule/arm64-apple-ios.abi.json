@@ -8513,6 +8513,16 @@
       },
       {
         "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "TnkRwdSdk2",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -8561,6 +8571,16 @@
         "printedName": "UIKit",
         "declKind": "Import",
         "moduleName": "TnkRwdSdk2"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TnkRwdSdk2",
+        "declAttributes": [
+          "RawDocComment"
+        ]
       },
       {
         "kind": "Import",
@@ -29538,6 +29558,80 @@
           },
           {
             "kind": "Function",
+            "name": "getApplicationId",
+            "printedName": "getApplicationId()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk20A7SessionC16getApplicationIdSSyF",
+            "mangledName": "$s10TnkRwdSdk20A7SessionC16getApplicationIdSSyF",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getIdForAdvertising",
+            "printedName": "getIdForAdvertising()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk20A7SessionC19getIdForAdvertisingSSyF",
+            "mangledName": "$s10TnkRwdSdk20A7SessionC19getIdForAdvertisingSSyF",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "showMenuViewController",
+            "printedName": "showMenuViewController(from:menuType:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MyMenuType",
+                "printedName": "TnkRwdSdk2.MyMenuType",
+                "usr": "s:10TnkRwdSdk210MyMenuTypeO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk20A7SessionC22showMenuViewController4from8menuTypeySo06UIViewH0C_AA02MyfK0OtF",
+            "mangledName": "$s10TnkRwdSdk20A7SessionC22showMenuViewController4from8menuTypeySo06UIViewH0C_AA02MyfK0OtF",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "presentAdDetailView",
             "printedName": "presentAdDetailView(_:appId:fullscreen:completion:)",
             "children": [
@@ -35299,6 +35393,68 @@
               "Required"
             ],
             "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "apply",
+            "printedName": "apply(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UICollectionViewLayoutAttributes",
+                "printedName": "UIKit.UICollectionViewLayoutAttributes",
+                "usr": "c:objc(cs)UICollectionViewLayoutAttributes"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)AdSectionDecorationView(im)applyLayoutAttributes:",
+            "mangledName": "$s10TnkRwdSdk223AdSectionDecorationViewC5applyyySo012UICollectionG16LayoutAttributesCF",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "applyLayoutAttributes:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "prepareForReuse",
+            "printedName": "prepareForReuse()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)AdSectionDecorationView(im)prepareForReuse",
+            "mangledName": "$s10TnkRwdSdk223AdSectionDecorationViewC15prepareForReuseyyF",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "prepareForReuse",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -49249,6 +49405,99 @@
           },
           {
             "kind": "Var",
+            "name": "useIndicatorView",
+            "printedName": "useIndicatorView",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)AdListItemViewLayout(py)useIndicatorView",
+            "mangledName": "$s10TnkRwdSdk220AdListItemViewLayoutC012useIndicatorG0Sbvp",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)AdListItemViewLayout(im)useIndicatorView",
+                "mangledName": "$s10TnkRwdSdk220AdListItemViewLayoutC012useIndicatorG0Sbvg",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)AdListItemViewLayout(im)setUseIndicatorView:",
+                "mangledName": "$s10TnkRwdSdk220AdListItemViewLayoutC012useIndicatorG0Sbvs",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk220AdListItemViewLayoutC012useIndicatorG0SbvM",
+                "mangledName": "$s10TnkRwdSdk220AdListItemViewLayoutC012useIndicatorG0SbvM",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "footerButton",
             "printedName": "footerButton",
             "children": [
@@ -59347,8 +59596,7 @@
             "mangledName": "$s10TnkRwdSdk20A7StringsC12formatNumberySSSiF",
             "moduleName": "TnkRwdSdk2",
             "declAttributes": [
-              "AccessControl",
-              "RawDocComment"
+              "AccessControl"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -61040,11 +61288,9 @@
             "mangledName": "$s10TnkRwdSdk29AdSectionC5titleSSvp",
             "moduleName": "TnkRwdSdk2",
             "declAttributes": [
-              "Final",
               "HasStorage",
               "AccessControl"
             ],
-            "isLet": true,
             "hasStorage": true,
             "accessors": [
               {
@@ -61064,10 +61310,49 @@
                 "mangledName": "$s10TnkRwdSdk29AdSectionC5titleSSvg",
                 "moduleName": "TnkRwdSdk2",
                 "implicit": true,
-                "declAttributes": [
-                  "Final"
-                ],
                 "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk29AdSectionC5titleSSvs",
+                "mangledName": "$s10TnkRwdSdk29AdSectionC5titleSSvs",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk29AdSectionC5titleSSvM",
+                "mangledName": "$s10TnkRwdSdk29AdSectionC5titleSSvM",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "_modify"
               }
             ]
           },
@@ -65787,6 +66072,23 @@
             "mangledName": "$ss28CustomDebugStringConvertibleP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TnkRwdSdk2",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "TnkRwdSdk2"
       },
       {
         "kind": "Import",
@@ -80962,6 +81264,100 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "useCpsFavoriteMsg",
+            "printedName": "useCpsFavoriteMsg",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkLayout(py)useCpsFavoriteMsg",
+            "mangledName": "$s10TnkRwdSdk20A6LayoutC17useCpsFavoriteMsgSbvp",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkLayout(im)useCpsFavoriteMsg",
+                "mangledName": "$s10TnkRwdSdk20A6LayoutC17useCpsFavoriteMsgSbvg",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkLayout(im)setUseCpsFavoriteMsg:",
+                "mangledName": "$s10TnkRwdSdk20A6LayoutC17useCpsFavoriteMsgSbvs",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk20A6LayoutC17useCpsFavoriteMsgSbvM",
+                "mangledName": "$s10TnkRwdSdk20A6LayoutC17useCpsFavoriteMsgSbvM",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "registerItemViewLayout",
             "printedName": "registerItemViewLayout(type:viewClass:viewLayout:)",
@@ -95427,6 +95823,60 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "preferredStatusBarStyle",
+            "printedName": "preferredStatusBarStyle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIStatusBarStyle",
+                "printedName": "UIKit.UIStatusBarStyle",
+                "usr": "c:@E@UIStatusBarStyle"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkBaseNaviController(py)preferredStatusBarStyle",
+            "mangledName": "$s10TnkRwdSdk20A18BaseNaviControllerC23preferredStatusBarStyleSo08UIStatusiJ0Vvp",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "objc_name": "preferredStatusBarStyle",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIStatusBarStyle",
+                    "printedName": "UIKit.UIStatusBarStyle",
+                    "usr": "c:@E@UIStatusBarStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkBaseNaviController(im)preferredStatusBarStyle",
+                "mangledName": "$s10TnkRwdSdk20A18BaseNaviControllerC23preferredStatusBarStyleSo08UIStatusiJ0Vvg",
+                "moduleName": "TnkRwdSdk2",
+                "overriding": true,
+                "objc_name": "preferredStatusBarStyle",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "viewDidLoad",
             "printedName": "viewDidLoad()",
@@ -101752,7 +102202,7 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumContentWebController.swift",
       "kind": "IntegerLiteral",
-      "offset": 15196,
+      "offset": 18238,
       "length": 1,
       "value": "4"
     },
@@ -102035,6 +102485,34 @@
       "offset": 3419,
       "length": 10,
       "value": "0xff000000"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/component\/RouletteDigitView.swift",
+      "kind": "Array",
+      "offset": 350,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/component\/RouletteDigitView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 414,
+      "length": 2,
+      "value": "10"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/component\/RouletteDigitView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 802,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/component\/RouletteDigitView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4723,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/kakao\/ViewController\/KaKaoMyMenuViewController.swift",
@@ -104811,119 +105289,119 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10399,
+      "offset": 10495,
       "length": 125,
       "value": "\"<AdDetailItem : \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10436,
+      "offset": 10532,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10453,
+      "offset": 10549,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10456,
+      "offset": 10552,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10471,
+      "offset": 10567,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10474,
+      "offset": 10570,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10489,
+      "offset": 10585,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10492,
+      "offset": 10588,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10504,
+      "offset": 10600,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10507,
+      "offset": 10603,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10522,
+      "offset": 10618,
       "length": 1,
       "value": "\">\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13315,
+      "offset": 13411,
       "length": 71,
       "value": "\"<CampaignItem : \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13341,
+      "offset": 13437,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13357,
+      "offset": 13453,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13360,
+      "offset": 13456,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13374,
+      "offset": 13470,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13384,
+      "offset": 13480,
       "length": 1,
       "value": "\">\""
     },
@@ -105098,7 +105576,7 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 10148,
+      "offset": 10625,
       "length": 4,
       "value": "true"
     },
@@ -106470,133 +106948,140 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 33635,
+      "offset": 33640,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 33644,
+      "offset": 33649,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 33655,
+      "offset": 33660,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 33666,
+      "offset": 33671,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 34024,
+      "offset": 34029,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 34033,
+      "offset": 34038,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 34044,
+      "offset": 34049,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 34054,
+      "offset": 34059,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 34108,
+      "offset": 34113,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 34174,
+      "offset": 34179,
       "length": 10,
       "value": "0xfff2f2f2"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
+      "kind": "BooleanLiteral",
+      "offset": 34241,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 34458,
+      "offset": 34552,
       "length": 3,
       "value": "112"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 34967,
+      "offset": 35061,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 35051,
+      "offset": 35145,
       "length": 10,
       "value": "0xff808080"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 35070,
+      "offset": 35164,
       "length": 10,
       "value": "0xffD3D3D3"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 35216,
+      "offset": 35310,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 35347,
+      "offset": 35441,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 35409,
+      "offset": 35503,
       "length": 1,
       "value": "6"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 35473,
+      "offset": 35567,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemViewLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 35539,
+      "offset": 35633,
       "length": 1,
       "value": "0"
     },
@@ -106701,7 +107186,7 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/cell\/DaumIndexPlacementCell.swift",
       "kind": "BooleanLiteral",
-      "offset": 245,
+      "offset": 267,
       "length": 5,
       "value": "false"
     },
@@ -106750,49 +107235,42 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumIndexViewController.swift",
       "kind": "Array",
-      "offset": 2709,
-      "length": 2,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumIndexViewController.swift",
-      "kind": "BooleanLiteral",
-      "offset": 2731,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumIndexViewController.swift",
-      "kind": "Array",
-      "offset": 2893,
+      "offset": 3343,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumIndexViewController.swift",
       "kind": "Array",
-      "offset": 2990,
+      "offset": 3498,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumIndexViewController.swift",
       "kind": "Array",
-      "offset": 3333,
+      "offset": 3595,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumIndexViewController.swift",
+      "kind": "Array",
+      "offset": 3938,
       "length": 211,
       "value": "[\"daum_index_placement_1\", \"daum_index_placement_2\", \"daum_index_placement_3\", \"daum_index_placement_4\", \"daum_index_placement_5\", \"daum_index_placement_6\"]"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumIndexViewController.swift",
       "kind": "Array",
-      "offset": 3594,
+      "offset": 4199,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumIndexViewController.swift",
       "kind": "Array",
-      "offset": 3655,
+      "offset": 4260,
       "length": 2,
       "value": "[]"
     },
@@ -107156,49 +107634,49 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdListModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 22258,
+      "offset": 22271,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdListModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 23363,
+      "offset": 23376,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdListModel.swift",
       "kind": "IntegerLiteral",
-      "offset": 23714,
+      "offset": 23727,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdListModel.swift",
       "kind": "Array",
-      "offset": 31099,
+      "offset": 31112,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdListModel.swift",
       "kind": "Array",
-      "offset": 31479,
+      "offset": 31492,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdListModel.swift",
       "kind": "Array",
-      "offset": 53195,
+      "offset": 53716,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdListModel.swift",
       "kind": "Dictionary",
-      "offset": 53294,
+      "offset": 53815,
       "length": 3,
       "value": "[]"
     },
@@ -109345,6 +109823,20 @@
       "value": "\"이미지 저장을 원하시면\n설정에서 사진 접근을 허용해주세요.\""
     },
     {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/TnkStrings.swift",
+      "kind": "StringLiteral",
+      "offset": 19379,
+      "length": 62,
+      "value": "\"등록된 관심상품은 MY에서 확인 할 수 있어요.\""
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/TnkStrings.swift",
+      "kind": "StringLiteral",
+      "offset": 19471,
+      "length": 40,
+      "value": "\"관심상품에서 삭제되었어요.\""
+    },
+    {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/plus\/store\/coupon\/barcode\/BarcodeView.swift",
       "kind": "IntegerLiteral",
       "offset": 195,
@@ -109420,6 +109912,41 @@
       "offset": 2487,
       "length": 6,
       "value": "1000.0"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/cell\/DaumIndexPointInfoHeaderCell.swift",
+      "kind": "Array",
+      "offset": 418,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/cell\/DaumIndexPointInfoHeaderCell.swift",
+      "kind": "Array",
+      "offset": 463,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/cell\/DaumIndexPointInfoHeaderCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 503,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/cell\/DaumIndexPointInfoHeaderCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 814,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/cell\/DaumIndexPointInfoHeaderCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 851,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/DaumChulCheckAlertController.swift",
@@ -109984,42 +110511,42 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdSection.swift",
       "kind": "StringLiteral",
-      "offset": 5557,
+      "offset": 5878,
       "length": 61,
       "value": "\"<Section \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdSection.swift",
       "kind": "StringLiteral",
-      "offset": 5575,
+      "offset": 5896,
       "length": 1,
       "value": "\", \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdSection.swift",
       "kind": "StringLiteral",
-      "offset": 5588,
+      "offset": 5909,
       "length": 1,
       "value": "\" : \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdSection.swift",
       "kind": "StringLiteral",
-      "offset": 5600,
+      "offset": 5921,
       "length": 1,
       "value": "\", \""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdSection.swift",
       "kind": "StringLiteral",
-      "offset": 5613,
+      "offset": 5934,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/model\/AdSection.swift",
       "kind": "StringLiteral",
-      "offset": 5616,
+      "offset": 5937,
       "length": 1,
       "value": "\">\""
     },
@@ -110580,6 +111107,20 @@
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/admenu\/AdListMenuViewLayout.swift",
       "kind": "IntegerLiteral",
       "offset": 6268,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/placement\/DaumIndexDotIndicatorFooterView.swift",
+      "kind": "Array",
+      "offset": 275,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/daum\/placement\/DaumIndexDotIndicatorFooterView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 300,
       "length": 1,
       "value": "0"
     },
@@ -111751,6 +112292,13 @@
       "offset": 15727,
       "length": 3,
       "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/TnkLayout.swift",
+      "kind": "BooleanLiteral",
+      "offset": 15839,
+      "length": 4,
+      "value": "true"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/plus\/store\/alert\/PurchaseAlertLayout.swift",
@@ -113414,7 +113962,7 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/impl\/AdPlacementView.swift",
       "kind": "StringLiteral",
-      "offset": 2415,
+      "offset": 2529,
       "length": 11,
       "value": "\"Placement\""
     },
@@ -113857,7 +114405,7 @@
       "kind": "StringLiteral",
       "offset": 19841,
       "length": 6,
-      "value": "\"5.52\""
+      "value": "\"5.54\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/ios\/ios_project\/SdkSources\/rwd2\/Constants.swift",
@@ -115640,112 +116188,119 @@
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 13076,
+      "offset": 13089,
+      "length": 19,
+      "value": "\"point_refresh_btn\""
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 13237,
       "length": 12,
       "value": "\"point_unit\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 13228,
+      "offset": 13389,
       "length": 18,
       "value": "\"point_unit_white\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 13371,
+      "offset": 13532,
       "length": 10,
       "value": "\"pp_alert\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 13510,
+      "offset": 13671,
       "length": 12,
       "value": "\"prev_arrow\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 13659,
+      "offset": 13820,
       "length": 16,
       "value": "\"product_delete\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 13799,
+      "offset": 13960,
       "length": 9,
       "value": "\"refresh\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 13941,
+      "offset": 14102,
       "length": 14,
       "value": "\"refresh_dark\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 14090,
+      "offset": 14251,
       "length": 15,
       "value": "\"refresh_light\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 14236,
+      "offset": 14397,
       "length": 13,
       "value": "\"right_arrow\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 14382,
+      "offset": 14543,
       "length": 14,
       "value": "\"right_arrow2\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 14531,
+      "offset": 14692,
       "length": 15,
       "value": "\"search_delete\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 14677,
+      "offset": 14838,
       "length": 13,
       "value": "\"search_icon\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 14819,
+      "offset": 14980,
       "length": 12,
       "value": "\"top_button\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 14969,
+      "offset": 15130,
       "length": 17,
       "value": "\"uplus_check_off\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 15122,
+      "offset": 15283,
       "length": 16,
       "value": "\"uplus_check_on\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-aurygzfvekhpyzfnqgonjrhtnupe\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 15266,
+      "offset": 15427,
       "length": 11,
       "value": "\"welcomImg\""
     }
