@@ -20,13 +20,9 @@ dependencies:
     sdk: flutter
   cached_network_image: ^3.2.0
 
-  tnk_flutter_rwd:
-    # When depending on this package from a real application you should use:
-    #   tnk_flutter_rwd: ^x.y.z
-    # See https://dart.dev/tools/pub/dependencies#version-constraints
-    # The example app is bundled with the plugin so we use a path dependency on
-    # the parent directory to use the current plugin's version.
-    path: ../
+  tnk_flutter_rwd: ^0.5.2
+
+#    path: ../
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -411,10 +411,11 @@ packages:
   tnk_flutter_rwd:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.5.3"
+      name: tnk_flutter_rwd
+      sha256: e132fa0d814cd096e4fd6f814e7aae40f78447cc9457cd1d370b2a0549b2c468
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.2"
   typed_data:
     dependency: transitive
     description:
