@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:ffi';
 
 import 'package:flutter/services.dart';
 
@@ -87,5 +88,9 @@ class TnkFlutterRwd {
 
   Future<String?> setCustomUIDefault(HashMap<String, String> map) {
     return TnkFlutterRwdPlatform.instance.setCustomUIDefault(map);
+  }
+
+  Future<String?> presentAdDetailView(int appId) {
+    return TnkFlutterRwdPlatform.instance.presentAdDetailView(appId);
   }
 }

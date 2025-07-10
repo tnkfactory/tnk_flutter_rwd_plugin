@@ -3,6 +3,7 @@ package com.tnkfactory.flutter.rwd.tnk_flutter_rwd
 
 import android.app.Activity
 import android.content.Context
+import android.os.Build
 import android.util.Log
 import androidx.annotation.NonNull
 import com.tnkfactory.ad.*
@@ -57,7 +58,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         try {
             when (call.method) {
                 "getPlatformVersion" -> {
-                    result.success("Android ${android.os.Build.VERSION.RELEASE}")
+                    result.success("Android ${Build.VERSION.RELEASE}")
                 }
 
                 "setCOPPA" -> {
@@ -108,6 +109,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "getQueryPoint" -> {
                     TnkSession.queryPoint(mActivity, object : ServiceCallback() {
                         override fun onReturn(context: Context?, point: Any?) {
+                            Log.d("jameson, getQueryPoint", "point = $point")
                             result.success(point as Int)
                         }
                     })
@@ -229,10 +231,25 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
                 }
 
-                else -> {
-                    result.notImplemented()
+                "presentAdDetailView" -> {
+                    val appId = (call.argument("app_id") as? Int ?: 0)
+                        offerwall.adDetail(mActivity, appId.toLong(),{isSuccess,error->
+                        JSONObject().apply {
+                            if (isSuccess) {
+                                put("res_code", "1")
+                                put("res_message", "success")
+                            } else {
+                                put("res_code", "" + (error?.code ?: "99"))
+                                put("res_message", "" + (error?.message ?: "error"))
+                            }
+                        }.also {
+                            result.success(it.toString())
+                        }
+                    })
+
+                    }
+
                 }
-            }
         } catch (e: Exception) {
             e.printStackTrace()
             result.success(e.message)

@@ -101,6 +101,11 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> presentAdDetailView(int appId) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

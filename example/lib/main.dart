@@ -40,6 +40,8 @@ class _MyAppState extends State<MyApp>
     MethodChannel channel = const MethodChannel('tnk_flutter_rwd');
     channel.setMethodCallHandler(getOfferWallEvent);
 
+    showATTPopup();
+
     WidgetsBinding.instance.addObserver(this); // 앱 상태변화를 감지하기 위한 observer 등록
     super.initState();
   }
@@ -358,6 +360,8 @@ class _MyAppState extends State<MyApp>
       return;
     }
   }
+
+
 
   var datas = {1, 2, 3};
   List<TnkPlacementAdItem> adList = [];

@@ -274,6 +274,30 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
             }
             
             break;
+            
+        case "presentAdDetailView" :
+            if let args = call.arguments as? Dictionary<String, Any> {
+                if let argAppId = args["app_id"] as? Int {
+                    if (argAppId > 0) {
+                        TnkSession.sharedInstance()?.presentAdDetailView(viewController!, appId: argAppId, fullscreen: false) {
+                            (isOkay) in
+                            if isOkay {
+                                print("광고 상세화면 성공")
+                                result("success")
+                            } else {
+                                print("광고 상세화면 실패 또는 취소됨")
+                                result("fail")
+                            }
+                        }
+                    } else {
+                        result("fail - please check appId.. abnormal appId")
+                    }
+                }
+               
+                break;
+            }
+                
+                
         default:
             result("iOS method : " + call.method)
             break;

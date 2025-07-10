@@ -306,6 +306,88 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+enum ScrollType : NSInteger;
+@class UIColor;
+@class ImageAttribute;
+@class LabelAttribute;
+enum DescLabelShowOption : NSInteger;
+@class NSString;
+@class ButtonAttribute;
+
+SWIFT_CLASS("_TtC10TnkRwdSdk220AdListItemViewLayout")
+@interface AdListItemViewLayout : NSObject
+@property (nonatomic) enum UIScrollViewContentInsetAdjustmentBehavior scrollInsetBehavior;
+@property (nonatomic) enum ScrollType orthogonalScrolling;
+@property (nonatomic) NSInteger itemDirection;
+@property (nonatomic) UIEdgeInsets sectionInset;
+@property (nonatomic) BOOL useIconImage;
+@property (nonatomic) BOOL useFeedImage;
+@property (nonatomic) CGFloat itemCornerRadius;
+@property (nonatomic, strong) UIColor * _Nonnull itemStrokeColor;
+@property (nonatomic) CGFloat itemStrokeWidth;
+@property (nonatomic, strong) UIColor * _Nonnull itemBackgroundColor;
+@property (nonatomic, strong) UIColor * _Nonnull itemHighlightedColor;
+@property (nonatomic) UIEdgeInsets itemInset;
+@property (nonatomic) CGFloat lineSpace;
+@property (nonatomic) CGFloat itemSpace;
+@property (nonatomic, strong) ImageAttribute * _Nonnull iconImage;
+@property (nonatomic, strong) ImageAttribute * _Nonnull feedImage;
+@property (nonatomic, strong) LabelAttribute * _Nonnull titleLabel;
+@property (nonatomic, strong) LabelAttribute * _Nonnull dateLabel;
+@property (nonatomic, strong) LabelAttribute * _Nonnull statusLabel;
+@property (nonatomic) BOOL singleLineInformation;
+@property (nonatomic, strong) LabelAttribute * _Nonnull descLabel;
+@property (nonatomic, strong) LabelAttribute * _Nonnull descPointLabel;
+@property (nonatomic) enum DescLabelShowOption descShowOption;
+@property (nonatomic, strong) ImageAttribute * _Nonnull pointIconImage;
+@property (nonatomic, copy) NSString * _Nonnull pointAmountFormat;
+@property (nonatomic, strong) LabelAttribute * _Nonnull pointAmountLabel;
+@property (nonatomic, strong) UIColor * _Nonnull pointAmountDisabledColor;
+@property (nonatomic, strong) UIColor * _Nonnull pointAmountConfirmColor;
+@property (nonatomic) BOOL pointUnitVisible;
+@property (nonatomic, strong) LabelAttribute * _Nonnull pointUnitLabel;
+@property (nonatomic, strong) ImageAttribute * _Nonnull pointAmountTrailImage;
+@property (nonatomic, strong) ImageAttribute * _Nonnull adItemTrailImage;
+@property (nonatomic, strong) LabelAttribute * _Nonnull adItemTrailTagLabel;
+@property (nonatomic) CGFloat dividerHeight;
+@property (nonatomic, strong) UIColor * _Nonnull dividerColor;
+@property (nonatomic) CGFloat dividerLeadingSpace;
+@property (nonatomic) CGFloat dividerTrailingSpace;
+@property (nonatomic) BOOL dividerHiddenAtLastItem;
+@property (nonatomic, strong) ButtonAttribute * _Nonnull favoriteButton;
+@property (nonatomic) UIEdgeInsets favoriteButtonLayoutInset;
+@property (nonatomic, strong) LabelAttribute * _Nonnull productPriceLabel;
+@property (nonatomic, strong) LabelAttribute * _Nonnull discountRateLabel;
+@property (nonatomic, strong) LabelAttribute * _Nonnull orderNumberLabel;
+@property (nonatomic) BOOL orderNumberVisible;
+@property (nonatomic) Class _Nullable sectionHeaderViewClass;
+@property (nonatomic) Class _Nullable sectionFooterViewClass;
+@property (nonatomic) Class _Nullable sectionDecorationViewClass;
+@property (nonatomic) CGFloat sectionHeaderHeight;
+@property (nonatomic) CGFloat sectionFooterHeight;
+@property (nonatomic) CGFloat sectionFooterMinHeight;
+@property (nonatomic) UIEdgeInsets headerInset;
+@property (nonatomic, strong) LabelAttribute * _Nonnull headerTitleLabel;
+@property (nonatomic, strong) LabelAttribute * _Nonnull headerDescLabel;
+@property (nonatomic) UIEdgeInsets footerInset;
+@property (nonatomic) CGFloat footerDividerHeight;
+@property (nonatomic, strong) UIColor * _Nonnull footerDividerColor;
+@property (nonatomic) BOOL useIndicatorView;
+@property (nonatomic) BOOL useFavoriteBtn;
+@property (nonatomic, strong) ButtonAttribute * _Nonnull footerButton;
+@property (nonatomic) CGFloat emptyIconTopInset;
+@property (nonatomic, strong) ImageAttribute * _Nonnull emptyIconBackImage;
+@property (nonatomic, strong) ImageAttribute * _Nonnull emptyIconImage;
+@property (nonatomic, strong) LabelAttribute * _Nonnull emptyDescLabel;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC10TnkRwdSdk228ADTopRecommendItemListLayout")
+@interface ADTopRecommendItemListLayout : AdListItemViewLayout
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 
 SWIFT_CLASS("_TtC10TnkRwdSdk210BaseAdItem")
 @interface BaseAdItem : NSObject
@@ -313,7 +395,6 @@ SWIFT_CLASS("_TtC10TnkRwdSdk210BaseAdItem")
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
-@class NSString;
 
 SWIFT_CLASS("_TtC10TnkRwdSdk212AdActionItem")
 @interface AdActionItem : BaseAdItem
@@ -351,10 +432,6 @@ SWIFT_CLASS("_TtC10TnkRwdSdk222AdDetailActionInfoView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIColor;
-@class ImageAttribute;
-@class LabelAttribute;
-@class ButtonAttribute;
 
 SWIFT_CLASS("_TtC10TnkRwdSdk227AdDetailActionItemSubLayout")
 @interface AdDetailActionItemSubLayout : NSObject
@@ -623,75 +700,6 @@ SWIFT_CLASS("_TtC10TnkRwdSdk214AdListItemView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-enum ScrollType : NSInteger;
-enum DescLabelShowOption : NSInteger;
-
-SWIFT_CLASS("_TtC10TnkRwdSdk220AdListItemViewLayout")
-@interface AdListItemViewLayout : NSObject
-@property (nonatomic) enum UIScrollViewContentInsetAdjustmentBehavior scrollInsetBehavior;
-@property (nonatomic) enum ScrollType orthogonalScrolling;
-@property (nonatomic) NSInteger itemDirection;
-@property (nonatomic) UIEdgeInsets sectionInset;
-@property (nonatomic) BOOL useIconImage;
-@property (nonatomic) BOOL useFeedImage;
-@property (nonatomic) CGFloat itemCornerRadius;
-@property (nonatomic, strong) UIColor * _Nonnull itemStrokeColor;
-@property (nonatomic) CGFloat itemStrokeWidth;
-@property (nonatomic, strong) UIColor * _Nonnull itemBackgroundColor;
-@property (nonatomic, strong) UIColor * _Nonnull itemHighlightedColor;
-@property (nonatomic) UIEdgeInsets itemInset;
-@property (nonatomic) CGFloat lineSpace;
-@property (nonatomic) CGFloat itemSpace;
-@property (nonatomic, strong) ImageAttribute * _Nonnull iconImage;
-@property (nonatomic, strong) ImageAttribute * _Nonnull feedImage;
-@property (nonatomic, strong) LabelAttribute * _Nonnull titleLabel;
-@property (nonatomic, strong) LabelAttribute * _Nonnull dateLabel;
-@property (nonatomic, strong) LabelAttribute * _Nonnull statusLabel;
-@property (nonatomic) BOOL singleLineInformation;
-@property (nonatomic, strong) LabelAttribute * _Nonnull descLabel;
-@property (nonatomic, strong) LabelAttribute * _Nonnull descPointLabel;
-@property (nonatomic) enum DescLabelShowOption descShowOption;
-@property (nonatomic, strong) ImageAttribute * _Nonnull pointIconImage;
-@property (nonatomic, copy) NSString * _Nonnull pointAmountFormat;
-@property (nonatomic, strong) LabelAttribute * _Nonnull pointAmountLabel;
-@property (nonatomic, strong) UIColor * _Nonnull pointAmountDisabledColor;
-@property (nonatomic, strong) UIColor * _Nonnull pointAmountConfirmColor;
-@property (nonatomic) BOOL pointUnitVisible;
-@property (nonatomic, strong) LabelAttribute * _Nonnull pointUnitLabel;
-@property (nonatomic, strong) ImageAttribute * _Nonnull pointAmountTrailImage;
-@property (nonatomic, strong) ImageAttribute * _Nonnull adItemTrailImage;
-@property (nonatomic, strong) LabelAttribute * _Nonnull adItemTrailTagLabel;
-@property (nonatomic) CGFloat dividerHeight;
-@property (nonatomic, strong) UIColor * _Nonnull dividerColor;
-@property (nonatomic) CGFloat dividerLeadingSpace;
-@property (nonatomic) CGFloat dividerTrailingSpace;
-@property (nonatomic) BOOL dividerHiddenAtLastItem;
-@property (nonatomic, strong) ButtonAttribute * _Nonnull favoriteButton;
-@property (nonatomic) UIEdgeInsets favoriteButtonLayoutInset;
-@property (nonatomic, strong) LabelAttribute * _Nonnull productPriceLabel;
-@property (nonatomic, strong) LabelAttribute * _Nonnull discountRateLabel;
-@property (nonatomic, strong) LabelAttribute * _Nonnull orderNumberLabel;
-@property (nonatomic) BOOL orderNumberVisible;
-@property (nonatomic) Class _Nullable sectionHeaderViewClass;
-@property (nonatomic) Class _Nullable sectionFooterViewClass;
-@property (nonatomic) Class _Nullable sectionDecorationViewClass;
-@property (nonatomic) CGFloat sectionHeaderHeight;
-@property (nonatomic) CGFloat sectionFooterHeight;
-@property (nonatomic) CGFloat sectionFooterMinHeight;
-@property (nonatomic) UIEdgeInsets headerInset;
-@property (nonatomic, strong) LabelAttribute * _Nonnull headerTitleLabel;
-@property (nonatomic, strong) LabelAttribute * _Nonnull headerDescLabel;
-@property (nonatomic) UIEdgeInsets footerInset;
-@property (nonatomic) CGFloat footerDividerHeight;
-@property (nonatomic, strong) UIColor * _Nonnull footerDividerColor;
-@property (nonatomic) BOOL useIndicatorView;
-@property (nonatomic, strong) ButtonAttribute * _Nonnull footerButton;
-@property (nonatomic) CGFloat emptyIconTopInset;
-@property (nonatomic, strong) ImageAttribute * _Nonnull emptyIconBackImage;
-@property (nonatomic, strong) ImageAttribute * _Nonnull emptyIconImage;
-@property (nonatomic, strong) LabelAttribute * _Nonnull emptyDescLabel;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
 
 @protocol AdMenuSelectionDelegate;
 
@@ -740,6 +748,8 @@ SWIFT_CLASS("_TtC10TnkRwdSdk215AdOfferwallView")
 - (void)layoutSubviews;
 @end
 
+
+
 @class NSBundle;
 
 SWIFT_CLASS("_TtC10TnkRwdSdk226TnkBaseStyleViewController")
@@ -780,6 +790,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk225AdOfferwallViewController")
 
 
 
+
 @interface AdOfferwallViewController (SWIFT_EXTENSION(TnkRwdSdk2))
 - (void)didCloseButtonPressed:(id _Nonnull)sender;
 - (void)didHelpButtonPressed:(id _Nonnull)sender;
@@ -794,7 +805,7 @@ SWIFT_PROTOCOL("_TtP10TnkRwdSdk222OfferwallEventListener_")
 @protocol OfferwallEventListener <NSObject>
 @optional
 /// AdOfferwallView 에 광고가 로딩되는 시점에 호출됩니다.
-/// \param headerMessage Tnk 사이트에서 상단 메시지를 설정할 수 있습니다. 설정된 메시지가 전달됩니다.
+/// \param headerMessage 말풍선 메세지의 내용이 전달됩니다.
 ///
 /// \param totalPoint 적립 가능한 총 포인트가 전달됩니다.
 ///
@@ -805,7 +816,11 @@ SWIFT_PROTOCOL("_TtP10TnkRwdSdk222OfferwallEventListener_")
 /// \param multiRewardCount 사용자가 참여중인 멀티 리워드 캠페인이 있는 경우 참여 중인 멀티 리워드 캠페인 수가 전달됩니다.
 ///
 - (void)didAdDataLoadedWithHeaderMessage:(NSString * _Nullable)headerMessage totalPoint:(NSInteger)totalPoint totalCount:(NSInteger)totalCount multiRewardPoint:(NSInteger)multiRewardPoint multiRewardCount:(NSInteger)multiRewardCount;
-/// AdOfferwallView 의 메뉴 또는 필터를 클릭하는 경우 호출됩니다.
+/// AdOfferwallView 에 광고가 로딩되는 시점에 호출됩니다.
+/// \param title Tnk 사이트에서 상단 타이틀을 설정할 수 있습니다. 설정된 메시지가 전달됩니다.
+///
+- (void)didOfferwallTitleChangedWithTitle:(NSString * _Nullable)title;
+/// AdOfferwallView 의 메뉴 또는 필터를 클릭하는 경우 호출됩니다.,offerwallTitle:String?
 /// \param menuId 클릭한 메뉴의 ID
 ///
 /// \param menuName 클릭한 메뉴의 이름
@@ -831,6 +846,7 @@ SWIFT_PROTOCOL("_TtP10TnkRwdSdk222OfferwallEventListener_")
 
 
 @interface AdOfferwallViewController (SWIFT_EXTENSION(TnkRwdSdk2)) <OfferwallEventListener>
+- (void)didOfferwallTitleChangedWithTitle:(NSString * _Nullable)title;
 - (void)didAdDataLoadedWithHeaderMessage:(NSString * _Nullable)headerMessage totalPoint:(NSInteger)totalPoint totalCount:(NSInteger)totalCount multiRewardPoint:(NSInteger)multiRewardPoint multiRewardCount:(NSInteger)multiRewardCount;
 - (void)didMenuSelectedWithMenuId:(NSInteger)menuId menuName:(NSString * _Nonnull)menuName filterId:(NSInteger)filterId filterName:(NSString * _Nonnull)filterName;
 - (void)didAdItemClickedWithAppId:(NSInteger)appId appName:(NSString * _Nonnull)appName;
@@ -858,6 +874,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk215AdPlacementView")
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView didHighlightItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (void)collectionView:(UICollectionView * _Nonnull)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
+
 
 
 
@@ -1227,6 +1244,12 @@ SWIFT_CLASS("_TtC10TnkRwdSdk219CpsSearchViewLayout")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+SWIFT_CLASS("_TtC10TnkRwdSdk229CpsTopRecommendItemListLayout")
+@interface CpsTopRecommendItemListLayout : CpsListItemViewLayout
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
 @protocol FontManager;
 
 SWIFT_CLASS("_TtC10TnkRwdSdk210TnkRwdPlus")
@@ -1516,13 +1539,15 @@ typedef SWIFT_ENUM(NSInteger, LayoutType, open) {
   LayoutTypeNewitem = 14,
   LayoutTypeRecommend = 15,
   LayoutTypeSearch = 16,
-  LayoutTypeNocps = 19,
-  LayoutTypeEmpty = 20,
+  LayoutTypeTop_recommend_ad = 2500,
+  LayoutTypeTop_recommend_cps = 2501,
   LayoutTypeTopbanner = 21,
   LayoutTypeListbanner = 22,
   LayoutTypeBottombanner = 23,
   LayoutTypeNewslist = 31,
-  LayoutTypeStoreList = 40,
+  LayoutTypeNocps = 5000,
+  LayoutTypeEmpty = 5001,
+  LayoutTypeStoreList = 5100,
 };
 
 
@@ -1550,6 +1575,8 @@ typedef SWIFT_ENUM(NSInteger, MenuType, open) {
   MenuTypeSub2 = 5,
   MenuTypeSub3 = 6,
   MenuTypeSub4 = 7,
+  MenuTypeRecommend = 8,
+  MenuTypeEvent = 9,
 };
 
 
@@ -1740,6 +1767,12 @@ SWIFT_CLASS("_TtC10TnkRwdSdk219PurchaseAlertLayout")
 @property (nonatomic, strong) ButtonAttribute * _Nonnull confirmButton;
 @property (nonatomic, strong) LabelAttribute * _Nonnull cancelButtonLb;
 @property (nonatomic, strong) ButtonAttribute * _Nonnull cancelButton;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC10TnkRwdSdk225RecommendItemHeaderLayout")
+@interface RecommendItemHeaderLayout : AdListMenuViewLayout
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2127,6 +2160,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) TnkSession * _Nullable
 + (TnkSession * _Nullable)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (TnkRwdPlus * _Nonnull)plusInstance SWIFT_WARN_UNUSED_RESULT;
 - (void)presentAdDetailView:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen completion:(void (^ _Nonnull)(BOOL))completion;
+- (void)adJoin:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen completion:(void (^ _Nonnull)(BOOL))completion;
+- (void)adAction:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen forceJoinAction:(BOOL)forceJoinAction completion:(void (^ _Nonnull)(BOOL))completion;
 - (void)applicationStarted;
 - (void)actionCompleted;
 - (void)actionCompletedWithActionName:(NSString * _Nonnull)actionName;

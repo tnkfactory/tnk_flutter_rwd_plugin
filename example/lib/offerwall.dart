@@ -121,6 +121,23 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                             child: const Text('테스트인출')),
                       ],
                     ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              presentAdDetailView(704480);
+                              // onAdItemClick("726941");
+                            },
+                            style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.redAccent,
+                                shadowColor: Colors.redAccent,
+                                elevation: 10),
+                            child: const Text('광고상세 진입')),
+                      ],
+                    ),
                   ],
                 ),
               ],
@@ -209,7 +226,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       // sleep(const Duration(seconds:5));
       // _tnkFlutterRwdPlugin.closeAdDetail();
 
-      sleep(const Duration(seconds: 10));
+      // sleep(const Duration(seconds: 10));
       _tnkFlutterRwdPlugin.closeAdDetail();
       _tnkFlutterRwdPlugin.closeOfferwall();
     } on Exception {
@@ -264,4 +281,27 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       return;
     }
   }
+
+
+  Future<void> presentAdDetailView(int appId) async {
+    try {
+      await _tnkFlutterRwdPlugin.setUserName("testUser");
+      String? result = await _tnkFlutterRwdPlugin.presentAdDetailView(appId);
+      print("jameson result : " + result!);
+    } on Exception {
+      return;
+    }
+  }
+
+
+  Future<void> showATTPopup() async {
+    try {
+      await _tnkFlutterRwdPlugin.showATTPopup();
+    } on Exception {
+      return;
+    }
+  }
+
 }
+
+
