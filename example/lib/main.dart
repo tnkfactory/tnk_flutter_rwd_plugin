@@ -91,28 +91,28 @@ class _MyAppState extends State<MyApp>
     });
   }
 
-  Future<void> showAdList() async {
-    String platformVersion;
-
-    try {
-      await _tnkFlutterRwdPlugin.setUserName("testUser");
-      await _tnkFlutterRwdPlugin.setCOPPA(false);
-
-      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
-      // _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
-      platformVersion = await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
-          'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    // sleepAndClose();
-    if (!mounted) return;
-
-    setState(() {
-      _tnkResult = platformVersion;
-    });
-  }
+  // Future<void> showAdList() async {
+  //   String platformVersion;
+  //
+  //   try {
+  //     await _tnkFlutterRwdPlugin.setUserName("testUser");
+  //     await _tnkFlutterRwdPlugin.setCOPPA(false);
+  //
+  //     _tnkFlutterRwdPlugin.setUseTermsPopup(false);
+  //     // _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
+  //     platformVersion = await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
+  //         'Unknown platform version';
+  //   } on PlatformException {
+  //     platformVersion = 'Failed to get platform version.';
+  //   }
+  //
+  //   // sleepAndClose();
+  //   if (!mounted) return;
+  //
+  //   setState(() {
+  //     _tnkResult = platformVersion;
+  //   });
+  // }
 
   Future<void> sleepAndClose() async {
     sleep(const Duration(seconds: 10));
@@ -128,134 +128,134 @@ class _MyAppState extends State<MyApp>
     }
   }
 
-  Future<void> getEarnPoint() async {
-    int point;
-    try {
-      point = await _tnkFlutterRwdPlugin.getEarnPoint() ?? 0;
-    } on PlatformException {
-      point = 0;
-    }
+  // Future<void> getEarnPoint() async {
+  //   int point;
+  //   try {
+  //     point = await _tnkFlutterRwdPlugin.getEarnPoint() ?? 0;
+  //   } on PlatformException {
+  //     point = 0;
+  //   }
+  //
+  //   // setState(() {
+  //   //   _myPoint = point;
+  //   // });
+  // }
 
-    // setState(() {
-    //   _myPoint = point;
-    // });
-  }
-
-  Future<void> test() async {
-    try {
-      String? placementData =
-          await _tnkFlutterRwdPlugin.getPlacementJsonData("offer_nor");
-      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
-
-      if (placementData != null) {
-        Map<String, dynamic> jsonObject = jsonDecode(placementData);
-        String resCode = jsonObject["res_code"];
-        String resMessage = jsonObject["res_message"];
-
-        if (resCode == "1") {
-          List<TnkPlacementAdItem> adList =
-              praserJsonToTnkPlacementAdItem(jsonObject["ad_list"]);
-
-          setState(() {
-            this.adList.addAll(adList);
-            // _tnkResult = placementData ?? "null";
-          });
-        } else {
-          // 광고 로드 실패
-        }
-      }
-    } on PlatformException {
-      setState(() {
-        _tnkResult = "excetpion";
-      });
-      return;
-    }
-  }
+  // Future<void> test() async {
+  //   try {
+  //     String? placementData =
+  //         await _tnkFlutterRwdPlugin.getPlacementJsonData("offer_nor");
+  //     _tnkFlutterRwdPlugin.setUseTermsPopup(false);
+  //
+  //     if (placementData != null) {
+  //       Map<String, dynamic> jsonObject = jsonDecode(placementData);
+  //       String resCode = jsonObject["res_code"];
+  //       String resMessage = jsonObject["res_message"];
+  //
+  //       if (resCode == "1") {
+  //         List<TnkPlacementAdItem> adList =
+  //             praserJsonToTnkPlacementAdItem(jsonObject["ad_list"]);
+  //
+  //         setState(() {
+  //           this.adList.addAll(adList);
+  //           // _tnkResult = placementData ?? "null";
+  //         });
+  //       } else {
+  //         // 광고 로드 실패
+  //       }
+  //     }
+  //   } on PlatformException {
+  //     setState(() {
+  //       _tnkResult = "excetpion";
+  //     });
+  //     return;
+  //   }
+  // }
 
   // praser json to List<TnkPlacementAdItem>
-  List<TnkPlacementAdItem> praserJsonToTnkPlacementAdItem(
-      List<dynamic> adList) {
-    List<TnkPlacementAdItem> tnkPlacementAdItemList = [];
-    for (var adItem in adList) {
-      TnkPlacementAdItem tnkPlacementAdItem = TnkPlacementAdItem();
-      tnkPlacementAdItem.app_id = adItem["app_id"];
-      tnkPlacementAdItem.app_nm = adItem["app_nm"];
-      tnkPlacementAdItem.img_url = adItem["img_url"];
-      tnkPlacementAdItem.pnt_amt = adItem["pnt_amt"];
-      tnkPlacementAdItem.org_amt = adItem["org_amt"];
-      tnkPlacementAdItem.pnt_unit = adItem["pnt_unit"];
-      tnkPlacementAdItem.prd_price = adItem["prd_price"];
-      tnkPlacementAdItem.org_prd_price = adItem["org_prd_price"];
-      tnkPlacementAdItem.sale_dc_rate = adItem["sale_dc_rate"];
-      tnkPlacementAdItem.multi_yn = adItem["multi_yn"];
-      tnkPlacementAdItem.cmpn_type = adItem["cmpn_type"];
-      tnkPlacementAdItem.cmpn_type_name = adItem["cmpn_type_name"];
-      tnkPlacementAdItem.like_yn = adItem["like_yn"];
+  // List<TnkPlacementAdItem> praserJsonToTnkPlacementAdItem(
+  //     List<dynamic> adList) {
+  //   List<TnkPlacementAdItem> tnkPlacementAdItemList = [];
+  //   for (var adItem in adList) {
+  //     TnkPlacementAdItem tnkPlacementAdItem = TnkPlacementAdItem();
+  //     tnkPlacementAdItem.app_id = adItem["app_id"];
+  //     tnkPlacementAdItem.app_nm = adItem["app_nm"];
+  //     tnkPlacementAdItem.img_url = adItem["img_url"];
+  //     tnkPlacementAdItem.pnt_amt = adItem["pnt_amt"];
+  //     tnkPlacementAdItem.org_amt = adItem["org_amt"];
+  //     tnkPlacementAdItem.pnt_unit = adItem["pnt_unit"];
+  //     tnkPlacementAdItem.prd_price = adItem["prd_price"];
+  //     tnkPlacementAdItem.org_prd_price = adItem["org_prd_price"];
+  //     tnkPlacementAdItem.sale_dc_rate = adItem["sale_dc_rate"];
+  //     tnkPlacementAdItem.multi_yn = adItem["multi_yn"];
+  //     tnkPlacementAdItem.cmpn_type = adItem["cmpn_type"];
+  //     tnkPlacementAdItem.cmpn_type_name = adItem["cmpn_type_name"];
+  //     tnkPlacementAdItem.like_yn = adItem["like_yn"];
+  //
+  //     tnkPlacementAdItemList.add(tnkPlacementAdItem);
+  //   }
+  //
+  //   return tnkPlacementAdItemList;
+  // }
 
-      tnkPlacementAdItemList.add(tnkPlacementAdItem);
-    }
+  // Future<void> onAdItemClick(String appId) async {
+  //   try {
+  //     await _tnkFlutterRwdPlugin.onItemClick(appId);
+  //     // sleep(const Duration(seconds:5));
+  //     // _tnkFlutterRwdPlugin.closeAdDetail();
+  //
+  //     sleep(const Duration(seconds: 10));
+  //     _tnkFlutterRwdPlugin.closeAdDetail();
+  //     _tnkFlutterRwdPlugin.closeOfferwall();
+  //   } on Exception {
+  //     return;
+  //   }
+  // }
 
-    return tnkPlacementAdItemList;
-  }
+  // Future<void> setNoUsePointIcon() async {
+  //   try {
+  //     await _tnkFlutterRwdPlugin.setNoUsePointIcon();
+  //   } on Exception {
+  //     return;
+  //   }
+  // }
 
-  Future<void> onAdItemClick(String appId) async {
-    try {
-      await _tnkFlutterRwdPlugin.onItemClick(appId);
-      // sleep(const Duration(seconds:5));
-      // _tnkFlutterRwdPlugin.closeAdDetail();
+  // Future<void> setNoUsePrivacyAlert() async {
+  //   try {
+  //     await _tnkFlutterRwdPlugin.setNoUsePrivacyAlert();
+  //   } on Exception {
+  //     return;
+  //   }
+  // }
 
-      sleep(const Duration(seconds: 10));
-      _tnkFlutterRwdPlugin.closeAdDetail();
-      _tnkFlutterRwdPlugin.closeOfferwall();
-    } on Exception {
-      return;
-    }
-  }
+  // Future<void> getQueryPoint() async {
+  //   int point;
+  //   try {
+  //     point = await _tnkFlutterRwdPlugin.getQueryPoint() ?? 0;
+  //   } on PlatformException {
+  //     point = 0;
+  //   }
+  //
+  //   // setState(() {
+  //   //   _queryPoint = point;
+  //   // });
+  // }
 
-  Future<void> setNoUsePointIcon() async {
-    try {
-      await _tnkFlutterRwdPlugin.setNoUsePointIcon();
-    } on Exception {
-      return;
-    }
-  }
+  // Future<void> purchaseItem(String itemId, int cost) async {
+  //   try {
+  //     await _tnkFlutterRwdPlugin.purchaseItem(itemId, cost);
+  //   } on Exception {
+  //     return;
+  //   }
+  // }
 
-  Future<void> setNoUsePrivacyAlert() async {
-    try {
-      await _tnkFlutterRwdPlugin.setNoUsePrivacyAlert();
-    } on Exception {
-      return;
-    }
-  }
-
-  Future<void> getQueryPoint() async {
-    int point;
-    try {
-      point = await _tnkFlutterRwdPlugin.getQueryPoint() ?? 0;
-    } on PlatformException {
-      point = 0;
-    }
-
-    // setState(() {
-    //   _queryPoint = point;
-    // });
-  }
-
-  Future<void> purchaseItem(String itemId, int cost) async {
-    try {
-      await _tnkFlutterRwdPlugin.purchaseItem(itemId, cost);
-    } on Exception {
-      return;
-    }
-  }
-
-  Future<void> withdrawPoints(String description) async {
-    try {
-      await _tnkFlutterRwdPlugin.withdrawPoints(description);
-    } on Exception {
-      return;
-    }
-  }
+  // Future<void> withdrawPoints(String description) async {
+  //   try {
+  //     await _tnkFlutterRwdPlugin.withdrawPoints(description);
+  //   } on Exception {
+  //     return;
+  //   }
+  // }
 
   void _showDialog(BuildContext context) {
     showDialog(
@@ -325,21 +325,21 @@ class _MyAppState extends State<MyApp>
     }
   }
 
-  Future<void> useCustomIcon() async {
-    return setCustomUnitIcon(TnkFlutterRwdPointEffectType.ICON);
-  }
-
-  Future<void> useCustomIconAndUnit() async {
-    return setCustomUnitIcon(TnkFlutterRwdPointEffectType.ICON_N_UNIT);
-  }
-
-  Future<void> useUnit() async {
-    return setCustomUnitIcon(TnkFlutterRwdPointEffectType.UNIT);
-  }
-
-  Future<void> useEffectNone() async {
-    return setCustomUnitIcon(TnkFlutterRwdPointEffectType.NONE);
-  }
+  // Future<void> useCustomIcon() async {
+  //   return setCustomUnitIcon(TnkFlutterRwdPointEffectType.ICON);
+  // }
+  //
+  // Future<void> useCustomIconAndUnit() async {
+  //   return setCustomUnitIcon(TnkFlutterRwdPointEffectType.ICON_N_UNIT);
+  // }
+  //
+  // Future<void> useUnit() async {
+  //   return setCustomUnitIcon(TnkFlutterRwdPointEffectType.UNIT);
+  // }
+  //
+  // Future<void> useEffectNone() async {
+  //   return setCustomUnitIcon(TnkFlutterRwdPointEffectType.NONE);
+  // }
 
   Future<void> setCustomUnitIcon(String type) async {
     try {

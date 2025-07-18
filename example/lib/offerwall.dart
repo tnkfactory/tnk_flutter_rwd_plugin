@@ -136,6 +136,18 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                                 shadowColor: Colors.redAccent,
                                 elevation: 10),
                             child: const Text('광고상세 진입')),
+
+                        ElevatedButton(
+                            onPressed: () {
+                              setUserName();
+                              // onAdItemClick("726941");
+                            },
+                            style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.redAccent,
+                                shadowColor: Colors.redAccent,
+                                elevation: 10),
+                            child: const Text('set username')),
                       ],
                     ),
                   ],
@@ -174,7 +186,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     String platformVersion;
 
     try {
-      await _tnkFlutterRwdPlugin.setUserName("testUser");
+      await _tnkFlutterRwdPlugin.setUserName("jameson");
       await _tnkFlutterRwdPlugin.setCOPPA(false);
 
       _tnkFlutterRwdPlugin.setUseTermsPopup(false);
@@ -285,7 +297,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
   Future<void> presentAdDetailView(int appId) async {
     try {
-      await _tnkFlutterRwdPlugin.setUserName("testUser");
+      await _tnkFlutterRwdPlugin.setUserName("");
       String? result = await _tnkFlutterRwdPlugin.presentAdDetailView(appId);
       print("jameson result : " + result!);
     } on Exception {
@@ -297,6 +309,16 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   Future<void> showATTPopup() async {
     try {
       await _tnkFlutterRwdPlugin.showATTPopup();
+    } on Exception {
+      return;
+    }
+  }
+
+  Future<void> setUserName() async {
+
+    try {
+      String? result = await _tnkFlutterRwdPlugin.setUserName("");
+      print(result);
     } on Exception {
       return;
     }
