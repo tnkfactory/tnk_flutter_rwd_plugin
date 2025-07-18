@@ -30,13 +30,17 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
   @override
   Future<String?> setUserName(String userName) async {
 
-    if( userName == null || userName.isEmpty ) {
-      print( "User name cannot be null or empty.. your userName = $userName" );
-      throw ArgumentError("User name cannot be null or empty");
-    } else {
-      final version = await methodChannel.invokeMethod<String>('setUserName', <String, dynamic>{"user_name":userName});
-      return version;
-    }
+    // if( userName == null || userName.isEmpty ) {
+    //   print( "User name cannot be null or empty.. your userName = $userName" );
+    //   // throw ArgumentError("User name cannot be null or empty");
+    //   final version = await methodChannel.invokeMethod<String>('setUserName', <String, dynamic>{"user_name":userName});
+    // } else {
+    //   final version = await methodChannel.invokeMethod<String>('setUserName', <String, dynamic>{"user_name":userName});
+    //   return version;
+    // }
+
+    final version = await methodChannel.invokeMethod<String>('setUserName', <String, dynamic>{"user_name":userName});
+    return version;
 
 
   }

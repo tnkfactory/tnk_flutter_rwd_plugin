@@ -76,13 +76,8 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin, OfferwallEventLi
         case "setUserName":
             if let args = call.arguments as? Dictionary<String, Any>{
                 if let userName = args["user_name"] as? String {
-                    
-                    if( userName == "" ) {
-                        result("fail userName is empty..  [\(userName)]")
-                    } else {
-                        TnkSession.sharedInstance()?.setUserName(userName)
-                        result("success")
-                    }
+                    TnkSession.sharedInstance()?.setUserName(userName)
+                    result("success  input :[\(userName)]")
 
                 } else {
                     result("fail")

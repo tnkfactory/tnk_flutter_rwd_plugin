@@ -74,4 +74,6 @@
 ## 0.5.3
 * 광고상세 진입 기능 추가 
 ## 0.5.4
-* userName 파라미터 검수 추가 
+* userName 파라미터 검수 추가
+## 0.5.5
+* setUserName() userName 파라미터 유효성 체크 

@@ -186,7 +186,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     String platformVersion;
 
     try {
-      await _tnkFlutterRwdPlugin.setUserName("jameson");
+      // await _tnkFlutterRwdPlugin.setUserName("jameson");
       await _tnkFlutterRwdPlugin.setCOPPA(false);
 
       _tnkFlutterRwdPlugin.setUseTermsPopup(false);
@@ -317,7 +317,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   Future<void> setUserName() async {
 
     try {
-      String? result = await _tnkFlutterRwdPlugin.setUserName("");
+      String? result = await _tnkFlutterRwdPlugin.setUserName("newTestUser");
       print(result);
     } on Exception {
       return;
