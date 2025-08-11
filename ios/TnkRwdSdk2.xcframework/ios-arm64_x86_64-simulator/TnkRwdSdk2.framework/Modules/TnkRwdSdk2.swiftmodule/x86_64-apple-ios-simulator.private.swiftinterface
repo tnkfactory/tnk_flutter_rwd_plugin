@@ -61,6 +61,7 @@ import zlib
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TmapRwdPlus : TnkRwdSdk2.TnkRwdPlus {
   @objc override public class func initSession(appId: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
   @objc override public func showOfferwall(_ viewController: UIKit.UIViewController)
+  public static func showTermViewController(parentVC: UIKit.UIViewController, moveToAction: @escaping (() -> Swift.Void))
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class TnkStyles : ObjectiveC.NSObject {
@@ -333,6 +334,17 @@ import zlib
   override public func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
   @objc deinit
 }
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor @preconcurrency open class CpsRightIconListItemView : TnkRwdSdk2.BaseCpsItemView {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override open func applyLayout(_ viewLayout: TnkRwdSdk2.AdListItemViewLayout)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc open class CpsGrayRoundListItemPageViewLayout : TnkRwdSdk2.CpsItemPageViewLayout {
+  @objc override dynamic public init()
+  @objc override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  override open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
+  @objc deinit
+}
 @_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class AdDetailButtonFrameView : TnkRwdSdk2.AdDetailFrameView {
   @objc deinit
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
@@ -582,9 +594,9 @@ extension TnkRwdSdk2.AdOfferwallViewController {
   public func getApplicationId() -> Swift.String
   public func getIdForAdvertising() -> Swift.String
   public func showMenuViewController(from viewController: UIKit.UIViewController, menuType: TnkRwdSdk2.MyMenuType)
-  @objc public func presentAdDetailView(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, completion: @escaping (Swift.Bool) -> Swift.Void)
-  @objc public func adJoin(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, completion: @escaping (Swift.Bool) -> Swift.Void)
-  @objc public func adAction(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, forceJoinAction: Swift.Bool = false, completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public func presentAdDetailView(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public func adJoin(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public func adAction(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, forceJoinAction: Swift.Bool = false, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
   @objc public func applicationStarted()
   @objc public func actionCompleted()
   @objc public func actionCompleted(actionName: Swift.String)
@@ -891,10 +903,54 @@ extension TnkRwdSdk2.AdOfferwallViewController {
   @objc public var emptyIconBackImage: TnkRwdSdk2.ImageAttribute
   @objc public var emptyIconImage: TnkRwdSdk2.ImageAttribute
   @objc public var emptyDescLabel: TnkRwdSdk2.LabelAttribute
+  @objc public var showOnlyTitle: Swift.Bool
   open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
   open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
   @objc override dynamic public init()
   @objc deinit
+}
+public enum ADEventWebType {
+  case LOTTERY
+  case INSURE
+  public static func == (a: TnkRwdSdk2.ADEventWebType, b: TnkRwdSdk2.ADEventWebType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class AdiscopeAdEventWebViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var showOfferWallHandler: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var extraUrl: Swift.String?
+  @_Concurrency.MainActor @preconcurrency public var loadInterstitialAdHandler: ((Swift.String) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var showInterstitialAdHandler: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var loadRvAdHandler: ((Swift.String) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var showRVAdHandler: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var webType: TnkRwdSdk2.ADEventWebType
+  @_Concurrency.MainActor @preconcurrency final public let insureWebUrl: Swift.String
+  @objc deinit
+  @_Concurrency.MainActor @preconcurrency public func setExtraWebId(id: Swift.String)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency public func changeMecroUrlParam(_ urlString: Swift.String) -> Swift.String
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension TnkRwdSdk2.AdiscopeAdEventWebViewController : WebKit.WKScriptMessageHandler {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func userContentController(_ userContentController: WebKit.WKUserContentController, didReceive message: WebKit.WKScriptMessage)
+}
+extension TnkRwdSdk2.AdiscopeAdEventWebViewController : WebKit.WKNavigationDelegate, WebKit.WKUIDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: @escaping (WebKit.WKNavigationActionPolicy) -> Swift.Void)
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func webView(_ webView: WebKit.WKWebView, createWebViewWith configuration: WebKit.WKWebViewConfiguration, for navigationAction: WebKit.WKNavigationAction, windowFeatures: WebKit.WKWindowFeatures) -> WebKit.WKWebView?
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func webView(_ webView: WebKit.WKWebView, runJavaScriptConfirmPanelWithMessage message: Swift.String, initiatedByFrame frame: WebKit.WKFrameInfo, completionHandler: @escaping (Swift.Bool) -> Swift.Void)
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func webView(_ webView: WebKit.WKWebView, runJavaScriptAlertPanelWithMessage message: Swift.String, initiatedByFrame frame: WebKit.WKFrameInfo, completionHandler: @escaping () -> Swift.Void)
+}
+extension TnkRwdSdk2.AdiscopeAdEventWebViewController {
+  @_Concurrency.MainActor @preconcurrency public func onInterstitialAdLoaded(unitID: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public func onInterstitialAdClosed(unitID: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public func onInterstitialAdFailed(unitID: Swift.String?, errorDesc: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public func onRewardedVideoAdLoaded(unitID: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public func onRewardedVideoAdClosed(unitID: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public func onRewardedVideoAdFailed(unitID: Swift.String?, errorDesc: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency public func onRewarded(unitID: Swift.String?)
 }
 open class DaumIndexMainMenuData {
   public init()
@@ -1274,6 +1330,10 @@ public protocol CpsCategoryOrderDelegate : AnyObject {
   override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
   @objc deinit
 }
+@_inheritsConvenienceInitializers @objc open class SingleTitleFeedAdItemLargeViewLayout : TnkRwdSdk2.FeedAdItemLargeViewLayout {
+  @objc override dynamic public init()
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class KaKaoTnkRwdPlus : TnkRwdSdk2.TnkRwdPlus {
   @objc override public class func initSession(appId: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
   @objc override public func showOfferwall(_ viewController: UIKit.UIViewController)
@@ -1383,12 +1443,15 @@ extension TnkRwdSdk2.StoreLayout {
   case newitem = 14
   case recommend = 15
   case search = 16
+  case cps_newitem_B = 20
   case top_recommend_ad = 2500
   case top_recommend_cps = 2501
   case topbanner = 21
   case listbanner = 22
   case bottombanner = 23
   case newslist = 31
+  case quiz_list = 32
+  case quiz_feed = 33
   case nocps = 5000
   case empty = 5001
   case storeList = 5100
@@ -2010,6 +2073,8 @@ public enum MyMenuType : Swift.Int {
 extension TnkRwdSdk2.AdState : Swift.Equatable {}
 extension TnkRwdSdk2.AdState : Swift.Hashable {}
 extension TnkRwdSdk2.AdState : Swift.RawRepresentable {}
+extension TnkRwdSdk2.ADEventWebType : Swift.Equatable {}
+extension TnkRwdSdk2.ADEventWebType : Swift.Hashable {}
 extension TnkRwdSdk2.TnkCode : Swift.Equatable {}
 extension TnkRwdSdk2.TnkCode : Swift.Hashable {}
 extension TnkRwdSdk2.TnkCode : Swift.RawRepresentable {}

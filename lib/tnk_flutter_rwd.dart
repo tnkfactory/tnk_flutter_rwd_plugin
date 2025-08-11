@@ -89,7 +89,16 @@ class TnkFlutterRwd {
     return TnkFlutterRwdPlatform.instance.setCustomUIDefault(map);
   }
 
-  Future<String?> presentAdDetailView(int appId) {
-    return TnkFlutterRwdPlatform.instance.presentAdDetailView(appId);
+  Future<String?> presentAdDetailView(int appId, [int actionId = 0]) {
+    return TnkFlutterRwdPlatform.instance.presentAdDetailView(appId, actionId);
   }
+
+  Future<String?> adJoin(int appId, [int actionId = 0]) {
+    return TnkFlutterRwdPlatform.instance.adJoin(appId, actionId);
+  }
+
+  Future<String?> adAction(int appId, [int actionId = 0]) {
+    return TnkFlutterRwdPlatform.instance.adAction(appId, actionId);
+  }
+
 }

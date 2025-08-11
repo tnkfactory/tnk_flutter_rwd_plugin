@@ -102,7 +102,17 @@ class MockTnkFlutterRwdPlatform
   }
 
   @override
-  Future<String?> presentAdDetailView(int appId) {
+  Future<String?> presentAdDetailView(int appId, [int actionId = 0]) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> adAction(int appId, [int actionId = 0]) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> adJoin(int appId, [int actionId = 0]) {
     throw UnimplementedError();
   }
 

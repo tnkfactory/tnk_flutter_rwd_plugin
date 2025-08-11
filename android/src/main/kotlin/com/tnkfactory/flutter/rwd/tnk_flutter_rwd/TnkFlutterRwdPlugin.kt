@@ -4,6 +4,8 @@ package com.tnkfactory.flutter.rwd.tnk_flutter_rwd
 import android.app.Activity
 import android.content.Context
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.annotation.NonNull
 import com.tnkfactory.ad.*
@@ -48,7 +50,9 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val jEvent = JSONObject()
                 jEvent.put("event", event)
                 jEvent.put("params", jParams)
-                channel.invokeMethod("tnkAnalytics", jEvent.toString())
+                Handler(Looper.getMainLooper()).post {
+                    channel.invokeMethod("tnkAnalytics", jEvent.toString())
+                }
             }
         })
     }
@@ -76,6 +80,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     TnkAdConfig.headerConfig.startFilter = call.argument("filter") as? Int ?: 0
                     result.success("success")
                 }
+
                 "showAdList" -> {
                     var appId = call.argument("app_id") ?: 0
                     if (appId != 0) {
@@ -230,10 +235,12 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     } ?: result.success("fail")
 
                 }
-
+                // 광고 상세 화면 출력(상세 없는 타입도 상세화면 출력)
                 "presentAdDetailView" -> {
                     val appId = (call.argument("app_id") as? Int ?: 0)
-                        offerwall.adDetail(mActivity, appId.toLong(),{isSuccess,error->
+                    val actionId = (call.argument("action_id") as? Int ?: 0)
+
+                    offerwall.adDetail(mActivity, appId.toLong(), actionId, { isSuccess, error ->
                         JSONObject().apply {
                             if (isSuccess) {
                                 put("res_code", "1")
@@ -247,9 +254,53 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         }
                     })
 
-                    }
+                }
+
+                // 광고 참여(상세화면의 참여버튼 효과)
+                "adJoin" -> {
+                    val appId = (call.argument("app_id") as? Int ?: 0)
+                    val actionId = (call.argument("action_id") as? Int ?: 0)
+
+//                    Handler(Looper.getMainLooper()).post{
+                        offerwall.adJoin(mActivity, appId.toLong(), actionId, { isSuccess, error ->
+                            JSONObject().apply {
+                                if (isSuccess) {
+                                    put("res_code", "1")
+                                    put("res_message", "success")
+                                } else {
+                                    put("res_code", "" + (error?.code ?: "99"))
+                                    put("res_message", "" + (error?.message ?: "error"))
+                                }
+                            }.also {
+                                result.success(it.toString())
+                            }
+                        })
+//                    }
+
 
                 }
+
+                // 광고 타입에 따라 참여 or 상세 호출
+                "adAction" -> {
+                    val appId = (call.argument("app_id") as? Int ?: 0)
+                    val actionId = (call.argument("action_id") as? Int ?: 0)
+
+                    offerwall.adAction(mActivity, appId.toLong(), actionId, { isSuccess, error ->
+                        JSONObject().apply {
+                            if (isSuccess) {
+                                put("res_code", "1")
+                                put("res_message", "success")
+                            } else {
+                                put("res_code", "" + (error?.code ?: "99"))
+                                put("res_message", "" + (error?.message ?: "error"))
+                            }
+                        }.also {
+                            result.success(it.toString())
+                        }
+                    })
+                }
+
+            }
         } catch (e: Exception) {
             e.printStackTrace()
             result.success(e.message)

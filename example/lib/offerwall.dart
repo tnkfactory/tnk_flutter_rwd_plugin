@@ -127,7 +127,8 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                       children: [
                         ElevatedButton(
                             onPressed: () {
-                              presentAdDetailView(704480);
+                              presentAdDetailView(227796);
+
                               // onAdItemClick("726941");
                             },
                             style: ElevatedButton.styleFrom(
@@ -148,6 +149,34 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                                 shadowColor: Colors.redAccent,
                                 elevation: 10),
                             child: const Text('set username')),
+                      ],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              adJoin(227796);
+
+                            },
+                            style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.purpleAccent,
+                                shadowColor: Colors.purpleAccent,
+                                elevation: 10),
+                            child: const Text('Ad Join')),
+
+                        ElevatedButton(
+                            onPressed: () {
+                              adAction(227796);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.purpleAccent,
+                                shadowColor: Colors.purpleAccent,
+                                elevation: 10),
+                            child: const Text('Ad Action')),
                       ],
                     ),
                   ],
@@ -297,8 +326,28 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
   Future<void> presentAdDetailView(int appId) async {
     try {
-      await _tnkFlutterRwdPlugin.setUserName("");
-      String? result = await _tnkFlutterRwdPlugin.presentAdDetailView(appId);
+      await _tnkFlutterRwdPlugin.setUserName("dongyoon");
+      String? result = await _tnkFlutterRwdPlugin.presentAdDetailView(appId) ;
+      print("jameson result : " + result!);
+    } on Exception {
+      return;
+    }
+  }
+
+  Future<void> adJoin(int appId) async {
+    try {
+      await _tnkFlutterRwdPlugin.setUserName("dongyoon");
+      String? result = await _tnkFlutterRwdPlugin.adJoin(appId) ;
+      print("jameson result : " + result!);
+    } on Exception {
+      return;
+    }
+  }
+
+  Future<void> adAction(int appId) async {
+    try {
+      await _tnkFlutterRwdPlugin.setUserName("dongyoon");
+      String? result = await _tnkFlutterRwdPlugin.adAction(appId) ;
       print("jameson result : " + result!);
     } on Exception {
       return;

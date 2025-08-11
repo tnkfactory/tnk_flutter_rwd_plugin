@@ -379,6 +379,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk220AdListItemViewLayout")
 @property (nonatomic, strong) ImageAttribute * _Nonnull emptyIconBackImage;
 @property (nonatomic, strong) ImageAttribute * _Nonnull emptyIconImage;
 @property (nonatomic, strong) LabelAttribute * _Nonnull emptyDescLabel;
+@property (nonatomic) BOOL showOnlyTitle;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -956,6 +957,36 @@ typedef SWIFT_ENUM(NSInteger, AdState, open) {
 };
 
 
+SWIFT_CLASS("_TtC10TnkRwdSdk232AdiscopeAdEventWebViewController")
+@interface AdiscopeAdEventWebViewController : UIViewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class WKUserContentController;
+@class WKScriptMessage;
+
+@interface AdiscopeAdEventWebViewController (SWIFT_EXTENSION(TnkRwdSdk2)) <WKScriptMessageHandler>
+- (void)userContentController:(WKUserContentController * _Nonnull)userContentController didReceiveScriptMessage:(WKScriptMessage * _Nonnull)message;
+@end
+
+
+@class WKWebView;
+@class WKNavigationAction;
+@class WKWebViewConfiguration;
+@class WKWindowFeatures;
+@class WKFrameInfo;
+
+@interface AdiscopeAdEventWebViewController (SWIFT_EXTENSION(TnkRwdSdk2)) <WKNavigationDelegate, WKUIDelegate>
+- (void)webView:(WKWebView * _Nonnull)webView decidePolicyForNavigationAction:(WKNavigationAction * _Nonnull)navigationAction decisionHandler:(void (^ _Nonnull)(WKNavigationActionPolicy))decisionHandler;
+- (WKWebView * _Nullable)webView:(WKWebView * _Nonnull)webView createWebViewWithConfiguration:(WKWebViewConfiguration * _Nonnull)configuration forNavigationAction:(WKNavigationAction * _Nonnull)navigationAction windowFeatures:(WKWindowFeatures * _Nonnull)windowFeatures SWIFT_WARN_UNUSED_RESULT;
+- (void)webView:(WKWebView * _Nonnull)webView runJavaScriptConfirmPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
+- (void)webView:(WKWebView * _Nonnull)webView runJavaScriptAlertPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(void))completionHandler;
+@end
+
+
+
 SWIFT_PROTOCOL("_TtP10TnkRwdSdk212AlertControl_")
 @protocol AlertControl <NSObject>
 - (void)showAlert:(UIViewController * _Nullable)viewController title:(NSString * _Nullable)title message:(NSString * _Nonnull)message agree:(NSString * _Nonnull)agree reject:(NSString * _Nullable)reject agreeAction:(void (^ _Nullable)(void))agreeAction rejectAction:(void (^ _Nullable)(void))rejectAction;
@@ -1191,6 +1222,13 @@ SWIFT_CLASS("_TtC10TnkRwdSdk221CpsFeedItemViewLayout")
 @end
 
 
+SWIFT_CLASS("_TtC10TnkRwdSdk234CpsGrayRoundListItemPageViewLayout")
+@interface CpsGrayRoundListItemPageViewLayout : CpsItemPageViewLayout
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- (CGSize)viewSize:(CGSize)parentSize SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 
 
 SWIFT_CLASS("_TtC10TnkRwdSdk225CpsListItemPageViewLayout")
@@ -1205,6 +1243,12 @@ SWIFT_CLASS("_TtC10TnkRwdSdk215CpsListItemView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
+SWIFT_CLASS("_TtC10TnkRwdSdk224CpsRightIconListItemView")
+@interface CpsRightIconListItemView : BaseCpsItemView
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 SWIFT_CLASS("_TtC10TnkRwdSdk217CpsSearchItemView")
@@ -1539,12 +1583,15 @@ typedef SWIFT_ENUM(NSInteger, LayoutType, open) {
   LayoutTypeNewitem = 14,
   LayoutTypeRecommend = 15,
   LayoutTypeSearch = 16,
+  LayoutTypeCps_newitem_B = 20,
   LayoutTypeTop_recommend_ad = 2500,
   LayoutTypeTop_recommend_cps = 2501,
   LayoutTypeTopbanner = 21,
   LayoutTypeListbanner = 22,
   LayoutTypeBottombanner = 23,
   LayoutTypeNewslist = 31,
+  LayoutTypeQuiz_list = 32,
+  LayoutTypeQuiz_feed = 33,
   LayoutTypeNocps = 5000,
   LayoutTypeEmpty = 5001,
   LayoutTypeStoreList = 5100,
@@ -1806,6 +1853,12 @@ typedef SWIFT_ENUM(NSInteger, ScrollType, open) {
   ScrollTypePaging = 2,
   ScrollTypeGroupPaging = 3,
 };
+
+
+SWIFT_CLASS("_TtC10TnkRwdSdk236SingleTitleFeedAdItemLargeViewLayout")
+@interface SingleTitleFeedAdItemLargeViewLayout : FeedAdItemLargeViewLayout
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 /// 오퍼월 내의 특정 이벤트들을 받아서처리 하기 위하여 사용됩니다.
@@ -2159,9 +2212,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) TnkSession * _Nullable
 + (TnkSession * _Nonnull)initInstanceWithAppId:(NSString * _Nonnull)appId SWIFT_METHOD_FAMILY(none);
 + (TnkSession * _Nullable)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (TnkRwdPlus * _Nonnull)plusInstance SWIFT_WARN_UNUSED_RESULT;
-- (void)presentAdDetailView:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen completion:(void (^ _Nonnull)(BOOL))completion;
-- (void)adJoin:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen completion:(void (^ _Nonnull)(BOOL))completion;
-- (void)adAction:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen forceJoinAction:(BOOL)forceJoinAction completion:(void (^ _Nonnull)(BOOL))completion;
+- (void)presentAdDetailView:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL))completion;
+- (void)adJoin:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL))completion;
+- (void)adAction:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen forceJoinAction:(BOOL)forceJoinAction actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL))completion;
 - (void)applicationStarted;
 - (void)actionCompleted;
 - (void)actionCompletedWithActionName:(NSString * _Nonnull)actionName;

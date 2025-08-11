@@ -134,8 +134,20 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
   }
 
   @override
-  Future<String?> presentAdDetailView(int appId) async {
-    final version = await methodChannel.invokeMethod<String>('presentAdDetailView', <String, dynamic>{"app_id": appId});
+  Future<String?> presentAdDetailView(int appId, [int actionId = 0]) async {
+    final version = await methodChannel.invokeMethod<String>('presentAdDetailView', <String, dynamic>{"app_id": appId, "action_id": actionId});
+    return version;
+  }
+
+  @override
+  Future<String?> adJoin(int appId, [int actionId = 0]) async {
+    final version = await methodChannel.invokeMethod<String>('adJoin', <String, dynamic>{"app_id": appId, "action_id": actionId});
+    return version;
+  }
+
+  @override
+  Future<String?> adAction(int appId, [int actionId = 0]) async {
+    final version = await methodChannel.invokeMethod<String>('adAction', <String, dynamic>{"app_id": appId, "action_id": actionId});
     return version;
   }
 
