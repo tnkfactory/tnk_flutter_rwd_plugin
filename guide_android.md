@@ -245,15 +245,12 @@ TnkFlutterRwd().showAdList("무료 충전소"];
 
 #### adDetail
 
-광고상세페이지 진입
+광고 상세 화면 출력(상세 없는 타입도 상세화면 출력)
 
 ##### Method
 
 - String presentAdDetailView(int appId)
 
-##### Description
-
-TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄워줍니다.
 
 ##### Parameters
 
@@ -271,15 +268,12 @@ TnkFlutterRwd().presentAdDetailView(appId];
 
 #### adJoin
 
-광고상세페이지 진입
+광고 참여(상세화면의 참여버튼 효과)
 
 ##### Method
 
 - String adJoin(int appId)
 
-##### Description
-
-TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄워줍니다.
 
 ##### Parameters
 
@@ -297,15 +291,12 @@ TnkFlutterRwd().adJoin(appId];
 
 #### adAction
 
-광고상세페이지 진입
+광고 타입에 따라 참여 or 상세 호출
 
 ##### Method
 
 - String adAction(int appId)
 
-##### Description
-
-TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄워줍니다.
 
 ##### Parameters
 
