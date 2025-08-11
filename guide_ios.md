@@ -159,7 +159,7 @@ TnkFlutterRwd().showATTPopup()
 TnkFlutterRwd().setUserName("ce3dase0dced3df3as247833")
 ```
 
-#### TnkSession - showAdList
+#### showAdList
 
 자신의 앱에서 광고 목록을 띄우기 위하여 TnkSession 객체의 showAdListAsModel:title 또는 showAdListNavigation:title 함수를 사용합니다.
 모달뷰 형태로 광고 목록을 띄워주거나 네비게이션 컨트롤러 방식으로 목록을 띄워줍니다.
@@ -183,6 +183,84 @@ TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄
 
 ```dart
 TnkFlutterRwd().showAdList("무료 충전소"];
+```
+
+#### adDetail
+
+광고상세페이지 진입
+
+##### Method
+
+- String presentAdDetailView(int appId)
+
+##### Description
+
+TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄워줍니다.
+
+##### Parameters
+
+| 파라메터 명칭  | 내용                          |
+| -------------- | ----------------------------- |
+| appId          | 광고 ID |
+| actionId          | default 0 |
+
+
+##### 적용예시
+
+```dart
+TnkFlutterRwd().presentAdDetailView(appId];
+```
+
+#### adJoin
+
+광고상세페이지 진입
+
+##### Method
+
+- String adJoin(int appId)
+
+##### Description
+
+TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄워줍니다.
+
+##### Parameters
+
+| 파라메터 명칭  | 내용                          |
+| -------------- | ----------------------------- |
+| appId          | 광고 ID |
+| actionId          | default 0 |
+
+
+##### 적용예시
+
+```dart
+TnkFlutterRwd().adJoin(appId];
+```
+
+#### adAction
+
+광고상세페이지 진입
+
+##### Method
+
+- String adAction(int appId)
+
+##### Description
+
+TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄워줍니다.
+
+##### Parameters
+
+| 파라메터 명칭  | 내용                          |
+| -------------- | ----------------------------- |
+| appId          | 광고 ID |
+| actionId          | default 0 |
+
+
+##### 적용예시
+
+```dart
+TnkFlutterRwd().adAction(appId];
 ```
 
 ### 나. 포인트 조회 및 인출
