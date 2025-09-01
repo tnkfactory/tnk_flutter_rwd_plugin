@@ -61,6 +61,10 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
+
+        manifestPlaceholders["adiscope_media_id"] = "2462015"
+        manifestPlaceholders["adiscope_media_secret"] = "0d575b34f8ef4e38b871cc397c6ed6db"
+        manifestPlaceholders["adiscope_sub_domain"] = ""
     }
 
     buildTypes {

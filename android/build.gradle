@@ -1,15 +1,15 @@
 group 'com.tnkfactory.flutter.rwd.tnk_flutter_rwd'
-version '1.0-SNAPSHOT'
+version '2.0.0'
 
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '2.1.0'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath 'com.android.tools.build:gradle:8.7.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -19,6 +19,20 @@ allprojects {
         google()
         mavenCentral()
         maven { url "https://repository.tnkad.net:8443/repository/public/" }
+        maven { url "https://repository.tnkad.net:8443/repository/tnk_test/" }
+        maven { url "https://repository.adiscope.com/repository/adiscope/" }
+        maven { url "https://repository.adiscope.com/repository/adiscope-test/" }
+
+        maven { url "https://s3.amazonaws.com/smaato-sdk-releases/" }// max 연동 시 추가
+        maven { url "https://verve.jfrog.io/artifactory/verve-gradle-release" } // max 연동 시 추가
+        maven { url "https://artifactory.bidmachine.io/bidmachine" } // max 연동 시 추가
+        maven { url "https://maven.ogury.co" } // max 연동 시 추가
+        maven { url "https://artifact.bytedance.com/repository/pangle" } // max 혹은 pangle 연동 시 추가
+        maven { url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" } // max 연동 시 추가
+        maven { url "https://android-sdk.is.com" } // max 연동 시 추가
+        maven { url "https://artifacts.applovin.com/android" }
+
+        maven { url "https://cboost.jfrog.io/artifactory/chartboost-ads/" }
     }
 }
 
@@ -31,12 +45,12 @@ android {
     compileSdkVersion 35
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
 
     sourceSets {
@@ -53,8 +67,9 @@ android {
 dependencies {
     // android appcompat
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    //implementation "com.tnkfactory:rwd:7.30.8"
-//    implementation "com.tnkfactory:rwd:8.08.12"
-    implementation "com.tnkfactory:rwd:8.08.40"
-    //implementation 'com.tnkfactory:rwd:8.01.91'
+    implementation 'androidx.core:core-ktx:1.7.0"'
+    implementation "androidx.activity:activity-ktx:1.7.1"
+    implementation "androidx.fragment:fragment-ktx:1.4.1"
+//    implementation "com.tnkfactory:rwd:8.08.40"
+    api("com.tnkfactory.ad:tnk_rwd_fancast:1.01.04")
 }
