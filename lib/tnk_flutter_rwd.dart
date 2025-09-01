@@ -12,6 +12,12 @@ class TnkFlutterRwd {
   Future<String?> setCategoryAndFilter(int category, int filter) {
     return TnkFlutterRwdPlatform.instance.setCategoryAndFilter(category, filter);
   }
+  Future<String?> openEventWebView(int eventId) {
+    return TnkFlutterRwdPlatform.instance.openEventWebView(eventId);
+  }
+  Future<String?> showCustomTapActivity(String url, String deep_link) {
+    return TnkFlutterRwdPlatform.instance.showCustomTapActivity(url, deep_link);
+  }
   Future<String?> showAdList(String title, [int appId = 0]) {
     return TnkFlutterRwdPlatform.instance.showAdList(title, appId);
   }

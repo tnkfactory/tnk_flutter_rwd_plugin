@@ -108,7 +108,7 @@ build.gradle에 아래와 같이 https://repository.tnkad.net:8443/repository/pu
 **예시**
 ```gradle
 buildscript {
-    ext.kotlin_version = '1.6.10'
+    ext.kotlin_version = '2.1.0'
     repositories {
         google()
         mavenCentral()

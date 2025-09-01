@@ -3,13 +3,20 @@ package com.tnkfactory.flutter.rwd.tnk_flutter_rwd
 
 import android.app.Activity
 import android.content.Context
+import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.annotation.NonNull
+import androidx.browser.customtabs.CustomTabsIntent
 import com.tnkfactory.ad.*
 import com.tnkfactory.ad.basic.AdPlacementView
+import com.tnkfactory.ad.customtab.TnkCustomTabActivityHelper
+import com.tnkfactory.ad.customtab.TnkWebviewFallback
+import com.tnkfactory.ad.fancast.TnkEventActivity
+import com.tnkfactory.ad.rwd.Settings
+import com.tnkfactory.ad.rwd.TnkCore
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -19,6 +26,7 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.text.replace
 
 
 /** TnkFlutterRwdPlugin */
@@ -224,6 +232,31 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     TnkAdConfig.useTermsPopup = call.argument("use_yn") as? Boolean ?: false
                 }
 
+                //fun getEventLink(eventId: Long, onResult: (EventLinkVo?) -> Unit) {
+                //fun openEventWebView(eventId: Long)
+                "getEventLink" -> {
+
+                }
+                "openEventWebView" -> {
+                    TnkEventActivity.startActivity(mActivity)
+                }
+                "showCustomTapActivity" -> {
+                    val iUrl:String = (call.argument("url") as? String ?: "")
+                    val depp_link = (call.argument("deep_link") as? String ?: "")
+
+                    val customTabsIntent = CustomTabsIntent.Builder().build()
+                    var finalUrl = iUrl
+                        .replace("{pub_id_hex}", TnkCore.sessionInfo.applicationId ?: "")
+                        .replace("{adid}", Settings.getAdid(mActivity))
+                        .replace("{md_user_nm}", Settings.getMediaUserName(mActivity) ?: "")
+//                    params.forEach {
+                        finalUrl += ("&" + "depp_link" + "=" + depp_link)
+//                    }
+
+                    TnkCustomTabActivityHelper.openCustomTab(
+                        mActivity, customTabsIntent, Uri.parse(finalUrl), TnkWebviewFallback()
+                    )
+                }
                 "setCustomUnitIcon" -> {
                     call.argument<HashMap<String, String>>("map")?.let {
                         val res = setCustomUnitIcon(it)

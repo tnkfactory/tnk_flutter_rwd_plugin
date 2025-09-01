@@ -23,6 +23,16 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
   @override
+  Future<String?> openEventWebView(int eventId) async {
+    final version = await methodChannel.invokeMethod<String>('openEventWebView', <String, dynamic>{"eventId" :eventId});
+    return version;
+  }
+  @override
+  Future<String?> showCustomTapActivity(String url, String deep_link) async {
+    final version = await methodChannel.invokeMethod<String>('showCustomTapActivity', <String, dynamic>{ "url": url, "deep_link": deep_link });
+    return version;
+  }
+  @override
   Future<String?> setCategoryAndFilter(int category, int filter) async {
     final version = await methodChannel.invokeMethod<String>('setCategoryAndFilter', <String, dynamic>{ "category": category, "filter": filter });
     return version;

@@ -34,6 +34,12 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<String?> setCategoryAndFilter(int category, int filter) {
     throw UnimplementedError('setCategoryAndFilter() has not been implemented.');
   }
+  Future<String?> showCustomTapActivity(String url, String deep_link) {
+    throw UnimplementedError('setCategoryAndFilter() has not been implemented.');
+  }
+  Future<String?> openEventWebView(int eventId) {
+    throw UnimplementedError('openEventWebView() has not been implemented.');
+  }
   Future<String?> showAdList(String title, [int appId = 0]) {
     throw UnimplementedError('showAdList() has not been implemented.');
   }

@@ -24,7 +24,12 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
+            <meta-data
+                android:name="adiscope_media_id"
+                android:value="123456" />
+            <meta-data
+                android:name="adiscope_media_secret"
+                android:value="qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq" />
         </activity>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
@@ -34,5 +39,6 @@
        <meta-data
            android:name="tnkad_app_id"
            android:value="c0004060-3041-f825-528f-1402010f0e0d" />
+
     </application>
 </manifest>
