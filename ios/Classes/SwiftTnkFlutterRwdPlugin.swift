@@ -1,6 +1,7 @@
 import Flutter
 import TnkRwdSdk2
 import UIKit
+import Adiscope
 
 public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
     OfferwallEventListener
@@ -12,7 +13,9 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
     var vc: AdOfferwallViewController? = nil
     var targetAppId: Int = 0
     var landingData = ""
-
+    var eventWebVC : AdiscopeAdEventWebViewController? = nil
+    
+    
     typealias tempListener = (Bool, TnkError?) -> Void
 
     static let tnkCustomUI: TnkCustomUI = TnkCustomUI()
@@ -395,14 +398,77 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
 
                 break
             }
-
+        case "showCustomTapActivity":
+            if let args = call.arguments as? [String: Any]
+            {
+                if let urlRaw = args["url"] as? String,
+                   let deep_link = args["deep_link"] as? String,
+                   let parentVC = viewController
+                {
+                    let deepLinkParam = [
+                        "deep_link": deep_link
+                    ]
+                    TnkSession.sharedInstance()?.showCustomTapViewController(rootViewController: parentVC,
+                                                                             url: urlRaw, parmas: deepLinkParam)
+                }
+            }
+            break
+        case "openEventWebView":
+            if let args = call.arguments as? [String: Any]
+            {
+                if let eventId = args["eventId"] as? Int,
+                   let parentVC = viewController
+                {
+                    TnkSession.sharedInstance()?.getEventWebView(parentViewController: parentVC, eventId: eventId) { [weak self] result in
+                        guard let self = self else { return }
+                        if let vc = result
+                        {
+                            self.showAdisocpeVC(parent:parentVC, target: vc)
+                        }
+                    }
+                }
+            }
+            break
         default:
             result("iOS method : " + call.method)
             break
 
         }
     }
-
+    
+    func showAdisocpeVC(parent : UIViewController , target : AdiscopeAdEventWebViewController)
+    {
+        self.eventWebVC = target
+        AdiscopeInterface.sharedInstance().setMainDelegate(self)
+        target.loadInterstitialAdHandler = { unitId in
+            AdiscopeInterface.sharedInstance().load(unitId)
+        }
+        
+        target.loadRvAdHandler = { unitId in
+            AdiscopeInterface.sharedInstance().load(unitId)
+        }
+        target.showInterstitialAdHandler = {
+            AdiscopeInterface.sharedInstance().showInterstitial()
+        }
+        target.showRVAdHandler = {
+            AdiscopeInterface.sharedInstance().show()
+        }
+        
+        target.showOfferWallHandler = { [weak self] in
+            guard let self = self else { return }
+            self.showOfferwall(
+                viewController: parent,
+                pTitle: "",
+                listener: self
+            )
+        }
+        
+        target.modalPresentationStyle = .fullScreen
+        parent.present(target, animated: true, completion: nil)
+        
+    }
+    
+    
     func getViewController() -> FlutterViewController? {
         let topMostViewControllerObj = UIApplication.shared.delegate!.window!!
             .rootViewController!
@@ -1500,5 +1566,36 @@ public class FlutterPlacementView: NSObject, PlacementEventListener {
     /// 더보기 링크를 클릭하면 호출됩니다.
     public func didMoreLinkClicked(placementId: String) {
 
+    }
+}
+
+extension SwiftTnkFlutterRwdPlugin : AdiscopeDelegate {
+    //InterStitial
+    public func onInterstitialAdLoaded(_ unitID: String!) {
+        self.eventWebVC?.onInterstitialAdClosed(unitID: unitID)
+    }
+    
+    public func onInterstitialAdClosed(_ unitID: String!) {
+        self.eventWebVC?.onInterstitialAdClosed(unitID: unitID)
+    }
+    
+    public func onInterstitialAdFailed(toLoad unitID: String!, error: AdiscopeError!) {
+        self.eventWebVC?.onInterstitialAdFailed(unitID: unitID,errorDesc: error.localizedDescription)
+    }
+
+    //RV
+    public func onRewardedVideoAdLoaded(_ unitID: String!) {
+        self.eventWebVC?.onRewardedVideoAdLoaded(unitID: unitID)
+    }
+    public func onRewardedVideoAdClosed(_ unitID: String!) {
+        self.eventWebVC?.onRewardedVideoAdClosed(unitID: unitID)
+    }
+    
+    public func onRewardedVideoAdFailed(toLoad unitID: String!, error: AdiscopeError!) {
+        self.eventWebVC?.onRewardedVideoAdFailed(unitID: unitID,errorDesc: error.localizedDescription)
+    }
+    
+    public func onRewarded(_ unitID: String!, item: AdiscopeRewardItem!) {
+        self.eventWebVC?.onRewarded(unitID: unitID)
     }
 }
