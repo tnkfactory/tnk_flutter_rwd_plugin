@@ -7,7 +7,9 @@ import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.text.TextUtils
 import android.util.Log
+import android.webkit.WebView
 import androidx.annotation.NonNull
 import androidx.browser.customtabs.CustomTabsIntent
 import com.tnkfactory.ad.*
@@ -27,6 +29,11 @@ import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.text.replace
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.nps.adiscope.AdiscopeSdk
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 /** TnkFlutterRwdPlugin */
@@ -135,7 +142,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     val itemId = call.argument("item_id") as? String
                     Log.d("param", "$cost //  $itemId")
 
-                    TnkSession.purchaseItem(mActivity, cost, itemId,
+                    TnkSession.purchaseItem(
+                        mActivity, cost, itemId,
                         object : ServiceCallback() {
                             override fun onReturn(context: Context, pArr: Any) {
                                 val ret = pArr as LongArray
@@ -153,7 +161,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
                     val description = call.argument("description") as? String ?: ""
 
-                    TnkSession.withdrawPoints(mActivity, description,
+                    TnkSession.withdrawPoints(
+                        mActivity, description,
                         object : ServiceCallback() {
                             override fun onReturn(context: Context, point: Any) {
                                 val pPoint = point as Int
@@ -237,11 +246,13 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "getEventLink" -> {
 
                 }
+
                 "openEventWebView" -> {
-                    TnkEventActivity.startActivity(mActivity)
+                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
+                    TnkEventActivity.startActivity(mActivity, eventId.toLong())
                 }
                 "showCustomTapActivity" -> {
-                    val iUrl:String = (call.argument("url") as? String ?: "")
+                    val iUrl: String = (call.argument("url") as? String ?: "")
                     val depp_link = (call.argument("deep_link") as? String ?: "")
 
                     val customTabsIntent = CustomTabsIntent.Builder().build()
@@ -249,9 +260,9 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         .replace("{pub_id_hex}", TnkCore.sessionInfo.applicationId ?: "")
                         .replace("{adid}", Settings.getAdid(mActivity))
                         .replace("{md_user_nm}", Settings.getMediaUserName(mActivity) ?: "")
-//                    params.forEach {
+                    if (!TextUtils.isEmpty(depp_link) && depp_link != "0") {
                         finalUrl += ("&" + "depp_link" + "=" + depp_link)
-//                    }
+                    }
 
                     TnkCustomTabActivityHelper.openCustomTab(
                         mActivity, customTabsIntent, Uri.parse(finalUrl), TnkWebviewFallback()
@@ -295,19 +306,19 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     val actionId = (call.argument("action_id") as? Int ?: 0)
 
 //                    Handler(Looper.getMainLooper()).post{
-                        offerwall.adJoin(mActivity, appId.toLong(), actionId, { isSuccess, error ->
-                            JSONObject().apply {
-                                if (isSuccess) {
-                                    put("res_code", "1")
-                                    put("res_message", "success")
-                                } else {
-                                    put("res_code", "" + (error?.code ?: "99"))
-                                    put("res_message", "" + (error?.message ?: "error"))
-                                }
-                            }.also {
-                                result.success(it.toString())
+                    offerwall.adJoin(mActivity, appId.toLong(), actionId, { isSuccess, error ->
+                        JSONObject().apply {
+                            if (isSuccess) {
+                                put("res_code", "1")
+                                put("res_message", "success")
+                            } else {
+                                put("res_code", "" + (error?.code ?: "99"))
+                                put("res_message", "" + (error?.message ?: "error"))
                             }
-                        })
+                        }.also {
+                            result.success(it.toString())
+                        }
+                    })
 //                    }
 
 

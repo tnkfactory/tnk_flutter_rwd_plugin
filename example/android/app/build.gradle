@@ -53,7 +53,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.tnkfactory.flutter.rwd.tnk_flutter_rwd_example"
+        applicationId "com.contentsmadang.fancast"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 24
@@ -84,5 +84,5 @@ flutter {
 
 dependencies {
 //    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.tnkfactory:rwd:8.06.15"
+    implementation "com.tnkfactory:rwd:8.08.45"
 }

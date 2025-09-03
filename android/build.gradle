@@ -19,9 +19,7 @@ allprojects {
         google()
         mavenCentral()
         maven { url "https://repository.tnkad.net:8443/repository/public/" }
-        maven { url "https://repository.tnkad.net:8443/repository/tnk_test/" }
         maven { url "https://repository.adiscope.com/repository/adiscope/" }
-        maven { url "https://repository.adiscope.com/repository/adiscope-test/" }
 
         maven { url "https://s3.amazonaws.com/smaato-sdk-releases/" }// max 연동 시 추가
         maven { url "https://verve.jfrog.io/artifactory/verve-gradle-release" } // max 연동 시 추가
@@ -71,5 +69,5 @@ dependencies {
     implementation "androidx.activity:activity-ktx:1.7.1"
     implementation "androidx.fragment:fragment-ktx:1.4.1"
 //    implementation "com.tnkfactory:rwd:8.08.40"
-    api("com.tnkfactory.ad:tnk_rwd_fancast:1.01.04")
+    api("com.tnkfactory.ad:tnk_rwd_fancast:1.01.07")
 }
