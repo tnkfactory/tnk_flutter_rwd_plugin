@@ -640,6 +640,7 @@ extension TnkRwdSdk2.TnkSession {
   public func showCustomTapViewController(rootViewController: UIKit.UIViewController, url: Swift.String, parmas: [Swift.String : Any]? = nil)
 }
 extension TnkRwdSdk2.TnkSession {
+  public func openPrivacyTermAlert(parentViewController: UIKit.UIViewController, onReturn: @escaping (_ result: Swift.Bool) -> ())
   public func getEventWebView(parentViewController: UIKit.UIViewController, eventId: Swift.Int, onReturn: @escaping (_ result: TnkRwdSdk2.AdiscopeAdEventWebViewController?) -> ())
   public func openEventWebView(parentViewController: UIKit.UIViewController, eventId: Swift.Int, checkTerm: Swift.Bool = false)
   public func getEventLink(eventId: Swift.Int, onReturn: @escaping (_ result: TnkRwdSdk2.EventLinkVo?) -> ())
@@ -924,11 +925,7 @@ extension TnkRwdSdk2.TnkSession {
 public enum ADEventWebType {
   case LOTTERY
   case INSURE
-  public static func == (a: TnkRwdSdk2.ADEventWebType, b: TnkRwdSdk2.ADEventWebType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
+  case EVENT(Swift.Int)
 }
 public enum AdEventWebIgnoreSafeArea {
   case TOP
@@ -2104,8 +2101,6 @@ public enum MyMenuType : Swift.Int {
 extension TnkRwdSdk2.AdState : Swift.Equatable {}
 extension TnkRwdSdk2.AdState : Swift.Hashable {}
 extension TnkRwdSdk2.AdState : Swift.RawRepresentable {}
-extension TnkRwdSdk2.ADEventWebType : Swift.Equatable {}
-extension TnkRwdSdk2.ADEventWebType : Swift.Hashable {}
 extension TnkRwdSdk2.AdEventWebIgnoreSafeArea : Swift.Equatable {}
 extension TnkRwdSdk2.AdEventWebIgnoreSafeArea : Swift.Hashable {}
 extension TnkRwdSdk2.TnkCode : Swift.Equatable {}

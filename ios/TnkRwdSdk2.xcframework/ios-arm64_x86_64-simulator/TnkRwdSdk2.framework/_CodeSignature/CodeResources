@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		HdEuM55KP+Ei3V3XbOpTAejhq10=
+		xbvHZX/QBhQox/b4ra3szvXXqLY=
 		</data>
 		<key>Headers/TnkRwdSdk2-Swift.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		/HRgoI57BEncxDG+uvENSP9jqnk=
+		MIP8Zq9umQlFPtNaM7pn+5Yt96g=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		iRN+E1QaYLNdGb86yMPfndBzRt4=
+		rQdZmSbMAxN/fpfxXqC9aJwVDi8=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -34,19 +34,19 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		iRN+E1QaYLNdGb86yMPfndBzRt4=
+		rQdZmSbMAxN/fpfxXqC9aJwVDi8=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		8e1xHgNqU5DUe3OpK1zsXEyB7fM=
+		mVdZf0ieShpPe/yowphrOMhlnEo=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		/HRgoI57BEncxDG+uvENSP9jqnk=
+		MIP8Zq9umQlFPtNaM7pn+5Yt96g=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		5aSm1/Kwgq7n8YgZWzqAvK2hR44=
+		qwRonBe0dn90J6rRinZ3gKNNy1w=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		5aSm1/Kwgq7n8YgZWzqAvK2hR44=
+		qwRonBe0dn90J6rRinZ3gKNNy1w=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		q83dbUXSlxJ8OaMXp8mOsdL5jSA=
+		0XspuZjAU11GhSRMc1QQPYQS7sw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -83,7 +83,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			EXsP4W1P5OLq8sQb5NL5c/v+O7XRSYMwR9OQhF+ocv4=
+			nKU8tOT++sMYvbkCBVRfYxg7FMrRxZHaDIYZTYTxvlU=
 			</data>
 		</dict>
 		<key>Headers/TnkRwdSdk2-Swift.h</key>
@@ -104,14 +104,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			YCuprVdZsFkKnQziszdGWKBholcgPJ4wfDvkFTgIrOM=
+			A7qp/buq8iDIyTzbUkfa4ADtM+J4ZclN0AjRjjAFHd0=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tgHBWMCUdM5Vnt47hPKPU9PK8tnAmAazRHaHoUt67s8=
+			/92ktpBOUlkJZrrd0sbytKldIwjxeQ/5K4wriR1ADEY=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -125,28 +125,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tgHBWMCUdM5Vnt47hPKPU9PK8tnAmAazRHaHoUt67s8=
+			/92ktpBOUlkJZrrd0sbytKldIwjxeQ/5K4wriR1ADEY=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			+Rhcww19jX3vQBPTBMY6lS/VJMUf3LqEw64i9sbFoEc=
+			y+ZNADGJk59q4jFEyAntr0OZxssV3Obkns0jtuWDmhU=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YCuprVdZsFkKnQziszdGWKBholcgPJ4wfDvkFTgIrOM=
+			A7qp/buq8iDIyTzbUkfa4ADtM+J4ZclN0AjRjjAFHd0=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bhgkh17WUVk18eoyZdQKIYsO09ZZBshW5jYADuGy+tE=
+			2qJM1HFvpIc4/uPl9GFdOz3XrD7MU9E/HTJ8y+d0AbU=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -160,14 +160,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bhgkh17WUVk18eoyZdQKIYsO09ZZBshW5jYADuGy+tE=
+			2qJM1HFvpIc4/uPl9GFdOz3XrD7MU9E/HTJ8y+d0AbU=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Dm8RybKxb8JQgb4QXOenXEwzeEk2I+B+L9A123NYYtE=
+			qscD+EZACQckERZPMyMUzCkTJuxVNtovmhJpwBfdqD8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
