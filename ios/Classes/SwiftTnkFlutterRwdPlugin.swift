@@ -469,7 +469,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                 listener: self
             )
         }
-        
+        target.portraitLocked = true
         target.modalPresentationStyle = .fullScreen
         parent.present(target, animated: true, completion: nil)
         
