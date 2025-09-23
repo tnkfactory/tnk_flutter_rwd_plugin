@@ -3,20 +3,13 @@ package com.tnkfactory.flutter.rwd.tnk_flutter_rwd
 
 import android.app.Activity
 import android.content.Context
-import android.net.Uri
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.text.TextUtils
 import android.util.Log
-import android.webkit.WebView
 import androidx.annotation.NonNull
 import com.tnkfactory.ad.*
 import com.tnkfactory.ad.basic.AdPlacementView
-import com.tnkfactory.ad.customtab.TnkCustomTabActivityHelper
-import com.tnkfactory.ad.customtab.TnkWebviewFallback
-import com.tnkfactory.ad.rwd.Settings
-import com.tnkfactory.ad.rwd.TnkCore
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -26,11 +19,6 @@ import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONArray
 import org.json.JSONObject
-import kotlin.text.replace
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 /** TnkFlutterRwdPlugin */
@@ -248,6 +236,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 //                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
 //                    TnkEventActivity.startActivity(mActivity, eventId.toLong())
                 }
+
                 "showCustomTapActivity" -> {
 //                    val iUrl: String = (call.argument("url") as? String ?: "")
 //                    val depp_link = (call.argument("deep_link") as? String ?: "")
@@ -265,6 +254,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 //                        mActivity, customTabsIntent, Uri.parse(finalUrl), TnkWebviewFallback()
 //                    )
                 }
+
                 "setCustomUnitIcon" -> {
                     call.argument<HashMap<String, String>>("map")?.let {
                         val res = setCustomUnitIcon(it)
