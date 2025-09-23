@@ -11,12 +11,10 @@ import android.text.TextUtils
 import android.util.Log
 import android.webkit.WebView
 import androidx.annotation.NonNull
-import androidx.browser.customtabs.CustomTabsIntent
 import com.tnkfactory.ad.*
 import com.tnkfactory.ad.basic.AdPlacementView
 import com.tnkfactory.ad.customtab.TnkCustomTabActivityHelper
 import com.tnkfactory.ad.customtab.TnkWebviewFallback
-import com.tnkfactory.ad.fancast.TnkEventActivity
 import com.tnkfactory.ad.rwd.Settings
 import com.tnkfactory.ad.rwd.TnkCore
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -31,7 +29,6 @@ import org.json.JSONObject
 import kotlin.text.replace
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.nps.adiscope.AdiscopeSdk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -248,25 +245,25 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "openEventWebView" -> {
-                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
-                    TnkEventActivity.startActivity(mActivity, eventId.toLong())
+//                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
+//                    TnkEventActivity.startActivity(mActivity, eventId.toLong())
                 }
                 "showCustomTapActivity" -> {
-                    val iUrl: String = (call.argument("url") as? String ?: "")
-                    val depp_link = (call.argument("deep_link") as? String ?: "")
-
-                    val customTabsIntent = CustomTabsIntent.Builder().build()
-                    var finalUrl = iUrl
-                        .replace("{pub_id_hex}", TnkCore.sessionInfo.applicationId ?: "")
-                        .replace("{adid}", Settings.getAdid(mActivity))
-                        .replace("{md_user_nm}", Settings.getMediaUserName(mActivity) ?: "")
-                    if (!TextUtils.isEmpty(depp_link) && depp_link != "0") {
-                        finalUrl += ("&" + "depp_link" + "=" + depp_link)
-                    }
-
-                    TnkCustomTabActivityHelper.openCustomTab(
-                        mActivity, customTabsIntent, Uri.parse(finalUrl), TnkWebviewFallback()
-                    )
+//                    val iUrl: String = (call.argument("url") as? String ?: "")
+//                    val depp_link = (call.argument("deep_link") as? String ?: "")
+//
+//                    val customTabsIntent = CustomTabsIntent.Builder().build()
+//                    var finalUrl = iUrl
+//                        .replace("{pub_id_hex}", TnkCore.sessionInfo.applicationId ?: "")
+//                        .replace("{adid}", Settings.getAdid(mActivity))
+//                        .replace("{md_user_nm}", Settings.getMediaUserName(mActivity) ?: "")
+//                    if (!TextUtils.isEmpty(depp_link) && depp_link != "0") {
+//                        finalUrl += ("&" + "depp_link" + "=" + depp_link)
+//                    }
+//
+//                    TnkCustomTabActivityHelper.openCustomTab(
+//                        mActivity, customTabsIntent, Uri.parse(finalUrl), TnkWebviewFallback()
+//                    )
                 }
                 "setCustomUnitIcon" -> {
                     call.argument<HashMap<String, String>>("map")?.let {

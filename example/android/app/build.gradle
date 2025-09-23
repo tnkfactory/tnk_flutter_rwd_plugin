@@ -53,7 +53,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.contentsmadang.fancast"
+        applicationId "com.tnkfactory.flutter.rwd.tnk_flutter_rwd_example"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
         minSdkVersion 24
@@ -61,10 +61,6 @@ android {
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         multiDexEnabled true
-
-        manifestPlaceholders["adiscope_media_id"] = "2462015"
-        manifestPlaceholders["adiscope_media_secret"] = "0d575b34f8ef4e38b871cc397c6ed6db"
-        manifestPlaceholders["adiscope_sub_domain"] = ""
     }
 
     buildTypes {
@@ -84,5 +80,5 @@ flutter {
 
 dependencies {
 //    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.tnkfactory:rwd:8.08.45"
+    implementation "com.tnkfactory:rwd:8.08.50"
 }
