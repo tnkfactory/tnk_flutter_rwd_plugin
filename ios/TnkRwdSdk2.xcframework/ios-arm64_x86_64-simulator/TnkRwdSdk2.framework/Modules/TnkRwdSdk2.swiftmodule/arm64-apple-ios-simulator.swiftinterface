@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
-// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name TnkRwdSdk2
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name TnkRwdSdk2
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import AVFoundation
 import AdSupport
 import AppTrackingTransparency
@@ -12,7 +12,6 @@ import DeveloperToolsSupport
 import Foundation
 import ImageIO
 import Photos
-import SafariServices
 import Swift
 import SwiftUI
 @_exported import TnkRwdSdk2
@@ -40,9 +39,6 @@ import zlib
   override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc open class EventLinkVo : ObjectiveC.NSObject {
-  @objc deinit
-}
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency open class MultiRewardProgressView : UIKit.UIView {
   @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
   @_Concurrency.MainActor @preconcurrency public func setData(adData: TnkRwdSdk2.AdInfoItem)
@@ -65,7 +61,7 @@ import zlib
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class TmapRwdPlus : TnkRwdSdk2.TnkRwdPlus {
   @objc override public class func initSession(appId: Swift.String) -> TnkRwdSdk2.TnkRwdPlus
   @objc override public func showOfferwall(_ viewController: UIKit.UIViewController)
-  public static func showTermViewController(parentVC: UIKit.UIViewController, moveToAction: @escaping () -> Swift.Void)
+  public static func showTermViewController(parentVC: UIKit.UIViewController, moveToAction: @escaping (() -> Swift.Void))
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc public class TnkStyles : ObjectiveC.NSObject {
@@ -636,15 +632,6 @@ extension TnkRwdSdk2.AdOfferwallViewController {
   @objc public func getCpsMyPageUrl() -> Swift.String
   @objc deinit
 }
-extension TnkRwdSdk2.TnkSession {
-  public func showCustomTapViewController(rootViewController: UIKit.UIViewController, url: Swift.String, parmas: [Swift.String : Any]? = nil)
-}
-extension TnkRwdSdk2.TnkSession {
-  public func openPrivacyTermAlert(parentViewController: UIKit.UIViewController, onReturn: @escaping (_ result: Swift.Bool) -> ())
-  public func getEventWebView(parentViewController: UIKit.UIViewController, eventId: Swift.Int, onReturn: @escaping (_ result: TnkRwdSdk2.AdiscopeAdEventWebViewController?) -> ())
-  public func openEventWebView(parentViewController: UIKit.UIViewController, eventId: Swift.Int, checkTerm: Swift.Bool = false)
-  public func getEventLink(eventId: Swift.Int, onReturn: @escaping (_ result: TnkRwdSdk2.EventLinkVo?) -> ())
-}
 @objc @_inheritsConvenienceInitializers public class TnkToastLayout : ObjectiveC.NSObject {
   @objc public var messageLb: TnkRwdSdk2.LabelAttribute
   @objc public var backgroundColor: UIKit.UIColor
@@ -925,14 +912,7 @@ extension TnkRwdSdk2.TnkSession {
 public enum ADEventWebType {
   case LOTTERY
   case INSURE
-  case EVENT(Swift.Int)
-}
-public enum AdEventWebIgnoreSafeArea {
-  case TOP
-  case BOTTOM
-  case LEADING
-  case TRAILING
-  public static func == (a: TnkRwdSdk2.AdEventWebIgnoreSafeArea, b: TnkRwdSdk2.AdEventWebIgnoreSafeArea) -> Swift.Bool
+  public static func == (a: TnkRwdSdk2.ADEventWebType, b: TnkRwdSdk2.ADEventWebType) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
     get
@@ -941,21 +921,13 @@ public enum AdEventWebIgnoreSafeArea {
 @_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class AdiscopeAdEventWebViewController : UIKit.UIViewController {
   @_Concurrency.MainActor @preconcurrency public var showOfferWallHandler: (() -> Swift.Void)?
   @_Concurrency.MainActor @preconcurrency public var extraUrl: Swift.String?
-  @_Concurrency.MainActor @preconcurrency public var portraitLocked: Swift.Bool
   @_Concurrency.MainActor @preconcurrency public var loadInterstitialAdHandler: ((Swift.String) -> Swift.Void)?
   @_Concurrency.MainActor @preconcurrency public var showInterstitialAdHandler: (() -> Swift.Void)?
   @_Concurrency.MainActor @preconcurrency public var loadRvAdHandler: ((Swift.String) -> Swift.Void)?
   @_Concurrency.MainActor @preconcurrency public var showRVAdHandler: (() -> Swift.Void)?
   @_Concurrency.MainActor @preconcurrency public var webType: TnkRwdSdk2.ADEventWebType
-  @_Concurrency.MainActor @preconcurrency public var ignoreSafeAreaList: [TnkRwdSdk2.AdEventWebIgnoreSafeArea]
   @_Concurrency.MainActor @preconcurrency final public let insureWebUrl: Swift.String
   @objc deinit
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
-    @objc get
-  }
-  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var shouldAutorotate: Swift.Bool {
-    @objc get
-  }
   @_Concurrency.MainActor @preconcurrency public func setExtraWebId(id: Swift.String)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor @preconcurrency public func changeMecroUrlParam(_ urlString: Swift.String) -> Swift.String
@@ -2101,8 +2073,8 @@ public enum MyMenuType : Swift.Int {
 extension TnkRwdSdk2.AdState : Swift.Equatable {}
 extension TnkRwdSdk2.AdState : Swift.Hashable {}
 extension TnkRwdSdk2.AdState : Swift.RawRepresentable {}
-extension TnkRwdSdk2.AdEventWebIgnoreSafeArea : Swift.Equatable {}
-extension TnkRwdSdk2.AdEventWebIgnoreSafeArea : Swift.Hashable {}
+extension TnkRwdSdk2.ADEventWebType : Swift.Equatable {}
+extension TnkRwdSdk2.ADEventWebType : Swift.Hashable {}
 extension TnkRwdSdk2.TnkCode : Swift.Equatable {}
 extension TnkRwdSdk2.TnkCode : Swift.Hashable {}
 extension TnkRwdSdk2.TnkCode : Swift.RawRepresentable {}

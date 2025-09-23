@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
 import 'package:tnk_flutter_rwd_example/placement_data.dart';
 import 'package:tnk_flutter_rwd_example/placement_view.dart';
-import 'package:tnk_flutter_rwd_example/tnk_flutter_rwd_point_effect.dart';
 import 'offerwall.dart';
 import 'tnk_flutter_rwd_analytics.dart';
 

@@ -235,34 +235,30 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   }
 
   Future<void> getQueryPoint() async {
-    _tnkFlutterRwdPlugin.openEventWebView(103169);
-    // int point;
-    // try {
-    //   point = await _tnkFlutterRwdPlugin.getQueryPoint() ?? 0;
-    // } on PlatformException {
-    //   point = 0;
-    // }
-    // print("getQueryPoint : $point");
-    //
-    // setState(() {
-    //   _queryPoint = point;
-    // });
+    int point;
+    try {
+      point = await _tnkFlutterRwdPlugin.getQueryPoint() ?? 0;
+    } on PlatformException {
+      point = 0;
+    }
+    print("getQueryPoint : $point");
+
+    setState(() {
+      _queryPoint = point;
+    });
   }
 
   Future<void> getEarnPoint() async {
-    _tnkFlutterRwdPlugin.showCustomTapActivity(
-        "https://api3.tnkfactory.com/tnk/offerwall.web.main?md_user_nm={md_user_nm}&app_id={pub_id_hex}&oid=b55a60139f342553ed1a2011905a491c&adid={adid}&t=4",
-        "689593");
-    // int point;
-    // try {
-    //   point = await _tnkFlutterRwdPlugin.getEarnPoint() ?? 0;
-    // } on PlatformException {
-    //   point = 0;
-    // }
-    //
-    // setState(() {
-    //   _myPoint = point;
-    // });
+    int point;
+    try {
+      point = await _tnkFlutterRwdPlugin.getEarnPoint() ?? 0;
+    } on PlatformException {
+      point = 0;
+    }
+
+    setState(() {
+      _myPoint = point;
+    });
   }
 
   Future<void> onAdItemClick(String appId) async {

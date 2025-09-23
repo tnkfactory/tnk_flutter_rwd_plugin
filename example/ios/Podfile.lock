@@ -1,5 +1,4 @@
 PODS:
-  - Adiscope (4.4.0)
   - Flutter (1.0.0)
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -8,7 +7,6 @@ PODS:
     - Flutter
     - FlutterMacOS
   - tnk_flutter_rwd (0.5.0):
-    - Adiscope (= 4.4.0)
     - Flutter
 
 DEPENDENCIES:
@@ -16,10 +14,6 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
   - tnk_flutter_rwd (from `.symlinks/plugins/tnk_flutter_rwd/ios`)
-
-SPEC REPOS:
-  trunk:
-    - Adiscope
 
 EXTERNAL SOURCES:
   Flutter:
@@ -32,12 +26,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/tnk_flutter_rwd/ios"
 
 SPEC CHECKSUMS:
-  Adiscope: 17b2c846875a7893746d0bc7391bebf02b06e407
-  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
-  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
-  sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
-  tnk_flutter_rwd: 8662dff2861f9a42177a041a8b70690388f0e761
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
+  sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
+  tnk_flutter_rwd: 54efa892e05e67eb6fe7557ad5633cc4c7ce5eb0
 
 PODFILE CHECKSUM: aa84848161adb5be0a3c0f90181f494a19558306
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.15.2
