@@ -419,13 +419,20 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                 if let eventId = args["eventId"] as? Int,
                    let parentVC = viewController
                 {
-                    TnkSession.sharedInstance()?.getEventWebView(parentViewController: parentVC, eventId: eventId) { [weak self] result in
-                        guard let self = self else { return }
-                        if let vc = result
+                    TnkSession.sharedInstance()?.openPrivacyTermAlert(parentViewController: parentVC) { [weak self]  result in
+                        if(result)
                         {
-                            self.showAdisocpeVC(parent:parentVC, target: vc)
+                            TnkSession.sharedInstance()?.getEventWebView(parentViewController: parentVC, eventId: eventId) { resultVc in
+                                guard let self = self else { return }
+                                if let vc = resultVc
+                                {
+                                    self.showAdisocpeVC(parent:parentVC, target: vc)
+                                }
+                            }
                         }
                     }
+                    
+                    
                 }
             }
             break
