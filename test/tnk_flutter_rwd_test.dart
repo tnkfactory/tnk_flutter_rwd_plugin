@@ -116,6 +116,18 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> openEventWebView(int eventId) {
+    // TODO: implement openEventWebView
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> showCustomTapActivity(String url, String deep_link) {
+    // TODO: implement showCustomTapActivity
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

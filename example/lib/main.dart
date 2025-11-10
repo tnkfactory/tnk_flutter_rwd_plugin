@@ -6,7 +6,7 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
-import 'package:tnk_flutter_rwd_example/placement_data.dart';
+import 'package:tnk_flutter_rwd/tnk_placement_model.dart';
 import 'package:tnk_flutter_rwd_example/placement_view.dart';
 import 'offerwall.dart';
 import 'tnk_flutter_rwd_analytics.dart';

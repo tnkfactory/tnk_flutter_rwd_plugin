@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
-import 'package:tnk_flutter_rwd_example/placement_data.dart';
+import 'package:tnk_flutter_rwd/tnk_placement_model.dart';
 
 class OfferwallItem extends StatefulWidget {
   const OfferwallItem({super.key});

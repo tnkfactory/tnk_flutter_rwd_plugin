@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
 import 'offerwall.dart';
-import 'placement_data.dart';
+import 'package:tnk_flutter_rwd/tnk_placement_model.dart';
 
 class PlacementViewItem extends StatefulWidget {
   late final int type;
