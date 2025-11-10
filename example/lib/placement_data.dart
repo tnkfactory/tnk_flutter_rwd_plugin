@@ -16,13 +16,11 @@ class TnkPlacementAdItem {
 
 
 class PlacementPubInfo {
-  int ad_type =
-  0; //	지면에 설정되어 있는 광고 유형(0 : 보상형, 1 : CPS, 2 : 제휴몰, 3 : 뉴스, 4 : 이벤트)
+  int ad_type = 0; //	지면에 설정되어 있는 광고 유형(0 : 보상형, 1 : CPS, 2 : 제휴몰, 3 : 뉴스, 4 : 이벤트)
   String title = ""; //	지면 타이틀
   String more_lbl = ""; //	더보기 라벨
   String cust_data = ""; //	매체 설정값
-  String ctype_surl =
-      ""; //	캠페인타입 정보 URL (해당 URL 호출시 json 반환) {list_count:int, list:[{cmpn_type:int, cmpn_type_nm:string},….]}
+  String ctype_surl = ""; //	캠페인타입 정보 URL (해당 URL 호출시 json 반환) {list_count:int, list:[{cmpn_type:int, cmpn_type_nm:string},….]}
   String pnt_unit = ""; //	매체 포인트 명칭
   String plcmt_id = ""; //	매체 설정 지면 ID
 }
