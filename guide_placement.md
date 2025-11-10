@@ -129,15 +129,18 @@ class _PlacementViewItem extends State<PlacementViewItem>
     }
   }
 
-  // 광고 리스트 호출
+  // placement 광고 리스트 호출 
   Future<void> getAdList() async {
     try {
       await _tnkFlutterRwdPlugin.setUserName("jameson");
       await _tnkFlutterRwdPlugin.setCOPPA(false);
 
+
+      // 발급받은 placement id 입력
+      // 서버에서 응답받은 placement 광고 데이터를 json 형식으로 리턴 
       String? placementData = await _tnkFlutterRwdPlugin.getPlacementJsonData(
         "offer_nor",
-      ); // 발급받은 placement id 입력 
+      );  
       _tnkFlutterRwdPlugin.setUseTermsPopup(false);
 
       if (placementData != null) {
@@ -148,23 +151,20 @@ class _PlacementViewItem extends State<PlacementViewItem>
         if (resCode == "1") {
           List<TnkPlacementAdItem> adList = praserJsonToTnkPlacementAdItem(
             jsonObject["ad_list"],
-          ); // 광고 리스트 파싱
+          ); // 응답받은 placement 광고 리스트 파싱
 
           setState(() {
             this.adList.addAll(adList);
             Map<String, dynamic> pubInfoMap = jsonObject["pub_info"];
 
-            pubInfo.ad_type = pubInfoMap["ad_type"];
-            pubInfo.title = pubInfoMap["title"];
-            pubInfo.more_lbl = pubInfoMap["more_lbl"];
-            pubInfo.cust_data = pubInfoMap["cust_data"];
-            pubInfo.ctype_surl = pubInfoMap["ctype_surl"];
-            pubInfo.pnt_unit = pubInfoMap["pnt_unit"];
-            pubInfo.plcmt_id = pubInfoMap["plcmt_id"];
-
-            pubInfo.plcmt_id = pubInfoMap["plcmt_id"];
-            pubInfo.title = pubInfoMap["title"];
-
+            pubInfo.ad_type = pubInfoMap["ad_type"]; // 광고유형 ( 0: 보상형, 1:CPS, 2:제휴몰, 3:뉴스, 4:이벤트 )
+            pubInfo.title = pubInfoMap["title"]; // 지면 타이틀
+            pubInfo.more_lbl = pubInfoMap["more_lbl"]; // 더보기 라벨
+            pubInfo.cust_data = pubInfoMap["cust_data"]; // 매체 설정값
+            pubInfo.ctype_surl = pubInfoMap["ctype_surl"]; // 캠페인타입정보 URL(해당 URL 호출시 json 반환) {list_count:int, list:[{cmpn_type:int, cmpn_type_nm:string},….]}
+            pubInfo.pnt_unit = pubInfoMap["pnt_unit"]; // 매체에서 설정한 포인트 명칭
+            pubInfo.plcmt_id = pubInfoMap["plcmt_id"]; // 매체에서 설정한 placement id
+            
             _tnkResult = placementData ?? "null";
           });
         } else {
@@ -203,12 +203,9 @@ class _PlacementViewItem extends State<PlacementViewItem>
     }
   }
 
-  // placement view 설정
-  // Widget setPlacementView(TnkPlacementAdItem adItem) {
-  //   return _type == CPS_VIEW ? buildCpsPlacementView(adItem) : buildDefaultPlacementView(adItem);
-  // }
 
-  // placement view 구현하는 메소드 ( 기본 )
+  // Sample1 ) placement view 구현하는 메소드 ( 기본 )
+  // 아래 예제는 sample 이며 매체사 UI 정책에 맞게 커스터마이징 하여 사용하시기 바랍니다.
   Widget buildDefaultPlacementView(TnkPlacementAdItem adItem) {
     return Container(
       width: 216,
@@ -226,7 +223,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
               height: 107,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(adItem.img_url),
+                  image: NetworkImage(adItem.img_url), // 광고 이미지 URL
                   fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.circular(8),
@@ -235,7 +232,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
             SizedBox(height: 5),
 
             Text(
-              adItem.app_nm,
+              adItem.app_nm, // 광고 이름 
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(fontSize: 14, color: Color(0xff666666)),
@@ -252,13 +249,13 @@ class _PlacementViewItem extends State<PlacementViewItem>
             Row(
               children: [
                 const Image(
-                  image: AssetImage('assets/images/ic_point.png'),
+                  image: AssetImage('assets/images/ic_point.png'), // 포인트 아이콘 ( 설정시 assets 경로에 이미지 추가 필요 )
                   width: 12,
                   height: 12,
                 ),
                 const SizedBox(width: 5),
                 Text(
-                  adItem.pnt_amt.toString(),
+                  adItem.pnt_amt.toString(), // 포인트 금액 
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -273,6 +270,8 @@ class _PlacementViewItem extends State<PlacementViewItem>
     );
   }
 
+  // Sample2 ) CPS placement view 구현하는 메소드
+  // 아래 예제는 sample 이며 매체사 UI 정책에 맞게 커스터마이징 하여 사용하시기 바랍니다.
   Widget buildCpsPlacementView(TnkPlacementAdItem adItem) {
     return GestureDetector(
       onTap: () => onAdItemClick(adItem.app_id.toString()),
@@ -292,7 +291,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
             ),
             // padding 8dp
             Text(
-              adItem.app_nm,
+              adItem.app_nm, // 광고 이름
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -306,7 +305,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
             Row(
               children: [
                 Text(
-                  adItem.org_prd_price.toString(),
+                  adItem.org_prd_price.toString(), // 상품 원가 
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.black,
@@ -315,7 +314,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
                 ),
                 const SizedBox(width: 6),
                 Text(
-                  "${adItem.sale_dc_rate}%",
+                  "${adItem.sale_dc_rate}%", // 할인율
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
@@ -329,7 +328,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
             Row(
               children: [
                 Text(
-                  adItem.cmpn_type_name,
+                  adItem.cmpn_type_name, // 캠페인 타입 이름
                   style: TextStyle(
                     fontSize: 12,
                     color: const Color(0xff4572EF).withValues(alpha: (0.5*255)),
@@ -341,13 +340,13 @@ class _PlacementViewItem extends State<PlacementViewItem>
               children: [
                 // assets 경로
                 const Image(
-                  image: AssetImage('assets/images/ic_point.png'),
+                  image: AssetImage('assets/images/ic_point.png'), // 포인트 아이콘 ( 설정시 assets 경로에 이미지 추가 필요 )
                   width: 12,
                   height: 12,
                 ),
                 const SizedBox(width: 3),
                 Text(
-                  adItem.pnt_amt.toString(),
+                  adItem.pnt_amt.toString(), // 포인트 금액
                   style: const TextStyle(
                     fontSize: 14,
                     color: Color(0xff4572EF),
@@ -356,13 +355,14 @@ class _PlacementViewItem extends State<PlacementViewItem>
                 ),
               ],
             ),
-            // Positioned.fill(child: Container(color: Colors.white)),
           ],
         ),
       ),
     );
   }
 
+  
+  // 더보기 클릭시 오퍼월 페이지로 이동 
   Future<void> showAdList() async {
     String platformVersion;
 
