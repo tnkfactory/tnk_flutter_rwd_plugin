@@ -27,7 +27,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
   late int _type;
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
   List<TnkPlacementAdItem> adList = [];
-  PlacementPubInfo pubInfo = PlacementPubInfo();
+  PlacementPubInfo pubInfo = PlacementPubInfo(); // placement 광고 정보 모델
   String _tnkResult = 'Unknown';
 
   @override
@@ -119,90 +119,6 @@ class _PlacementViewItem extends State<PlacementViewItem>
       ),
     );
   }
-
-  // ATT 팝업 호출
-  Future<void> showATTPopup() async {
-    try {
-      await _tnkFlutterRwdPlugin.showATTPopup();
-    } on Exception {
-      return;
-    }
-  }
-
-  // placement 광고 리스트 호출 
-  Future<void> getAdList() async {
-    try {
-      await _tnkFlutterRwdPlugin.setUserName("jameson");
-      await _tnkFlutterRwdPlugin.setCOPPA(false);
-
-
-      // 발급받은 placement id 입력
-      // 서버에서 응답받은 placement 광고 데이터를 json 형식으로 리턴 
-      String? placementData = await _tnkFlutterRwdPlugin.getPlacementJsonData(
-        "offer_nor",
-      );  
-      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
-
-      if (placementData != null) {
-        Map<String, dynamic> jsonObject = jsonDecode(placementData);
-        String resCode = jsonObject["res_code"];
-        String resMessage = jsonObject["res_message"];
-
-        if (resCode == "1") {
-          List<TnkPlacementAdItem> adList = praserJsonToTnkPlacementAdItem(
-            jsonObject["ad_list"],
-          ); // 응답받은 placement 광고 리스트 파싱
-
-          setState(() {
-            this.adList.addAll(adList);
-            Map<String, dynamic> pubInfoMap = jsonObject["pub_info"];
-
-            pubInfo.ad_type = pubInfoMap["ad_type"]; // 광고유형 ( 0: 보상형, 1:CPS, 2:제휴몰, 3:뉴스, 4:이벤트 )
-            pubInfo.title = pubInfoMap["title"]; // 지면 타이틀
-            pubInfo.more_lbl = pubInfoMap["more_lbl"]; // 더보기 라벨
-            pubInfo.cust_data = pubInfoMap["cust_data"]; // 매체 설정값
-            pubInfo.ctype_surl = pubInfoMap["ctype_surl"]; // 캠페인타입정보 URL(해당 URL 호출시 json 반환) {list_count:int, list:[{cmpn_type:int, cmpn_type_nm:string},….]}
-            pubInfo.pnt_unit = pubInfoMap["pnt_unit"]; // 매체에서 설정한 포인트 명칭
-            pubInfo.plcmt_id = pubInfoMap["plcmt_id"]; // 매체에서 설정한 placement id
-            
-            _tnkResult = placementData ?? "null";
-          });
-        } else {
-          // 광고 로드 실패
-          print("광고 로드 실패");
-        }
-      }
-    } on PlatformException {
-      setState(() {
-        _tnkResult = "excetpion";
-      });
-      return;
-    }
-  }
-
-  // 광고 클릭 이벤트 ( 상세페이지 이동 )
-  Future<void> onAdItemClick(String appId) async {
-    try {
-      String? adDetail = await _tnkFlutterRwdPlugin.onItemClick(appId);
-      if (adDetail != null) {
-        Map<String, dynamic> jsonObject = jsonDecode(adDetail);
-        String resCode = jsonObject["res_code"];
-        String resMessage = jsonObject["res_message"];
-
-        if (resCode == "1") {
-          print(resMessage);
-        } else {
-          print(resMessage);
-        }
-      } else {
-        print("adDetail is null");
-      }
-    } on Exception {
-      print("onAdItemClick Exception");
-      return;
-    }
-  }
-
 
   // Sample1 ) placement view 구현하는 메소드 ( 기본 )
   // 아래 예제는 sample 이며 매체사 UI 정책에 맞게 커스터마이징 하여 사용하시기 바랍니다.
@@ -383,6 +299,89 @@ class _PlacementViewItem extends State<PlacementViewItem>
     setState(() {
       _tnkResult = platformVersion;
     });
+  }
+
+  // ATT 팝업 호출
+  Future<void> showATTPopup() async {
+    try {
+      await _tnkFlutterRwdPlugin.showATTPopup();
+    } on Exception {
+      return;
+    }
+  }
+
+  // placement 광고 리스트 호출 
+  Future<void> getAdList() async {
+    try {
+      await _tnkFlutterRwdPlugin.setUserName("jameson");
+      await _tnkFlutterRwdPlugin.setCOPPA(false);
+
+
+      // 발급받은 placement id 입력
+      // 서버에서 응답받은 placement 광고 데이터를 json 형식으로 리턴 
+      String? placementData = await _tnkFlutterRwdPlugin.getPlacementJsonData(
+        "offer_nor",
+      );
+      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
+
+      if (placementData != null) {
+        Map<String, dynamic> jsonObject = jsonDecode(placementData);
+        String resCode = jsonObject["res_code"];
+        String resMessage = jsonObject["res_message"];
+
+        if (resCode == "1") {
+          List<TnkPlacementAdItem> adList = praserJsonToTnkPlacementAdItem(
+            jsonObject["ad_list"],
+          ); // 응답받은 placement 광고 리스트 파싱
+
+          setState(() {
+            this.adList.addAll(adList);
+            Map<String, dynamic> pubInfoMap = jsonObject["pub_info"];
+
+            pubInfo.ad_type = pubInfoMap["ad_type"]; // 광고유형 ( 0: 보상형, 1:CPS, 2:제휴몰, 3:뉴스, 4:이벤트 )
+            pubInfo.title = pubInfoMap["title"]; // 지면 타이틀
+            pubInfo.more_lbl = pubInfoMap["more_lbl"]; // 더보기 라벨
+            pubInfo.cust_data = pubInfoMap["cust_data"]; // 매체 설정값
+            pubInfo.ctype_surl = pubInfoMap["ctype_surl"]; // 캠페인타입정보 URL(해당 URL 호출시 json 반환) {list_count:int, list:[{cmpn_type:int, cmpn_type_nm:string},….]}
+            pubInfo.pnt_unit = pubInfoMap["pnt_unit"]; // 매체에서 설정한 포인트 명칭
+            pubInfo.plcmt_id = pubInfoMap["plcmt_id"]; // 매체에서 설정한 placement id
+
+            _tnkResult = placementData ?? "null";
+          });
+        } else {
+          // 광고 로드 실패
+          print("광고 로드 실패");
+        }
+      }
+    } on PlatformException {
+      setState(() {
+        _tnkResult = "excetpion";
+      });
+      return;
+    }
+  }
+
+  // 광고 클릭 이벤트 ( 상세페이지 이동 )
+  Future<void> onAdItemClick(String appId) async {
+    try {
+      String? adDetail = await _tnkFlutterRwdPlugin.onItemClick(appId);
+      if (adDetail != null) {
+        Map<String, dynamic> jsonObject = jsonDecode(adDetail);
+        String resCode = jsonObject["res_code"];
+        String resMessage = jsonObject["res_message"];
+
+        if (resCode == "1") {
+          print(resMessage);
+        } else {
+          print(resMessage);
+        }
+      } else {
+        print("adDetail is null");
+      }
+    } on Exception {
+      print("onAdItemClick Exception");
+      return;
+    }
   }
 }
 ```
