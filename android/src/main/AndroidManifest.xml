@@ -8,7 +8,7 @@
                   android:configChanges="orientation|keyboardHidden|screenSize"
                   android:screenOrientation="portrait"
                   android:exported="true"
-                  android:theme="@style/Theme.AppCompat.NoActionBar"/>
+                  android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
     </application>
 
 <!--    <activity android:name="com.tnkfactory.ad.AdWallActivity" -->

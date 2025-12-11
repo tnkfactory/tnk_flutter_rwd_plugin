@@ -87,3 +87,5 @@
 * iOS 약관처리 프로세스 개선
 ## 0.6.1
 * Placement 광고 lib 업데이트 및 가이드 추가
+## 0.6.2
+* Android WebView 테마 대응
