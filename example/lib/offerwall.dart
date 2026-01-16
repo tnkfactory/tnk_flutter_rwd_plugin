@@ -127,7 +127,11 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                       children: [
                         ElevatedButton(
                             onPressed: () {
-                              presentAdDetailView(227796);
+                              presentAdDetailView(809977);
+                              //793127
+                              // 796239
+                              // 782047
+                              // 786420
 
                               // onAdItemClick("726941");
                             },
@@ -158,7 +162,6 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                         ElevatedButton(
                             onPressed: () {
                               adJoin(227796);
-
                             },
                             style: ElevatedButton.styleFrom(
                                 foregroundColor: Colors.white,
@@ -177,6 +180,22 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                                 shadowColor: Colors.purpleAccent,
                                 elevation: 10),
                             child: const Text('Ad Action')),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              setPubCustomUi(1);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.purpleAccent,
+                                shadowColor: Colors.purpleAccent,
+                                elevation: 10),
+                            child: const Text('custom ui')),
+
                       ],
                     ),
                   ],
@@ -278,7 +297,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   Future<void> getJsonAdList() async {
     try {
       String? placementData =
-          await _tnkFlutterRwdPlugin.getPlacementJsonData("offer_nor");
+      await _tnkFlutterRwdPlugin.getPlacementJsonData("offer_nor");
       _tnkFlutterRwdPlugin.setUseTermsPopup(false);
 
       if (placementData != null) {
@@ -288,7 +307,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
         if (resCode == "1") {
           List<TnkPlacementAdItem> adList =
-              praserJsonToTnkPlacementAdItem(jsonObject["ad_list"]);
+          praserJsonToTnkPlacementAdItem(jsonObject["ad_list"]);
 
           setState(() {
             this.adList.addAll(adList);
@@ -298,7 +317,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
           // 광고 로드 실패
         }
       }
-    } on PlatformException catch(e){
+    } on PlatformException catch (e) {
       print(e.stacktrace);
       setState(() {
         _tnkResult = "excetpion";
@@ -327,7 +346,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   Future<void> presentAdDetailView(int appId) async {
     try {
       await _tnkFlutterRwdPlugin.setUserName("dongyoon");
-      String? result = await _tnkFlutterRwdPlugin.presentAdDetailView(appId) ;
+      String? result = await _tnkFlutterRwdPlugin.presentAdDetailView(appId);
       print("jameson result : " + result!);
     } on Exception {
       return;
@@ -337,7 +356,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   Future<void> adJoin(int appId) async {
     try {
       await _tnkFlutterRwdPlugin.setUserName("dongyoon");
-      String? result = await _tnkFlutterRwdPlugin.adJoin(appId) ;
+      String? result = await _tnkFlutterRwdPlugin.adJoin(appId);
       print("jameson result : " + result!);
     } on Exception {
       return;
@@ -347,7 +366,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   Future<void> adAction(int appId) async {
     try {
       await _tnkFlutterRwdPlugin.setUserName("dongyoon");
-      String? result = await _tnkFlutterRwdPlugin.adAction(appId) ;
+      String? result = await _tnkFlutterRwdPlugin.adAction(appId);
       print("jameson result : " + result!);
     } on Exception {
       return;
@@ -364,7 +383,6 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   }
 
   Future<void> setUserName() async {
-
     try {
       String? result = await _tnkFlutterRwdPlugin.setUserName("newTestUser");
       print(result);
@@ -373,6 +391,14 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     }
   }
 
+
+  Future<void> setPubCustomUi([int type = 0]) async {
+    try {
+      String? result = await _tnkFlutterRwdPlugin.setPubCustomUi(type);
+      print(result);
+    } on Exception {
+      return;
+    }
+  }
+
 }
-
-

@@ -32,6 +32,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
     WidgetsBinding.instance!.addObserver(this);
     _type = widget.type;
     getAdList();
+    // getEvent();
   }
 
   @override
@@ -73,6 +74,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
                   TextButton(
                     onPressed: () {
                       showAdList(); // 더보기 클릭시 오퍼월 페이지로 이동
+                      // getEvent();
                     },
                     child: const Text(
                       "더 보기",
@@ -123,6 +125,28 @@ class _PlacementViewItem extends State<PlacementViewItem>
     try {
       await _tnkFlutterRwdPlugin.showATTPopup();
     } on Exception {
+      return;
+    }
+  }
+
+  Future<void> getEvent() async {
+    try {
+
+      String? placementData = await _tnkFlutterRwdPlugin.getPlacementJsonData(
+        "offer_evt",
+      );
+
+      if (placementData != null) {
+        Map<String, dynamic> jsonObject = jsonDecode(placementData); // json 파싱
+        String resCode = jsonObject["res_code"];
+        String resMessage = jsonObject["res_message"];
+        print(jsonObject);
+      }
+
+    } on PlatformException {
+      setState(() {
+        _tnkResult = "excetpion";
+      });
       return;
     }
   }

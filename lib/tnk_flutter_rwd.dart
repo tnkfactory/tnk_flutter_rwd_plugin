@@ -107,4 +107,8 @@ class TnkFlutterRwd {
     return TnkFlutterRwdPlatform.instance.adAction(appId, actionId);
   }
 
+  Future<String?> setPubCustomUi([int type = 0]) {
+    return TnkFlutterRwdPlatform.instance.setPubCustomUi(type);
+  }
+
 }

@@ -161,5 +161,10 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
 
+  @override
+  Future<String?> setPubCustomUi([int type = 0]) async {
+    final version = await methodChannel.invokeMethod<String>('setPubCustomUi', <String, dynamic>{"type": type});
+    return version;
+  }
 
 }

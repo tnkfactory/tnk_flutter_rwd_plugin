@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		GxnbQdKRNRxLjAZXz6PqMnJ3+58=
+		VgVk1cKokpiTY2yQgA1byoHKfAg=
 		</data>
 		<key>Headers/TnkRwdSdk2-Swift.h</key>
 		<data>
-		NAfNnE3PwluIT+w00Of80VOq66s=
+		tzz7JMuN/wWxL1h0XbCEb9NuvLc=
 		</data>
 		<key>Headers/TnkRwdSdk2.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		RRugMIdU/uf18ImfLo+bHDypVsc=
+		5zHtWnC7BgEjkg5fhS1XIIlX3v8=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		3lA4CytRx5WlPf9ohf2FbLYqpYg=
+		gw94COoBEnvuTeXzZ+2xLuvMR/Y=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -34,19 +34,19 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		3lA4CytRx5WlPf9ohf2FbLYqpYg=
+		gw94COoBEnvuTeXzZ+2xLuvMR/Y=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		GrGHb6NBd2prgZuFsMEmTDl3L3o=
+		NrdHw85Ijxwa6xSxZydF27V6wMI=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		RRugMIdU/uf18ImfLo+bHDypVsc=
+		5zHtWnC7BgEjkg5fhS1XIIlX3v8=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		zEks1N5NDG31XYb6ixpBfEQXDXQ=
+		MTB4yOz6/QC/vuNxzzXcjwoYXgs=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -54,15 +54,39 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		zEks1N5NDG31XYb6ixpBfEQXDXQ=
+		MTB4yOz6/QC/vuNxzzXcjwoYXgs=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		LBT+jPVmdbMO79eCVeLPDFLrXu8=
+		S5aaaRxbYppS+29bSyUPpkKi0c0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
 		5RQtDujIjaDYJDyK2y87C/mxKK0=
+		</data>
+		<key>Pretendard-Bold.ttf</key>
+		<data>
+		UBTulJUp77JdyNJVX7jUWG9D4Fg=
+		</data>
+		<key>Pretendard-ExtraBold.ttf</key>
+		<data>
+		f6j2fjp6N3NByAKEaBISEgUOtoE=
+		</data>
+		<key>Pretendard-Light.ttf</key>
+		<data>
+		FxQ2GlHOH9fwcAsWpzUCKUb1zSc=
+		</data>
+		<key>Pretendard-Medium.ttf</key>
+		<data>
+		aO++0Q4SKenJ7UnYxiCo/vh82gc=
+		</data>
+		<key>Pretendard-Regular.ttf</key>
+		<data>
+		9eJdEv8I/wWKzYpk1fm1+ckrnRc=
+		</data>
+		<key>Pretendard-SemiBold.ttf</key>
+		<data>
+		4kerNRoXl7GoH3pelFxBben3/ZE=
 		</data>
 		<key>PrivacyInfo.xcprivacy</key>
 		<data>
@@ -83,14 +107,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			umvtyBABlvcRTEy8YT8r7n/GX+Y2sKoFt51BpPyXZ2w=
+			qQgJo6NHgNefK5PGVzSOad/5uWVDN8p8bO32K1Zrcoc=
 			</data>
 		</dict>
 		<key>Headers/TnkRwdSdk2-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8t0kdPuvqiHyiIZuebD2Tw3iJcaD9kdL890GWLuE5a0=
+			jmjUzj+OMxz1akIGtw9B65p0fuWSnh7JOa63sg86hz4=
 			</data>
 		</dict>
 		<key>Headers/TnkRwdSdk2.h</key>
@@ -104,14 +128,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			l1B3/rS6nRCJX0N5Yo6iX6/AKL80jPsZcBLZZGzYiJI=
+			ChzL0p7lTMWboG/sdAom/nNoSowyEVc3z0+kblKoW+s=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			38lDnOPpaWYtV7D4e2R0IeUmSngWZl/ZK0ziZt3Iui4=
+			9+xCLIQM9THxRoPk0j0FAwQXkQoeKjrPF//qFxtl7vY=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -125,28 +149,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			38lDnOPpaWYtV7D4e2R0IeUmSngWZl/ZK0ziZt3Iui4=
+			9+xCLIQM9THxRoPk0j0FAwQXkQoeKjrPF//qFxtl7vY=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fmiX4ac0eDe+8eXkKNJJXwykfodd5OzcNwFgC1b5hpE=
+			fu96LuUx+w7KvS6xPyIJAzn5VCL0sCF8/Tv1FzOQHp8=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			l1B3/rS6nRCJX0N5Yo6iX6/AKL80jPsZcBLZZGzYiJI=
+			ChzL0p7lTMWboG/sdAom/nNoSowyEVc3z0+kblKoW+s=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			BC8h55d9eLcKZ/kZJQVdvnz94Xnz7rme7F9KWwQBkBY=
+			zczqKLpznXVX7d3EQvmElmrzp/el9R387nuxqqd2hfQ=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -160,14 +184,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BC8h55d9eLcKZ/kZJQVdvnz94Xnz7rme7F9KWwQBkBY=
+			zczqKLpznXVX7d3EQvmElmrzp/el9R387nuxqqd2hfQ=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			T9IvVVgTABPcKBzyD8DpsKtljLOWL2he/i/q+9IYPFM=
+			jOdHZoakJKKoofF7qi6eO0zMlq0UAVisH2pgosHOz5c=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -175,6 +199,48 @@
 			<key>hash2</key>
 			<data>
 			L4HLK3LohkRyo6VV/5lLsDdtbxkeDKVwPm/ETKzZ9H8=
+			</data>
+		</dict>
+		<key>Pretendard-Bold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			wWuIxnDSPoP6EXDJVMvEgi07ja08PN4V15ipS0PZeYU=
+			</data>
+		</dict>
+		<key>Pretendard-ExtraBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7tvSh3IYJCMjvf+BZoT39cMl5UroINW3juyaXlx+3vY=
+			</data>
+		</dict>
+		<key>Pretendard-Light.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G6c7IpVXVLue1rv3Z4QWr2R/kHBOkGRmH3kk2leNrT4=
+			</data>
+		</dict>
+		<key>Pretendard-Medium.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			O65Xk3frjprEEstICevD3h2VbtdZlcHjRvDBMRBT9OI=
+			</data>
+		</dict>
+		<key>Pretendard-Regular.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bQr1JYmXrsc1Sm40D8IyW6MhxBDKSLOvhYyMPW6SoyQ=
+			</data>
+		</dict>
+		<key>Pretendard-SemiBold.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			XhxUhzKvcIcxAwZsFuE2m5qKhx8LOMMhodW8c+Q86i0=
 			</data>
 		</dict>
 		<key>PrivacyInfo.xcprivacy</key>

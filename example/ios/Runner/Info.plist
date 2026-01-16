@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string></string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
@@ -164,16 +172,11 @@
 	<key>tnkad_app_id</key>
 	<string>a060a0c0f0c1c875578c1c0e070a0f01</string>
 	<key>NSBonjourServices</key>
-<array>
-    <string>_dartvmservice._tcp</string>
-    <string>_flutterobservatory._tcp</string>
-    <!-- 필요 시 사용하는 서비스 타입도 함께 추가 예)
-    <string>_raop._tcp</string>
-    <string>_airplay._tcp</string>
-    -->
-</array>
-
-<key>NSLocalNetworkUsageDescription</key>
-<string>로컬 네트워크를 사용하여 디버깅/서비스 검색을 수행합니다.</string>
+	<array>
+		<string>_dartvmservice._tcp</string>
+		<string>_flutterobservatory._tcp</string>
+	</array>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>로컬 네트워크를 사용하여 디버깅/서비스 검색을 수행합니다.</string>
 </dict>
 </plist>

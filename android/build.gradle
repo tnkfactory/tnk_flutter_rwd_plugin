@@ -28,15 +28,15 @@ apply plugin: 'kotlin-android'
 android {
 
     namespace = 'com.tnkfactory.flutter.rwd.tnk_flutter_rwd'
-    compileSdkVersion 35
+    compileSdkVersion = 35
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = '11'
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     sourceSets {
@@ -56,5 +56,5 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0"'
     implementation "androidx.activity:activity-ktx:1.7.1"
     implementation "androidx.fragment:fragment-ktx:1.4.1"
-    implementation "com.tnkfactory:rwd:8.08.60"
+    implementation "com.tnkfactory:rwd:8.09.04"
 }

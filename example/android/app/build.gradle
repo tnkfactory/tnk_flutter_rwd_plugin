@@ -1,7 +1,8 @@
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
+    id("com.android.application")
+    id("kotlin-android")
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id("dev.flutter.flutter-gradle-plugin")
 }
 
 def localProperties = new Properties()
@@ -33,9 +34,10 @@ if (flutterVersionName == null) {
 
 android {
 
-    compileSdkVersion 35
+    compileSdkVersion 36
 //    compileSdkVersion flutter.compileSdkVersion
-    ndkVersion flutter.ndkVersion
+//    ndkVersion flutter.ndkVersion
+    ndkVersion "27.0.12077973"
 
     namespace 'com.tnkfactory.flutter.rwd.tnk_flutter_rwd_example'
     compileOptions {
@@ -79,6 +81,6 @@ flutter {
 }
 
 dependencies {
-//    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "com.tnkfactory:rwd:8.08.60"
+    implementation "com.tnkfactory:rwd:8.09.04"
+    api(project(":tnk_rwd"))
 }

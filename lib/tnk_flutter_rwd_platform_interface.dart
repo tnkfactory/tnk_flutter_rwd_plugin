@@ -112,5 +112,9 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
     throw UnimplementedError('adAction has not benn implemented');
   }
 
+  Future<String?> setPubCustomUi([int type = 0]) {
+    throw UnimplementedError('setPubCustomUi has not benn implemented');
+  }
+
 
 }

@@ -89,3 +89,5 @@
 * Placement 광고 lib 업데이트 및 가이드 추가
 ## 0.6.2
 * Android WebView 테마 대응
+## 0.6.3
+* 매체 커스터마이징 지원 

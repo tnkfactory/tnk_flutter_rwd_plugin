@@ -309,7 +309,26 @@ TnkFlutterRwd().adJoin(appId];
 ##### 적용예시
 
 ```dart
-TnkFlutterRwd().adAction(appId];
+TnkFlutterRwd().setPubCustomUi(type);
+```
+
+##### Method
+
+- String setPubCustomUi(int type)
+
+
+##### Parameters
+
+| 파라메터 명칭  | 내용        |
+|----------|-----------|
+| type     | 유형        |
+
+
+
+##### 적용예시
+
+```dart
+TnkFlutterRwd().setPubCustomUi(type);
 ```
 
 ### 나. 포인트 조회 및 인출

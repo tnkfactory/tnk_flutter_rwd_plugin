@@ -395,6 +395,38 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
 
                 break
             }
+            
+        case "setPubCustomUi":
+            if let args = call.arguments as? [String: Any] {
+                if let customType = args["type"] as? Int
+                {
+                    switch customType {
+                    case 1:
+                        print("Custom Type -> \(customType)")
+                        
+                        if let rwdplus = SktAirRwdPlus.initSession()
+                        {
+                            rwdplus.showOfferwall(viewController!)
+                            result("set custom type \(customType)")
+                        } else {
+                            result("fail - SktAirRwdPlus.initSession")
+                        }
+
+                        
+                        
+                        
+                    case 2:
+                        print("Custom Type -> \(customType)")
+                        result("set custom type \(customType)")
+                    default:
+                        print("Custom Type -> \(customType) set default ui")
+                        result("set custom type \(customType)")
+                    }
+
+                }
+
+                break
+            }
         case "showCustomTapActivity":
 //             if let args = call.arguments as? [String: Any]
 //             {
@@ -433,6 +465,8 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
 //                 }
 //             }
             break
+            
+            
         default:
             result("iOS method : " + call.method)
             break

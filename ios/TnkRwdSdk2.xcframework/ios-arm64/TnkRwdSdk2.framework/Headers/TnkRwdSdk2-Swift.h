@@ -328,12 +328,15 @@ SWIFT_CLASS("_TtC10TnkRwdSdk220AdListItemViewLayout")
 @property (nonatomic) CGFloat itemStrokeWidth;
 @property (nonatomic, strong) UIColor * _Nonnull itemBackgroundColor;
 @property (nonatomic, strong) UIColor * _Nonnull itemHighlightedColor;
+@property (nonatomic) BOOL swapDiscountPriceLabelPos;
 @property (nonatomic) UIEdgeInsets itemInset;
 @property (nonatomic) CGFloat lineSpace;
 @property (nonatomic) CGFloat itemSpace;
 @property (nonatomic, strong) ImageAttribute * _Nonnull iconImage;
 @property (nonatomic, strong) ImageAttribute * _Nonnull feedImage;
 @property (nonatomic, strong) LabelAttribute * _Nonnull titleLabel;
+@property (nonatomic) BOOL useAttributeTitleText;
+@property (nonatomic) CGFloat titleLineSpacing;
 @property (nonatomic, strong) LabelAttribute * _Nonnull dateLabel;
 @property (nonatomic, strong) LabelAttribute * _Nonnull statusLabel;
 @property (nonatomic) BOOL singleLineInformation;
@@ -382,6 +385,9 @@ SWIFT_CLASS("_TtC10TnkRwdSdk220AdListItemViewLayout")
 @property (nonatomic, strong) LabelAttribute * _Nonnull emptyDescLabel;
 @property (nonatomic) BOOL showOnlyTitle;
 @property (nonatomic) BOOL usePointIconToRightside;
+@property (nonatomic) NSInteger multiRewardPostBackIconPosition;
+@property (nonatomic, strong) ImageAttribute * _Nonnull multiRewardPostBackIconImage;
+@property (nonatomic) BOOL showMultiRewardBottomLine;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -892,6 +898,13 @@ typedef SWIFT_ENUM(NSInteger, AdState, open) {
 
 SWIFT_CLASS("_TtC10TnkRwdSdk232AdiscopeAdEventWebViewController")
 @interface AdiscopeAdEventWebViewController : UIViewController
+@property (nonatomic, copy) void (^ _Nullable showOfferWallHandler)(void);
+@property (nonatomic, copy) NSString * _Nullable extraUrl;
+@property (nonatomic, copy) void (^ _Nullable loadInterstitialAdHandler)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable showInterstitialAdHandler)(void);
+@property (nonatomic, copy) void (^ _Nullable loadRvAdHandler)(NSString * _Nonnull);
+@property (nonatomic, copy) void (^ _Nullable showRVAdHandler)(void);
+@property (nonatomic, copy) void (^ _Nullable viewControllerFinishHandler)(void);
 @property (nonatomic, readonly) UIInterfaceOrientationMask supportedInterfaceOrientations;
 @property (nonatomic, readonly) BOOL shouldAutorotate;
 - (void)viewDidLoad;
@@ -915,6 +928,16 @@ SWIFT_CLASS("_TtC10TnkRwdSdk232AdiscopeAdEventWebViewController")
 - (WKWebView * _Nullable)webView:(WKWebView * _Nonnull)webView createWebViewWithConfiguration:(WKWebViewConfiguration * _Nonnull)configuration forNavigationAction:(WKNavigationAction * _Nonnull)navigationAction windowFeatures:(WKWindowFeatures * _Nonnull)windowFeatures SWIFT_WARN_UNUSED_RESULT;
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptConfirmPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(BOOL))completionHandler;
 - (void)webView:(WKWebView * _Nonnull)webView runJavaScriptAlertPanelWithMessage:(NSString * _Nonnull)message initiatedByFrame:(WKFrameInfo * _Nonnull)frame completionHandler:(void (^ _Nonnull)(void))completionHandler;
+@end
+
+@interface AdiscopeAdEventWebViewController (SWIFT_EXTENSION(TnkRwdSdk2))
+- (void)onInterstitialAdLoadedWithUnitID:(NSString * _Nullable)unitID;
+- (void)onInterstitialAdClosedWithUnitID:(NSString * _Nullable)unitID;
+- (void)onInterstitialAdFailedWithUnitID:(NSString * _Nullable)unitID errorDesc:(NSString * _Nullable)errorDesc;
+- (void)onRewardedVideoAdLoadedWithUnitID:(NSString * _Nullable)unitID;
+- (void)onRewardedVideoAdClosedWithUnitID:(NSString * _Nullable)unitID;
+- (void)onRewardedVideoAdFailedWithUnitID:(NSString * _Nullable)unitID errorDesc:(NSString * _Nullable)errorDesc;
+- (void)onRewardedWithUnitID:(NSString * _Nullable)unitID;
 @end
 
 SWIFT_PROTOCOL("_TtP10TnkRwdSdk212AlertControl_")
@@ -948,6 +971,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk220BannerItemViewLayout")
 @property (nonatomic) CGFloat pageLabelTrailingSpace;
 @property (nonatomic) CGFloat pageLabelBottomSpace;
 @property (nonatomic) BOOL hidePageView;
+@property (nonatomic) CGFloat pointBackRadius;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1163,11 +1187,20 @@ SWIFT_CLASS("_TtC10TnkRwdSdk219CpsSearchViewLayout")
 @property (nonatomic) CGFloat clearButtonLeadingSpace;
 @property (nonatomic, strong) ButtonAttribute * _Nonnull clearButton;
 @property (nonatomic, strong) UIColor * _Nonnull historyTagBackgroundColor;
+@property (nonatomic) CGFloat historyTagRadius;
+@property (nonatomic) CGFloat historyTagBorderWidth;
+@property (nonatomic, strong) UIColor * _Nonnull historyTagBorderColor;
 @property (nonatomic) UIEdgeInsets historyTagInset;
+@property (nonatomic) CGFloat historyProductImgRadius;
+@property (nonatomic) CGFloat historyProductImgBorderWidth;
+@property (nonatomic, strong) UIColor * _Nonnull historyProductImgBorderColor;
+@property (nonatomic) UIEdgeInsets historyProductImgInset;
+@property (nonatomic, strong) ButtonAttribute * _Nonnull historyProductDeleteButton;
 @property (nonatomic, strong) ButtonAttribute * _Nonnull historyTagDeleteButton;
 @property (nonatomic, strong) LabelAttribute * _Nonnull historyTagTextLabel;
-@property (nonatomic, strong) UIColor * _Nonnull searchResultHighlightColor;
+@property (nonatomic, strong) UIColor * _Nonnull searchResultHighlightColor1;
 @property (nonatomic, strong) AdListItemViewLayout * _Nonnull listItemViewLayout;
+@property (nonatomic, strong) AdListItemViewLayout * _Nonnull emptyItemViewLayout;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1180,6 +1213,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk229CpsTopRecommendItemListLayout")
 SWIFT_CLASS("_TtC10TnkRwdSdk210TnkRwdPlus")
 @interface TnkRwdPlus : NSObject
 + (TnkRwdPlus * _Nonnull)initSessionWithAppId:(NSString * _Nonnull)appId SWIFT_METHOD_FAMILY(none);
++ (TnkRwdPlus * _Nullable)initSession SWIFT_METHOD_FAMILY(none);
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 - (TnkRwdPlus * _Nonnull)setUserName:(NSString * _Nonnull)name;
@@ -1292,6 +1326,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk219EmptyListItemLayout")
 
 SWIFT_CLASS("_TtC10TnkRwdSdk211EventLinkVo")
 @interface EventLinkVo : NSObject
+@property (nonatomic, copy) NSString * _Nonnull mkt_app_id;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1500,6 +1535,9 @@ SWIFT_CLASS("_TtC10TnkRwdSdk216MyMenuViewLayout")
 @property (nonatomic) CGSize closeButtonSize;
 @property (nonatomic, strong) UIImage * _Nullable closeButtonImage;
 @property (nonatomic) CGFloat menuHeight;
+@property (nonatomic) BOOL isFullScreen;
+@property (nonatomic) UIEdgeInsets fullscreenMenuInset;
+@property (nonatomic, strong) UIImage * _Nullable naviBackBtnImg;
 @property (nonatomic, strong) ButtonAttribute * _Nonnull menuItem;
 @property (nonatomic) CGFloat menuItemInterSpace;
 @property (nonatomic) CGFloat menuItemIndicatorHeight;
@@ -1652,6 +1690,12 @@ SWIFT_CLASS("_TtC10TnkRwdSdk219PurchaseAlertLayout")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+typedef SWIFT_ENUM(NSInteger, RecommendCloseBtnType, open) {
+  RecommendCloseBtnTypeNormal = 0,
+  RecommendCloseBtnTypeOnlyCloseToday = 1,
+  RecommendCloseBtnTypeOnlyClose = 2,
+};
+
 SWIFT_CLASS("_TtC10TnkRwdSdk225RecommendItemHeaderLayout")
 @interface RecommendItemHeaderLayout : AdListMenuViewLayout
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -1686,6 +1730,13 @@ typedef SWIFT_ENUM(NSInteger, ScrollType, open) {
 SWIFT_CLASS("_TtC10TnkRwdSdk236SingleTitleFeedAdItemLargeViewLayout")
 @interface SingleTitleFeedAdItemLargeViewLayout : FeedAdItemLargeViewLayout
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC10TnkRwdSdk213SktAirRwdPlus")
+@interface SktAirRwdPlus : TnkRwdPlus
++ (TnkRwdPlus * _Nonnull)initSessionWithAppId:(NSString * _Nonnull)appId SWIFT_METHOD_FAMILY(none) SWIFT_WARN_UNUSED_RESULT;
++ (TnkRwdPlus * _Nullable)initSession SWIFT_METHOD_FAMILY(none) SWIFT_WARN_UNUSED_RESULT;
+- (void)showOfferwall:(UIViewController * _Nonnull)viewController;
 @end
 
 /// 오퍼월 내의 특정 이벤트들을 받아서처리 하기 위하여 사용됩니다.
@@ -1908,6 +1959,9 @@ SWIFT_CLASS("_TtC10TnkRwdSdk29TnkImages")
 @class TnkToastLayout;
 SWIFT_CLASS("_TtC10TnkRwdSdk29TnkLayout")
 @interface TnkLayout : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) BOOL useCuration;)
++ (BOOL)useCuration SWIFT_WARN_UNUSED_RESULT;
++ (void)setUseCuration:(BOOL)value;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) CGFloat wrapContent;)
 + (CGFloat)wrapContent SWIFT_WARN_UNUSED_RESULT;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkLayout * _Nonnull shared;)
@@ -1919,7 +1973,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkLayout * 
 @property (nonatomic, strong) TnkTermLayout * _Nonnull termLayout;
 @property (nonatomic, strong) TnkCouponViewLayout * _Nonnull couponLayout;
 @property (nonatomic, strong) TnkToastLayout * _Nonnull toastLayout;
-@property (nonatomic, strong) ImageLoadingIndicatorFactory * _Nonnull loadingIndicatorFactory;
+@property (nonatomic, strong) id <LoadingIndicatorFactory> _Nonnull loadingIndicatorFactory;
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull multipleLeftBarButtonItem;
 @property (nonatomic, copy) NSArray<NSNumber *> * _Nonnull multipleRightBarButtonItem;
 @property (nonatomic) enum BarButtonItem leftBarButtonItem;
@@ -1955,6 +2009,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkLayout * 
 @property (nonatomic, strong) UIImage * _Nullable listViewFilterButtonImage;
 @property (nonatomic) CGSize listViewFilterButtonSize;
 @property (nonatomic, strong) UIColor * _Nonnull cpsCategoryBtnTextColor;
+@property (nonatomic, strong) UIFont * _Nonnull cpsCategoryBtnTextFont;
+@property (nonatomic, strong) UIImage * _Nullable cpsCategoryBtnIcon;
 @property (nonatomic) enum DetailViewPresentationStyle detailViewPresentationStyle;
 @property (nonatomic, strong) UIColor * _Nullable detailViewNavigationBarTintColor;
 @property (nonatomic, strong) UIImage * _Nullable detailViewNavigationBarBackButtonImage;
@@ -2073,6 +2129,10 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) TnkSession * _Nullable
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@interface TnkSession (SWIFT_EXTENSION(TnkRwdSdk2))
+- (void)getEventLinkWithEventId:(NSInteger)eventId onReturn:(void (^ _Nonnull)(EventLinkVo * _Nullable))onReturn;
+@end
+
 SWIFT_CLASS("_TtC10TnkRwdSdk210TnkStrings")
 @interface TnkStrings : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkStrings * _Nonnull shared;)
@@ -2097,6 +2157,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk29TnkStyles")
 @property (nonatomic, strong) AlertOption * _Nonnull alertStyle;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkStyles * _Nonnull shared;)
 + (TnkStyles * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic) BOOL useDetailRoundCornerHeader;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -2115,11 +2176,17 @@ SWIFT_CLASS("_TtCC10TnkRwdSdk29TnkStyles13NaviMenuStyle")
 
 SWIFT_CLASS("_TtCC10TnkRwdSdk29TnkStyles20RecommendADViewStyle")
 @interface RecommendADViewStyle : NSObject
+@property (nonatomic, strong) UIColor * _Nonnull contentBackGroundColor;
 @property (nonatomic, strong) LabelAttribute * _Nonnull recommendHeaderTitleLabel;
 @property (nonatomic, strong) UIColor * _Nonnull popupPointBtnBackgroundColor;
 @property (nonatomic, strong) LabelAttribute * _Nonnull popupItemTitleLabel;
 @property (nonatomic, strong) LabelAttribute * _Nonnull popupItemPriceLabel;
 @property (nonatomic, strong) LabelAttribute * _Nonnull popupDiscountAmountLabel;
+@property (nonatomic) CGFloat closeBtnFieldHeight;
+@property (nonatomic) enum RecommendCloseBtnType closeBtnType;
+@property (nonatomic, strong) UIColor * _Nonnull closeBtnFieldBackgourndColor;
+@property (nonatomic, strong) ButtonAttribute * _Nonnull dismissTodayBtnAttr;
+@property (nonatomic, strong) ButtonAttribute * _Nonnull closeBtnAttr;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

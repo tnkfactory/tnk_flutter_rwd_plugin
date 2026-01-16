@@ -237,6 +237,26 @@ TnkSession 클래스가 제공하는 메소드로서 광고 목록 화면을 띄
 TnkFlutterRwd().adJoin(appId];
 ```
 
+
+##### Method
+
+- String setPubCustomUi(int type)
+
+
+##### Parameters
+
+| 파라메터 명칭  | 내용        |
+|----------|-----------|
+| type     | 유형        |
+
+
+
+##### 적용예시
+
+```dart
+TnkFlutterRwd().setPubCustomUi(type);
+```
+
 #### adAction
 
 광고상세페이지 진입
