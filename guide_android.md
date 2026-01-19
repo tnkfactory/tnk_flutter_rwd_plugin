@@ -318,7 +318,7 @@ TnkFlutterRwd().adAction(type);
 
 ##### Method
 
-- String setPubCustomUi(int type)
+String setPubCustomUi(int type)
 
 
 ##### Parameters
