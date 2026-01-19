@@ -331,11 +331,33 @@ TnkFlutterRwd().setPubCustomUi(type);
 TnkFlutterRwd().setPubCustomUi(type);
 ```
 
-```kotlin
 
-MainActivity 에서 TnkOfferwall 호출전에 
+MainActivity 에서 TnkOfferwall 호출전에
 TnkAdManager.setCustomClass()
 호출하여 커스텀 UI 클래스를 지정해줍니다.
+
+```kotlin
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    TnkAdManager.setCustomClass()
+    TnkOfferwall(this)
+
+    var tnkContext: TnkContext? = null
+
+    var mEventHandler: AdEventHandler? = null
+
+    if (!TnkCore.isInitialized())
+        TnkCore.init(this)
+    if (this is FragmentActivity) {
+        tnkContext = TnkContext(this)
+        mEventHandler = AdEventHandler(this)
+        Log.d("tnk", "is FragmentActivity")
+    }else{
+        Log.d("tnk", "not FragmentActivity")
+    }
+
+}
 
         
 
