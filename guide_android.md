@@ -309,8 +309,12 @@ TnkFlutterRwd().adJoin(appId];
 ##### 적용예시
 
 ```dart
-TnkFlutterRwd().setPubCustomUi(type);
+TnkFlutterRwd().adAction(type);
 ```
+
+
+#### adAction
+매체 커스텀 UI 설정 
 
 ##### Method
 
