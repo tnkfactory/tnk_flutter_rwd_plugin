@@ -331,6 +331,16 @@ TnkFlutterRwd().setPubCustomUi(type);
 TnkFlutterRwd().setPubCustomUi(type);
 ```
 
+```kotlin
+
+MainActivity 에서 TnkOfferwall 호출전에 
+TnkAdManager.setCustomClass()
+호출하여 커스텀 UI 클래스를 지정해줍니다.
+
+        
+
+```
+
 ### 나. 포인트 조회 및 인출
 
 사용자가 광고참여를 통하여 획득한 포인트는 Tnk서버에서 관리되거나 앱의 자체서버에서 관리될 수 있습니다.
