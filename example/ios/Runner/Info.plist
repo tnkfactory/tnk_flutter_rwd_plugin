@@ -170,7 +170,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>tnkad_app_id</key>
-	<string>a060a0c0f0c1c875578c1c0e070a0f01</string>
+	<string>f0d01000-c0b1-39ba-ab93-1b0000030f0d</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_dartvmservice._tcp</string>

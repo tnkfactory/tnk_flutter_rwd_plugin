@@ -332,14 +332,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "setPubCustomUi" -> {
-                    val type = (call.argument("type") as? Int ?:0 )
-
-                    print("Custom Type -> $type")
-
-                    offerwall.startOfferwallActivity(mActivity)
+                    val type = (call.argument("type") as? Int ?: 0)
                     result.success("no use in android..")
-
-
                 }
 
             }

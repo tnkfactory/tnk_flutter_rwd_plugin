@@ -187,6 +187,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                       children: [
                         ElevatedButton(
                             onPressed: () {
+
                               setPubCustomUi(1);
                             },
                             style: ElevatedButton.styleFrom(
@@ -209,7 +210,9 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
             child: FloatingActionButton(
               onPressed: () {
                 // 원하는 동작 작성
-                showAdList();
+                // showAdList();
+
+                setCustomUiAndShowOfferwall();
               },
               child: const Column(
                 mainAxisSize: MainAxisSize.min,
@@ -230,6 +233,45 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     );
   }
 
+
+  /**
+   * 오퍼월 커스텀 UI 설정 후 호출 예제
+   */
+  Future<void> setCustomUiAndShowOfferwall() async {
+
+    try {
+
+      await _tnkFlutterRwdPlugin.setPubCustomUi(1); // 매체 커스텀 UI 설정
+      await _tnkFlutterRwdPlugin.setCOPPA(false); // COPPA 설정
+      await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user"); // user name 설정
+
+      await _tnkFlutterRwdPlugin.showATTPopup(); // iOS ATT 팝업 호출 (iOS만 해당)
+
+      String? result = await _tnkFlutterRwdPlugin.showAdList("오퍼월상단타이틀"); // 오퍼월 호출
+
+      print(result);
+
+    } on Exception catch (e) {
+      print(e);
+      return;
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   Future<void> showAdList() async {
     String platformVersion;
 
@@ -237,7 +279,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       // await _tnkFlutterRwdPlugin.setUserName("jameson");
       await _tnkFlutterRwdPlugin.setCOPPA(false);
 
-      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
+      _tnkFlutterRwdPlugin.setUseTermsPopup(true);
       // _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
       platformVersion = await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
           'Unknown platform version';
@@ -394,6 +436,8 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
   Future<void> setPubCustomUi([int type = 0]) async {
     try {
+      await _tnkFlutterRwdPlugin.setCOPPA(false);
+      await _tnkFlutterRwdPlugin.setUserName("jameson_test");
       String? result = await _tnkFlutterRwdPlugin.setPubCustomUi(type);
       print(result);
     } on Exception {
