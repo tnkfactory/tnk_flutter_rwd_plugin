@@ -443,27 +443,28 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
 //             }
             break
         case "openEventWebView":
-//             if let args = call.arguments as? [String: Any]
-//             {
-//                 if let eventId = args["eventId"] as? Int,
-//                    let parentVC = viewController
-//                 {
-//                     TnkSession.sharedInstance()?.openPrivacyTermAlert(parentViewController: parentVC) { [weak self]  result in
-//                         if(result)
-//                         {
-//                             TnkSession.sharedInstance()?.getEventWebView(parentViewController: parentVC, eventId: eventId) { resultVc in
-//                                 guard let self = self else { return }
-//                                 if let vc = resultVc
-//                                 {
-//                                     self.showAdisocpeVC(parent:parentVC, target: vc)
-//                                 }
-//                             }
-//                         }
-//                     }
-//
-//
-//                 }
-//             }
+            if let args = call.arguments as? [String: Any]
+            {
+                if let eventId = args["eventId"] as? Int,
+                   let parentVC = viewController
+                {
+                    TnkSession.sharedInstance()?.openPrivacyTermAlert(parentViewController: parentVC) { [weak self]  result in
+                        if(result)
+                        {
+                            TnkSession.sharedInstance()?.openEventWebView(parentViewController: parentVC, eventId: eventId)
+//                            TnkSession.sharedInstance()?.getEventWebView(parentViewController: parentVC, eventId: eventId) { resultVc in
+//                                guard let self = self else { return }
+//                                if let vc = resultVc
+//                                {
+//                                    self?.showAdisocpeVC(parent:parentVC, target: vc)
+//                                }
+//                            }
+                        }
+                    }
+
+
+                }
+            }
             break
             
             

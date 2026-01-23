@@ -82,5 +82,5 @@ flutter {
 
 dependencies {
     implementation "com.tnkfactory:rwd:8.09.04"
-    api(project(":tnk_rwd"))
+//    api(project(":tnk_rwd"))
 }

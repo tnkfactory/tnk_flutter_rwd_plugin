@@ -9,6 +9,10 @@
                   android:screenOrientation="portrait"
                   android:exported="true"
                   android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>
+        <activity android:name="com.tnkfactory.ad.TnkWebEventActivity"
+                  android:exported="false"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"/>"
     </application>
 
 <!--    <activity android:name="com.tnkfactory.ad.AdWallActivity" -->

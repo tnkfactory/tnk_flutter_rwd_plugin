@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.NonNull
 import com.tnkfactory.ad.*
 import com.tnkfactory.ad.basic.AdPlacementView
@@ -233,8 +234,25 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "openEventWebView" -> {
-//                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
-//                    TnkEventActivity.startActivity(mActivity, eventId.toLong())
+                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
+                    TnkSession.runOnIoThread {
+                        offerwall.getEventLink(eventId.toLong()) { eventVo ->
+                            TnkSession.runOnMainThread {
+                                if (eventVo != null) {
+                                    TnkWebEventActivity.start(mActivity, eventVo.mkt_app_id)
+                                    result.success("success")
+                                } else {
+                                    Toast.makeText(
+                                        mActivity,
+                                        "이벤트 URL을 가져오지 못했습니다.",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    result.success("이벤트 URL을 가져오지 못했습니다.")
+//                            result.error("-1","이벤트 URL을 가져오지 못했습니다.", null)
+                                }
+                            }
+                        }
+                    }
                 }
 
                 "showCustomTapActivity" -> {
@@ -332,11 +350,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "setPubCustomUi" -> {
-                    val type = (call.argument("type") as? Int ?:0 )
-
-                    print("Custom Type -> $type")
-
-                    offerwall.startOfferwallActivity(mActivity)
+                    val type = (call.argument("type") as? Int ?: 0)
                     result.success("no use in android..")
 
 

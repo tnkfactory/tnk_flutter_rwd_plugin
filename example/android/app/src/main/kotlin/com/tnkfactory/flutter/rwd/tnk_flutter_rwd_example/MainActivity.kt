@@ -7,14 +7,14 @@ import com.tnkfactory.ad.TnkContext
 import com.tnkfactory.ad.TnkOfferwall
 import com.tnkfactory.ad.off.AdEventHandler
 import com.tnkfactory.ad.rwd.TnkCore
-import com.tnkfactory.ad.tnk_rwd.TnkAdManager
+//import com.tnkfactory.ad.tnk_rwd.TnkAdManager
 import io.flutter.embedding.android.FlutterFragmentActivity
 
 class MainActivity: FlutterFragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        TnkAdManager.setCustomClass()
+//        TnkAdManager.setCustomClass()
         TnkOfferwall(this)
 
         var tnkContext: TnkContext? = null
