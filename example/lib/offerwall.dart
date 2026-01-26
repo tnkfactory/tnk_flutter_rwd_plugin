@@ -272,7 +272,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
     try {
 
-      setNoUsePrivacyAlert();
+      await _tnkFlutterRwdPlugin.setNoUsePrivacyAlert(); // 개이정보 수집 동의 팝업 제거
       await _tnkFlutterRwdPlugin.setPubCustomUi(1); // 매체 커스텀 UI 설정
       await _tnkFlutterRwdPlugin.setCOPPA(false); // COPPA 설정
       await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user"); // user name 설정
@@ -288,26 +288,17 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   }
 
 
-
-
-
-
-
+  /**
+   * 특정 이벤트 페이지 호출 예제
+   */
   Future<void> showEventPage(String eventId) async {
     try {
-      // await _tnkFlutterRwdPlugin.setUserName("dongyoon");
       HashMap<String, String> paramMap = HashMap();
-      //0xff252542
       paramMap.addAll({
         "event_id": eventId,
-        "check_term": "Y",
-        "bg_color" : "0xFFFFFF",
       });
-
-      String? adActionResult = await _tnkFlutterRwdPlugin.adAction(227796);
-
       String? result = await _tnkFlutterRwdPlugin.showEventWebPage(paramMap);
-      print("jameson result : " + result!);
+
     } on Exception {
       return;
     }
