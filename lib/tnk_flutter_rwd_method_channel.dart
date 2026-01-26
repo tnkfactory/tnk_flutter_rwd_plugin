@@ -167,4 +167,10 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
 
+  @override
+  Future<String?> showEventWebPage(HashMap<String,String> map) async {
+    final version = await methodChannel.invokeMethod<String>('showEventWebPage', <String, dynamic>{"map" :map});
+    return version;
+  }
+
 }

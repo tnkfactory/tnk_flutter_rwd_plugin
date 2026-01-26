@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
 
@@ -31,6 +32,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
     // showAdList();
+    showATTPopup();
   }
 
   @override
@@ -144,7 +146,8 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
                         ElevatedButton(
                             onPressed: () {
-                              setUserName();
+                              // setUserName();
+                              showATTPopup();
                               // onAdItemClick("726941");
                             },
                             style: ElevatedButton.styleFrom(
@@ -152,7 +155,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                                 backgroundColor: Colors.redAccent,
                                 shadowColor: Colors.redAccent,
                                 elevation: 10),
-                            child: const Text('set username')),
+                            child: const Text('att')),
                       ],
                     ),
 
@@ -187,7 +190,6 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                       children: [
                         ElevatedButton(
                             onPressed: () {
-
                               setPubCustomUi(1);
                             },
                             style: ElevatedButton.styleFrom(
@@ -195,7 +197,36 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
                                 backgroundColor: Colors.purpleAccent,
                                 shadowColor: Colors.purpleAccent,
                                 elevation: 10),
-                            child: const Text('custom ui')),
+                            child: const Text('custom ui')
+                        ),
+
+                        ElevatedButton(
+                            onPressed: () {
+
+                              // ios 	814278
+                              // aos 814139
+                              final eventId = Platform.isIOS ? "814278" : "814139";
+                              showEventPage(eventId);
+                            },
+                            style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.purpleAccent,
+                                shadowColor: Colors.purpleAccent,
+                                elevation: 10),
+                            child: const Text('showEvent')
+                        ),
+
+                        ElevatedButton(
+                            onPressed: () {
+                              setNoUsePrivacyAlert();
+                            },
+                            style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.purpleAccent,
+                                shadowColor: Colors.purpleAccent,
+                                elevation: 10),
+                            child: const Text('noPrivacyAlert')
+                        ),
 
                       ],
                     ),
@@ -241,12 +272,10 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
     try {
 
+      setNoUsePrivacyAlert();
       await _tnkFlutterRwdPlugin.setPubCustomUi(1); // 매체 커스텀 UI 설정
       await _tnkFlutterRwdPlugin.setCOPPA(false); // COPPA 설정
       await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user"); // user name 설정
-
-      await _tnkFlutterRwdPlugin.showATTPopup(); // iOS ATT 팝업 호출 (iOS만 해당)
-
       String? result = await _tnkFlutterRwdPlugin.showAdList("오퍼월상단타이틀"); // 오퍼월 호출
 
       print(result);
@@ -264,6 +293,37 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
 
 
+  Future<void> showEventPage(String eventId) async {
+    try {
+      // await _tnkFlutterRwdPlugin.setUserName("dongyoon");
+      HashMap<String, String> paramMap = HashMap();
+      //0xff252542
+      paramMap.addAll({
+        "event_id": eventId,
+        "check_term": "Y",
+        "bg_color" : "0xFFFFFF",
+      });
+
+      String? adActionResult = await _tnkFlutterRwdPlugin.adAction(227796);
+
+      String? result = await _tnkFlutterRwdPlugin.showEventWebPage(paramMap);
+      print("jameson result : " + result!);
+    } on Exception {
+      return;
+    }
+
+  }
+
+
+
+  Future<void> setNoUsePrivacyAlert() async {
+    try {
+      await _tnkFlutterRwdPlugin.setNoUsePrivacyAlert();
+    } on Exception {
+      return;
+    }
+  }
+
 
 
 
@@ -279,7 +339,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       // await _tnkFlutterRwdPlugin.setUserName("jameson");
       await _tnkFlutterRwdPlugin.setCOPPA(false);
 
-      _tnkFlutterRwdPlugin.setUseTermsPopup(true);
+      // _tnkFlutterRwdPlugin.setUseTermsPopup(true);
       // _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
       platformVersion = await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
           'Unknown platform version';
@@ -340,7 +400,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     try {
       String? placementData =
       await _tnkFlutterRwdPlugin.getPlacementJsonData("offer_nor");
-      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
+      // _tnkFlutterRwdPlugin.setUseTermsPopup(false);
 
       if (placementData != null) {
         Map<String, dynamic> jsonObject = jsonDecode(placementData);
@@ -436,8 +496,6 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
   Future<void> setPubCustomUi([int type = 0]) async {
     try {
-      await _tnkFlutterRwdPlugin.setCOPPA(false);
-      await _tnkFlutterRwdPlugin.setUserName("jameson_test");
       String? result = await _tnkFlutterRwdPlugin.setPubCustomUi(type);
       print(result);
     } on Exception {

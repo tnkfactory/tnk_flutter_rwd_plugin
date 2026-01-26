@@ -131,6 +131,11 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> showEventWebPage(HashMap<String, String> map) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

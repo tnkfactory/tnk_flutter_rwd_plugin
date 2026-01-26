@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp>
     MethodChannel channel = const MethodChannel('tnk_flutter_rwd');
     channel.setMethodCallHandler(getOfferWallEvent);
 
+    // ios 사용자에 한하여 호출 됨
     showATTPopup();
 
     WidgetsBinding.instance.addObserver(this); // 앱 상태변화를 감지하기 위한 observer 등록

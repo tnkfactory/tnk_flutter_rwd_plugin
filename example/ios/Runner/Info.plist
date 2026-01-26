@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Automatic</string>
 	<key>UIDesignRequiresCompatibility</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
@@ -170,7 +172,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>tnkad_app_id</key>
-	<string>f0d01000-c0b1-39ba-ab93-1b0000030f0d</string>
+	<string>00e000e0-f0b1-49db-bd94-1b030709060e</string>
 	<key>NSBonjourServices</key>
 	<array>
 		<string>_dartvmservice._tcp</string>

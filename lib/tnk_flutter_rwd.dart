@@ -111,4 +111,8 @@ class TnkFlutterRwd {
     return TnkFlutterRwdPlatform.instance.setPubCustomUi(type);
   }
 
+  Future<String?> showEventWebPage(HashMap<String, String> map) {
+    return TnkFlutterRwdPlatform.instance.showEventWebPage(map);
+  }
+
 }

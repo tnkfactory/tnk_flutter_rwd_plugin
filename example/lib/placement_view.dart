@@ -160,7 +160,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
       String? placementData = await _tnkFlutterRwdPlugin.getPlacementJsonData(
         "offer_nor",
       );
-      _tnkFlutterRwdPlugin.setUseTermsPopup(false);
+      // _tnkFlutterRwdPlugin.setUseTermsPopup(false);
 
       if (placementData != null) {
         Map<String, dynamic> jsonObject = jsonDecode(placementData); // json 파싱

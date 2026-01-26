@@ -234,25 +234,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "openEventWebView" -> {
-                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
-                    TnkSession.runOnIoThread {
-                        offerwall.getEventLink(eventId.toLong()) { eventVo ->
-                            TnkSession.runOnMainThread {
-                                if (eventVo != null) {
-                                    TnkWebEventActivity.start(mActivity, eventVo.mkt_app_id)
-                                    result.success("success")
-                                } else {
-                                    Toast.makeText(
-                                        mActivity,
-                                        "이벤트 URL을 가져오지 못했습니다.",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    result.success("이벤트 URL을 가져오지 못했습니다.")
-//                            result.error("-1","이벤트 URL을 가져오지 못했습니다.", null)
-                                }
-                            }
-                        }
-                    }
+//                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
+//                    TnkEventActivity.startActivity(mActivity, eventId.toLong())
                 }
 
                 "showCustomTapActivity" -> {
@@ -352,6 +335,36 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "setPubCustomUi" -> {
                     val type = (call.argument("type") as? Int ?: 0)
                     result.success("no use in android..")
+                }
+
+                "showEventWebPage" -> {
+                    call.argument<HashMap<String, String>>("map")?.let { param ->
+
+                        val eventId = param["event_id"] as String ?: ""
+                        if(eventId != null && !eventId.equals("") ) {
+
+                            TnkSession.runOnIoThread {
+
+                                offerwall.getEventLink( eventId.toLong(), { eventVo ->
+                                    TnkSession.runOnMainThread {
+
+                                        if (eventVo != null) {
+                                            TnkWebEventActivity.start(mActivity, eventVo.mkt_app_id)
+                                        } else {
+                                            Toast.makeText(mActivity, "이벤트 URL을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
+                                        }
+
+                                    }
+
+                                })
+                                result.success("showEventWebPage")
+
+                            }
+
+                        } else {
+                            result.success("failt to show.. please check eventId")
+                        }
+                    }
                 }
 
             }

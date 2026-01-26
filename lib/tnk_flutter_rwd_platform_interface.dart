@@ -116,5 +116,10 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
     throw UnimplementedError('setPubCustomUi has not benn implemented');
   }
 
+  Future<String?> showEventWebPage(HashMap<String,String> map) {
+    throw UnimplementedError('showEventWebPage has not benn implemented');
+
+  }
+
 
 }

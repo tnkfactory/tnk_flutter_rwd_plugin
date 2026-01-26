@@ -32,7 +32,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         result: @escaping FlutterResult
     ) {
         //오퍼월 화면 시스템 화면 모드에 따라 다크/라이트 모드 설정
-        TnkColor.enableDarkMode = false
+//        TnkColor.enableDarkMode = false
         
         let viewController = UIApplication.shared.keyWindow?.rootViewController
         
@@ -478,6 +478,28 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             //
             //                 }
             //             }
+            break
+            
+            
+        case "showEventWebPage" :
+            if let args = call.arguments as? [String: Any],
+               let map = args["map"] as? [String: String]
+            {
+                let eventIdString = (map["event_id"] ?? "") as String
+                if let eventId = Int(eventIdString), eventId > 0 {
+                    print("eventId : \(eventId)")
+                    TnkSession.sharedInstance()?.openEventWebView(
+                        parentViewController: viewController!,
+                        eventId: eventId,
+                        checkTerm: false   // 또는 false
+                    )
+                }
+
+                result("success eventId : \(eventIdString)")
+            } else {
+                result("fail")
+            }
+            
             break
             
             
