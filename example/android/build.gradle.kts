@@ -1,0 +1,42 @@
+buildscript {
+    extra["kotlin_version"] = "2.0.21"
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.android.tools.build:gradle:7.3.1")
+//        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${extra["kotlin_version"]}")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://repository.tnkad.net:8443/repository/public/") }
+        maven { url = uri("https://repository.adiscope.com/repository/adiscope/") }
+        maven { url = uri("https://s3.amazonaws.com/smaato-sdk-releases/") } // max 연동 시 추가
+        maven { url = uri("https://artifactory.bidmachine.io/bidmachine") } // max 연동 시 추가
+        maven { url = uri("https://maven.ogury.co") } // max 연동 시 추가
+        maven { url = uri("https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea") } // max 연동 시 추가
+        maven { url = uri("https://android-sdk.is.com") } // max 연동 시 추가
+        maven { url = uri("https://repo.pubmatic.com/artifactory/public-repos") } // max 연동 시 추가
+        maven { url = uri("https://artifact.bytedance.com/repository/pangle") } // max 혹은 pangle 연동 시 추가
+        maven { url = uri("https://cboost.jfrog.io/artifactory/chartboost-ads/") } // max 혹은 chartboost 연동 시 추가
+    }
+}
+
+rootProject.buildDir = file("../build")
+subprojects {
+    project.buildDir = file("${rootProject.buildDir}/${project.name}")
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register<Delete>("clean") {
+    delete(rootProject.buildDir)
+}

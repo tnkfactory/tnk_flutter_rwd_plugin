@@ -118,13 +118,13 @@ class _MyAppState extends State<MyApp>
             print('광고 클릭 id: $id, name: $name');
             break;
 
-          case TnkRwdAnalyticsEvent.SELECT_CATEGORY:
+          case TnkRwdAnalyticsEvent.SELECT_CATEGORY: // only android
               final String? ctgrId = params[0][TnkRwdAnalyticsParam.ITEM_ID];
               final String? ctgrName = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
               print('category id: $ctgrId, category name: $ctgrName');
 
             break;
-          case TnkRwdAnalyticsEvent.SELECT_FILTER:
+          case TnkRwdAnalyticsEvent.SELECT_FILTER: // only android
             final String? filterId = params[0][TnkRwdAnalyticsParam.ITEM_ID];
             final String? filterName = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
             print('filter id: $filterId, filter name: $filterName');
