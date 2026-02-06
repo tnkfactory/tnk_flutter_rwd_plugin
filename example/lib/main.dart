@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -10,6 +11,8 @@ import 'package:tnk_flutter_rwd/tnk_placement_model.dart';
 import 'package:tnk_flutter_rwd_example/placement_view.dart';
 import 'offerwall.dart';
 import 'tnk_flutter_rwd_analytics.dart';
+
+// import 'package:tnk_rwd_n_vad/tnk_rwd_n_vad.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +29,10 @@ class _MyAppState extends State<MyApp>
     with WidgetsBindingObserver // 앱 상태변화를 감지하기 위한 observer 사용
 {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
+
+  // final _tnkRwdNVadPlugin = TnkRwdNVad();
+
+
 
   final List<Widget> _pages = [
     Center(child: Text('홈')), // Placeholder for Home tab
@@ -80,10 +87,64 @@ class _MyAppState extends State<MyApp>
   int _selectedIndex = 0;
 
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
-    if (TnkMethodChannelEvent.didOfferwallRemoved(methodCall)) {
-      // TODO 오퍼월 close callback
-      print("offer window closed");
+    print("methodCall.method: ${methodCall.method}");
+    if (methodCall.method == "tnkAnalytics") {
+      // if (methodCall.arguments == null) {
+      //   print("methodCall.arguments is null");
+      //   return;
+      // }
+
+      try {
+        Map<String, dynamic> jsonObj = jsonDecode(methodCall.arguments);
+        print(jsonObj);
+        String event = jsonObj["event"];
+        final List<dynamic> params = jsonObj['params'] ?? [];
+
+        switch (event) {
+          case TnkRwdAnalyticsEvent.ACTIVITY_FINISH:
+            print("오퍼월 액티비티 종료됨");
+            break;
+
+          case TnkRwdAnalyticsEvent.JOIN_AD:
+            final String? id = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+            final String? name = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+
+            print('광고 참여 클릭 id: $id, name: $name');
+            break;
+          case TnkRwdAnalyticsEvent.CLICK_AD:
+            final String? id = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+            final String? name = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+
+            print('광고 클릭 id: $id, name: $name');
+            break;
+
+          case TnkRwdAnalyticsEvent.SELECT_CATEGORY:
+              final String? ctgrId = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+              final String? ctgrName = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+              print('category id: $ctgrId, category name: $ctgrName');
+
+            break;
+          case TnkRwdAnalyticsEvent.SELECT_FILTER:
+            final String? filterId = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+            final String? filterName = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+            print('filter id: $filterId, filter name: $filterName');
+
+            break;
+
+          default:
+            print('Unhandled event: $event');
+            break;
+        }
+      } catch (e) {
+        print("Error parsing JSON: $e");
+        return;
+      }
     }
+
+    // if (TnkMethodChannelEvent.didOfferwallRemoved(methodCall)) {
+    //   // TODO 오퍼월 close callback
+    //   print("offer window closed");
+    // }
 
     setState(() {
       _tnkResult = methodCall.arguments;
@@ -360,8 +421,6 @@ class _MyAppState extends State<MyApp>
     }
   }
 
-
-
   var datas = {1, 2, 3};
   List<TnkPlacementAdItem> adList = [];
 
@@ -369,39 +428,37 @@ class _MyAppState extends State<MyApp>
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter RWD Plugin'),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  // setNoUsePointIcon();
-                  setCustomUI();
-                },
-                icon: const Icon(Icons.dashboard_customize))
-          ],
-        ),
-
-        body: IndexedStack(
-          index: _selectedIndex,
-          children: _pages,
-        ),
-        bottomNavigationBar: Builder(
-          builder: (context) {
+          appBar: AppBar(
+            title: const Text('Flutter RWD Plugin'),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    // setNoUsePointIcon();
+                    setCustomUI();
+                  },
+                  icon: const Icon(Icons.dashboard_customize))
+            ],
+          ),
+          body: IndexedStack(
+            index: _selectedIndex,
+            children: _pages,
+          ),
+          bottomNavigationBar: Builder(builder: (context) {
             return BottomNavigationBar(
               backgroundColor: Colors.white,
               unselectedItemColor: Colors.blueGrey,
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
                 BottomNavigationBarItem(icon: Icon(Icons.tv), label: '오퍼월'),
-                BottomNavigationBarItem(icon: Icon(Icons.picture_in_picture_alt), label: '플레이스먼트 뷰'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.picture_in_picture_alt),
+                    label: '플레이스먼트 뷰'),
               ],
               currentIndex: _selectedIndex,
               selectedItemColor: Colors.blue,
               onTap: onItemTapped,
             );
-          }
-        )
-      ),
+          })),
     );
   }
 

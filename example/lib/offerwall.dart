@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
 import 'package:tnk_flutter_rwd/tnk_placement_model.dart';
+// import 'package:tnk_rwd_n_vad/tnk_rwd_n_vad.dart';
 
 class OfferwallItem extends StatefulWidget {
   const OfferwallItem({super.key});
@@ -16,6 +17,7 @@ class OfferwallItem extends StatefulWidget {
 
 class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
+  // final _tnkRwdNVadPlugin = TnkRwdNVad();
 
   final String _itemId = "item.0001";
   final int _cost = 2;
@@ -230,6 +232,24 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
                       ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              openEventWebView();
+                            },
+                            style: ElevatedButton.styleFrom(
+                                foregroundColor: Colors.white,
+                                backgroundColor: Colors.greenAccent,
+                                shadowColor: Colors.greenAccent,
+                                elevation: 10),
+                            child: const Text('rv Event call')
+                        ),
+                      ],
+                    ),
+
+
                   ],
                 ),
               ],
@@ -272,7 +292,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
     try {
 
-      await _tnkFlutterRwdPlugin.setNoUsePrivacyAlert(); // 개이정보 수집 동의 팝업 제거
+      await _tnkFlutterRwdPlugin.setNoUsePrivacyAlert(); // 개인정보 수집 동의 팝업 제거
       await _tnkFlutterRwdPlugin.setPubCustomUi(1); // 매체 커스텀 UI 설정
       await _tnkFlutterRwdPlugin.setCOPPA(false); // COPPA 설정
       await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user"); // user name 설정
@@ -492,6 +512,13 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     } on Exception {
       return;
     }
+  }
+
+
+  Future<void> openEventWebView() async {
+    // _tnkRwdNVadPlugin.setCOPPA(false);
+    // _tnkRwdNVadPlugin.setUserName("tnk_test");
+    // _tnkRwdNVadPlugin.openEventWebView(1234,"asdf");
   }
 
 }

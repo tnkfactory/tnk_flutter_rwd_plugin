@@ -12,7 +12,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
     var vc: AdOfferwallViewController? = nil
     var targetAppId: Int = 0
     var landingData = ""
-    var customUi:TnkRwdSdk2.TnkRwdPlus? = nil
+    var sktAirUi:SktAirRwdPlus? = nil
     
     typealias tempListener = (Bool, TnkError?) -> Void
     
@@ -68,11 +68,15 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         case "showAdList":
             if let args = call.arguments as? [String: Any] {
                 
-                if( customUi != nil ) {
-                    customUi?.showOfferwall(viewController!)
-                    print("show custom ui")
+                if( self.sktAirUi != nil ) {
+                    self.sktAirUi?.offerwallListener = self
+                    self.sktAirUi?.showOfferwall(viewController!)
+                    
+                     
+                    print("### show custom ui")
                 } else {
-                    print("show default ui")
+                    print("### show default ui")
+                    
                     if let title = args["title"] as? String {
                         showOfferwall(
                             viewController: viewController!,
@@ -415,18 +419,11 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                     case 1:
                         print("Custom Type -> SktAir")
                         
-                        self.customUi = SktAirRwdPlus.initSession()
+
+                        self.sktAirUi = SktAirRwdPlus.initSession() as? SktAirRwdPlus
+                        self.sktAirUi?.setDesignCustom()
+ 
                         result("success - set custom ui")
-                        
-                        //                        if let rwdplus = SktAirRwdPlus.initSession()
-                        //                        {
-                        //                            rwdplus.showOfferwall(viewController!)
-                        //                            result("set custom type \(customType)")
-                        //                        } else {
-                        //                            result("fail - SktAirRwdPlus.initSession")
-                        //                        }
-                        
-                        
                         
                         
                     case 2:
@@ -519,6 +516,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         return flutterViewController
     }
     
+
     func showOfferwall(
         viewController: UIViewController,
         pTitle: String,
@@ -550,12 +548,34 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         
     }
     
+    public func sendOfferwallEvent(eventName:String,  params: [[String: Any]]) {
+        
+        let sendData: [String: Any] = [
+            "event": eventName,
+            "params": params
+        ]
+
+        
+        
+        if let resultJson = TnkStrings.convertDictionaryToJsonString(dictionary: sendData, prettyPrinted:true)
+        {
+            SwiftTnkFlutterRwdPlugin.channel?.invokeMethod(
+                "tnkAnalytics",
+                arguments: resultJson
+            )
+        }
+    }
+    
     public func didOfferwallRemoved() {
-        print("closed")
-        SwiftTnkFlutterRwdPlugin.channel?.invokeMethod(
-            "didOfferwallRemoved",
-            arguments: "success"
-        )
+        print("### offerwall closed")
+        
+        let params: [[String: Any]] = [
+            ["item_id": ""],
+            ["item_name": ""]
+        ]
+        
+        sendOfferwallEvent(eventName : "activity_finish", params: params)
+
     }
     
     public func didAdDataLoaded(
@@ -566,6 +586,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         multiRewardCount: Int
     ) {
         if targetAppId != 0 {
+            print("### move to detail")
             TnkSession.sharedInstance()?.presentAdDetailView(
                 vc!,
                 appId: targetAppId,
@@ -573,6 +594,8 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             ) {
                 (isOkay) in
             }
+        } else {
+            print("### offerwall loaded")
         }
         targetAppId = 0
     }
@@ -583,13 +606,25 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         filterId: Int,
         filterName: String
     ) {
+     
         print(
             "### menuId: \(menuId) \(menuName), filterId: \(filterId) \(filterName)"
         )
     }
     
     public func didAdItemClicked(appId: Int, appName: String) {
-        print("### adItem: \(appId) \(appName)")
+        print("### adItem clicked: \(appId) \(appName)")
+        
+        let params: [[String: Any]] = [
+            ["item_id": String(appId)],      // Int
+            ["item_name": appName]   // String
+        ]
+        
+//        var params: [String: Any] = [:]
+//        params["item_id"] = appId
+//        params["item_name"] = appName
+        
+        sendOfferwallEvent(eventName:"tnk_ev_ad_click", params: params)
     }
     
     public func didDetailViewShow(appId: Int, appName: String) {
@@ -598,6 +633,16 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
     
     public func didActionButtonClicked(appId: Int, appName: String) {
         print("#### action button clicked \(appId) \(appName)")
+        
+        let params: [[String: Any]] = [
+            ["item_id": String(appId)],      // Int
+            ["item_name": appName]   // String
+        ]
+//        params["item_id"] = appId
+//        params["item_name"] = appName
+        
+        sendOfferwallEvent(eventName:"tnk_ev_ad_join", params: params)
+        
     }
     
     func setNoUsePoinIcon() {

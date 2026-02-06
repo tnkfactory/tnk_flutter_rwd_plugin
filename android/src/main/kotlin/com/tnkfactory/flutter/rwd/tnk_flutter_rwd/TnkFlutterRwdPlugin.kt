@@ -51,6 +51,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val jEvent = JSONObject()
                 jEvent.put("event", event)
                 jEvent.put("params", jParams)
+                Log.d("jameson", "$jEvent")
                 Handler(Looper.getMainLooper()).post {
                     channel.invokeMethod("tnkAnalytics", jEvent.toString())
                 }
