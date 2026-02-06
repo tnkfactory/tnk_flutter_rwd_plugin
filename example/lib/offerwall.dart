@@ -42,244 +42,143 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     return Scaffold(
       body: Stack(
         children: [
-          Center(
+          SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  DataTable(
-                    columns: const [
-                      DataColumn(label: Text('결과')),
-                      DataColumn(label: Text('적립 가능한 포인트')),
-                      DataColumn(label: Text('내 포인트')),
-                    ],
-                    rows: [
-                      DataRow(cells: [
-                        DataCell(Text(_tnkResult)),
-                        DataCell(Text('$_myPoint')),
-                        DataCell(Text('$_queryPoint')),
-                      ]),
-                    ],
-                  ),
-                ]),
-                OverflowBar(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // ElevatedButton(
-                        //   onPressed: () {
-                        //     getJsonAdList();
-                        //   },
-                        //   style: ElevatedButton.styleFrom(
-                        //       foregroundColor: Colors.white,
-                        //       backgroundColor: Colors.redAccent,
-                        //       shadowColor: Colors.redAccent,
-                        //       elevation: 5),
-                        //   child: const Text("TEST"),
-                        // ),
-                        ElevatedButton(
-                            onPressed: () {
-                              getQueryPoint();
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.blueAccent,
-                                shadowColor: Colors.blueAccent,
-                                elevation: 10),
-                            child: const Text('내 포인트')),
-                        ElevatedButton(
-                            onPressed: () {
-                              getEarnPoint();
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.blueAccent,
-                                shadowColor: Colors.blueAccent,
-                                elevation: 10),
-                            child: const Text('적립가능한 포인트')),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              purchaseItem(_itemId, _cost);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.redAccent,
-                                shadowColor: Colors.redAccent,
-                                elevation: 10),
-                            child: const Text('테스트구매')),
-                        ElevatedButton(
-                            onPressed: () {
-                              withdrawPoints("테스트 인출");
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.redAccent,
-                                shadowColor: Colors.redAccent,
-                                elevation: 10),
-                            child: const Text('테스트인출')),
-                      ],
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              presentAdDetailView(809977);
-                              //793127
-                              // 796239
-                              // 782047
-                              // 786420
-
-                              // onAdItemClick("726941");
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.redAccent,
-                                shadowColor: Colors.redAccent,
-                                elevation: 10),
-                            child: const Text('광고상세 진입')),
-
-                        ElevatedButton(
-                            onPressed: () {
-                              // setUserName();
-                              showATTPopup();
-                              // onAdItemClick("726941");
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.redAccent,
-                                shadowColor: Colors.redAccent,
-                                elevation: 10),
-                            child: const Text('att')),
-                      ],
-                    ),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              adJoin(227796);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.purpleAccent,
-                                shadowColor: Colors.purpleAccent,
-                                elevation: 10),
-                            child: const Text('Ad Join')),
-
-                        ElevatedButton(
-                            onPressed: () {
-                              adAction(227796);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.purpleAccent,
-                                shadowColor: Colors.purpleAccent,
-                                elevation: 10),
-                            child: const Text('Ad Action')),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              setPubCustomUi(1);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.purpleAccent,
-                                shadowColor: Colors.purpleAccent,
-                                elevation: 10),
-                            child: const Text('custom ui')
-                        ),
-
-                        ElevatedButton(
-                            onPressed: () {
-
-                              // ios 	814278
-                              // aos 814139
-                              final eventId = Platform.isIOS ? "814278" : "814139";
-                              showEventPage(eventId);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.purpleAccent,
-                                shadowColor: Colors.purpleAccent,
-                                elevation: 10),
-                            child: const Text('showEvent')
-                        ),
-
-                        ElevatedButton(
-                            onPressed: () {
-                              setNoUsePrivacyAlert();
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.purpleAccent,
-                                shadowColor: Colors.purpleAccent,
-                                elevation: 10),
-                            child: const Text('noPrivacyAlert')
-                        ),
-
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              openEventWebView();
-                            },
-                            style: ElevatedButton.styleFrom(
-                                foregroundColor: Colors.white,
-                                backgroundColor: Colors.greenAccent,
-                                shadowColor: Colors.greenAccent,
-                                elevation: 10),
-                            child: const Text('rv Event call')
-                        ),
-                      ],
-                    ),
-
-
-                  ],
-                ),
+                const SizedBox(height: 20),
+                _buildInfoCard(),
+                const SizedBox(height: 24),
+                _buildButtonSections(),
               ],
             ),
           ),
-          Positioned(
-            bottom: 16,
-            right: 16,
-            child: FloatingActionButton(
-              onPressed: () {
-                // 원하는 동작 작성
-                // showAdList();
+          _buildFloatingButton(),
+        ],
+      ),
+    );
+  }
 
-                setCustomUiAndShowOfferwall();
-              },
-              child: const Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.tv, size: 20),
-                  SizedBox(height: 4),
-                  Text(
-                    "오퍼월",
-                    style: TextStyle(fontSize: 10),
-                  ),
-                ],
+  Widget _buildInfoCard() {
+    return Card(
+      elevation: 4,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            _buildInfoRow('결과', _tnkResult),
+            const Divider(),
+            _buildInfoRow('적립 가능한 포인트', '$_myPoint'),
+            const Divider(),
+            _buildInfoRow('내 포인트', '$_queryPoint'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildInfoRow(String label, String value) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
+        Text(value),
+      ],
+    );
+  }
+
+  Widget _buildButtonSections() {
+    return Column(
+      children: [
+        _buildSection('포인트 조회', Colors.blue, [
+          {'label': '내 포인트', 'onPressed': getQueryPoint},
+          {'label': '적립가능한 포인트', 'onPressed': getEarnPoint},
+        ]),
+        const SizedBox(height: 16),
+        _buildSection('포인트 사용', Colors.red, [
+          {'label': '테스트구매', 'onPressed': () => purchaseItem(_itemId, _cost)},
+          {'label': '테스트인출', 'onPressed': () => withdrawPoints("테스트 인출")},
+          {'label': '광고상세 진입', 'onPressed': () => presentAdDetailView(809977)},
+          {'label': 'ATT', 'onPressed': showATTPopup},
+        ]),
+        const SizedBox(height: 16),
+        _buildSection('광고 이벤트', Colors.purple, [
+          {'label': 'Ad Join', 'onPressed': () => adJoin(227796)},
+          {'label': 'Ad Action', 'onPressed': () => adAction(227796)},
+          {'label': 'Custom UI', 'onPressed': () => setPubCustomUi(1)},
+          {'label': 'Show Event', 'onPressed': () {
+            final eventId = Platform.isIOS ? "814278" : "814139";
+            showEventPage(eventId);
+          }},
+          {'label': 'No Privacy Alert', 'onPressed': setNoUsePrivacyAlert},
+        ]),
+        const SizedBox(height: 16),
+        _buildSection('기타', Colors.green, [
+          {'label': 'RV Event Call', 'onPressed': openEventWebView},
+        ]),
+      ],
+    );
+  }
+
+  Widget _buildSection(
+    String title,
+    Color color,
+    List<Map<String, dynamic>> buttons,
+  ) {
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: color,
               ),
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Wrap(
+              spacing: 8,
+              runSpacing: 8,
+              children: buttons
+                  .map((btn) => _buildButton(
+                        btn['label'] as String,
+                        btn['onPressed'] as VoidCallback,
+                        color,
+                      ))
+                  .toList(),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildButton(String label, VoidCallback onPressed, Color color) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.white,
+        backgroundColor: color,
+        elevation: 4,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      ),
+      child: Text(label),
+    );
+  }
+
+  Widget _buildFloatingButton() {
+    return Positioned(
+      bottom: 16,
+      right: 16,
+      child: FloatingActionButton.extended(
+        onPressed: setCustomUiAndShowOfferwall,
+        icon: const Icon(Icons.tv),
+        label: const Text('오퍼월'),
       ),
     );
   }
