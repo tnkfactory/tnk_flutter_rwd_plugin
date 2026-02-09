@@ -1584,6 +1584,16 @@ extension TnkRwdSdk2.AdiscopeAdEventWebViewController : TnkRwdSdk2.TnkAdiscopeWe
   override open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
   @objc deinit
 }
+@_inheritsConvenienceInitializers @objc public class AdListFilterViewLayout : TnkRwdSdk2.AdListMenuViewLayout {
+  @objc override dynamic public init()
+  override public func menuView(_ frame: CoreFoundation.CGRect) -> TnkRwdSdk2.AdListMenuView
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc open class PlacementIconViewLayout : TnkRwdSdk2.PlacementBaseViewLayout {
+  @objc override dynamic public init()
+  override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @available(iOS 13.0, *)
 @_Concurrency.MainActor @preconcurrency public class CpsCategoryViewController : TnkRwdSdk2.TnkBaseViewController {
   @_Concurrency.MainActor @preconcurrency weak public var adListModel: TnkRwdSdk2.AdListModel?
@@ -1612,16 +1622,6 @@ extension TnkRwdSdk2.CpsCategoryViewController : TnkRwdSdk2.AdMenuSelectionDeleg
 }
 public protocol CpsCategoryOrderDelegate : AnyObject {
   func onTouchOrderBtn()
-}
-@_inheritsConvenienceInitializers @objc public class AdListFilterViewLayout : TnkRwdSdk2.AdListMenuViewLayout {
-  @objc override dynamic public init()
-  override public func menuView(_ frame: CoreFoundation.CGRect) -> TnkRwdSdk2.AdListMenuView
-  @objc deinit
-}
-@_inheritsConvenienceInitializers @objc open class PlacementIconViewLayout : TnkRwdSdk2.PlacementBaseViewLayout {
-  @objc override dynamic public init()
-  override open func viewSize(_ parentSize: CoreFoundation.CGSize) -> CoreFoundation.CGSize
-  @objc deinit
 }
 @_inheritsConvenienceInitializers @objc open class PlacementListViewLayout : TnkRwdSdk2.PlacementBaseViewLayout {
   @objc override dynamic public init()

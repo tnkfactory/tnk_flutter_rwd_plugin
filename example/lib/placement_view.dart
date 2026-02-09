@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
-import 'offerwall.dart';
 import 'package:tnk_flutter_rwd/tnk_placement_model.dart';
 
 class PlacementViewItem extends StatefulWidget {
@@ -24,20 +23,17 @@ class _PlacementViewItem extends State<PlacementViewItem>
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
   List<TnkPlacementAdItem> adList = [];
   PlacementPubInfo pubInfo = PlacementPubInfo();
-  String _tnkResult = 'Unknown';
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     _type = widget.type;
     getAdList();
-    // getEvent();
   }
 
   @override
   Widget build(BuildContext context) {
-    // container height _type 이 DEFAULT_VIEW 일때 194, 2일때 219
     double height = _type == DEFAULT_VIEW ? 194 : 219;
 
     return Scaffold(
@@ -52,71 +48,46 @@ class _PlacementViewItem extends State<PlacementViewItem>
             color: Color(0xff353535),
           ),
         ),
-        actions: [],
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Column 내 정렬
-          children: [
-            Container(
-              color: Colors.white,
-              // Row 배경색 흰색 지정
-              // padding: EdgeInsets.fromLTRB(20, 18, 20, 10),
-              // 여백 추가
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // 왼쪽 & 오른쪽 정렬
-                children: [
-                  Text(
-                    pubInfo.title,
-                    style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      showAdList(); // 더보기 클릭시 오퍼월 페이지로 이동
-                      // getEvent();
-                    },
-                    child: const Text(
-                      "더 보기",
-                      style: TextStyle(color: Colors.black, fontSize: 14),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            Column(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            color: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  padding: const EdgeInsets.only(left:8.0, right: 8.0),
-                  height: height,
-                  color: const Color(0xFFFFFFFF),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: adList.length,
-                    itemBuilder: (context, index) {
-                      return buildDefaultPlacementView(adList[index]);
-                    },
-                  ),
+                Text(
+                  pubInfo.title,
+                  style: const TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-
-                Container(
-                  padding: const EdgeInsets.only(left:8.0, right: 8.0),
-                  height: height,
-                  color: const Color(0xFFFFFFFF),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: adList.length,
-                    itemBuilder: (context, index) {
-                      return buildCpsPlacementView(adList[index]);
-                    },
+                TextButton(
+                  onPressed: () {
+                    showAdList(); // 더보기 클릭시 오퍼월 페이지로 이동
+                  },
+                  child: const Text(
+                    "더 보기",
+                    style: TextStyle(color: Colors.black, fontSize: 14),
                   ),
                 ),
               ],
-            )
-
-          ],
-        ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+            height: height,
+            color: Colors.white,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: adList.length,
+              itemBuilder: (context, index) {
+                return _type == CPS_VIEW
+                    ? buildCpsPlacementView(adList[index])
+                    : buildDefaultPlacementView(adList[index]);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -131,7 +102,6 @@ class _PlacementViewItem extends State<PlacementViewItem>
 
   Future<void> getEvent() async {
     try {
-
       String? placementData = await _tnkFlutterRwdPlugin.getPlacementJsonData(
         "offer_evt",
       );
@@ -142,11 +112,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
         String resMessage = jsonObject["res_message"];
         print(jsonObject);
       }
-
     } on PlatformException {
-      setState(() {
-        _tnkResult = "excetpion";
-      });
       return;
     }
   }
@@ -160,7 +126,6 @@ class _PlacementViewItem extends State<PlacementViewItem>
       String? placementData = await _tnkFlutterRwdPlugin.getPlacementJsonData(
         "offer_nor",
       );
-      // _tnkFlutterRwdPlugin.setUseTermsPopup(false);
 
       if (placementData != null) {
         Map<String, dynamic> jsonObject = jsonDecode(placementData); // json 파싱
@@ -183,11 +148,6 @@ class _PlacementViewItem extends State<PlacementViewItem>
             pubInfo.ctype_surl = pubInfoMap["ctype_surl"];
             pubInfo.pnt_unit = pubInfoMap["pnt_unit"];
             pubInfo.plcmt_id = pubInfoMap["plcmt_id"];
-
-            pubInfo.plcmt_id = pubInfoMap["plcmt_id"];
-            pubInfo.title = pubInfoMap["title"];
-
-            _tnkResult = placementData ?? "null";
           });
         } else {
           // 광고 로드 실패
@@ -195,9 +155,6 @@ class _PlacementViewItem extends State<PlacementViewItem>
         }
       }
     } on PlatformException {
-      setState(() {
-        _tnkResult = "excetpion";
-      });
       return;
     }
   }
@@ -224,11 +181,6 @@ class _PlacementViewItem extends State<PlacementViewItem>
       return;
     }
   }
-
-  // placement view 설정
-  // Widget setPlacementView(TnkPlacementAdItem adItem) {
-  //   return _type == CPS_VIEW ? buildCpsPlacementView(adItem) : buildDefaultPlacementView(adItem);
-  // }
 
   // placement view 구현하는 메소드 ( 기본 )
   Widget buildDefaultPlacementView(TnkPlacementAdItem adItem) {
@@ -378,7 +330,6 @@ class _PlacementViewItem extends State<PlacementViewItem>
                 ),
               ],
             ),
-            // Positioned.fill(child: Container(color: Colors.white)),
           ],
         ),
       ),
@@ -401,9 +352,5 @@ class _PlacementViewItem extends State<PlacementViewItem>
     }
 
     if (!mounted) return;
-
-    setState(() {
-      _tnkResult = platformVersion;
-    });
   }
 }

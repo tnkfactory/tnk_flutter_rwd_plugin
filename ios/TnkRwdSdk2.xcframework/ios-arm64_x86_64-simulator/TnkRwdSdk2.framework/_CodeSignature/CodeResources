@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		wPkc7msKAuWLb5YH+YmQUbuP8xk=
+		yXbEmiitN2DelwLMhkAiLG9wWZY=
 		</data>
 		<key>Headers/TnkRwdSdk2-Swift.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		OHWixSkfUJs30xRn9Alc5l6L6dE=
+		X/Rc5fVFBuXvkFoYZVlYGeqZgSE=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		6eif493DZQtBErrkzQ/ytWxR14U=
+		442zf+b56ZjVq9Kq5fCE9YR76bg=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -34,19 +34,19 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		6eif493DZQtBErrkzQ/ytWxR14U=
+		442zf+b56ZjVq9Kq5fCE9YR76bg=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		cS9BcSLuGtpOCjD+dIsIm4NVrmY=
+		4ODnG5RzGZ4+5MJbA0j9L5GuCmA=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		OHWixSkfUJs30xRn9Alc5l6L6dE=
+		X/Rc5fVFBuXvkFoYZVlYGeqZgSE=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		HslT7yJRW+AjbUDCsx77nU2+pqk=
+		VNaCa3a1fugLxfKhCeyf6E61Lm4=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		HslT7yJRW+AjbUDCsx77nU2+pqk=
+		VNaCa3a1fugLxfKhCeyf6E61Lm4=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		E+Pg16PMr90N5z3Fc76cdehQo6o=
+		ILEb5Xw33FfOppNdS16Odmo7czU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -107,7 +107,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2m/i1yDUylPSJATszLDzfVLv2Ia2h+zRGcvfaCl3ggs=
+			kOBQcktwOMR0V1vdKO6tzk+hIP9ePQtKCmvrVUI3Cz8=
 			</data>
 		</dict>
 		<key>Headers/TnkRwdSdk2-Swift.h</key>
@@ -128,14 +128,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			QJ4mYcdId5d4fTH99P6M+rvvTBW6YcM3wGi3On8matc=
+			Rcg7i3TuG4TfelWEqWXs6tH6/gqMjmy4bVVaazwwxx8=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kb3YpoV2Fa8eqWHzX0ihm/2Uw0aYFqb5RB4/P4BGMYY=
+			d0UvtIWrcV9y+FVmXh5Hep4YivgAck1XdY4pXiWon2Y=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -149,28 +149,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Kb3YpoV2Fa8eqWHzX0ihm/2Uw0aYFqb5RB4/P4BGMYY=
+			d0UvtIWrcV9y+FVmXh5Hep4YivgAck1XdY4pXiWon2Y=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			EvKlLAG7KmtLCnygKY+r7UKGWwUe/jgZiVRx9u9f2ZQ=
+			p6fogXlolN9EB/RLCgKH6yPBQpl4NYTIKxy87zWsiyE=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QJ4mYcdId5d4fTH99P6M+rvvTBW6YcM3wGi3On8matc=
+			Rcg7i3TuG4TfelWEqWXs6tH6/gqMjmy4bVVaazwwxx8=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			x9WwHA67y4ubSW7Hi9Q+1bxLxNPI0LTNYunS/2E60M0=
+			pboLkJY0HJgfzPXe1Rh+kJ4jWLMZe1UazgJl4FfsxQg=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -184,14 +184,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			x9WwHA67y4ubSW7Hi9Q+1bxLxNPI0LTNYunS/2E60M0=
+			pboLkJY0HJgfzPXe1Rh+kJ4jWLMZe1UazgJl4FfsxQg=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mYvjBX2EGeeMEZzcIScwaQNMSn33yLdFpjQ+LH7BRik=
+			UT42DftBlbfbJSv7c7jooT2rOzXKd+kM241Zy5tfYgk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
