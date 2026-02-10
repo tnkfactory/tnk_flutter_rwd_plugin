@@ -3,6 +3,7 @@ package com.tnkfactory.flutter.rwd.tnk_flutter_rwd_example
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.FragmentActivity
 import com.tnkfactory.ad.TnkContext
 import com.tnkfactory.ad.TnkOfferwall
@@ -17,6 +18,7 @@ class MainActivity: FlutterFragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         TnkAdManager.setCustomClass()
         val isPrivacyAgree = TnkSession.getAgreePrivacy(this@MainActivity)
         Log.d("jameson", "isPrivacyAgree: $isPrivacyAgree")

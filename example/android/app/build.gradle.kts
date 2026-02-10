@@ -83,6 +83,7 @@ flutter {
 
 dependencies {
     api(project(":tnk_rwd"))
+    implementation(libs.androidx.appcompat)
 }
 //
 //dependencies {
