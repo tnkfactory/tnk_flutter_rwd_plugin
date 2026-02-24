@@ -108,8 +108,8 @@ class _PlacementViewItem extends State<PlacementViewItem>
 
       if (placementData != null) {
         Map<String, dynamic> jsonObject = jsonDecode(placementData); // json 파싱
-        String resCode = jsonObject["res_code"];
-        String resMessage = jsonObject["res_message"];
+        // String resCode = jsonObject["res_code"];
+        // String resMessage = jsonObject["res_message"];
         print(jsonObject);
       }
     } on PlatformException {
@@ -130,7 +130,7 @@ class _PlacementViewItem extends State<PlacementViewItem>
       if (placementData != null) {
         Map<String, dynamic> jsonObject = jsonDecode(placementData); // json 파싱
         String resCode = jsonObject["res_code"];
-        String resMessage = jsonObject["res_message"];
+        // String resMessage = jsonObject["res_message"];
 
         if (resCode == "1") {
           List<TnkPlacementAdItem> adList = praserJsonToTnkPlacementAdItem(

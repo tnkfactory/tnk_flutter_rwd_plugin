@@ -32,7 +32,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance!.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     // showAdList();
     showATTPopup();
   }
@@ -218,6 +218,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
         "event_id": eventId,
       });
       String? result = await _tnkFlutterRwdPlugin.showEventWebPage(paramMap);
+      print(result);
 
     } on Exception {
       return;
@@ -332,7 +333,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       if (placementData != null) {
         Map<String, dynamic> jsonObject = jsonDecode(placementData);
         String resCode = jsonObject["res_code"];
-        String resMessage = jsonObject["res_message"];
+        // String resMessage = jsonObject["res_message"];
 
         if (resCode == "1") {
           List<TnkPlacementAdItem> adList =

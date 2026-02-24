@@ -79,10 +79,10 @@ class _MyAppState extends State<MyApp>
   }
 
   String _tnkResult = 'Unknown';
-  int _myPoint = 0;
-  int _queryPoint = 0;
-  final String _itemId = "item.0001";
-  final int _cost = 2;
+  // int _myPoint = 0;
+  // int _queryPoint = 0;
+  // final String _itemId = "item.0001";
+  // final int _cost = 2;
 
   int _selectedIndex = 0;
 
@@ -317,16 +317,16 @@ class _MyAppState extends State<MyApp>
   //   }
   // }
 
-  void _showDialog(BuildContext context) {
-    showDialog(
-        context: context,
-        builder: (BuildContext ctx) {
-          return const AlertDialog(
-            title: Text("abc"),
-            content: Text(' 항목을 선택했습니다.'),
-          );
-        });
-  }
+  // void _showDialog(BuildContext context) {
+  //   showDialog(
+  //       context: context,
+  //       builder: (BuildContext ctx) {
+  //         return const AlertDialog(
+  //           title: Text("abc"),
+  //           content: Text(' 항목을 선택했습니다.'),
+  //         );
+  //       });
+  // }
 
   Future<void> setCustomUI() async {
     try {
