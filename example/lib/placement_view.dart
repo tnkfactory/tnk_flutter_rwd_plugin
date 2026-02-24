@@ -347,9 +347,13 @@ class _PlacementViewItem extends State<PlacementViewItem>
       platformVersion =
           await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
           'Unknown platform version';
+
+      print(platformVersion);
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
+
+
 
     if (!mounted) return;
   }
