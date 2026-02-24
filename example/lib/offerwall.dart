@@ -93,6 +93,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
         _buildSection('포인트 조회', Colors.blue, [
           {'label': '내 포인트', 'onPressed': getQueryPoint},
           {'label': '적립가능한 포인트', 'onPressed': getEarnPoint},
+          {'label': '적립내역', 'onPressed': showMyEarnPoint},
         ]),
         const SizedBox(height: 16),
         _buildSection('포인트 사용', Colors.red, [
@@ -290,6 +291,22 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     setState(() {
       _myPoint = point;
     });
+  }
+
+  Future<void> showMyEarnPoint() async {
+    try {
+
+      // 오퍼월 진입하지 않은 사용자 user name 설정 필요
+      // 앱 재설치자 -> 기존 적립내역 이력 조회
+      await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user");
+      HashMap<String,dynamic> paramMap = HashMap();
+      paramMap.addAll({
+        "type": 1
+      });
+      await _tnkFlutterRwdPlugin.showMyEarnPointList(paramMap);
+    } on PlatformException {
+      return;
+    }
   }
 
   Future<void> onAdItemClick(String appId) async {

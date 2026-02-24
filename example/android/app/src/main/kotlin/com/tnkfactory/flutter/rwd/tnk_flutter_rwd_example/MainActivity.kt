@@ -18,7 +18,7 @@ class MainActivity: FlutterFragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         TnkAdManager.setCustomClass()
         val isPrivacyAgree = TnkSession.getAgreePrivacy(this@MainActivity)
         Log.d("jameson", "isPrivacyAgree: $isPrivacyAgree")

@@ -136,6 +136,11 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> showMyEarnPointList(HashMap<String, dynamic>? map) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

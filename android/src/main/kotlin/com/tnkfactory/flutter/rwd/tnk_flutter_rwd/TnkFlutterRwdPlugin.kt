@@ -9,8 +9,10 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.NonNull
+import androidx.fragment.app.FragmentActivity
 import com.tnkfactory.ad.*
 import com.tnkfactory.ad.basic.AdPlacementView
+import com.tnkfactory.ad.off.TnkOffNavi
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -32,6 +34,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var mActivity: Activity
     private lateinit var offerwall: TnkOfferwall
     private lateinit var placementView: AdPlacementView
+    private lateinit var tnkNavi: TnkOffNavi
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "tnk_flutter_rwd")
@@ -98,6 +101,9 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "getEarnPoint" -> {
+
+//                    tnkNavi.moveToMyMenu(0)
+//                    result.success("success")
                     offerwall.getEarnPoint() {
                         result.success(it)
                     }
@@ -226,6 +232,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
                 "setUseTermsPopup" -> {
                     TnkAdConfig.useTermsPopup = call.argument("use_yn") as? Boolean ?: false
+                    result.success("success")
                 }
 
                 //fun getEventLink(eventId: Long, onResult: (EventLinkVo?) -> Unit) {
@@ -341,7 +348,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "showEventWebPage" -> {
                     call.argument<HashMap<String, String>>("map")?.let { param ->
 
-                        val eventId = param["event_id"] as String ?: ""
+                        val eventId = param["event_id"] as? String ?: ""
                         if(eventId != null && !eventId.equals("") ) {
 
                             TnkSession.runOnIoThread {
@@ -367,6 +374,18 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         }
                     }
                 }
+
+                "showMyEarnPointList" -> {
+                    call.argument<HashMap<String, String>>("map")?.let { param ->
+
+                        TnkSession.runOnMainThread {
+                            tnkNavi.moveToMyMenu(1)
+                            result.success("show MyEarnPointList")
+                        }
+
+                    }
+                }
+
 
             }
         } catch (e: Exception) {
@@ -395,6 +414,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
         mActivity = binding.activity
         offerwall = TnkOfferwall(mActivity)
+        tnkNavi = TnkOffNavi(mActivity as FragmentActivity)
     }
 
     override fun onDetachedFromActivityForConfigChanges() {

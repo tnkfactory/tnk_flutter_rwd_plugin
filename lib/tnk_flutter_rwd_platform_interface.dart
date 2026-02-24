@@ -121,5 +121,9 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
 
   }
 
+  Future<String?> showMyEarnPointList(HashMap<String,dynamic>? map) {
+     throw UnimplementedError('showMyEarnPointList has not benn implemented');
+  }
+
 
 }

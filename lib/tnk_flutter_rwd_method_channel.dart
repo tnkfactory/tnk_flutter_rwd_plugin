@@ -173,4 +173,10 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
 
+  @override
+  Future<String?> showMyEarnPointList(HashMap<String,dynamic>? map) async {
+    final version = await methodChannel.invokeMethod<String>('showMyEarnPointList', <String, dynamic>{"map": map});
+    return version;
+  }
+
 }

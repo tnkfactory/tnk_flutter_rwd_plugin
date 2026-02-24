@@ -2635,6 +2635,7 @@ public enum MyMenuType : Swift.Int {
   case historyFull
   case contactUs
   case onlyFaq
+  case onlyMileage
   #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
   #endif

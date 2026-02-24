@@ -115,4 +115,8 @@ class TnkFlutterRwd {
     return TnkFlutterRwdPlatform.instance.showEventWebPage(map);
   }
 
+  Future<String?> showMyEarnPointList(HashMap<String, dynamic>? map) {
+    return TnkFlutterRwdPlatform.instance.showMyEarnPointList(map);
+  }
+
 }

@@ -499,6 +499,33 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             
             break
             
+        case "showMyEarnPointList" :
+            if let args = call.arguments as? [String: Any],
+               let map = args["map"] as? [String: Any]
+            {
+                let type = (map["type"] ?? 0) as! Int
+                
+                self.sktAirUi = SktAirRwdPlus.initSession() as? SktAirRwdPlus
+                self.sktAirUi?.setDesignCustom()
+                TnkSession.shared?.showMenuViewController(from: viewController!, menuType: .onlyMileage)
+                
+                result("success")
+//                if let rwdplus = SktAirRwdPlus.initSession() as? SktAirRwdPlus
+//                        {
+//                            rwdplus.setDesignCustom()
+//                            TnkSession.shared?.showMenuViewController(from: self, menuType: .onlyMileage)
+//                        }else{
+//                            //init 실패 케이스
+//                        }
+                
+
+                
+            } else {
+                result("fail")
+            }
+            
+            break
+            
             
         default:
             result("iOS method : " + call.method)

@@ -35,7 +35,7 @@ plugins {
 android {
 
     namespace = "com.tnkfactory.flutter.rwd.tnk_flutter_rwd_example"
-    compileSdk = flutter.compileSdkVersion
+    compileSdk = 36
     ndkVersion = "27.0.12077973"
 
 
