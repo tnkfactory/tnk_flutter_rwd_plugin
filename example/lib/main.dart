@@ -108,14 +108,18 @@ class _MyAppState extends State<MyApp>
           case TnkRwdAnalyticsEvent.JOIN_AD:
             final String? id = params[0][TnkRwdAnalyticsParam.ITEM_ID];
             final String? name = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+            final jsonObj = params[2][TnkRwdAnalyticsParam.ITEM_DATA];
 
             print('광고 참여 클릭 id: $id, name: $name');
+            print('광고 참여 클릭 item: $jsonObj');
             break;
           case TnkRwdAnalyticsEvent.CLICK_AD:
             final String? id = params[0][TnkRwdAnalyticsParam.ITEM_ID];
             final String? name = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+            final jsonObj = params[2][TnkRwdAnalyticsParam.ITEM_DATA];
 
             print('광고 클릭 id: $id, name: $name');
+            print('광고 클릭 item: $jsonObj');
             break;
 
           case TnkRwdAnalyticsEvent.SELECT_CATEGORY: // only android

@@ -297,14 +297,14 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   Future<void> showMyEarnPoint() async {
     try {
 
-      // 오퍼월 진입하지 않은 사용자 user name 설정 필요
-      // 앱 재설치자 -> 기존 적립내역 이력 조회
-      await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user");
+      await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user"); // user name 설정 필요
       HashMap<String,dynamic> paramMap = HashMap();
       paramMap.addAll({
         "type": 1
       });
-      await _tnkFlutterRwdPlugin.showMyEarnPointList(paramMap);
+
+      String? result = await _tnkFlutterRwdPlugin.showMyEarnPointList(paramMap);
+      print(result);
     } on PlatformException {
       return;
     }

@@ -17,6 +17,7 @@ class TnkRwdAnalyticsEvent {                              // 이벤트명       
 class TnkRwdAnalyticsParam {
   static const String ITEM_ID = "item_id";
   static const String ITEM_NAME = "item_name";
+  static const String ITEM_DATA = "item_data";
 }
 
 

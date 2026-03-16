@@ -575,6 +575,38 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         
     }
     
+    private func extractAdItemData(appId: Int) -> [String: Any] {
+        // key별 기본값 정의 (Int → 0, String → "")
+        let keyDefaults: [String: Any] = [
+            "app_id":         0,
+            "app_nm":         "",
+            "img_url":        "",
+            "icon_url":       "",
+            "pnt_amt":        0,
+            "org_amt":        0,
+            "pnt_unit":       "",
+            "prd_price":      0,
+            "org_prd_price":  0,
+            "sale_dc_rate":   0,
+            "multi_yn":       "",
+            "filter_id":      0,
+            "cmpn_type":      0,
+            "cmpn_type_name": "",
+            "actn_desc":      "",
+            "like_yn":        "",
+            "detail_yn":      ""
+        ]
+        
+        let adItem = TnkSession.shared?.getAdItem(appId: appId) as? [String: Any]
+        
+        var result: [String: Any] = [:]
+        for (key, defaultValue) in keyDefaults {
+            result[key] = adItem?[key] ?? defaultValue
+        }
+        
+        return result
+    }
+    
     public func sendOfferwallEvent(eventName:String,  params: [[String: Any]]) {
         
         let sendData: [String: Any] = [
@@ -584,7 +616,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
 
         
         
-        if let resultJson = TnkStrings.convertDictionaryToJsonString(dictionary: sendData, prettyPrinted:true)
+        if let resultJson = TnkStrings.convertDictionaryToJsonString(dictionary: sendData, prettyPrinted:false)
         {
             SwiftTnkFlutterRwdPlugin.channel?.invokeMethod(
                 "tnkAnalytics",
@@ -642,14 +674,17 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
     public func didAdItemClicked(appId: Int, appName: String) {
         print("### adItem clicked: \(appId) \(appName)")
         
+        let itemData = extractAdItemData(appId: appId)
+        
+        
         let params: [[String: Any]] = [
             ["item_id": String(appId)],      // Int
-            ["item_name": appName]   // String
+            ["item_name": appName],   // String
+            ["item_data": itemData] // Dictionary
         ]
+        print("jameson \(params)")
         
-//        var params: [String: Any] = [:]
-//        params["item_id"] = appId
-//        params["item_name"] = appName
+
         
         sendOfferwallEvent(eventName:"tnk_ev_ad_click", params: params)
     }
@@ -661,12 +696,14 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
     public func didActionButtonClicked(appId: Int, appName: String) {
         print("#### action button clicked \(appId) \(appName)")
         
+        let itemData = extractAdItemData(appId: appId)
+        
         let params: [[String: Any]] = [
             ["item_id": String(appId)],      // Int
-            ["item_name": appName]   // String
+            ["item_name": appName],   // String
+            ["item_data": itemData] // Dictionary
         ]
-//        params["item_id"] = appId
-//        params["item_name"] = appName
+        print("jameson \(params)")
         
         sendOfferwallEvent(eventName:"tnk_ev_ad_join", params: params)
         

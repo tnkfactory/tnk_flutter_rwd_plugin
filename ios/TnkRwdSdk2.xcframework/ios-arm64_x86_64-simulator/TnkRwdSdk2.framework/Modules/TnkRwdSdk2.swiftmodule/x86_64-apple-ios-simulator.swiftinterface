@@ -585,6 +585,7 @@ public protocol TNKWebViewDelegate : AnyObject {
   @objc @_Concurrency.MainActor @preconcurrency weak public var offerwallListener: (any TnkRwdSdk2.OfferwallEventListener)?
   @objc deinit
   @_Concurrency.MainActor @preconcurrency public var landingData: Swift.String?
+  @_Concurrency.MainActor @preconcurrency public var detailAdItemId: Swift.Int
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
@@ -764,6 +765,9 @@ extension TnkRwdSdk2.AdOfferwallViewController {
   public func getApplicationId() -> Swift.String
   public func getIdForAdvertising() -> Swift.String
   public func showMenuViewController(from viewController: UIKit.UIViewController, menuType: TnkRwdSdk2.MyMenuType)
+  @objc public func addAdItemList(data: [Swift.Int : [Swift.String : Any]])
+  @objc public func getAdItem(appId: Swift.Int) -> [Swift.String : Any]
+  @objc public func getAdItemToJson(appId: Swift.Int) -> Swift.String
   @objc public func presentAdDetailView(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
   @objc public func adJoin(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
   @objc public func adAction(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, forceJoinAction: Swift.Bool = false, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
@@ -1249,6 +1253,7 @@ open class DaumIndexMainMenuData {
 }
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor @preconcurrency public class AdOfferwallView : UIKit.UIView, UIKit.UICollectionViewDelegate, TnkRwdSdk2.AdMenuSelectionDelegate, TnkRwdSdk2.EventViewListener {
   @objc @_Concurrency.MainActor @preconcurrency weak public var offerwallListener: (any TnkRwdSdk2.OfferwallEventListener)?
+  @_Concurrency.MainActor @preconcurrency public var detailAdItemId: Swift.Int
   #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency public var landingData: Swift.String? {
     get

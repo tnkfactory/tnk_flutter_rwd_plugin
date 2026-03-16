@@ -2112,6 +2112,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) TnkSession * _Nullable
 + (TnkSession * _Nonnull)initInstanceWithAppId:(NSString * _Nonnull)appId SWIFT_METHOD_FAMILY(none);
 + (TnkSession * _Nullable)sharedInstance SWIFT_WARN_UNUSED_RESULT;
 - (TnkRwdPlus * _Nonnull)plusInstance SWIFT_WARN_UNUSED_RESULT;
+- (void)addAdItemListWithData:(NSDictionary<NSNumber *, NSDictionary<NSString *, id> *> * _Nonnull)data;
+- (NSDictionary<NSString *, id> * _Nonnull)getAdItemWithAppId:(NSInteger)appId SWIFT_WARN_UNUSED_RESULT;
+- (NSString * _Nonnull)getAdItemToJsonWithAppId:(NSInteger)appId SWIFT_WARN_UNUSED_RESULT;
 - (void)presentAdDetailView:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL))completion;
 - (void)adJoin:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL))completion;
 - (void)adAction:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId fullscreen:(BOOL)fullscreen forceJoinAction:(BOOL)forceJoinAction actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL))completion;
