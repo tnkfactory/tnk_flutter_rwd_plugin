@@ -313,7 +313,7 @@ TnkFlutterRwd().adAction(type);
 ```
 
 
-#### adAction
+#### setPubCustomUi
 매체 커스텀 UI 설정 
 
 ##### Method
