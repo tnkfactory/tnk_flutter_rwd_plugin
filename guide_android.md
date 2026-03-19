@@ -313,19 +313,91 @@ TnkFlutterRwd().adAction(type);
 ```
 
 
-#### adAction
-매체 커스텀 UI 설정 
+#### getOfferWallEvent
+오퍼월 이벤트 데이터 수집
 
 ##### Method
 
-String setPubCustomUi(int type)
+void getOfferWallEvent(MethodCall methodCall)
 
 
 ##### Parameters
 
 | 파라메터 명칭  | 내용        |
 |----------|-----------|
-| type     | 유형        |
+| methodCall     | MethodCall        |
+
+
+##### 적용예시
+
+```dart
+
+@override
+void initState() {
+  MethodChannel channel = const MethodChannel('tnk_flutter_rwd');
+  channel.setMethodCallHandler(getOfferWallEvent);
+  
+  super.initState();
+}
+
+
+Future<void> getOfferWallEvent(MethodCall methodCall) async {
+  if (methodCall.method == "tnkAnalytics") {
+
+    try {
+      Map<String, dynamic> jsonObj = jsonDecode(methodCall.arguments);
+      String event = jsonObj["event"];
+      final List<dynamic> params = jsonObj['params'] ?? [];
+
+      switch (event) {
+        case TnkRwdAnalyticsEvent.ACTIVITY_FINISH:
+          print("오퍼월 액티비티 종료됨");
+          break;
+
+        case TnkRwdAnalyticsEvent.JOIN_AD:
+          final String? id = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+          final String? name = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+          final rawItemData = params[2][TnkRwdAnalyticsParam.ITEM_DATA];
+
+          final itemData = rawItemData is String ? jsonDecode(rawItemData) : rawItemData;
+
+          print('광고 참여 클릭 id: $id, name: $name, item_data: $itemData');
+          break;
+        case TnkRwdAnalyticsEvent.CLICK_AD:
+          final String? id = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+          final String? name = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+          final rawItemData = params[2][TnkRwdAnalyticsParam.ITEM_DATA];
+
+          final itemData = rawItemData is String ? jsonDecode(rawItemData) : rawItemData;
+
+
+          print('광고 클릭 id: $id, name: $name, item_data: $itemData');
+          break;
+
+        case TnkRwdAnalyticsEvent.SELECT_CATEGORY: // only android
+          final String? ctgrId = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+          final String? ctgrName = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+          print('category id: $ctgrId, category name: $ctgrName');
+
+          break;
+        case TnkRwdAnalyticsEvent.SELECT_FILTER: // only android
+          final String? filterId = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+          final String? filterName = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+          print('filter id: $filterId, filter name: $filterName');
+
+          break;
+
+        default:
+          print('Unhandled event: $event');
+          break;
+      }
+    } catch (e) {
+      print("Error parsing JSON: $e");
+      return;
+    }
+  }
+}
+```
 
 
 

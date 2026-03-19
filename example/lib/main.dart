@@ -87,16 +87,10 @@ class _MyAppState extends State<MyApp>
   int _selectedIndex = 0;
 
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
-    print("methodCall.method: ${methodCall.method}");
     if (methodCall.method == "tnkAnalytics") {
-      // if (methodCall.arguments == null) {
-      //   print("methodCall.arguments is null");
-      //   return;
-      // }
 
       try {
         Map<String, dynamic> jsonObj = jsonDecode(methodCall.arguments);
-        print(jsonObj);
         String event = jsonObj["event"];
         final List<dynamic> params = jsonObj['params'] ?? [];
 
@@ -108,18 +102,21 @@ class _MyAppState extends State<MyApp>
           case TnkRwdAnalyticsEvent.JOIN_AD:
             final String? id = params[0][TnkRwdAnalyticsParam.ITEM_ID];
             final String? name = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
-            final jsonObj = params[2][TnkRwdAnalyticsParam.ITEM_DATA];
+            final rawItemData = params[2][TnkRwdAnalyticsParam.ITEM_DATA];
 
-            print('광고 참여 클릭 id: $id, name: $name');
-            print('광고 참여 클릭 item: $jsonObj');
+            final itemData = rawItemData is String ? jsonDecode(rawItemData) : rawItemData;
+
+            print('광고 참여 클릭 id: $id, name: $name, item_data: $itemData');
             break;
           case TnkRwdAnalyticsEvent.CLICK_AD:
             final String? id = params[0][TnkRwdAnalyticsParam.ITEM_ID];
             final String? name = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
-            final jsonObj = params[2][TnkRwdAnalyticsParam.ITEM_DATA];
+            final rawItemData = params[2][TnkRwdAnalyticsParam.ITEM_DATA];
 
-            print('광고 클릭 id: $id, name: $name');
-            print('광고 클릭 item: $jsonObj');
+            final itemData = rawItemData is String ? jsonDecode(rawItemData) : rawItemData;
+
+
+            print('광고 클릭 id: $id, name: $name, item_data: $itemData');
             break;
 
           case TnkRwdAnalyticsEvent.SELECT_CATEGORY: // only android
@@ -144,16 +141,6 @@ class _MyAppState extends State<MyApp>
         return;
       }
     }
-
-    // if (TnkMethodChannelEvent.didOfferwallRemoved(methodCall)) {
-    //   // TODO 오퍼월 close callback
-    //   print("offer window closed");
-    // }
-
-    setState(() {
-      _tnkResult = methodCall.arguments;
-      print(_tnkResult);
-    });
   }
 
   // Future<void> showAdList() async {

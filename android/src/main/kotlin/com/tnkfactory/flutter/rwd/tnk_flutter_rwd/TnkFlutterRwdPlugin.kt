@@ -26,6 +26,8 @@ import org.json.JSONObject
 
 /** TnkFlutterRwdPlugin */
 class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
+
+    private val TAG = this.javaClass.simpleName
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -37,6 +39,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var tnkNavi: TnkOffNavi
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+        Log.d(TAG, "onAttachedToEngine")
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "tnk_flutter_rwd")
         channel.setMethodCallHandler(this)
         setTnkAnalytics()
@@ -54,7 +57,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 val jEvent = JSONObject()
                 jEvent.put("event", event)
                 jEvent.put("params", jParams)
-                Log.d("jameson", "$jEvent")
+                Log.d(TAG, "$jEvent")
                 Handler(Looper.getMainLooper()).post {
                     channel.invokeMethod("tnkAnalytics", jEvent.toString())
                 }
@@ -408,10 +411,12 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     }
 
     override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+        Log.d(TAG, "onDetachedFromEngine")
         channel.setMethodCallHandler(null)
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+        Log.d(TAG, "onAttachedToActivity")
         mActivity = binding.activity
         offerwall = TnkOfferwall(mActivity)
         tnkNavi = TnkOffNavi(mActivity as FragmentActivity)
