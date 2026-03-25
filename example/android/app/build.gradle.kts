@@ -57,7 +57,7 @@ android {
         applicationId = "com.tnkfactory.flutter.rwd.tnk_flutter_rwd_example"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
-        minSdk =  23
+        minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -82,12 +82,12 @@ flutter {
 }
 
 dependencies {
-    api(project(":tnk_rwd"))
     implementation(libs.androidx.appcompat)
+    implementation ("com.tnkfactory:rwd:8.09.14")
 }
 //
 //dependencies {
 //    implementation(project(":tnk_rwd"))
-//    implementation "com.tnkfactory:rwd:8.09.06"
+//    implementation ("com.tnkfactory:rwd:8.09.14")
 //
 //}

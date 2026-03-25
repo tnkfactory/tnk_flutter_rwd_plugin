@@ -118,5 +118,25 @@ class TnkFlutterRwd {
   Future<String?> showMyEarnPointList(HashMap<String, dynamic>? map) {
     return TnkFlutterRwdPlatform.instance.showMyEarnPointList(map);
   }
+  Future<String?> nativeTnkEventScheme(String url) {
+    return TnkFlutterRwdPlatform.instance.nativeTnkEventScheme(url);
+  }
 
+
+  Future<String?> openTnkEventScheme(String url) async {
+    String? result = "";
+    if(url.startsWith("tnkscheme://")) {
+      if(url.contains("offerwall")){
+        Uri uri = Uri.parse(url);
+        String title = uri.queryParameters['title'] ?? "무료충전소";
+        showAdList(title);
+        return "success";
+      }
+      return TnkFlutterRwdPlatform.instance.nativeTnkEventScheme(url);
+    } else {
+      return "fail";
+    }
+
+    return result;
+  }
 }

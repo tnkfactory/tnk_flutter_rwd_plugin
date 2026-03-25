@@ -179,4 +179,10 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
 
+  @override
+  Future<String?> nativeTnkEventScheme(String url) async {
+    final result = await methodChannel.invokeMethod<String>('nativeTnkEventScheme', <String, dynamic>{"url": url});
+    return result;
+  }
+
 }

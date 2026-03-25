@@ -125,5 +125,8 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
      throw UnimplementedError('showMyEarnPointList has not benn implemented');
   }
 
+  Future<String?> nativeTnkEventScheme(String url) {
+    throw UnimplementedError('nativeTnkEventScheme has not benn implemented');
+  }
 
 }

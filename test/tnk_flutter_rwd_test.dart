@@ -141,6 +141,11 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> nativeTnkEventScheme(String url) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {
