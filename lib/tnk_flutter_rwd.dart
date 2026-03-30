@@ -137,6 +137,5 @@ class TnkFlutterRwd {
       return "fail";
     }
 
-    return result;
   }
 }
