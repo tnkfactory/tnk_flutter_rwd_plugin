@@ -124,7 +124,6 @@ class TnkFlutterRwd {
 
 
   Future<String?> openTnkEventScheme(String url) async {
-    String? result = "";
     if(url.startsWith("tnkscheme://")) {
       if(url.contains("offerwall")){
         Uri uri = Uri.parse(url);
