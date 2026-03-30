@@ -196,6 +196,8 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       await _tnkFlutterRwdPlugin.setPubCustomUi(1); // 매체 커스텀 UI 설정
       await _tnkFlutterRwdPlugin.setCOPPA(false); // COPPA 설정
       await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user"); // user name 설정
+
+      _tnkFlutterRwdPlugin.setCategoryAndFilter(2, 0);
       String? result = await _tnkFlutterRwdPlugin.showAdList("오퍼월상단타이틀"); // 오퍼월 호출
 
       print(result);
@@ -252,7 +254,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       await _tnkFlutterRwdPlugin.setCOPPA(false);
 
       // _tnkFlutterRwdPlugin.setUseTermsPopup(true);
-      // _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
+      _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
       platformVersion = await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
           'Unknown platform version';
     } on PlatformException {

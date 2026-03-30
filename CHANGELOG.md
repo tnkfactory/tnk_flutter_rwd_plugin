@@ -113,3 +113,5 @@
 * TnkAdAnalytics 이벤트 기능 수정
 ## 0.7.5
 * TnkAdAnalytics 이벤트 기능 수정 
+## 0.7.7
+* LuckyEvent 대응 

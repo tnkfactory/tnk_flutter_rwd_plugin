@@ -66,41 +66,50 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             //self.navigationController?.pushViewController(offerWall, animated: true)
             result("success")
         case "showAdList":
+
             if let args = call.arguments as? [String: Any] {
-                
-                if( self.sktAirUi != nil ) {
-                    self.sktAirUi?.offerwallListener = self
-                    self.sktAirUi?.showOfferwall(viewController!)
-                    
-                     
-                    print("### show custom ui")
-                } else {
-                    print("### show default ui")
-                    
-                    if let title = args["title"] as? String {
-                        showOfferwall(
-                            viewController: viewController!,
-                            pTitle: title,
-                            listener: self
-                        )
-
-                    } else {
-
-                        showOfferwall(
-                            viewController: viewController!,
-                            pTitle: "무료충전소",
-                            listener: self
-                        )
-    
-                    }
-                    if let appId = args["app_id"] as? Int {
-                        targetAppId = appId
-                        print("## targetAppId  \(targetAppId)")
-                    }
-                }
-                
-                
+                let title = args["title"] as? String ?? "무료충전소"
+                let appId = args["app_id"] as? Int ?? 0
+                presentOfferwallOnTopVC(title: title, appId: appId)
             }
+
+            result("success")
+
+            // if let args = call.arguments as? [String: Any] {
+            //
+            //     if( self.sktAirUi != nil ) {
+            //         self.sktAirUi?.offerwallListener = self
+            //         self.sktAirUi?.showOfferwall(viewController!)
+            //
+            //
+            //         print("### show custom ui")
+            //     } else {
+            //         print("### show default ui")
+            //
+            //         if let title = args["title"] as? String {
+            //             showOfferwall(
+            //                 viewController: viewController!,
+            //                 pTitle: title,
+            //                 listener: self
+            //             )
+            //
+            //         } else {
+            //
+            //             showOfferwall(
+            //                 viewController: viewController!,
+            //                 pTitle: "무료충전소",
+            //                 listener: self
+            //             )
+            //
+            //         }
+            //         if let appId = args["app_id"] as? Int {
+            //             targetAppId = appId
+            //             print("## targetAppId  \(targetAppId)")
+            //         }
+            //     }
+            //
+            //
+            // }
             
             result("success")
             
@@ -533,6 +542,42 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             
         }
     }
+
+    private func presentOfferwallOnTopVC(title: String, appId: Int) {
+        guard let rootVC = UIApplication.shared.keyWindow?.rootViewController else { return }
+
+        var topVC: UIViewController = rootVC
+        while let presented = topVC.presentedViewController {
+            if presented.isBeingDismissed {
+                // Adiscope LuckyEvent가 dismiss 중 → 완료 후 재시도
+                if let coordinator = presented.transitionCoordinator {
+                    coordinator.animate(alongsideTransition: nil) { [weak self] _ in
+                        self?.presentOfferwallOnTopVC(title: title, appId: appId)
+                    }
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+                        self?.presentOfferwallOnTopVC(title: title, appId: appId)
+                    }
+                }
+                return
+            }
+            topVC = presented
+        }
+
+        if sktAirUi != nil {
+            sktAirUi?.offerwallListener = self
+            sktAirUi?.showOfferwall(topVC)
+            print("### show custom ui")
+        } else {
+            print("### show default ui")
+            showOfferwall(viewController: topVC, pTitle: title, listener: self)
+            if appId != 0 {
+                targetAppId = appId
+                print("## targetAppId  \(targetAppId)")
+            }
+        }
+    }
+
     
     func getViewController() -> FlutterViewController? {
         let topMostViewControllerObj = UIApplication.shared.delegate!.window!!
