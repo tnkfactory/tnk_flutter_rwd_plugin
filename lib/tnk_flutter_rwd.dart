@@ -137,4 +137,8 @@ class TnkFlutterRwd {
     }
 
   }
+
+  Future<String?> showAdListWithPlacement(String placementId, int categoryId, int filterId) {
+    return TnkFlutterRwdPlatform.instance.showAdListWithPlacement(placementId, categoryId, filterId);
+  }
 }

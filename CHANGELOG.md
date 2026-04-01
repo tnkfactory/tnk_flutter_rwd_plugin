@@ -115,3 +115,5 @@
 * TnkAdAnalytics 이벤트 기능 수정 
 ## 0.7.7
 * LuckyEvent 대응 
+## 0.7.8
+* 오퍼월이벤트 scheme 처리, 큐레이션영역 커스텀 

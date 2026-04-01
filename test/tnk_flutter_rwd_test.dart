@@ -146,6 +146,11 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<String?> showAdListWithPlacement(String placementId, int categoryId, int filterId) {
+    throw UnimplementedError();
+  }
+
 }
 
 void main() {

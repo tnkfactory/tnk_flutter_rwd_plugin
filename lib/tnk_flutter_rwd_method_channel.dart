@@ -185,4 +185,11 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return result;
   }
 
+  @override
+  Future<String?> showAdListWithPlacement(String placementId, int categoryId, int filterId) async {
+    final result = await methodChannel.invokeMethod<String>('showAdListWithPlacement', <String, dynamic>{"placement_id": placementId, "category_id": categoryId, "filter_id": filterId});
+    return result;
+
+  }
+
 }

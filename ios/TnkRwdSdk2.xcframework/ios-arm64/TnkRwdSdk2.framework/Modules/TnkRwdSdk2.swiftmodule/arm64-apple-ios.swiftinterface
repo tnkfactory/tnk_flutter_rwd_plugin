@@ -2138,6 +2138,16 @@ extension TnkRwdSdk2.StoreLayout {
   @objc override dynamic public init()
   @objc deinit
 }
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency open class SKT_AdSectionPrevNextFooterView : TnkRwdSdk2.AdSectionFooterView {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  #endif
+  @_Concurrency.MainActor @preconcurrency override open func applyLayout(_ viewLayout: TnkRwdSdk2.AdListItemViewLayout)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency override open func setData(_ sectionData: TnkRwdSdk2.AdSection?)
+  #endif
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers public class RecommendItemHeaderLayout : TnkRwdSdk2.AdListMenuViewLayout {
   public var topSpaceHeight: CoreFoundation.CGFloat
   public var middleSpaceHeight: CoreFoundation.CGFloat

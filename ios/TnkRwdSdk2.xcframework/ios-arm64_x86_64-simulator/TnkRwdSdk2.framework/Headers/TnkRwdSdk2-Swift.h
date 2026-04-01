@@ -1728,6 +1728,11 @@ SWIFT_CLASS("_TtC10TnkRwdSdk225RoundAdItemPageViewLayout")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+SWIFT_CLASS("_TtC10TnkRwdSdk231SKT_AdSectionPrevNextFooterView")
+@interface SKT_AdSectionPrevNextFooterView : AdSectionFooterView
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 SWIFT_CLASS("_TtC10TnkRwdSdk220ScrollAdListMenuView")
 @interface ScrollAdListMenuView : BaseAdListMenuView
 @end
@@ -4059,6 +4064,11 @@ SWIFT_CLASS("_TtC10TnkRwdSdk225RoundAdListItemViewLayout")
 SWIFT_CLASS("_TtC10TnkRwdSdk225RoundAdItemPageViewLayout")
 @interface RoundAdItemPageViewLayout : RoundAdListItemViewLayout
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC10TnkRwdSdk231SKT_AdSectionPrevNextFooterView")
+@interface SKT_AdSectionPrevNextFooterView : AdSectionFooterView
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 SWIFT_CLASS("_TtC10TnkRwdSdk220ScrollAdListMenuView")

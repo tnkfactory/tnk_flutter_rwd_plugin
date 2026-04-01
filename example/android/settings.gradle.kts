@@ -25,3 +25,4 @@ plugins {
 }
 
 include(":app")
+include(":tnk_rwd")

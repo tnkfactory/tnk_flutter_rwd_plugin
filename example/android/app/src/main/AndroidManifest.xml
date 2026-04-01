@@ -35,9 +35,20 @@
 <!--           android:name="tnkad_app_id"-->
 <!--           android:value="c0004060-3041-f825-528f-1402010f0e0d" />-->
 
+<!--       <meta-data-->
+<!--           android:name="tnkad_app_id"-->
+<!--           android:value="e0e03040-8011-49db-bd94-100b0d0c0a08"/>-->
+
        <meta-data
-           android:name="tnkad_app_id"
-           android:value="e0e03040-8011-49db-bd94-100b0d0c0a08"/>
+              android:name="tnkad_app_id"
+              android:value="d0d02050-f061-f9db-bd9f-16020e050d09"/>
+
+       <!-- 금한돈 -->
+<!--       <meta-data-->
+<!--               android:name="tnkad_app_id"-->
+<!--               android:value="200090d0-8041-b928-829b-130d0901090f"/>-->
+
+
 
 <!--       <meta-data-->
 <!--           android:name="com.google.android.gms.ads.APPLICATION_ID"-->

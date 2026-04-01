@@ -13,6 +13,8 @@ import androidx.fragment.app.FragmentActivity
 import com.tnkfactory.ad.*
 import com.tnkfactory.ad.basic.AdPlacementView
 import com.tnkfactory.ad.off.TnkOffNavi
+import com.tnkfactory.ad.rwd.Settings
+import com.tnkfactory.ad.rwd.TnkCore
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -387,6 +389,29 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         }
 
                     }
+                }
+
+                "showAdListWithPlacement" -> {
+                    try {
+                        val placementId = (call.argument("placement_id") as? String ?: "")
+                        val categoryId = (call.argument("category_id") as? Int ?: 0)
+                        val filterId = (call.argument("filter_id") as? Int ?: 0)
+
+                        Settings.setPlacementId(mActivity, placementId)
+
+                        TnkCore.offRepository.adListCacheClear()
+                        TnkAdConfig.headerConfig.startCategory = categoryId
+                        TnkAdConfig.headerConfig.startFilterID = filterId
+
+                        offerwall.startOfferwallActivity(mActivity)
+
+                        result.success("showAdListWithPlacement")
+
+
+                    } catch (e:Exception) {
+                        e.printStackTrace()
+                    }
+
                 }
 
 

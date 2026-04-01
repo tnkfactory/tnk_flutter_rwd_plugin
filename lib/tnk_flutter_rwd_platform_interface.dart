@@ -129,4 +129,8 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
     throw UnimplementedError('nativeTnkEventScheme has not benn implemented');
   }
 
+  Future<String?> showAdListWithPlacement(String placementId, int categoryId, int filterId) {
+    throw UnimplementedError('showAdListWithPlacement has not been implemented');
+  }
+
 }

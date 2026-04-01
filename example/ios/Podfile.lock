@@ -6,7 +6,7 @@ PODS:
   - sqflite_darwin (0.0.4):
     - Flutter
     - FlutterMacOS
-  - tnk_flutter_rwd (0.7.7):
+  - tnk_flutter_rwd (0.7.8):
     - Flutter
 
 DEPENDENCIES:
@@ -29,7 +29,7 @@ SPEC CHECKSUMS:
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
   sqflite_darwin: 20b2a3a3b70e43edae938624ce550a3cbf66a3d0
-  tnk_flutter_rwd: 263eb1ea6ebb7a84c668e0379200c04e8231e37d
+  tnk_flutter_rwd: 594ac9d51bdaa40031c57b173140d984ada61d4b
 
 PODFILE CHECKSUM: aa84848161adb5be0a3c0f90181f494a19558306
 

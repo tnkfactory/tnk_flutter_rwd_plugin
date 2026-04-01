@@ -178,12 +178,25 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       right: 16,
       child: FloatingActionButton.extended(
         onPressed: setCustomUiAndShowOfferwall,
+        // onPressed: showAdListWithPlacement,
         icon: const Icon(Icons.tv),
         label: const Text('오퍼월'),
       ),
     );
   }
 
+
+  // Future<void> showAdListWithPlacement() async {
+  //   try {
+  //
+  //     String? result = await _tnkFlutterRwdPlugin.showAdListWithPlacement("cps_only",4, 509);
+  //     print(result);
+  //
+  //   } on Exception catch(e) {
+  //     print(e);
+  //     return;
+  //   }
+  // }
 
   /**
    * 오퍼월 커스텀 UI 설정 후 호출 예제
@@ -197,7 +210,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       await _tnkFlutterRwdPlugin.setCOPPA(false); // COPPA 설정
       await _tnkFlutterRwdPlugin.setUserName("skt_air_test_user"); // user name 설정
 
-      _tnkFlutterRwdPlugin.setCategoryAndFilter(2, 0);
+      // _tnkFlutterRwdPlugin.setCategoryAndFilter(2, 0);
       String? result = await _tnkFlutterRwdPlugin.showAdList("오퍼월상단타이틀"); // 오퍼월 호출
 
       print(result);

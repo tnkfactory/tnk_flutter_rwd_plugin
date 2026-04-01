@@ -42,6 +42,7 @@ class _MyAppState extends State<MyApp>
 
   @override
   void initState() {
+    super.initState();
     MethodChannel channel = const MethodChannel('tnk_flutter_rwd');
     channel.setMethodCallHandler(getOfferWallEvent);
 
@@ -49,7 +50,6 @@ class _MyAppState extends State<MyApp>
     showATTPopup();
 
     WidgetsBinding.instance.addObserver(this); // 앱 상태변화를 감지하기 위한 observer 등록
-    super.initState();
   }
 
   @override

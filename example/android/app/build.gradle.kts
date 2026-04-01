@@ -81,13 +81,14 @@ flutter {
     source = "../.."
 }
 
+//dependencies {
+//    implementation(libs.androidx.appcompat)
+//    implementation ("com.tnkfactory:rwd:8.09.15")
+//}
+
 dependencies {
     implementation(libs.androidx.appcompat)
-    implementation ("com.tnkfactory:rwd:8.09.14")
+    implementation(project(":tnk_rwd"))
+    implementation ("com.tnkfactory:rwd:8.09.15")
+
 }
-//
-//dependencies {
-//    implementation(project(":tnk_rwd"))
-//    implementation ("com.tnkfactory:rwd:8.09.14")
-//
-//}
