@@ -497,7 +497,8 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                     TnkSession.sharedInstance()?.openEventWebView(
                         parentViewController: viewController!,
                         eventId: eventId,
-                        checkTerm: false   // 또는 false
+                        checkTerm: false,   // 또는 false
+                        ignoreSafeAreaList: [AdEventWebIgnoreSafeArea.TOP, AdEventWebIgnoreSafeArea.BOTTOM]
                     )
                 }
 

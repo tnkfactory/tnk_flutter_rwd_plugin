@@ -34207,7 +34207,7 @@
           {
             "kind": "Function",
             "name": "openEventWebView",
-            "printedName": "openEventWebView(parentViewController:eventId:checkTerm:)",
+            "printedName": "openEventWebView(parentViewController:eventId:checkTerm:ignoreSafeAreaList:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -34232,11 +34232,26 @@
                 "printedName": "Swift.Bool",
                 "hasDefaultArg": true,
                 "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[TnkRwdSdk2.AdEventWebIgnoreSafeArea]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AdEventWebIgnoreSafeArea",
+                    "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
+                    "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
               }
             ],
             "declKind": "Func",
-            "usr": "s:10TnkRwdSdk20A7SessionC16openEventWebView06parentH10Controller7eventId9checkTermySo06UIViewJ0C_SiSbtF",
-            "mangledName": "$s10TnkRwdSdk20A7SessionC16openEventWebView06parentH10Controller7eventId9checkTermySo06UIViewJ0C_SiSbtF",
+            "usr": "s:10TnkRwdSdk20A7SessionC16openEventWebView06parentH10Controller7eventId9checkTerm18ignoreSafeAreaListySo06UIViewJ0C_SiSbSayAA02Adfg6IgnorepQ0OGtF",
+            "mangledName": "$s10TnkRwdSdk20A7SessionC16openEventWebView06parentH10Controller7eventId9checkTerm18ignoreSafeAreaListySo06UIViewJ0C_SiSbSayAA02Adfg6IgnorepQ0OGtF",
             "moduleName": "TnkRwdSdk2",
             "declAttributes": [
               "AccessControl"
@@ -66547,7 +66562,7 @@
                     "kind": "TypeNominal",
                     "name": "AdEventWebIgnoreSafeArea",
                     "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                    "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                    "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                   },
                   {
                     "kind": "TypeNominal",
@@ -66558,7 +66573,7 @@
                         "kind": "TypeNominal",
                         "name": "AdEventWebIgnoreSafeArea",
                         "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                        "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                        "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                       }
                     ]
                   }
@@ -66566,9 +66581,13 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO3TOPyA2CmF",
+            "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea@AdEventWebIgnoreSafeAreaTOP",
             "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO3TOPyA2CmF",
-            "moduleName": "TnkRwdSdk2"
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
           },
           {
             "kind": "Var",
@@ -66584,7 +66603,7 @@
                     "kind": "TypeNominal",
                     "name": "AdEventWebIgnoreSafeArea",
                     "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                    "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                    "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                   },
                   {
                     "kind": "TypeNominal",
@@ -66595,7 +66614,7 @@
                         "kind": "TypeNominal",
                         "name": "AdEventWebIgnoreSafeArea",
                         "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                        "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                        "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                       }
                     ]
                   }
@@ -66603,9 +66622,13 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO6BOTTOMyA2CmF",
+            "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea@AdEventWebIgnoreSafeAreaBOTTOM",
             "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO6BOTTOMyA2CmF",
-            "moduleName": "TnkRwdSdk2"
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
           },
           {
             "kind": "Var",
@@ -66621,7 +66644,7 @@
                     "kind": "TypeNominal",
                     "name": "AdEventWebIgnoreSafeArea",
                     "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                    "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                    "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                   },
                   {
                     "kind": "TypeNominal",
@@ -66632,7 +66655,7 @@
                         "kind": "TypeNominal",
                         "name": "AdEventWebIgnoreSafeArea",
                         "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                        "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                        "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                       }
                     ]
                   }
@@ -66640,9 +66663,13 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO7LEADINGyA2CmF",
+            "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea@AdEventWebIgnoreSafeAreaLEADING",
             "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO7LEADINGyA2CmF",
-            "moduleName": "TnkRwdSdk2"
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
           },
           {
             "kind": "Var",
@@ -66658,7 +66685,7 @@
                     "kind": "TypeNominal",
                     "name": "AdEventWebIgnoreSafeArea",
                     "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                    "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                    "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                   },
                   {
                     "kind": "TypeNominal",
@@ -66669,7 +66696,7 @@
                         "kind": "TypeNominal",
                         "name": "AdEventWebIgnoreSafeArea",
                         "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                        "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                        "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                       }
                     ]
                   }
@@ -66677,46 +66704,51 @@
               }
             ],
             "declKind": "EnumElement",
-            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO8TRAILINGyA2CmF",
+            "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea@AdEventWebIgnoreSafeAreaTRAILING",
             "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO8TRAILINGyA2CmF",
-            "moduleName": "TnkRwdSdk2"
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 3
           },
           {
-            "kind": "Function",
-            "name": "==",
-            "printedName": "==(_:_:)",
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Bool",
-                "printedName": "Swift.Bool",
-                "usr": "s:Sb"
+                "name": "Optional",
+                "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AdEventWebIgnoreSafeArea",
+                    "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
+                    "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
+                  }
+                ],
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
-                "name": "AdEventWebIgnoreSafeArea",
-                "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "AdEventWebIgnoreSafeArea",
-                "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
               }
             ],
-            "declKind": "Func",
-            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO2eeoiySbAC_ACtFZ",
-            "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO2eeoiySbAC_ACtFZ",
+            "declKind": "Constructor",
+            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO8rawValueACSgSi_tcfc",
+            "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO8rawValueACSgSi_tcfc",
             "moduleName": "TnkRwdSdk2",
-            "static": true,
             "implicit": true,
-            "funcSelfKind": "NonMutating"
+            "init_kind": "Designated"
           },
           {
             "kind": "Var",
-            "name": "hashValue",
-            "printedName": "hashValue",
+            "name": "rawValue",
+            "printedName": "rawValue",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -66726,8 +66758,8 @@
               }
             ],
             "declKind": "Var",
-            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO9hashValueSivp",
-            "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO9hashValueSivp",
+            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO8rawValueSivp",
+            "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO8rawValueSivp",
             "moduleName": "TnkRwdSdk2",
             "implicit": true,
             "accessors": [
@@ -66744,47 +66776,24 @@
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO9hashValueSivg",
-                "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO9hashValueSivg",
+                "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO8rawValueSivg",
+                "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO8rawValueSivg",
                 "moduleName": "TnkRwdSdk2",
                 "implicit": true,
                 "accessorKind": "get"
               }
             ]
-          },
-          {
-            "kind": "Function",
-            "name": "hash",
-            "printedName": "hash(into:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Hasher",
-                "printedName": "Swift.Hasher",
-                "paramValueOwnership": "InOut",
-                "usr": "s:s6HasherV"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO4hash4intoys6HasherVz_tF",
-            "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO4hash4intoys6HasherVz_tF",
-            "moduleName": "TnkRwdSdk2",
-            "implicit": true,
-            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Enum",
-        "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO",
+        "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea",
         "mangledName": "$s10TnkRwdSdk224AdEventWebIgnoreSafeAreaO",
         "moduleName": "TnkRwdSdk2",
         "declAttributes": [
-          "AccessControl"
+          "AccessControl",
+          "ObjC"
         ],
+        "enumRawTypeName": "Int",
         "conformances": [
           {
             "kind": "Conformance",
@@ -66813,6 +66822,28 @@
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
           }
         ]
       },
@@ -68051,7 +68082,7 @@
                     "kind": "TypeNominal",
                     "name": "AdEventWebIgnoreSafeArea",
                     "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                    "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                    "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                   }
                 ],
                 "usr": "s:Sa"
@@ -68084,7 +68115,7 @@
                         "kind": "TypeNominal",
                         "name": "AdEventWebIgnoreSafeArea",
                         "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                        "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                        "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                       }
                     ],
                     "usr": "s:Sa"
@@ -68116,7 +68147,7 @@
                         "kind": "TypeNominal",
                         "name": "AdEventWebIgnoreSafeArea",
                         "printedName": "TnkRwdSdk2.AdEventWebIgnoreSafeArea",
-                        "usr": "s:10TnkRwdSdk224AdEventWebIgnoreSafeAreaO"
+                        "usr": "c:@M@TnkRwdSdk2@E@AdEventWebIgnoreSafeArea"
                       }
                     ],
                     "usr": "s:Sa"
@@ -120519,6 +120550,13 @@
       "value": "false"
     },
     {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
+      "kind": "Array",
+      "offset": 26284,
+      "length": 2,
+      "value": "[]"
+    },
+    {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/plus\/store\/toast\/TnkToastLayout.swift",
       "kind": "IntegerLiteral",
       "offset": 481,
@@ -125266,57 +125304,85 @@
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 313,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 333,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 354,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 376,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1007,
+      "offset": 1035,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 1056,
+      "offset": 1084,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
       "kind": "StringLiteral",
-      "offset": 1572,
+      "offset": 1600,
       "length": 38,
       "value": "\"60c07070-c0d1-8958-8598-1d01010e0000\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
       "kind": "StringLiteral",
-      "offset": 1641,
+      "offset": 1669,
       "length": 38,
       "value": "\"8030e070-80d1-8958-8598-1c0d02040703\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
       "kind": "Array",
-      "offset": 1782,
+      "offset": 1810,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
       "kind": "StringLiteral",
-      "offset": 1856,
+      "offset": 1884,
       "length": 135,
       "value": "\"https:\/\/api3.tnkfactory.com\/tnk\/offevt.event.main?action=event&evt_id=10&pub_id=${lotteryWebId}&adid=${adid}&md_user_nm=${md_user_nm}\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
       "kind": "StringLiteral",
-      "offset": 2022,
+      "offset": 2050,
       "length": 153,
       "value": "\"https:\/\/api2.tnkfactory.com\/tnk\/offerwall.web.main?md_user_nm=${md_user_nm}&app_id=${insureWebId}&oid=607623a6943219b5a201efff5e459def&adid=${adid}&t=1\""
     },
     {
       "filePath": "\/Users\/kyoungbeen.seo\/workspace\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdiscopeAdEventWebViewController.swift",
       "kind": "BooleanLiteral",
-      "offset": 2810,
+      "offset": 2838,
       "length": 4,
       "value": "true"
     },

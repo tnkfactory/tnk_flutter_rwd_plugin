@@ -818,7 +818,7 @@ extension TnkRwdSdk2.TnkSession {
   #if compiler(>=5.3) && $NonescapableTypes
   public func getEventWebView(parentViewController: UIKit.UIViewController, eventId: Swift.Int, onReturn: @escaping (_ result: TnkRwdSdk2.AdiscopeAdEventWebViewController?) -> ())
   #endif
-  public func openEventWebView(parentViewController: UIKit.UIViewController, eventId: Swift.Int, checkTerm: Swift.Bool = false)
+  public func openEventWebView(parentViewController: UIKit.UIViewController, eventId: Swift.Int, checkTerm: Swift.Bool = false, ignoreSafeAreaList: [TnkRwdSdk2.AdEventWebIgnoreSafeArea] = [])
   #if compiler(>=5.3) && $NonescapableTypes
   @objc dynamic public func getEventLink(eventId: Swift.Int, onReturn: @escaping (_ result: TnkRwdSdk2.EventLinkVo?) -> ())
   #endif
@@ -1465,14 +1465,16 @@ public enum ADEventWebType {
   case INSURE
   case EVENT(Swift.Int)
 }
-public enum AdEventWebIgnoreSafeArea {
-  case TOP
-  case BOTTOM
-  case LEADING
-  case TRAILING
-  public static func == (a: TnkRwdSdk2.AdEventWebIgnoreSafeArea, b: TnkRwdSdk2.AdEventWebIgnoreSafeArea) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+@objc public enum AdEventWebIgnoreSafeArea : Swift.Int {
+  case TOP = 0
+  case BOTTOM = 1
+  case LEADING = 2
+  case TRAILING = 3
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
     get
   }
 }
@@ -2670,6 +2672,7 @@ extension TnkRwdSdk2.TnkCode : Swift.Hashable {}
 extension TnkRwdSdk2.TnkCode : Swift.RawRepresentable {}
 extension TnkRwdSdk2.AdEventWebIgnoreSafeArea : Swift.Equatable {}
 extension TnkRwdSdk2.AdEventWebIgnoreSafeArea : Swift.Hashable {}
+extension TnkRwdSdk2.AdEventWebIgnoreSafeArea : Swift.RawRepresentable {}
 extension TnkRwdSdk2.ScrollType : Swift.Equatable {}
 extension TnkRwdSdk2.ScrollType : Swift.Hashable {}
 extension TnkRwdSdk2.ScrollType : Swift.RawRepresentable {}

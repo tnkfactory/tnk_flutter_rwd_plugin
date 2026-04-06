@@ -620,6 +620,13 @@ SWIFT_CLASS("_TtC10TnkRwdSdk218AdDetailViewLayout")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+typedef SWIFT_ENUM(NSInteger, AdEventWebIgnoreSafeArea, open) {
+  AdEventWebIgnoreSafeAreaTOP = 0,
+  AdEventWebIgnoreSafeAreaBOTTOM = 1,
+  AdEventWebIgnoreSafeAreaLEADING = 2,
+  AdEventWebIgnoreSafeAreaTRAILING = 3,
+};
+
 SWIFT_CLASS("_TtC10TnkRwdSdk210AdListItem")
 @interface AdListItem : AdInfoItem
 @property (nonatomic, readonly, copy) NSString * _Nonnull description;

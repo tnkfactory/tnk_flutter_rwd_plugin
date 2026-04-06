@@ -108,7 +108,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
           {'label': 'Ad Action', 'onPressed': () => adAction(227796)},
           {'label': 'Custom UI', 'onPressed': () => setPubCustomUi(1)},
           {'label': 'Show Event', 'onPressed': () {
-            final eventId = Platform.isIOS ? "814278" : "814139";
+            final eventId = Platform.isIOS ? "850048" : "850047";
             showEventPage(eventId);
           }},
           {'label': 'No Privacy Alert', 'onPressed': setNoUsePrivacyAlert},
@@ -186,17 +186,18 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   }
 
 
-  // Future<void> showAdListWithPlacement() async {
-  //   try {
-  //
-  //     String? result = await _tnkFlutterRwdPlugin.showAdListWithPlacement("cps_only",4, 509);
-  //     print(result);
-  //
-  //   } on Exception catch(e) {
-  //     print(e);
-  //     return;
-  //   }
-  // }
+  Future<void> showAdListWithPlacement() async {
+    try {
+
+      String? result = await _tnkFlutterRwdPlugin.showAdListWithPlacement("cps_only",4, 509); // 카테고리 영역 없이 filter -> 제휴몰 노출
+      // String? result = await _tnkFlutterRwdPlugin.showAdListWithPlacement("",0, 0);  // 카테고리 영역과 filter 모두 노출
+      print(result);
+
+    } on Exception catch(e) {
+      print(e);
+      return;
+    }
+  }
 
   /**
    * 오퍼월 커스텀 UI 설정 후 호출 예제

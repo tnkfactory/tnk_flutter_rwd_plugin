@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		flYvmXvJvLOAFjuHfGTaNPloMDM=
+		CSbdF4IkRACLuZCCnGIZpWqJ69Y=
 		</data>
 		<key>Headers/TnkRwdSdk2-Swift.h</key>
 		<data>
-		7XIUgZXEGF6ODBbs0Ui4LOh4uuc=
+		hzwUrc+AoXNib09aj4+Vjrz5lhE=
 		</data>
 		<key>Headers/TnkRwdSdk2.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		NT8zaukNXw9Im4TCqQkSN7B9j4E=
+		vtG+RmbjnvLQ+QSvrc5/iNhI+tw=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		qm61Q/RCxioa/Hc3Gu5QaTOTKto=
+		mXRRfIX5t+bTJfQikPlOEZiAny0=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -34,19 +34,19 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		qm61Q/RCxioa/Hc3Gu5QaTOTKto=
+		mXRRfIX5t+bTJfQikPlOEZiAny0=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		b1ts26f3fSvmQIDaJFJ2xme4b68=
+		XMbN3boSZmAix/bP72ml4e2RBio=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		NT8zaukNXw9Im4TCqQkSN7B9j4E=
+		vtG+RmbjnvLQ+QSvrc5/iNhI+tw=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		LbzHlv+slya9U6RqpVvc0lJTtrM=
+		0Jziq6xEgz/UNyj9Ey2ECs3g79o=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		LbzHlv+slya9U6RqpVvc0lJTtrM=
+		0Jziq6xEgz/UNyj9Ey2ECs3g79o=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		sBJmKeR3+vn0mF3rmEWT80iHgQ0=
+		hsyRMbqV/FrAKkGRmZlAOcfeygY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -107,14 +107,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BPJ2loeVHfiiPYGaswvJ15ASZj9BWCn3v9vO039GGYw=
+			26kZ1X7wR2xm1sNUrGsD1ORJTsRb50/IOGx5H4oXLBM=
 			</data>
 		</dict>
 		<key>Headers/TnkRwdSdk2-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			vG9wYY7/BVakJNXaryNVUAJwBAKA/0sHwTUj9Z9Sizo=
+			nKCmO15QSJ2BGNCoAZrfPRazf7q/6rPXd9cJ0+8+B78=
 			</data>
 		</dict>
 		<key>Headers/TnkRwdSdk2.h</key>
@@ -128,14 +128,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GEW7RRoiRoYmSp8aVTceVRRNwGGcOq4f+2Qk2UIn5WM=
+			ppjeFmj9vChqGCstBZ34w7k82EhYNHXEXyJwOcBeCuo=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			i0llZ2osj7aWbLJDxc9GO2gmuOuiuV2rqklSGqj9JhM=
+			lfB2W52FdUN1CZZ+2lUj3QWd1gJpb1gMSskdy0/dabs=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -149,28 +149,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			i0llZ2osj7aWbLJDxc9GO2gmuOuiuV2rqklSGqj9JhM=
+			lfB2W52FdUN1CZZ+2lUj3QWd1gJpb1gMSskdy0/dabs=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hw4+0zm8VQBnY8VPIbdfn16dxkswopGzvYW+fMHhMbI=
+			kFifoHgSB1GMLHm2Sau1zNyJ83+gVWctTOyKeKty4R0=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GEW7RRoiRoYmSp8aVTceVRRNwGGcOq4f+2Qk2UIn5WM=
+			ppjeFmj9vChqGCstBZ34w7k82EhYNHXEXyJwOcBeCuo=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			A/+hawLECSU1dTQndIrt9rBXJ3yZ/YlK0DCLS7Gl3Zs=
+			tq8Q8XaPSQX0Atox2VpfC6bRSqXXub5NflvXRGiPflU=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -184,14 +184,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			A/+hawLECSU1dTQndIrt9rBXJ3yZ/YlK0DCLS7Gl3Zs=
+			tq8Q8XaPSQX0Atox2VpfC6bRSqXXub5NflvXRGiPflU=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			HNaJM6MIzsov36LrDfcBOEaEgf6nQOlDfraMpg7NBjQ=
+			S5uSPluXtO9RL7wJSrFLnd6CR/6tMEHRwFFxNEwRUcg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

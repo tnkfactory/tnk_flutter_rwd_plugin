@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
@@ -136,6 +137,28 @@ class TnkFlutterRwd {
       return "fail";
     }
 
+  }
+
+  final methodChannel = const MethodChannel('tnk_flutter_rwd');
+  
+  Future<String?> openTnkEventScheme2(String url ) async {
+    if (url.startsWith("tnkscheme://")) {
+      if (url.contains("offerwall")) {
+        Uri uri = Uri.parse(url);
+        String title = uri.queryParameters['title'] ?? "무료충전소";
+        showAdList(title);
+        return "success";
+      } else if (Uri.parse(url).host == "analytics") {
+        Uri uri = Uri.parse(url);
+        Map<String, String> properties = Map.from(uri.queryParameters);
+        jsonEncode(properties);
+        methodChannel.invokeMethod("tnk_flutter_rwd", jsonEncode(properties));
+      }
+
+      return TnkFlutterRwdPlatform.instance.nativeTnkEventScheme(url);
+    } else {
+      return "fail";
+    }
   }
 
   Future<String?> showAdListWithPlacement(String placementId, int categoryId, int filterId) {
