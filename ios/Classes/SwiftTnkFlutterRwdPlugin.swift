@@ -345,7 +345,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                             fullscreen: false,
                             actionId: argActionId
                         ) {
-                            (isOkay) in
+                            (isOkay,error) in
                             if isOkay {
                                 print("광고 상세화면 성공")
                                 result("success")
@@ -374,7 +374,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                             fullscreen: false,
                             actionId: argActionId
                         ) {
-                            (isOkay) in
+                            (isOkay, error) in
                             if isOkay {
                                 print("광고 참여 성공")
                                 result("success")
@@ -403,7 +403,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                             fullscreen: false,
                             actionId: argActionId
                         ) {
-                            (isOkay) in
+                            (isOkay, error) in
                             if isOkay {
                                 print("광고 상세/참여 성공")
                                 result("success")
@@ -697,7 +697,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                 appId: targetAppId,
                 fullscreen: false
             ) {
-                (isOkay) in
+                (isOkay, error) in
             }
         } else {
             print("### offerwall loaded")

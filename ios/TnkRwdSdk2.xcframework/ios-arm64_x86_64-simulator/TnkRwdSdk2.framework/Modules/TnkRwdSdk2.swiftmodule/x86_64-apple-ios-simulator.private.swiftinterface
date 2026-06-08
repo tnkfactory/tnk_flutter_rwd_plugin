@@ -1,14 +1,13 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name TnkRwdSdk2
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
 import AVFoundation
 import AdSupport
 import AppTrackingTransparency
 import CommonCrypto
 import CoreImage
 import CoreTelephony
-import CoreText
 import CryptoKit
 import DeveloperToolsSupport
 import Foundation
@@ -167,6 +166,10 @@ import zlib
   @objc public var alertStyle: TnkRwdSdk2.TnkStyles.AlertOption
   @objc public static let shared: TnkRwdSdk2.TnkStyles
   @objc public var useDetailRoundCornerHeader: Swift.Bool
+  @objc public var isCloseButtonRight: Swift.Bool
+  @objc public var isPresentAnimated: Swift.Bool
+  @objc public var isHeaderViewHidden: Swift.Bool
+  @objc public var isNumberFormat: Swift.Bool
   @objc override dynamic public init()
   @objc deinit
 }
@@ -273,6 +276,18 @@ import zlib
   @objc override dynamic public init()
   @objc deinit
 }
+@objc public enum LayoutYPosition : Swift.Int {
+  case top
+  case center
+  case bottom
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @_inheritsConvenienceInitializers @objc public class AdDetailActionItemSubLayout : ObjectiveC.NSObject {
   @objc public var backgroundColor: UIKit.UIColor
   @objc public var inset: UIKit.UIEdgeInsets
@@ -281,11 +296,17 @@ import zlib
   @objc public var itemPointImage: TnkRwdSdk2.ImageAttribute
   @objc public var itemDescTextLabel: TnkRwdSdk2.LabelAttribute
   @objc public var itemDescTextOffColor: UIKit.UIColor
+  @objc public var itemDescTextLabelYPosition: TnkRwdSdk2.LayoutYPosition
   @objc public var itemPointAmountLabel: TnkRwdSdk2.LabelAttribute
   @objc public var itemPointAmountOffColor: UIKit.UIColor
+  @objc public var itemPointAmountLabelYPosition: TnkRwdSdk2.LayoutYPosition
   @objc public var itemPointUnitVisible: Swift.Bool
   @objc public var itemPointUnitLabel: TnkRwdSdk2.LabelAttribute
   @objc public var itemPointUnitOffColor: UIKit.UIColor
+  @objc public var isMoreVisible: Swift.Bool
+  @objc public var moreHeight: CoreFoundation.CGFloat
+  @objc public var moreButton: TnkRwdSdk2.ButtonAttribute
+  @objc public var isFooterVisible: Swift.Bool
   @objc public var footerHeight: CoreFoundation.CGFloat
   @objc public var footerButton: TnkRwdSdk2.ButtonAttribute
   @objc override dynamic public init()
@@ -761,16 +782,23 @@ extension TnkRwdSdk2.AdOfferwallViewController {
   }
   #endif
   public var join_dt: Swift.Int
+  weak public var offerwallListener: (any TnkRwdSdk2.OfferwallEventListener)?
   @objc public func plusInstance() -> TnkRwdSdk2.TnkRwdPlus
   public func getApplicationId() -> Swift.String
   public func getIdForAdvertising() -> Swift.String
-  public func showMenuViewController(from viewController: UIKit.UIViewController, menuType: TnkRwdSdk2.MyMenuType)
+  public func showMenuViewController(from viewController: UIKit.UIViewController, navigationPush: Swift.Bool = false, pageAnimated: Swift.Bool = true, fullscreen: Swift.Bool = false, menuType: TnkRwdSdk2.MyMenuType)
   @objc public func addAdItemList(data: [Swift.Int : [Swift.String : Any]])
   @objc public func getAdItem(appId: Swift.Int) -> [Swift.String : Any]
   @objc public func getAdItemToJson(appId: Swift.Int) -> Swift.String
-  @objc public func presentAdDetailView(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
-  @objc public func adJoin(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
-  @objc public func adAction(_ viewController: UIKit.UIViewController, appId: Swift.Int, fullscreen: Swift.Bool, forceJoinAction: Swift.Bool = false, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool) -> Swift.Void)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func presentAdDetailView(_ viewController: UIKit.UIViewController, appId: Swift.Int, subAppId: Swift.String? = nil, navigationPush: Swift.Bool = false, pageAnimated: Swift.Bool = true, fullscreen: Swift.Bool = false, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void, apiStartCompletion: (() -> Swift.Void)? = nil, apiEndCompletion: (() -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func adJoin(_ viewController: UIKit.UIViewController, appId: Swift.Int, subAppId: Swift.String? = nil, navigationPush: Swift.Bool = false, pageAnimated: Swift.Bool = true, fullscreen: Swift.Bool = false, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void, apiStartCompletion: (() -> Swift.Void)? = nil, apiEndCompletion: (() -> Swift.Void)? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public func adAction(_ viewController: UIKit.UIViewController, appId: Swift.Int, subAppId: Swift.String? = nil, navigationPush: Swift.Bool = false, pageAnimated: Swift.Bool = true, fullscreen: Swift.Bool = false, forceJoinAction: Swift.Bool = false, actionId: Swift.Int = 0, completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void, apiStartCompletion: (() -> Swift.Void)? = nil, apiEndCompletion: (() -> Swift.Void)? = nil)
+  #endif
   @objc public func applicationStarted()
   @objc public func actionCompleted()
   @objc public func actionCompleted(actionName: Swift.String)
@@ -946,6 +974,9 @@ extension TnkRwdSdk2.TnkSession {
   #if compiler(>=5.3) && $NonescapableTypes
   @objc @_Concurrency.MainActor @preconcurrency open func getActionButton() -> UIKit.UIButton?
   #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @_Concurrency.MainActor @preconcurrency open func getMultiItemActionButton() -> UIKit.UIButton?
+  #endif
   @objc @_Concurrency.MainActor @preconcurrency open func useIconImage() -> Swift.Bool
   #if compiler(>=5.3) && $NonescapableTypes
   @objc @_Concurrency.MainActor @preconcurrency open func setImageIcon(_ image: UIKit.UIImage?)
@@ -1079,6 +1110,9 @@ extension TnkRwdSdk2.TnkSession {
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
   public func applySizeConstraints(_ button: UIKit.UIButton?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func applyMoreSizeConstraints(_ button: UIKit.UIButton?)
   #endif
   @objc deinit
 }
@@ -1387,11 +1421,14 @@ public struct TnkPlacementPubInfo : Swift.Codable {
 }
 @_inheritsConvenienceInitializers @objc public class MyMenuViewLayout : ObjectiveC.NSObject {
   @objc public var backgroundColor: UIKit.UIColor
+  @objc public var isSetBackgroundColor: Swift.Bool
+  @objc public var isHeaderHidden: Swift.Bool
   @objc public var headerHeight: CoreFoundation.CGFloat
   @objc public var headerInset: UIKit.UIEdgeInsets
   @objc public var headerCornerRadius: CoreFoundation.CGFloat
   @objc public var closeButtonSize: CoreFoundation.CGSize
   @objc public var closeButtonImage: UIKit.UIImage?
+  @objc public var isMenuHidden: Swift.Bool
   @objc public var menuHeight: CoreFoundation.CGFloat
   @objc public var isFullScreen: Swift.Bool
   @objc public var fullscreenMenuInset: UIKit.UIEdgeInsets
@@ -1541,6 +1578,20 @@ extension TnkRwdSdk2.AdiscopeAdEventWebViewController : TnkRwdSdk2.TnkAdiscopeWe
   #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency @objc dynamic public func onRewarded(unitID: Swift.String?)
   #endif
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class Toss_AdDetailActionItemView : TnkRwdSdk2.AdDetailView {
+  @_Concurrency.MainActor @preconcurrency @objc override public func applyLayout(_ parentSize: CoreFoundation.CGSize, adItem: TnkRwdSdk2.AdDetailItem, viewLayout: TnkRwdSdk2.AdDetailViewLayout) -> CoreFoundation.CGSize
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc override public func getMultiItemActionButton() -> UIKit.UIButton?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  #endif
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
+  @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency public class CUMenuViewHeader : TnkRwdSdk2.AdListMenuView {
   @_Concurrency.MainActor @preconcurrency override public func setTotalPoint(totalAdsPoint: Swift.Int, totalAdsCount: Swift.Int, totalCpsPoint: Swift.Int, totalCpsCount: Swift.Int)
@@ -1775,6 +1826,28 @@ extension TnkRwdSdk2.KaKaoTnkRwdPlus {
 @_inheritsConvenienceInitializers @objc open class CpsListItemViewLayout : TnkRwdSdk2.CpsItemViewLayout {
   @objc override dynamic public init()
   override open func itemColumns(_ parentSize: CoreFoundation.CGSize, numberOfItems: Swift.Int) -> [Swift.Int]
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class Toss_AdDetailDescFrameView : TnkRwdSdk2.AdDetailFrameView {
+  @_Concurrency.MainActor @preconcurrency @objc override public func applyLayout(_ parentSize: CoreFoundation.CGSize, adItem: TnkRwdSdk2.AdDetailItem, viewLayout: TnkRwdSdk2.AdDetailViewLayout) -> CoreFoundation.CGSize
+  @objc @_Concurrency.MainActor @preconcurrency override public func applyLayout(_ parentSize: CoreFoundation.CGSize, adItem: TnkRwdSdk2.AdDetailItem, subLayout: TnkRwdSdk2.AdDetailFrameSubLayout) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class Toss_AdDetailTitleView : TnkRwdSdk2.AdDetailView {
+  @_Concurrency.MainActor @preconcurrency @objc override public func applyLayout(_ parentSize: CoreFoundation.CGSize, adItem: TnkRwdSdk2.AdDetailItem, viewLayout: TnkRwdSdk2.AdDetailViewLayout) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  #endif
+  @objc deinit
+}
+public class Toss_OfferwallView {
+  public init()
+  public func setTossOfferwallDetailView()
   @objc deinit
 }
 public protocol EventViewListener : ObjectiveC.NSObjectProtocol {
@@ -2664,6 +2737,9 @@ public enum MyMenuType : Swift.Int {
 extension TnkRwdSdk2.RecommendCloseBtnType : Swift.Equatable {}
 extension TnkRwdSdk2.RecommendCloseBtnType : Swift.Hashable {}
 extension TnkRwdSdk2.RecommendCloseBtnType : Swift.RawRepresentable {}
+extension TnkRwdSdk2.LayoutYPosition : Swift.Equatable {}
+extension TnkRwdSdk2.LayoutYPosition : Swift.Hashable {}
+extension TnkRwdSdk2.LayoutYPosition : Swift.RawRepresentable {}
 extension TnkRwdSdk2.AdState : Swift.Equatable {}
 extension TnkRwdSdk2.AdState : Swift.Hashable {}
 extension TnkRwdSdk2.AdState : Swift.RawRepresentable {}
