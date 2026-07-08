@@ -238,7 +238,7 @@ Future<String?> showAdList(String title, [int appId = 0])
 | 파라메터 | 내용 |
 | ------- | ---- |
 | title | 오퍼월 상단에 표시할 타이틀 |
-| appId | (선택) 특정 앱 ID. 기본값 0 |
+| appId | (선택) 광고 ID. 0이 아닌 값을 전달하면 해당 광고 화면으로 바로 진입합니다. 기본값 0 |
 
 ##### 적용예시
 
@@ -257,6 +257,8 @@ Future<void> showOfferwall() async {
 #### showAdListWithPlacement
 
 플레이스먼트 설정을 적용하여 오퍼월을 표시합니다. 카테고리/필터 노출 여부를 제어할 수 있습니다.
+
+> **Android 전용** — iOS에서는 현재 지원되지 않습니다.
 
 ##### Method
 
@@ -494,7 +496,7 @@ Future<String?> showMyEarnPointList(HashMap<String, dynamic>? map)
 
 | 파라메터 | 내용 |
 | ------- | ---- |
-| map | `"type"` (int) 키로 표시 타입 지정 |
+| map | `"type"` (int) 키로 표시 타입 지정. Android에서는 현재 type 값과 무관하게 적립내역 메뉴로 이동합니다. map은 null이 아니어야 합니다. |
 
 ##### 적용예시
 
@@ -574,74 +576,6 @@ await TnkFlutterRwd().setUseTermsPopup(false);
 
 ---
 
-#### setCustomUIDefault
-
-오퍼월 UI 색상을 커스터마이징합니다.
-
-##### Method
-
-```dart
-Future<String?> setCustomUIDefault(HashMap<String, String> map)
-```
-
-##### 색상 키 목록
-
-| 키 | 적용 영역 |
-| -- | --------- |
-| `category_select_font` | 선택된 카테고리 폰트 색상 |
-| `filter_select_background` | 선택된 필터 배경색 |
-| `filter_select_font` | 선택된 필터 폰트 색상 |
-| `filter_not_select_background` | 미선택 필터 배경색 |
-| `filter_not_select_font` | 미선택 필터 폰트 색상 |
-| `app_main_color` | 앱 메인 색상 |
-| `adlist_title_font` | 광고 리스트 타이틀 폰트 색상 |
-| `adlist_desc_font` | 광고 리스트 설명 폰트 색상 |
-| `adlist_point_unit_font` | 광고 리스트 포인트 단위 색상 |
-| `adlist_point_amount_font` | 광고 리스트 포인트 액수 색상 |
-| `adinfo_title_font` | 광고 상세 타이틀 폰트 색상 |
-| `adinfo_desc_font` | 광고 상세 설명 폰트 색상 |
-| `adinfo_point_unit_font` | 광고 상세 포인트 단위 색상 |
-| `adinfo_point_amount_font` | 광고 상세 포인트 액수 색상 |
-| `adinfo_button_background` | 광고 상세 버튼 배경색 |
-| `adinfo_button_title_font` | 광고 상세 버튼 타이틀 색상 |
-| `adinfo_button_desc_font` | 광고 상세 버튼 설명 색상 |
-| `adinfo_button_gradient_option` | 버튼 그라데이션: `"L"` (라이트), `"D"` (다크) |
-| `option` | 포인트 표시 방식: `"1"` (아이콘+단위), `"2"` (아이콘만), `"3"` (단위만), `"4"` (없음) |
-| `point_icon_name` | 포인트 아이콘 이미지 이름 (앱 번들) |
-| `point_icon_name_sub` | 포인트 보조 아이콘 이미지 이름 (앱 번들) |
-
-##### 적용예시
-
-```dart
-HashMap<String, String> paramMap = HashMap();
-paramMap.addAll({
-  "category_select_font": "#26DACA",
-  "filter_select_background": "#26DACA",
-  "filter_select_font": "#FFFFFF",
-  "filter_not_select_font": "#515151",
-  "filter_not_select_background": "#FFFFFF",
-  "adinfo_title_font": "#161A1B",
-  "adinfo_desc_font": "#26DACA",
-  "adinfo_point_unit_font": "#26DACA",
-  "adinfo_point_amount_font": "#26DACA",
-  "adinfo_button_background": "#26DACA",
-  "adinfo_button_title_font": "#FFFFFF",
-  "adinfo_button_desc_font": "#FFFFFF",
-  "adinfo_button_gradient_option": "L",
-  "adlist_title_font": "#161A1B",
-  "adlist_desc_font": "#515151",
-  "adlist_point_unit_font": "#26DACA",
-  "adlist_point_amount_font": "#26DACA",
-  "app_main_color": "#26DACA",
-  "option": "1",
-  "point_icon_name": "star_icon",
-  "point_icon_name_sub": "star_icon_white",
-});
-await TnkFlutterRwd().setCustomUIDefault(paramMap);
-```
-
----
-
 #### setCustomUnitIcon
 
 포인트 아이콘 및 단위 표시 방식을 설정합니다.
@@ -657,8 +591,10 @@ Future<String?> setCustomUnitIcon(HashMap<String, String> map)
 | 키 | 내용 |
 | -- | ---- |
 | `option` | `"1"` (아이콘+단위), `"2"` (아이콘만), `"3"` (단위만), `"4"` (없음) |
-| `point_icon_name` | (선택) 포인트 아이콘 이미지 이름 |
-| `point_icon_name_sub` | (선택) 포인트 보조 아이콘 이미지 이름 |
+| `point_icon_name` | (선택, iOS 전용) 포인트 아이콘 이미지 이름 |
+| `point_icon_name_sub` | (선택, iOS 전용) 포인트 보조 아이콘 이미지 이름 |
+
+> Android에서는 `option` 값만 적용됩니다. 아이콘 이미지 교체(`point_icon_name`, `point_icon_name_sub`)는 iOS에서만 동작합니다.
 
 ##### 적용예시
 
@@ -670,9 +606,24 @@ await TnkFlutterRwd().setCustomUnitIcon(paramMap);
 
 ---
 
-#### setPubCustomUi
+#### setCustomUIDefault / setCustomUI (iOS 전용)
+
+오퍼월 UI 색상 커스터마이징 API는 **iOS에서만 지원**됩니다. Android는 네이티브 SDK의 기본 UI가 적용되며, 해당 메서드를 호출해도 동작하지 않습니다 (`await` 시 응답이 반환되지 않으므로 Android에서는 호출하지 마세요. `Platform.isIOS` 분기를 권장합니다).
+
+자세한 사용법은 [iOS 가이드](guide_ios.md)를 참고하세요.
+
+```dart
+if (Platform.isIOS) {
+  await TnkFlutterRwd().setCustomUIDefault(paramMap);
+}
+```
+
+---
+
+#### setPubCustomUi (iOS 전용)
 
 매체 커스텀 UI 타입을 설정합니다. iOS에서 SktAir 커스텀 UI(`SktAirRwdPlus`) 사용 시 적용합니다.
+**Android에서는 아무 동작도 하지 않습니다** (호출해도 무시됨).
 
 ##### Method
 
@@ -728,7 +679,9 @@ await TnkFlutterRwd().showEventWebPage(paramMap);
 
 #### openTnkEventScheme
 
-`tnkscheme://` 형식의 딥링크 URL을 처리합니다. `tnkscheme://offerwall`은 Flutter에서 오퍼월을 바로 열고, 그 외 scheme은 네이티브로 전달합니다.
+`tnkscheme://` 형식의 딥링크 URL을 처리합니다. `tnkscheme://offerwall`은 Flutter에서 오퍼월을 바로 엽니다.
+
+> 현재 버전에서는 `tnkscheme://offerwall` 처리만 지원됩니다. 그 외 scheme의 네이티브 전달(`nativeTnkEventScheme`)은 아직 네이티브에 구현되어 있지 않습니다.
 
 ##### Method
 
@@ -740,43 +693,34 @@ Future<String?> openTnkEventScheme(String url)
 
 | 파라메터 | 내용 |
 | ------- | ---- |
-| url | `tnkscheme://` 로 시작하는 URL |
+| url | `tnkscheme://` 로 시작하는 URL. `title` 쿼리 파라미터로 오퍼월 타이틀 지정 가능 (기본값 "무료충전소") |
 
 ##### 적용예시
 
 ```dart
 // 오퍼월 열기
 await TnkFlutterRwd().openTnkEventScheme("tnkscheme://offerwall?title=무료충전소");
-
-// 그 외 scheme은 네이티브로 전달
-await TnkFlutterRwd().openTnkEventScheme("tnkscheme://some_other_action");
 ```
 
 ---
 
-### 사. 뷰 닫기
+### 사. 뷰 닫기 (iOS 전용)
 
 #### closeOfferwall / closeAdDetail / closeAllView
 
 오퍼월 또는 광고 상세 화면을 코드로 닫습니다.
 
+> **iOS 전용** — Android는 오퍼월이 별도 Activity로 표시되므로 이 API가 구현되어 있지 않습니다. Android에서는 사용자가 뒤로가기로 화면을 닫으며, 닫힘 시점은 `activity_finish` 이벤트로 전달됩니다. Android에서 `await`로 호출하면 응답이 반환되지 않으므로 `Platform.isIOS` 분기를 권장합니다.
+
 ##### Methods
 
 ```dart
-Future<String?> closeOfferwall()
-Future<String?> closeAdDetail()
-Future<String?> closeAllView()
+Future<String?> closeOfferwall()   // 오퍼월 화면 닫기
+Future<String?> closeAdDetail()    // 광고 상세 화면 닫기
+Future<String?> closeAllView()     // 모든 화면 닫기
 ```
 
-##### 적용예시
-
-```dart
-await TnkFlutterRwd().closeAdDetail();
-await TnkFlutterRwd().closeOfferwall();
-await TnkFlutterRwd().closeAllView();
-```
-
-앱 생명주기에 따라 자동으로 닫는 패턴:
+##### 적용예시 (앱 생명주기에 따라 자동으로 닫는 패턴)
 
 ```dart
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
@@ -796,7 +740,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
+    if (state == AppLifecycleState.resumed && Platform.isIOS) {
       _plugin.closeAdDetail();
       _plugin.closeOfferwall();
     }
@@ -816,14 +760,16 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
 | 상수 | 값 | 설명 | 지원 플랫폼 |
 | ---- | -- | ---- | ----------- |
-| `ACTIVITY_FINISH` | `"activity_finish"` | 오퍼월 액티비티 종료 | Android |
+| `ACTIVITY_FINISH` | `"activity_finish"` | 오퍼월 화면 종료 | Android / iOS |
 | `CLICK_AD` | `"tnk_ev_ad_click"` | 광고 클릭 | Android / iOS |
 | `JOIN_AD` | `"tnk_ev_ad_join"` | 광고 상세에서 참여 클릭 | Android / iOS |
-| `CLICK_BANNER` | `"tnk_ev_banner_click"` | 배너 클릭 | Android / iOS |
+| `CLICK_BANNER` | `"tnk_ev_banner_click"` | 배너 클릭 | Android only |
 | `SELECT_CATEGORY` | `"tnk_ev_category"` | 카테고리 선택 | Android only |
 | `SELECT_FILTER` | `"tnk_ev_filter"` | 필터 선택 | Android only |
-| `CLICK_MENU` | `"tnk_ev_menu"` | 메뉴 선택 | Android / iOS |
-| `SEARCH_CPS` | `"tnk_ev_search_cps"` | CPS 검색 | Android / iOS |
+| `CLICK_MENU` | `"tnk_ev_menu"` | 메뉴 선택 | Android only |
+| `SEARCH_CPS` | `"tnk_ev_search_cps"` | CPS 검색 | Android only |
+
+> Android는 네이티브 SDK의 Analytics 이벤트를 모두 전달하고, iOS는 현재 `CLICK_AD`, `JOIN_AD`, `ACTIVITY_FINISH` 이벤트를 전달합니다.
 
 ##### Analytics 파라미터 상수 (TnkRwdAnalyticsParam)
 
@@ -837,10 +783,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
 ##### 오퍼월 닫힘 이벤트 처리
 
-- Android: `"tnkAnalytics"` 메서드 + `event == "activity_finish"`
-- iOS: `"didOfferwallRemoved"` 메서드
+현재 버전에서는 Android / iOS 모두 `"tnkAnalytics"` 메서드 + `event == "activity_finish"` 로 전달됩니다.
+(구버전 iOS 플러그인은 `"didOfferwallRemoved"` 메서드로 전달했습니다.)
 
-두 플랫폼을 통합 처리하려면 `TnkMethodChannelEvent.didOfferwallRemoved(methodCall)` 유틸리티를 사용합니다.
+두 경우를 모두 통합 처리하려면 `TnkMethodChannelEvent.didOfferwallRemoved(methodCall)` 유틸리티를 사용합니다.
 
 ```dart
 // example/lib/tnk_flutter_rwd_analytics.dart 에 정의됨
@@ -1078,7 +1024,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (state == AppLifecycleState.resumed) {
+    // 뷰 닫기 API는 iOS 전용
+    if (state == AppLifecycleState.resumed && Platform.isIOS) {
       _plugin.closeAdDetail();
       _plugin.closeOfferwall();
     }
@@ -1087,7 +1034,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   Future<void> showOfferwall() async {
     try {
       await _plugin.setNoUsePrivacyAlert();    // 개인정보 수집 동의 팝업 제거
-      await _plugin.setPubCustomUi(1);         // 매체 커스텀 UI 설정
       await _plugin.setCOPPA(false);           // COPPA 설정
       await _plugin.setUserName("my_user");    // 사용자 식별 값 설정
       await _plugin.showAdList("무료 충전소");  // 오퍼월 표시
