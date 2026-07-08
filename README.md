@@ -80,7 +80,6 @@ MethodChannel('tnk_flutter_rwd').setMethodCallHandler(getOfferWallEvent);
 | `setUseTermsPopup(isUse)` | 약관 팝업 표시 여부 | ✅ | ✅ |
 | `setCustomUnitIcon(map)` | 포인트 아이콘/단위 표시 방식 | ✅ (option만) | ✅ |
 | `setCustomUIDefault(map)` | 오퍼월 UI 색상 커스터마이징 | ❌ | ✅ |
-| `setPubCustomUi(type)` | 매체 커스텀 UI (SktAir) | ➖ (무동작) | ✅ |
 | `showEventWebPage(map)` | 이벤트 웹페이지 표시 | ✅ | ✅ |
 | `openTnkEventScheme(url)` | `tnkscheme://offerwall` 딥링크 처리 | ✅ | ✅ |
 | `closeOfferwall()` / `closeAdDetail()` / `closeAllView()` | 화면 닫기 | ❌ | ✅ |

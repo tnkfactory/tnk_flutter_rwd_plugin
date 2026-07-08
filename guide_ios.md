@@ -591,31 +591,6 @@ await TnkFlutterRwd().setCustomUnitIcon(paramMap);
 
 ---
 
-#### setPubCustomUi
-
-매체 커스텀 UI 타입을 설정합니다. SktAir 커스텀 UI(`SktAirRwdPlus`)를 사용하는 매체에서 오퍼월 호출 전에 설정합니다.
-
-##### Method
-
-```dart
-Future<String?> setPubCustomUi([int type = 0])
-```
-
-##### Parameters
-
-| 파라메터 | 내용 |
-| ------- | ---- |
-| type | `1`: SktAir 커스텀 UI 사용, `0`: 기본 UI |
-
-##### 적용예시
-
-```dart
-await TnkFlutterRwd().setPubCustomUi(1);
-await TnkFlutterRwd().showAdList("무료 충전소");
-```
-
----
-
 ### 바. 이벤트 웹페이지
 
 #### showEventWebPage

@@ -620,31 +620,6 @@ if (Platform.isIOS) {
 
 ---
 
-#### setPubCustomUi (iOS 전용)
-
-매체 커스텀 UI 타입을 설정합니다. iOS에서 SktAir 커스텀 UI(`SktAirRwdPlus`) 사용 시 적용합니다.
-**Android에서는 아무 동작도 하지 않습니다** (호출해도 무시됨).
-
-##### Method
-
-```dart
-Future<String?> setPubCustomUi([int type = 0])
-```
-
-##### Parameters
-
-| 파라메터 | 내용 |
-| ------- | ---- |
-| type | `1`: SktAir 커스텀 UI 사용, `0`: 기본 UI |
-
-##### 적용예시
-
-```dart
-await TnkFlutterRwd().setPubCustomUi(1);
-```
-
----
-
 ### 바. 이벤트 및 웹페이지
 
 #### showEventWebPage
