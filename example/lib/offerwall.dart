@@ -108,7 +108,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
           {'label': 'Ad Action', 'onPressed': () => adAction(227796)},
           {'label': 'Custom UI', 'onPressed': () => setPubCustomUi(1)},
           {'label': 'Show Event', 'onPressed': () {
-            final eventId = Platform.isIOS ? "850048" : "850047";
+            final eventId = Platform.isIOS ? "908671" : "908670";
             showEventPage(eventId);
           }},
           {'label': 'No Privacy Alert', 'onPressed': setNoUsePrivacyAlert},

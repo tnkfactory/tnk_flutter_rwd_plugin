@@ -121,3 +121,9 @@
 * 오퍼월이벤트, 큐레이션영역 커스텀
 ## 0.8.0
 * 광고 추적허용 얼럿 커스터마이징(다크모드)
+## 0.8.1
+* 웹뷰 스킴 공통 처리 핸들러 TnkSchemeHandler 추가 (Android / iOS 공통)
+  * tnkscheme://offerwall?title=... : 오퍼월 호출
+  * tnkscheme://tnk_event?event_id=... : 이벤트 페이지 호출
+  * handleTnkScheme(url) : 매체사 자체 스킴과 함께 사용하는 진입 함수 (TNK 스킴이면 처리 후 true 반환)
+  * registerCommand() 로 매체사 커스텀 명령 확장 가능

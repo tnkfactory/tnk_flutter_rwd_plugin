@@ -11,6 +11,7 @@ import 'package:tnk_flutter_rwd/tnk_placement_model.dart';
 import 'package:tnk_flutter_rwd_example/placement_view.dart';
 import 'offerwall.dart';
 import 'tnk_flutter_rwd_analytics.dart';
+import 'webview_page.dart';
 
 // import 'package:tnk_rwd_n_vad/tnk_rwd_n_vad.dart';
 
@@ -35,7 +36,7 @@ class _MyAppState extends State<MyApp>
 
 
   final List<Widget> _pages = [
-    Center(child: Text('홈')), // Placeholder for Home tab
+    const HomeItem(),
     OfferwallItem(),
     PlacementViewItem(type: 2),
   ];
@@ -458,5 +459,25 @@ class _MyAppState extends State<MyApp>
     setState(() {
       _selectedIndex = index;
     });
+  }
+}
+
+// 홈 탭 - 웹뷰(안드로이드 스킴 호출 테스트) 이동 버튼
+class HomeItem extends StatelessWidget {
+  const HomeItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton.icon(
+        icon: const Icon(Icons.public),
+        label: const Text('웹뷰 열기 (스킴 호출 테스트)'),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const WebViewPage()),
+          );
+        },
+      ),
+    );
   }
 }
