@@ -127,3 +127,5 @@
   * tnkscheme://tnk_event?event_id=... : 이벤트 페이지 호출
   * handleTnkScheme(url) : 매체사 자체 스킴과 함께 사용하는 진입 함수 (TNK 스킴이면 처리 후 true 반환)
   * registerCommand() 로 매체사 커스텀 명령 확장 가능
+## 0.8.2
+setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가 
