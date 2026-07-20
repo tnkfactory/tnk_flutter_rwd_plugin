@@ -72,6 +72,10 @@ class MockTnkFlutterRwdPlatform
   Future<String?> setUseTermsPopup(bool bUse) {
     throw UnimplementedError();
   }
+  @override
+  Future<String?> setUserTermsAgree(bool agree) {
+    throw UnimplementedError();
+  }
 
   @override
   Future<String?> setCustomUnitIcon(HashMap<String, String> map) {

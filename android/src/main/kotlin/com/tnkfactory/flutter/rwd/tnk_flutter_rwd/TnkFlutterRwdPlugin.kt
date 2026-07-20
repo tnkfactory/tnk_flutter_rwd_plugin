@@ -15,6 +15,7 @@ import com.tnkfactory.ad.basic.AdPlacementView
 import com.tnkfactory.ad.off.TnkOffNavi
 import com.tnkfactory.ad.rwd.Settings
 import com.tnkfactory.ad.rwd.TnkCore
+import com.tnkfactory.ad.rwd.Utils
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -238,6 +239,10 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 "setUseTermsPopup" -> {
                     TnkAdConfig.useTermsPopup = call.argument("use_yn") as? Boolean ?: false
                     result.success("success")
+                }
+                "setUserTermsAgree" -> {
+                    var agree = call.argument("agree") as? Boolean ?: false
+                    Settings.setAgreePrivacy(mActivity, agree)
                 }
 
                 //fun getEventLink(eventId: Long, onResult: (EventLinkVo?) -> Unit) {

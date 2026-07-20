@@ -88,7 +88,7 @@ flutter {
 
 dependencies {
     implementation(libs.androidx.appcompat)
-    implementation(project(":tnk_rwd"))
-    implementation ("com.tnkfactory:rwd:8.09.15")
+//    implementation(project(":tnk_rwd"))
+//    implementation ("com.tnkfactory:rwd:8.09.15")
 
 }

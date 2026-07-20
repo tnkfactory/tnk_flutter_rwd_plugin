@@ -115,6 +115,11 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     final version = await methodChannel.invokeMethod<String>('setUseTermsPopup', <String, dynamic>{"is_use":isUse});
     return version;
   }
+  @override
+  Future<String?> setUserTermsAgree(bool agree) async {
+    final version = await methodChannel.invokeMethod<String>('setUserTermsAgree', <String, dynamic>{"agree":agree});
+    return version;
+  }
 
   @override
   Future<String?>setCustomUnitIcon(HashMap<String,String> map) async {

@@ -13,12 +13,15 @@ class TnkFlutterRwd {
   Future<String?> setCategoryAndFilter(int category, int filter) {
     return TnkFlutterRwdPlatform.instance.setCategoryAndFilter(category, filter);
   }
+
   Future<String?> openEventWebView(int eventId) {
     return TnkFlutterRwdPlatform.instance.openEventWebView(eventId);
   }
+
   Future<String?> showCustomTapActivity(String url, String deep_link) {
     return TnkFlutterRwdPlatform.instance.showCustomTapActivity(url, deep_link);
   }
+
   Future<String?> showAdList(String title, [int appId = 0]) {
     return TnkFlutterRwdPlatform.instance.showAdList(title, appId);
   }
@@ -75,19 +78,27 @@ class TnkFlutterRwd {
   Future<String?> onItemClick(String app_id) {
     return TnkFlutterRwdPlatform.instance.onItemClick(app_id);
   }
+
   Future<String?> setUseTermsPopup(bool isUse) {
     return TnkFlutterRwdPlatform.instance.setUseTermsPopup(isUse);
+  }
+
+  Future<String?> setUserTermsAgree(bool agree) {
+    return TnkFlutterRwdPlatform.instance.setUserTermsAgree(agree);
   }
 
   Future<String?> setCustomUnitIcon(HashMap<String, String> map) {
     return TnkFlutterRwdPlatform.instance.setCustomUnitIcon(map);
   }
+
   Future<String?> closeAllView() {
     return TnkFlutterRwdPlatform.instance.closeAllView();
   }
+
   Future<String?> closeOfferwall() {
     return TnkFlutterRwdPlatform.instance.closeOfferwall();
   }
+
   Future<String?> closeAdDetail() {
     return TnkFlutterRwdPlatform.instance.closeAdDetail();
   }
@@ -119,14 +130,14 @@ class TnkFlutterRwd {
   Future<String?> showMyEarnPointList(HashMap<String, dynamic>? map) {
     return TnkFlutterRwdPlatform.instance.showMyEarnPointList(map);
   }
+
   Future<String?> nativeTnkEventScheme(String url) {
     return TnkFlutterRwdPlatform.instance.nativeTnkEventScheme(url);
   }
 
-
   Future<String?> openTnkEventScheme(String url) async {
-    if(url.startsWith("tnkscheme://")) {
-      if(url.contains("offerwall")){
+    if (url.startsWith("tnkscheme://")) {
+      if (url.contains("offerwall")) {
         Uri uri = Uri.parse(url);
         String title = uri.queryParameters['title'] ?? "무료충전소";
         showAdList(title);
@@ -136,12 +147,11 @@ class TnkFlutterRwd {
     } else {
       return "fail";
     }
-
   }
 
   final methodChannel = const MethodChannel('tnk_flutter_rwd');
-  
-  Future<String?> openTnkEventScheme2(String url ) async {
+
+  Future<String?> openTnkEventScheme2(String url) async {
     if (url.startsWith("tnkscheme://")) {
       if (url.contains("offerwall")) {
         Uri uri = Uri.parse(url);

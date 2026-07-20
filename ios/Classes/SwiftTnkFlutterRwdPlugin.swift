@@ -13,6 +13,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
     var targetAppId: Int = 0
     var landingData = ""
     var sktAirUi:SktAirRwdPlus? = nil
+    var mUserName:String? = nil
     
     typealias tempListener = (Bool, TnkError?) -> Void
     
@@ -116,6 +117,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         case "setUserName":
             if let args = call.arguments as? [String: Any] {
                 if let userName = args["user_name"] as? String {
+                    mUserName = userName
                     TnkSession.sharedInstance()?.setUserName(userName)
                     result("success  input :[\(userName)]")
                     
@@ -292,7 +294,26 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                         return
                     }
                 }
-                
+
+            } else {
+                result("false")
+            }
+
+            break
+
+        case "setUserTermsAgree":
+            if let args = call.arguments as? [String: Any] {
+                if let isUse = args["agree"] as? Bool {
+//                    if !isUse {
+                        if(mUserName != nil){
+                            UserDefaults.standard.set(isUse, forKey: "tnkad2_pp_agree_" + mUserName!)
+                        }
+                        // else
+                        // TnkSession.shared?.setAgreePrivacyPolicy(false);
+                        result("success")
+                        return
+//                    }
+                }
             } else {
                 result("false")
             }
