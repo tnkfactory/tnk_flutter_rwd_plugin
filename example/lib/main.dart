@@ -28,11 +28,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp>
     with WidgetsBindingObserver // 앱 상태변화를 감지하기 위한 observer 사용
-{
+    {
   final _tnkFlutterRwdPlugin = TnkFlutterRwd();
 
   // final _tnkRwdNVadPlugin = TnkRwdNVad();
-
 
 
   final List<Widget> _pages = [
@@ -80,6 +79,7 @@ class _MyAppState extends State<MyApp>
   }
 
   String _tnkResult = 'Unknown';
+
   // int _myPoint = 0;
   // int _queryPoint = 0;
   // final String _itemId = "item.0001";
@@ -89,7 +89,6 @@ class _MyAppState extends State<MyApp>
 
   Future<void> getOfferWallEvent(MethodCall methodCall) async {
     if (methodCall.method == "tnkAnalytics") {
-
       try {
         Map<String, dynamic> jsonObj = jsonDecode(methodCall.arguments);
         String event = jsonObj["event"];
@@ -121,9 +120,9 @@ class _MyAppState extends State<MyApp>
             break;
 
           case TnkRwdAnalyticsEvent.SELECT_CATEGORY: // only android
-              final String? ctgrId = params[0][TnkRwdAnalyticsParam.ITEM_ID];
-              final String? ctgrName = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
-              print('category id: $ctgrId, category name: $ctgrName');
+            final String? ctgrId = params[0][TnkRwdAnalyticsParam.ITEM_ID];
+            final String? ctgrName = params[1][TnkRwdAnalyticsParam.ITEM_NAME];
+            print('category id: $ctgrId, category name: $ctgrName');
 
             break;
           case TnkRwdAnalyticsEvent.SELECT_FILTER: // only android

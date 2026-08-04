@@ -62,9 +62,6 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
 
-//        manifestPlaceholders["adiscope_media_id"] = "280"
-//        manifestPlaceholders["adiscope_media_secret"] = "a2bc0d66b32446ccb78c42ec8255a75b"
-//        manifestPlaceholders["adiscope_sub_domain"] = ""
     }
 
     buildTypes {

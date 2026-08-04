@@ -86,6 +86,9 @@ class TnkFlutterRwd {
   Future<String?> setUserTermsAgree(bool agree) {
     return TnkFlutterRwdPlatform.instance.setUserTermsAgree(agree);
   }
+  Future<bool?> isUserTermsAgree() {
+    return TnkFlutterRwdPlatform.instance.isUserTermsAgree();
+  }
 
   Future<String?> setCustomUnitIcon(HashMap<String, String> map) {
     return TnkFlutterRwdPlatform.instance.setCustomUnitIcon(map);

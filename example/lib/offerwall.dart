@@ -451,7 +451,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   Future<void> openEventWebView() async {
     _tnkFlutterRwdPlugin.setCOPPA(false);
     _tnkFlutterRwdPlugin.setUserName("testUser");
-    // _tnkRwdNVadPlugin.openEventWebView(1234,"asdf");
+    _tnkFlutterRwdPlugin.openEventWebView(1234);
     // _tnkFlutterRwdPlugin.setUserTermsAgree(true);
   }
 

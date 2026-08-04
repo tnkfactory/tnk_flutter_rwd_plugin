@@ -128,4 +128,12 @@
   * handleTnkScheme(url) : 매체사 자체 스킴과 함께 사용하는 진입 함수 (TNK 스킴이면 처리 후 true 반환)
   * registerCommand() 로 매체사 커스텀 명령 확장 가능
 ## 0.8.2
-setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가 
+setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
+## 0.8.3
+* 약관동의 관련 함수 오류 수정
+  * setUserTermsAgree(agree) : 호출 후 응답이 반환되지 않아 Future 가 완료되지 않던 문제 수정 (Android / iOS)
+  * isUserTermsAgree() : iOS 에서 setUserName 호출 전이면 응답이 반환되지 않던 문제 수정
+  * iOS 약관동의 저장/조회 로직을 SDK 내부 규칙과 동일하게 맞춤 (사용자별 동의 키 사용, 저장된 userName 기준)
+  * setUseTermsPopup(isUse) : iOS 에서 isUse=true 인 경우 응답이 반환되지 않던 문제 수정
+* openEventWebView(eventId), showCustomTapActivity(url, deepLink) 응답 반환 처리 추가
+* Android TNK SDK 8.09.29 적용 

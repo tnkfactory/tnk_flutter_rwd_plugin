@@ -241,19 +241,32 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     result.success("success")
                 }
                 "setUserTermsAgree" -> {
-                    var agree = call.argument("agree") as? Boolean ?: false
+                    val agree = call.argument("agree") as? Boolean ?: false
                     Settings.setAgreePrivacy(mActivity, agree)
+                    result.success("success")
                 }
 
-                //fun getEventLink(eventId: Long, onResult: (EventLinkVo?) -> Unit) {
-                //fun openEventWebView(eventId: Long)
-                "getEventLink" -> {
-
+                "isUserTermsAgree" -> {
+                    result.success(Settings.isAgreePrivacy(mActivity))
                 }
-
                 "openEventWebView" -> {
-//                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
+                    val eventId: Int = (call.argument("eventId") as? Int ?: 0)
 //                    TnkEventActivity.startActivity(mActivity, eventId.toLong())
+                    TnkSession.runOnIoThread {
+                        offerwall.getEventLink(eventId.toLong()) { eventVo ->
+                            eventVo?.mkt_app_id?.let { link ->
+                                TnkSession.runOnMainThread {
+                                    TnkWebEventActivity.start(mActivity, link)
+                                    result.success("success")
+                                }
+                            } ?: run {
+                                Log.d("adJoin", "이벤트 정보가 존재하지 않습니다.")
+                                TnkSession.runOnMainThread {
+                                    result.success("fail")
+                                }
+                            }
+                        }
+                    }
                 }
 
                 "showCustomTapActivity" -> {
@@ -272,6 +285,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 //                    TnkCustomTabActivityHelper.openCustomTab(
 //                        mActivity, customTabsIntent, Uri.parse(finalUrl), TnkWebviewFallback()
 //                    )
+                    // 구현부가 비활성화되어 있으므로 실패로 응답한다.
+                    result.success("fail")
                 }
 
                 "setCustomUnitIcon" -> {
@@ -419,6 +434,7 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
                 }
 
+                else -> result.notImplemented()
 
             }
         } catch (e: Exception) {

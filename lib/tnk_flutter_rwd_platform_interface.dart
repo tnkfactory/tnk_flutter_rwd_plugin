@@ -89,6 +89,9 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<String?> setUserTermsAgree(bool agree) {
     throw UnimplementedError('setUserTermsAgree has not benn implemented');
   }
+  Future<bool?> isUserTermsAgree() {
+    throw UnimplementedError('isUserTermsAgree has not benn implemented');
+  }
   Future<String?> setCustomUnitIcon(HashMap<String,String>map) {
     throw UnimplementedError('setCustomUnitIcon has not benn implemented');
   }
