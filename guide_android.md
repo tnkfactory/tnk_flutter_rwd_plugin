@@ -91,9 +91,36 @@ Tnk 사이트에서 앱 등록하면 상단에 App ID 가 나타납니다. 이�
 ```
 
 
+### MainActivity 설정하기 (필수)
+
+TNK SDK는 오퍼월·약관 팝업·광고 상세를 표시할 때 `FragmentActivity`가 필요합니다.
+**`MainActivity`가 `FlutterFragmentActivity`를 상속하도록 반드시 변경해주세요.**
+
+Flutter 기본 템플릿의 `FlutterActivity`는 `FragmentActivity`를 상속하지 않습니다.
+그대로 두면 플러그인이 Activity에 연결되는 시점에 오류 로그가 남고, 오퍼월·약관 팝업·광고 상세가 동작하지 않습니다.
+
+`{projectroot}/android/app/src/main/kotlin/.../MainActivity.kt`
+
+```kotlin
+package com.example.myapp
+
+import io.flutter.embedding.android.FlutterFragmentActivity   // FlutterActivity 아님
+
+class MainActivity : FlutterFragmentActivity()
+```
+
+Java를 사용하는 경우도 동일하게 `io.flutter.embedding.android.FlutterFragmentActivity`를 상속합니다.
+
+> 설정하지 않으면 `presentAdDetailView`, `adJoin`, `adAction`, `getPlacementJsonData`,
+> `showMyEarnPointList` 호출 시
+> `{"res_code":"-1","res_message":"MainActivity 가 FlutterFragmentActivity 를 상속해야 ..."}`
+> 형태의 실패 응답이 반환됩니다.
+
+---
+
 ### 라이브러리 등록
 
-TNK SDK(`com.tnkfactory:rwd:8.09.10`)는 TNK Maven 저장소에서 제공됩니다.
+TNK SDK(`com.tnkfactory:rwd:8.09.31`)는 TNK Maven 저장소에서 제공됩니다.
 
 프로젝트 파일 내에 `{projectroot}/android/build.gradle` 파일에 아래와 같이 저장소를 추가합니다.
 
@@ -314,6 +341,40 @@ await TnkFlutterRwd().showAdList("미션 수행하기");
 
 ### 다. 광고 상세 / 참여
 
+#### 공통 응답 형식
+
+`presentAdDetailView`, `adJoin`, `adAction` 은 아래 형태의 JSON 문자열을 반환합니다.
+호출은 항상 응답을 반환하므로 `await` 가 멈추지 않습니다.
+
+```json
+{ "res_code": "1", "res_message": "success" }
+```
+
+| res_code | 의미 | 처리 권장 |
+| -------- | ---- | -------- |
+| `"1"` | 성공 | 정상 처리 |
+| `"-2"` | 사용자가 약관 동의 팝업에서 **취소**함 | 오류가 아닌 사용자 선택이므로 **에러 표시하지 않기** |
+| `"-1"` | Activity 미연결 또는 `FlutterFragmentActivity` 미설정 | 설정 확인 필요 |
+| 그 외 | SDK/서버 오류 코드 | `res_message` 표시 |
+
+##### 적용예시
+
+```dart
+String? raw = await TnkFlutterRwd().adAction(227796);
+final res = jsonDecode(raw ?? "{}");
+
+switch (res["res_code"]) {
+  case "1":
+    break;                       // 성공
+  case "-2":
+    break;                       // 약관 취소 - 아무것도 하지 않음
+  default:
+    print("실패: ${res["res_message"]}");
+}
+```
+
+---
+
 #### presentAdDetailView
 
 광고 상세 화면을 표시합니다. 상세 페이지가 없는 광고 타입도 상세 화면으로 이동합니다.
@@ -496,7 +557,7 @@ Future<String?> showMyEarnPointList(HashMap<String, dynamic>? map)
 
 | 파라메터 | 내용 |
 | ------- | ---- |
-| map | `"type"` (int) 키로 표시 타입 지정. Android에서는 현재 type 값과 무관하게 적립내역 메뉴로 이동합니다. map은 null이 아니어야 합니다. |
+| map | `"type"` (int) 키로 표시 타입 지정. Android에서는 현재 type 값과 무관하게 적립내역 메뉴로 이동합니다. map을 전달하지 않으면 `"fail"` 이 반환됩니다. |
 
 ##### 적용예시
 
@@ -608,7 +669,8 @@ await TnkFlutterRwd().setCustomUnitIcon(paramMap);
 
 #### setCustomUIDefault / setCustomUI (iOS 전용)
 
-오퍼월 UI 색상 커스터마이징 API는 **iOS에서만 지원**됩니다. Android는 네이티브 SDK의 기본 UI가 적용되며, 해당 메서드를 호출해도 동작하지 않습니다 (`await` 시 응답이 반환되지 않으므로 Android에서는 호출하지 마세요. `Platform.isIOS` 분기를 권장합니다).
+오퍼월 UI 색상 커스터마이징 API는 **iOS에서만 지원**됩니다. Android는 네이티브 SDK의 기본 UI가 적용됩니다.
+Android에서 호출하면 `MissingPluginException` 이 발생하므로 `Platform.isIOS` 로 분기해주세요.
 
 자세한 사용법은 [iOS 가이드](guide_ios.md)를 참고하세요.
 
@@ -685,7 +747,8 @@ await TnkFlutterRwd().openTnkEventScheme("tnkscheme://offerwall?title=무료충�
 
 오퍼월 또는 광고 상세 화면을 코드로 닫습니다.
 
-> **iOS 전용** — Android는 오퍼월이 별도 Activity로 표시되므로 이 API가 구현되어 있지 않습니다. Android에서는 사용자가 뒤로가기로 화면을 닫으며, 닫힘 시점은 `activity_finish` 이벤트로 전달됩니다. Android에서 `await`로 호출하면 응답이 반환되지 않으므로 `Platform.isIOS` 분기를 권장합니다.
+> **iOS 전용** — Android는 오퍼월이 별도 Activity로 표시되므로 이 API가 구현되어 있지 않습니다. Android에서는 사용자가 뒤로가기로 화면을 닫으며, 닫힘 시점은 `activity_finish` 이벤트로 전달됩니다.
+> Android에서 호출하면 `MissingPluginException` 이 발생하므로 `Platform.isIOS` 분기를 권장합니다.
 
 ##### Methods
 
@@ -940,6 +1003,14 @@ Placement View에서 광고 아이템 클릭 시 호출합니다. 광고 상세 
 ```dart
 Future<String?> onItemClick(String app_id)
 ```
+
+##### 응답 형식
+
+`{"res_code":"1","res_message":"success"}` 형태의 JSON 문자열을 반환합니다.
+실패 시 `res_code` 는 `"-1"` 이며 `res_message` 로 사유가 전달됩니다.
+
+> `getPlacementJsonData()` 로 목록을 먼저 조회해야 합니다.
+> 조회하지 않았거나 목록에 없는 `app_id` 를 전달하면 실패 응답이 반환됩니다.
 
 ##### 적용예시
 

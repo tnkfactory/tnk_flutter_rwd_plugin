@@ -136,4 +136,18 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * iOS 약관동의 저장/조회 로직을 SDK 내부 규칙과 동일하게 맞춤 (사용자별 동의 키 사용, 저장된 userName 기준)
   * setUseTermsPopup(isUse) : iOS 에서 isUse=true 인 경우 응답이 반환되지 않던 문제 수정
 * openEventWebView(eventId), showCustomTapActivity(url, deepLink) 응답 반환 처리 추가
-* Android TNK SDK 8.09.29 적용 
+* Android TNK SDK 8.09.29 적용
+
+## 0.8.4
+* Android : 응답이 반환되지 않아 Future 가 완료되지 않던 문제 수정
+  * 약관 동의 팝업에서 취소한 경우 (presentAdDetailView / adJoin / adAction) — `res_code` `"-2"` 로 반환
+  * getQueryPoint / purchaseItem / withdrawPoints 의 서버 오류 및 중복 호출
+  * onItemClick 에 목록에 없는 app_id 를 전달한 경우
+  * showEventWebPage / showMyEarnPointList 의 파라미터 누락
+  * showAdListWithPlacement 내부 예외
+* Android : 응답을 항상 메인 스레드에서 1회만 반환하도록 보장, 응답 대기 한계 시간 추가
+* Android : 화면 회전 후 이전 Activity 를 참조하던 문제 수정, 엔진 분리 시 리스너 해제
+* Android : MainActivity 가 FlutterFragmentActivity 를 상속하지 않을 때 발생하던 크래시 제거 (실패 응답으로 대체)
+* Android : getPlacementJsonData 에서 광고가 1건일 때 실패로 처리되던 문제 수정
+* Android TNK SDK 8.09.31 적용
+* guide_android.md 갱신 (MainActivity 설정 필수 항목, 광고 참여 API 응답 형식 추가)
