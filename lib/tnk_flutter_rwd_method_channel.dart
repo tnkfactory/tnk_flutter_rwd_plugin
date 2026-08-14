@@ -159,8 +159,18 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
   }
 
   @override
-  Future<String?> adJoin(int appId, [int actionId = 0]) async {
-    final version = await methodChannel.invokeMethod<String>('adJoin', <String, dynamic>{"app_id": appId, "action_id": actionId});
+  Future<String?> adJoin(int appId,
+      [int actionId = 0,
+      bool useTopViewController = false,
+      bool fullscreen = false]) async {
+    // use_top_vc / fullscreen 은 iOS 에서만 사용한다.
+    // Android 는 읽지 않으므로 값이 추가돼도 영향이 없다.
+    final version = await methodChannel.invokeMethod<String>('adJoin', <String, dynamic>{
+      "app_id": appId,
+      "action_id": actionId,
+      "use_top_vc": useTopViewController,
+      "fullscreen": fullscreen,
+    });
     return version;
   }
 

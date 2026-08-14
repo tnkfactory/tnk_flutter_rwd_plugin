@@ -397,21 +397,15 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
                    let argActionId = args["action_id"] as? Int
                 {
                     if argAppId > 0 {
-                        TnkSession.sharedInstance()?.adJoin(
-                            viewController!,
-                            appId: argAppId,
-                            fullscreen: false,
-                            actionId: argActionId
-                        ) {
-                            (isOkay, error) in
-                            if isOkay {
-                                print("광고 참여 성공")
-                                result("success")
-                            } else {
-                                print("광고 참여 실패 또는 취소됨")
-                                result("fail")
-                            }
-                        }
+                        // use_top_vc: true 면 최상단에 present 된 화면 위에 띄운다. (기본 false = 기존 동작)
+                        // fullscreen: true 면 바텀시트가 아니라 화면 전체로 표시한다.
+                        let useTopVC = args["use_top_vc"] as? Bool ?? false
+                        let fullscreen = args["fullscreen"] as? Bool ?? false
+                        adJoin(appId: argAppId,
+                               actionId: argActionId,
+                               useTopViewController: useTopVC,
+                               fullscreen: fullscreen,
+                               result: result)
                     } else {
                         result("fail - please check appId.. abnormal appId")
                     }
@@ -546,7 +540,10 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             if let args = call.arguments as? [String: Any],
                let map = args["map"] as? [String: Any]
             {
-                let type = (map["type"] ?? 0) as! Int
+                // map["type"] 은 현재 사용하지 않는다. (Android 도 moveToMyMenu(1) 고정)
+                // 예전에는 `as! Int` 로 강제 캐스팅했는데, 매체가 "1" 처럼 문자열로 넘기면
+                // NSTaggedPointerString -> NSNumber 캐스팅 실패로 크래시했다.
+                _ = map
 
                 self.sktAirUi = SktAirRwdPlus.initSession() as? SktAirRwdPlus
                 self.sktAirUi?.setDesignCustom()
@@ -574,6 +571,97 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             result("iOS method : " + call.method)
             break
 
+        }
+    }
+
+    /// `topMostViewController` 조회 결과.
+    private enum TopViewControllerLookup {
+        /// 최상단 뷰컨트롤러를 찾았다.
+        case found(UIViewController)
+        /// dismiss 가 진행 중이라 재시도를 예약했다. 호출부는 그대로 반환하면 된다.
+        case retryScheduled
+        /// rootViewController 자체가 없다.
+        case unavailable
+    }
+
+    /// 최상단에 present 된 뷰컨트롤러를 찾는다.
+    ///
+    /// dismiss 가 진행 중이면 완료를 기다렸다가 [retry] 를 호출하고 `.retryScheduled` 를 돌려준다.
+    /// (럭키이벤트 웹뷰가 닫히는 중에 광고를 띄우려는 경우가 여기 해당한다.)
+    private func topMostViewController(retry: @escaping () -> Void) -> TopViewControllerLookup {
+        guard let rootVC = UIApplication.shared.keyWindow?.rootViewController else {
+            return .unavailable
+        }
+
+        var topVC: UIViewController = rootVC
+        while let presented = topVC.presentedViewController {
+            if presented.isBeingDismissed {
+                if let coordinator = presented.transitionCoordinator {
+                    coordinator.animate(alongsideTransition: nil) { _ in retry() }
+                } else {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { retry() }
+                }
+                return .retryScheduled
+            }
+            topVC = presented
+        }
+        return .found(topVC)
+    }
+
+    /// 광고 참여.
+    ///
+    /// [useTopViewController] 가 `false` 면 기존처럼 rootViewController 를 부모로 쓴다.
+    /// 다른 화면이 present 된 상태에서는 root 의 view 가 window 계층에서 빠져 있어
+    /// 광고 화면이 뜨지 않으므로, 그런 경로에서는 `true` 로 호출해야 한다.
+    ///
+    /// [fullscreen] 이 `true` 면 SDK 가 광고 화면을 `overFullScreen` 으로 표시한다.
+    /// `false` 면 `pageSheet`(바텀시트) 로 표시된다.
+    private func adJoin(appId: Int,
+                        actionId: Int,
+                        useTopViewController: Bool,
+                        fullscreen: Bool,
+                        result: @escaping FlutterResult) {
+        let parentVC: UIViewController?
+
+        if useTopViewController {
+            switch topMostViewController(retry: { [weak self] in
+                self?.adJoin(appId: appId,
+                             actionId: actionId,
+                             useTopViewController: useTopViewController,
+                             fullscreen: fullscreen,
+                             result: result)
+            }) {
+            case .found(let topVC):
+                parentVC = topVC
+            case .retryScheduled:
+                // dismiss 완료 후 다시 들어온다. result 는 그때 호출된다.
+                return
+            case .unavailable:
+                parentVC = nil
+            }
+        } else {
+            parentVC = UIApplication.shared.keyWindow?.rootViewController
+        }
+
+        guard let parentVC else {
+            result("fail - no view controller")
+            return
+        }
+
+        TnkSession.sharedInstance()?.adJoin(
+            parentVC,
+            appId: appId,
+            fullscreen: fullscreen,
+            actionId: actionId
+        ) {
+            (isOkay, error) in
+            if isOkay {
+                print("광고 참여 성공")
+                result("success")
+            } else {
+                print("광고 참여 실패 또는 취소됨")
+                result("fail")
+            }
         }
     }
 

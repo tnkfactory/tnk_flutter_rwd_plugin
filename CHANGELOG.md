@@ -151,3 +151,18 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
 * Android : getPlacementJsonData 에서 광고가 1건일 때 실패로 처리되던 문제 수정
 * Android TNK SDK 8.09.31 적용
 * guide_android.md 갱신 (MainActivity 설정 필수 항목, 광고 참여 API 응답 형식 추가)
+
+## 0.8.5
+* iOS : adJoin 에 `useTopViewController` 옵션 추가 (기본값 `false`, 기존 동작 유지)
+  * `true` 로 호출하면 최상단에 present 된 화면 위에 광고를 띄웁니다.
+  * 다른 화면이 present 된 상태에서 기존 동작으로 호출하면 rootViewController 의 view 가
+    window 계층에서 빠져 있어 광고가 표시되지 않고, 그런데도 성공으로 응답되던 문제에 대한 대응입니다.
+  * dismiss 가 진행 중이면 완료 후 자동으로 재시도합니다.
+* iOS : adJoin 에 `fullscreen` 옵션 추가 (기본값 `false`, 기존 동작 유지)
+  * `true` 로 호출하면 바텀시트(`pageSheet`) 가 아니라 `overFullScreen` 으로 표시합니다.
+  * 상단 여백과 둥근 모서리는 광고 상세 화면 내부 레이아웃이라 이 옵션으로는 바뀌지 않습니다.
+* iOS : showMyEarnPointList 크래시 수정
+  * `map["type"]` 을 `as! Int` 로 강제 캐스팅해, 매체가 `{"type": "1"}` 처럼 문자열로 넘기면
+    `Could not cast value of type 'NSTaggedPointerString' to 'NSNumber'` 로 죽었습니다.
+  * 이 값은 iOS·Android 모두 사용하지 않으므로 캐스팅을 제거했습니다.
+* guide_ios.md 갱신 (adJoin 파라메터 및 주의사항 추가)

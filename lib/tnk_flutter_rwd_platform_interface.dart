@@ -110,7 +110,12 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<String?> presentAdDetailView(int appId, [int actionId = 0]) {
     throw UnimplementedError('presentAdDetailView has not benn implemented');
   }
-  Future<String?> adJoin(int appId, [int actionId = 0]) {
+  /// [useTopViewController] / [fullscreen] 는 iOS 전용.
+  /// 자세한 내용은 `TnkFlutterRwd.adJoin` 참고.
+  Future<String?> adJoin(int appId,
+      [int actionId = 0,
+      bool useTopViewController = false,
+      bool fullscreen = false]) {
     throw UnimplementedError('adJoin has not benn implemented');
   }
 

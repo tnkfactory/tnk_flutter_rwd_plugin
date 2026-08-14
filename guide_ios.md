@@ -260,7 +260,7 @@ await TnkFlutterRwd().presentAdDetailView(809977);
 ##### Method
 
 ```dart
-Future<String?> adJoin(int appId, [int actionId = 0])
+Future<String?> adJoin(int appId, [int actionId = 0, bool useTopViewController = false, bool fullscreen = false])
 ```
 
 ##### Parameters
@@ -269,12 +269,51 @@ Future<String?> adJoin(int appId, [int actionId = 0])
 | ------- | ---- |
 | appId | 광고 ID (0보다 큰 값) |
 | actionId | (선택) 액션 ID. 기본값 0 |
+| useTopViewController | (선택) 광고 화면을 띄울 부모 뷰컨트롤러 선택. 기본값 `false` |
+| fullscreen | (선택) 광고 화면의 모달 표시 방식. 기본값 `false` |
+
+`fullscreen`
+
+| 값 | modalPresentationStyle | 표시 |
+| --- | ---- | ---- |
+| `false` (기본) | `pageSheet` | 아래에서 올라오는 바텀시트. 아래로 끌어 닫을 수 있습니다. |
+| `true` | `overFullScreen` | 화면 전체를 덮습니다. 끌어 닫기 없음. |
+
+> 상단 여백과 둥근 모서리는 광고 상세 화면(`AdDetailViewController`) 내부 레이아웃이라
+> `fullscreen` 으로는 바뀌지 않습니다. safe area 아래부터 콘텐츠가 그려집니다.
+
+`useTopViewController`
+
+| 값 | 동작 |
+| --- | ---- |
+| `false` (기본) | `rootViewController` 위에 띄웁니다. |
+| `true` | 현재 최상단에 present 된 화면 위에 띄웁니다. |
 
 ##### 적용예시
 
 ```dart
 await TnkFlutterRwd().setUserName("my_user");
 await TnkFlutterRwd().adJoin(227796);
+```
+
+##### 주의 — 다른 화면이 떠 있는 상태에서 호출할 때
+
+웹뷰·모달 등 **다른 화면이 이미 present 된 상태**에서 기본값(`false`)으로 호출하면
+`rootViewController` 의 view 가 window 계층에서 빠져 있어 광고 화면이 표시되지 않습니다.
+콘솔에는 아래 경고만 남고, `adJoin` 은 **성공으로 응답**하므로 호출부에서는 실패를 알 수 없습니다.
+
+```
+Attempt to present <TnkRwdSdk2.AdDetailViewController> on <UINavigationController>
+whose view is not in the window hierarchy.
+```
+
+럭키이벤트 웹뷰의 `ad_join` 스킴 콜백처럼 다른 화면 위에서 호출하는 경로에서는
+`useTopViewController` 에 `true` 를 넘기십시오. dismiss 가 진행 중이면 완료를 기다렸다가
+자동으로 다시 시도합니다.
+
+```dart
+// 럭키이벤트 웹뷰에서 ad_join 스킴을 받은 경우
+await TnkFlutterRwd().adJoin(appId, actionId, true);
 ```
 
 ---
