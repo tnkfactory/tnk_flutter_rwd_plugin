@@ -166,3 +166,10 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
     `Could not cast value of type 'NSTaggedPointerString' to 'NSNumber'` 로 죽었습니다.
   * 이 값은 iOS·Android 모두 사용하지 않으므로 캐스팅을 제거했습니다.
 * guide_ios.md 갱신 (adJoin 파라메터 및 주의사항 추가)
+
+## 0.8.6
+* iOS : podspec 정보 정정
+  * `s.version` 이 0.7.8 에 멈춰 있어 매체 프로젝트의 Podfile.lock 에 실제와 다른
+    버전이 기록되던 문제 수정 (pubspec 버전과 동일하게 유지)
+  * `s.platform` 을 9.0 -> 12.0 으로 정정
+    (벤더링하는 TnkRwdSdk2.xcframework 의 MinimumOSVersion 이 12.0 이다)
