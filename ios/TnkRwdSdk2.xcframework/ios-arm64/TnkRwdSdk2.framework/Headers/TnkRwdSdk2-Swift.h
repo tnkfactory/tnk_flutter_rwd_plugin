@@ -1737,6 +1737,35 @@ SWIFT_CLASS("_TtC10TnkRwdSdk225RecommendItemHeaderLayout")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+SWIFT_CLASS("_TtC10TnkRwdSdk222ReveAdDetailViewLayout")
+@interface ReveAdDetailViewLayout : DefaultAdDetailViewLayout
+- (AdDetailView * _Nullable)titleView:(CGRect)frame SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC10TnkRwdSdk218ReveAdListItemView")
+@interface ReveAdListItemView : AdListItemView
+- (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder SWIFT_UNAVAILABLE;
+@end
+
+SWIFT_CLASS("_TtC10TnkRwdSdk224ReveAdListItemViewLayout")
+@interface ReveAdListItemViewLayout : AdListItemViewLayout
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC10TnkRwdSdk219ReveDetailTitleView")
+@interface ReveDetailTitleView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+SWIFT_CLASS("_TtC10TnkRwdSdk212ReveItemView")
+@interface ReveItemView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
 SWIFT_CLASS("_TtC10TnkRwdSdk223RightIconAdListItemView")
 @interface RightIconAdListItemView : BaseAdListItemViewInternal
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
@@ -2145,9 +2174,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) TnkSession * _Nullable
 - (NSDictionary<NSString *, id> * _Nonnull)getAdItemWithAppId:(NSInteger)appId SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)getAdItemToJsonWithAppId:(NSInteger)appId SWIFT_WARN_UNUSED_RESULT;
 - (void)presentAdDetailView:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId subAppId:(NSString * _Nullable)subAppId navigationPush:(BOOL)navigationPush pageAnimated:(BOOL)pageAnimated fullscreen:(BOOL)fullscreen actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion apiStartCompletion:(void (^ _Nullable)(void))apiStartCompletion apiEndCompletion:(void (^ _Nullable)(void))apiEndCompletion;
-- (void)adJoin:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId subAppId:(NSString * _Nullable)subAppId navigationPush:(BOOL)navigationPush pageAnimated:(BOOL)pageAnimated fullscreen:(BOOL)fullscreen actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion apiStartCompletion:(void (^ _Nullable)(void))apiStartCompletion apiEndCompletion:(void (^ _Nullable)(void))apiEndCompletion;
-- (void)adAction:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId subAppId:(NSString * _Nullable)subAppId navigationPush:(BOOL)navigationPush pageAnimated:(BOOL)pageAnimated fullscreen:(BOOL)fullscreen forceJoinAction:(BOOL)forceJoinAction actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion apiStartCompletion:(void (^ _Nullable)(void))apiStartCompletion apiEndCompletion:(void (^ _Nullable)(void))apiEndCompletion;
+- (void)adJoin:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId subAppId:(NSString * _Nullable)subAppId navigationPush:(BOOL)navigationPush pageAnimated:(BOOL)pageAnimated fullscreen:(BOOL)fullscreen actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion outActionCompletion:(void (^ _Nullable)(void))outActionCompletion apiStartCompletion:(void (^ _Nullable)(void))apiStartCompletion apiEndCompletion:(void (^ _Nullable)(void))apiEndCompletion;
+- (void)adAction:(UIViewController * _Nonnull)viewController appId:(NSInteger)appId subAppId:(NSString * _Nullable)subAppId navigationPush:(BOOL)navigationPush pageAnimated:(BOOL)pageAnimated fullscreen:(BOOL)fullscreen forceJoinAction:(BOOL)forceJoinAction actionId:(NSInteger)actionId completion:(void (^ _Nonnull)(BOOL, NSError * _Nullable))completion outActionCompletion:(void (^ _Nullable)(void))outActionCompletion apiStartCompletion:(void (^ _Nullable)(void))apiStartCompletion apiEndCompletion:(void (^ _Nullable)(void))apiEndCompletion;
 - (void)applicationStarted;
+/// 매달 1회씩 실행에 대한 지급 요청(requestPayForStart)을 서버에 한다.
+/// applicationStarted() 와 별개로 동작하며, 매일 호출해도 한 달에 한번만 서버로 요청이 나간다.
+/// 이번 달에 이미 호출된 경우에는 revisit 을 호출한다.
+- (void)appStartedOnceAMonth;
 - (void)actionCompleted;
 - (void)actionCompletedWithActionName:(NSString * _Nonnull)actionName;
 - (void)setTrackingEnabled:(BOOL)enabled;
@@ -2234,6 +2267,9 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkStyles * 
 @property (nonatomic) BOOL isPresentAnimated;
 @property (nonatomic) BOOL isHeaderViewHidden;
 @property (nonatomic) BOOL isNumberFormat;
+@property (nonatomic) BOOL isKeepDetailView;
+@property (nonatomic) BOOL isSameDeviceFont;
+@property (nonatomic) BOOL isSameDeviceFontType;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

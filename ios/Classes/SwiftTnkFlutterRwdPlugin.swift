@@ -688,6 +688,7 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
 
         if sktAirUi != nil {
             sktAirUi?.offerwallListener = self
+            sktAirUi?.landingData = landingData
             sktAirUi?.showOfferwall(topVC)
             print("### show custom ui")
         } else {

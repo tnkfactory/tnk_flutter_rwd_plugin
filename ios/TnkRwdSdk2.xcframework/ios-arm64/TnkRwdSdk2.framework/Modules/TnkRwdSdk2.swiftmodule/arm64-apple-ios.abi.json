@@ -8820,6 +8820,286 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "isKeepDetailView",
+            "printedName": "isKeepDetailView",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(py)isKeepDetailView",
+            "mangledName": "$s10TnkRwdSdk20A6StylesC16isKeepDetailViewSbvp",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(im)isKeepDetailView",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC16isKeepDetailViewSbvg",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(im)setIsKeepDetailView:",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC16isKeepDetailViewSbvs",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk20A6StylesC16isKeepDetailViewSbvM",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC16isKeepDetailViewSbvM",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isSameDeviceFont",
+            "printedName": "isSameDeviceFont",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(py)isSameDeviceFont",
+            "mangledName": "$s10TnkRwdSdk20A6StylesC16isSameDeviceFontSbvp",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(im)isSameDeviceFont",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC16isSameDeviceFontSbvg",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(im)setIsSameDeviceFont:",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC16isSameDeviceFontSbvs",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk20A6StylesC16isSameDeviceFontSbvM",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC16isSameDeviceFontSbvM",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isSameDeviceFontType",
+            "printedName": "isSameDeviceFontType",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(py)isSameDeviceFontType",
+            "mangledName": "$s10TnkRwdSdk20A6StylesC20isSameDeviceFontTypeSbvp",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(im)isSameDeviceFontType",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC20isSameDeviceFontTypeSbvg",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(im)setIsSameDeviceFontType:",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC20isSameDeviceFontTypeSbvs",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk20A6StylesC20isSameDeviceFontTypeSbvM",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC20isSameDeviceFontTypeSbvM",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -34367,7 +34647,7 @@
           {
             "kind": "Function",
             "name": "adJoin",
-            "printedName": "adJoin(_:appId:subAppId:navigationPush:pageAnimated:fullscreen:actionId:completion:apiStartCompletion:apiEndCompletion:)",
+            "printedName": "adJoin(_:appId:subAppId:navigationPush:pageAnimated:fullscreen:actionId:completion:outActionCompletion:apiStartCompletion:apiEndCompletion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -34519,11 +34799,37 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkSession(im)adJoin:appId:subAppId:navigationPush:pageAnimated:fullscreen:actionId:completion:apiStartCompletion:apiEndCompletion:",
-            "mangledName": "$s10TnkRwdSdk20A7SessionC6adJoin_5appId06subAppH014navigationPush12pageAnimated10fullscreen06actionH010completion18apiStartCompletion0r3EndT0ySo16UIViewControllerC_SiSSSgS3bSiySb_s5Error_pSgtcyycSgAStF",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkSession(im)adJoin:appId:subAppId:navigationPush:pageAnimated:fullscreen:actionId:completion:outActionCompletion:apiStartCompletion:apiEndCompletion:",
+            "mangledName": "$s10TnkRwdSdk20A7SessionC6adJoin_5appId06subAppH014navigationPush12pageAnimated10fullscreen06actionH010completion19outActionCompletion08apiStartT00u3EndT0ySo16UIViewControllerC_SiSSSgS3bSiySb_s5Error_pSgtcyycSgA2TtF",
             "moduleName": "TnkRwdSdk2",
             "declAttributes": [
               "AccessControl",
@@ -34534,7 +34840,7 @@
           {
             "kind": "Function",
             "name": "adAction",
-            "printedName": "adAction(_:appId:subAppId:navigationPush:pageAnimated:fullscreen:forceJoinAction:actionId:completion:apiStartCompletion:apiEndCompletion:)",
+            "printedName": "adAction(_:appId:subAppId:navigationPush:pageAnimated:fullscreen:forceJoinAction:actionId:completion:outActionCompletion:apiStartCompletion:apiEndCompletion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -34693,11 +34999,37 @@
                 ],
                 "hasDefaultArg": true,
                 "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkSession(im)adAction:appId:subAppId:navigationPush:pageAnimated:fullscreen:forceJoinAction:actionId:completion:apiStartCompletion:apiEndCompletion:",
-            "mangledName": "$s10TnkRwdSdk20A7SessionC8adAction_5appId06subAppH014navigationPush12pageAnimated10fullscreen09forceJoinF006actionH010completion18apiStartCompletion0t3EndV0ySo16UIViewControllerC_SiSSSgS4bSiySb_s5Error_pSgtcyycSgATtF",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkSession(im)adAction:appId:subAppId:navigationPush:pageAnimated:fullscreen:forceJoinAction:actionId:completion:outActionCompletion:apiStartCompletion:apiEndCompletion:",
+            "mangledName": "$s10TnkRwdSdk20A7SessionC8adAction_5appId06subAppH014navigationPush12pageAnimated10fullscreen09forceJoinF006actionH010completion03outF10Completion08apiStartU00v3EndU0ySo16UIViewControllerC_SiSSSgS4bSiySb_s5Error_pSgtcyycSgA2UtF",
             "moduleName": "TnkRwdSdk2",
             "declAttributes": [
               "AccessControl",
@@ -34719,6 +35051,28 @@
             "declKind": "Func",
             "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkSession(im)applicationStarted",
             "mangledName": "$s10TnkRwdSdk20A7SessionC18applicationStartedyyF",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "appStartedOnceAMonth",
+            "printedName": "appStartedOnceAMonth()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkSession(im)appStartedOnceAMonth",
+            "mangledName": "$s10TnkRwdSdk20A7SessionC20appStartedOnceAMonthyyF",
             "moduleName": "TnkRwdSdk2",
             "declAttributes": [
               "AccessControl",
@@ -63408,6 +63762,38 @@
         "children": [
           {
             "kind": "Function",
+            "name": "getBundle",
+            "printedName": "getBundle()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Bundle?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk20A6ImagesC9getBundleSo8NSBundleCSgyFZ",
+            "mangledName": "$s10TnkRwdSdk20A6ImagesC9getBundleSo8NSBundleCSgyFZ",
+            "moduleName": "TnkRwdSdk2",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "getImage",
             "printedName": "getImage(ofName:)",
             "children": [
@@ -63441,8 +63827,7 @@
             "declAttributes": [
               "Final",
               "AccessControl",
-              "ObjC",
-              "RawDocComment"
+              "ObjC"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -71718,6 +72103,199 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "ReveDetailTitleView",
+        "printedName": "ReveDetailTitleView",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ReveDetailTitleView",
+                "printedName": "TnkRwdSdk2.ReveDetailTitleView",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveDetailTitleView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveDetailTitleView(im)initWithFrame:",
+            "mangledName": "$s10TnkRwdSdk219ReveDetailTitleViewC5frameACSo6CGRectV_tcfc",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithFrame:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TnkRwdSdk2.ReveDetailTitleView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ReveDetailTitleView",
+                    "printedName": "TnkRwdSdk2.ReveDetailTitleView",
+                    "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveDetailTitleView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveDetailTitleView(im)initWithCoder:",
+            "mangledName": "$s10TnkRwdSdk219ReveDetailTitleViewC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveDetailTitleView",
+        "mangledName": "$s10TnkRwdSdk219ReveDetailTitleViewC",
+        "moduleName": "TnkRwdSdk2",
+        "declAttributes": [
+          "Preconcurrency",
+          "Custom",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UIView",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -72156,6 +72734,465 @@
         "moduleName": "TnkRwdSdk2",
         "declAttributes": [
           "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ReveAdListItemView",
+        "printedName": "ReveAdListItemView",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "getIconImageView",
+            "printedName": "getIconImageView()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImageView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImageView",
+                    "printedName": "UIKit.UIImageView",
+                    "usr": "c:objc(cs)UIImageView"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk218ReveAdListItemViewC012getIconImageH0So07UIImageH0CSgyF",
+            "mangledName": "$s10TnkRwdSdk218ReveAdListItemViewC012getIconImageH0So07UIImageH0CSgyF",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "useImageFeed",
+            "printedName": "useImageFeed()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk218ReveAdListItemViewC12useImageFeedSbyF",
+            "mangledName": "$s10TnkRwdSdk218ReveAdListItemViewC12useImageFeedSbyF",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "useImageIcon",
+            "printedName": "useImageIcon()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk218ReveAdListItemViewC12useImageIconSbyF",
+            "mangledName": "$s10TnkRwdSdk218ReveAdListItemViewC12useImageIconSbyF",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setData",
+            "printedName": "setData(_:row:itemsPerPage:itemIndex:numberOfItems:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TnkRwdSdk2.AdItem?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AdItem",
+                    "printedName": "TnkRwdSdk2.AdItem",
+                    "usr": "c:@M@TnkRwdSdk2@objc(cs)AdItem"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk218ReveAdListItemViewC7setData_3row12itemsPerPage9itemIndex13numberOfItemsyAA0eG0CSg_S4itF",
+            "mangledName": "$s10TnkRwdSdk218ReveAdListItemViewC7setData_3row12itemsPerPage9itemIndex13numberOfItemsyAA0eG0CSg_S4itF",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveAdListItemView",
+        "mangledName": "$s10TnkRwdSdk218ReveAdListItemViewC",
+        "moduleName": "TnkRwdSdk2",
+        "declAttributes": [
+          "Preconcurrency",
+          "Custom",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:@M@TnkRwdSdk2@objc(cs)AdListItemView",
+        "hasMissingDesignatedInitializers": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "TnkRwdSdk2.AdListItemView",
+          "UIKit.UICollectionViewCell",
+          "UIKit.UICollectionReusableView",
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ReveItemView",
+        "printedName": "ReveItemView",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ReveItemView",
+                "printedName": "TnkRwdSdk2.ReveItemView",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveItemView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveItemView(im)initWithFrame:",
+            "mangledName": "$s10TnkRwdSdk212ReveItemViewC5frameACSo6CGRectV_tcfc",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithFrame:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TnkRwdSdk2.ReveItemView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ReveItemView",
+                    "printedName": "TnkRwdSdk2.ReveItemView",
+                    "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveItemView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveItemView(im)initWithCoder:",
+            "mangledName": "$s10TnkRwdSdk212ReveItemViewC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveItemView",
+        "mangledName": "$s10TnkRwdSdk212ReveItemViewC",
+        "moduleName": "TnkRwdSdk2",
+        "declAttributes": [
+          "Preconcurrency",
+          "Custom",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UIView",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
         ]
       },
       {
@@ -72606,6 +73643,116 @@
         "name": "SktAirRwdPlus",
         "printedName": "SktAirRwdPlus",
         "children": [
+          {
+            "kind": "Var",
+            "name": "landingData",
+            "printedName": "landingData",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10TnkRwdSdk206SktAirB4PlusC11landingDataSSSgvp",
+            "mangledName": "$s10TnkRwdSdk206SktAirB4PlusC11landingDataSSSgvp",
+            "moduleName": "TnkRwdSdk2",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk206SktAirB4PlusC11landingDataSSSgvg",
+                "mangledName": "$s10TnkRwdSdk206SktAirB4PlusC11landingDataSSSgvg",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk206SktAirB4PlusC11landingDataSSSgvs",
+                "mangledName": "$s10TnkRwdSdk206SktAirB4PlusC11landingDataSSSgvs",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk206SktAirB4PlusC11landingDataSSSgvM",
+                "mangledName": "$s10TnkRwdSdk206SktAirB4PlusC11landingDataSSSgvM",
+                "moduleName": "TnkRwdSdk2",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
           {
             "kind": "Function",
             "name": "initSession",
@@ -110373,6 +111520,147 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "ReveAdListItemViewLayout",
+        "printedName": "ReveAdListItemViewLayout",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ReveAdListItemViewLayout",
+                "printedName": "TnkRwdSdk2.ReveAdListItemViewLayout",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveAdListItemViewLayout"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveAdListItemViewLayout(im)init",
+            "mangledName": "$s10TnkRwdSdk224ReveAdListItemViewLayoutCACycfc",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "viewSize",
+            "printedName": "viewSize(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10TnkRwdSdk224ReveAdListItemViewLayoutC8viewSizeySo6CGSizeVAFF",
+            "mangledName": "$s10TnkRwdSdk224ReveAdListItemViewLayoutC8viewSizeySo6CGSizeVAFF",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "declAttributes": [
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveAdListItemViewLayout",
+        "mangledName": "$s10TnkRwdSdk224ReveAdListItemViewLayoutC",
+        "moduleName": "TnkRwdSdk2",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:@M@TnkRwdSdk2@objc(cs)AdListItemViewLayout",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "TnkRwdSdk2.AdListItemViewLayout",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -113363,6 +114651,159 @@
         "moduleName": "TnkRwdSdk2",
         "declAttributes": [
           "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ReveAdDetailViewLayout",
+        "printedName": "ReveAdDetailViewLayout",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "titleView",
+            "printedName": "titleView(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TnkRwdSdk2.AdDetailView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AdDetailView",
+                    "printedName": "TnkRwdSdk2.AdDetailView",
+                    "usr": "c:@M@TnkRwdSdk2@objc(cs)AdDetailView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveAdDetailViewLayout(im)titleView:",
+            "mangledName": "$s10TnkRwdSdk222ReveAdDetailViewLayoutC05titleG0yAA0efG0CSgSo6CGRectVF",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "objc_name": "titleView:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl",
+              "Override",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ReveAdDetailViewLayout",
+                "printedName": "TnkRwdSdk2.ReveAdDetailViewLayout",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveAdDetailViewLayout"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveAdDetailViewLayout(im)init",
+            "mangledName": "$s10TnkRwdSdk222ReveAdDetailViewLayoutCACycfc",
+            "moduleName": "TnkRwdSdk2",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@TnkRwdSdk2@objc(cs)ReveAdDetailViewLayout",
+        "mangledName": "$s10TnkRwdSdk222ReveAdDetailViewLayoutC",
+        "moduleName": "TnkRwdSdk2",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:@M@TnkRwdSdk2@objc(cs)DefaultAdDetailViewLayout",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "TnkRwdSdk2.DefaultAdDetailViewLayout",
+          "TnkRwdSdk2.AdDetailViewLayout",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
         ]
       },
       {
@@ -119976,6 +121417,27 @@
       "value": "false"
     },
     {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkStyles.swift",
+      "kind": "BooleanLiteral",
+      "offset": 26626,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkStyles.swift",
+      "kind": "BooleanLiteral",
+      "offset": 26686,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkStyles.swift",
+      "kind": "BooleanLiteral",
+      "offset": 26773,
+      "length": 5,
+      "value": "false"
+    },
+    {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/adlist\/AdListItemView.swift",
       "kind": "BooleanLiteral",
       "offset": 852,
@@ -121672,49 +123134,49 @@
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/TnkPreference.swift",
       "kind": "BooleanLiteral",
-      "offset": 7238,
+      "offset": 8723,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/TnkPreference.swift",
       "kind": "StringLiteral",
-      "offset": 7325,
+      "offset": 8810,
       "length": 16,
       "value": "\"tnkad2_revisit\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/TnkPreference.swift",
       "kind": "IntegerLiteral",
-      "offset": 7452,
+      "offset": 8937,
       "length": 4,
       "value": "3600"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/TnkPreference.swift",
       "kind": "IntegerLiteral",
-      "offset": 7471,
+      "offset": 8956,
       "length": 4,
       "value": "3600"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/TnkPreference.swift",
       "kind": "BooleanLiteral",
-      "offset": 7537,
+      "offset": 9022,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/TnkPreference.swift",
       "kind": "BooleanLiteral",
-      "offset": 7599,
+      "offset": 9084,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/TnkPreference.swift",
       "kind": "BooleanLiteral",
-      "offset": 7702,
+      "offset": 9187,
       "length": 4,
       "value": "true"
     },
@@ -121728,9 +123190,16 @@
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdDetailViewController.swift",
       "kind": "IntegerLiteral",
-      "offset": 4367,
+      "offset": 4423,
       "length": 3,
       "value": "300"
+    },
+    {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdDetailViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4706,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdNewsItem.swift",
@@ -123204,120 +124673,127 @@
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2332,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10753,
+      "offset": 11133,
       "length": 125,
       "value": "\"<AdDetailItem : \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10790,
+      "offset": 11170,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10807,
+      "offset": 11187,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10810,
+      "offset": 11190,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10825,
+      "offset": 11205,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10828,
+      "offset": 11208,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10843,
+      "offset": 11223,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10846,
+      "offset": 11226,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10858,
+      "offset": 11238,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10861,
+      "offset": 11241,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 10876,
+      "offset": 11256,
       "length": 1,
       "value": "\">\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13669,
+      "offset": 14049,
       "length": 71,
       "value": "\"<CampaignItem : \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13695,
+      "offset": 14075,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13711,
+      "offset": 14091,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13714,
+      "offset": 14094,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13728,
+      "offset": 14108,
       "length": 1,
       "value": "\" \""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/model\/AdDetailItem.swift",
       "kind": "StringLiteral",
-      "offset": 13738,
+      "offset": 14118,
       "length": 1,
       "value": "\">\""
     },
@@ -123491,141 +124967,148 @@
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1705,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "Dictionary",
-      "offset": 1730,
+      "offset": 1761,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 2494,
+      "offset": 2525,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 2560,
+      "offset": 2591,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 2623,
+      "offset": 2654,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 5215,
+      "offset": 5246,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 5278,
+      "offset": 5309,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 5338,
+      "offset": 5369,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "IntegerLiteral",
-      "offset": 5398,
+      "offset": 5429,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 7503,
+      "offset": 7746,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 7553,
+      "offset": 7796,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 7600,
+      "offset": 7843,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "IntegerLiteral",
-      "offset": 7647,
+      "offset": 7890,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 8354,
+      "offset": 8704,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 8406,
+      "offset": 8756,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 8455,
+      "offset": 8805,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 8510,
+      "offset": 8860,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "IntegerLiteral",
-      "offset": 8559,
+      "offset": 8909,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 20790,
+      "offset": 23544,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "BooleanLiteral",
-      "offset": 30415,
+      "offset": 33169,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/TnkSession.swift",
       "kind": "Array",
-      "offset": 30498,
+      "offset": 33252,
       "length": 2,
       "value": "[]"
     },
@@ -126075,7 +127558,7 @@
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/impl\/AdOfferwallView.swift",
       "kind": "IntegerLiteral",
-      "offset": 41840,
+      "offset": 42348,
       "length": 1,
       "value": "0"
     },
@@ -133767,1170 +135250,1191 @@
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
-      "kind": "StringLiteral",
-      "offset": 19841,
-      "length": 6,
-      "value": "\"5.88\""
+      "kind": "BooleanLiteral",
+      "offset": 19776,
+      "length": 5,
+      "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 19918,
+      "offset": 19879,
+      "length": 6,
+      "value": "\"5.94\""
+    },
+    {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 19975,
+      "length": 12,
+      "value": "\"TnkRwdSdk2\""
+    },
+    {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 20034,
+      "length": 8,
+      "value": "\"bundle\""
+    },
+    {
+      "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
+      "kind": "StringLiteral",
+      "offset": 20075,
       "length": 25,
       "value": "\"kakaopay_dummy_mdusernm\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 19988,
+      "offset": 20145,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "BooleanLiteral",
-      "offset": 20114,
+      "offset": 20271,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20214,
+      "offset": 20371,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20245,
+      "offset": 20402,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20333,
+      "offset": 20490,
       "length": 1,
       "value": "9"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20387,
+      "offset": 20544,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20423,
+      "offset": 20580,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20456,
+      "offset": 20613,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20488,
+      "offset": 20645,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20520,
+      "offset": 20677,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20555,
+      "offset": 20712,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20588,
+      "offset": 20745,
       "length": 3,
       "value": "100"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20673,
+      "offset": 20830,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20715,
+      "offset": 20872,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20792,
+      "offset": 20949,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20866,
+      "offset": 21023,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 20942,
+      "offset": 21099,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 21038,
+      "offset": 21195,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 21110,
+      "offset": 21267,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 21151,
+      "offset": 21308,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 21193,
+      "offset": 21350,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 21235,
+      "offset": 21392,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 21278,
+      "offset": 21435,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 21337,
+      "offset": 21494,
       "length": 2,
       "value": "-2"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "IntegerLiteral",
-      "offset": 21372,
+      "offset": 21529,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21412,
+      "offset": 21569,
       "length": 9,
       "value": "\"hdr_msg\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21456,
+      "offset": 21613,
       "length": 12,
       "value": "\"min_ad_cnt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21502,
+      "offset": 21659,
       "length": 11,
       "value": "\"multi_pnt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21547,
+      "offset": 21704,
       "length": 11,
       "value": "\"multi_cnt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21590,
+      "offset": 21747,
       "length": 9,
       "value": "\"evt_sdt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21631,
+      "offset": 21788,
       "length": 9,
       "value": "\"evt_edt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21678,
+      "offset": 21835,
       "length": 10,
       "value": "\"eimg_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21726,
+      "offset": 21883,
       "length": 11,
       "value": "\"eclck_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21773,
+      "offset": 21930,
       "length": 12,
       "value": "\"ctype_surl\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21822,
+      "offset": 21979,
       "length": 12,
       "value": "\"search_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 21985,
+      "offset": 22142,
       "length": 10,
       "value": "\"plcmt_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22033,
+      "offset": 22190,
       "length": 13,
       "value": "\"plcmt_title\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22084,
+      "offset": 22241,
       "length": 10,
       "value": "\"more_lbl\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22128,
+      "offset": 22285,
       "length": 11,
       "value": "\"cust_data\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22173,
+      "offset": 22330,
       "length": 8,
       "value": "\"result\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22215,
+      "offset": 22372,
       "length": 8,
       "value": "\"ret_cd\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22256,
+      "offset": 22413,
       "length": 9,
       "value": "\"ret_msg\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22301,
+      "offset": 22458,
       "length": 10,
       "value": "\"pub_info\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22346,
+      "offset": 22503,
       "length": 9,
       "value": "\"cat_set\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22390,
+      "offset": 22547,
       "length": 9,
       "value": "\"crt_set\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22429,
+      "offset": 22586,
       "length": 9,
       "value": "\"ad_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22474,
+      "offset": 22631,
       "length": 10,
       "value": "\"rec_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22526,
+      "offset": 22683,
       "length": 10,
       "value": "\"pop_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22569,
+      "offset": 22726,
       "length": 10,
       "value": "\"pop_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22612,
+      "offset": 22769,
       "length": 10,
       "value": "\"evt_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22658,
+      "offset": 22815,
       "length": 9,
       "value": "\"ad_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22701,
+      "offset": 22858,
       "length": 10,
       "value": "\"bnr_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22745,
+      "offset": 22902,
       "length": 8,
       "value": "\"app_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22783,
+      "offset": 22940,
       "length": 9,
       "value": "\"ad_type\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22823,
+      "offset": 22980,
       "length": 8,
       "value": "\"app_nm\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22862,
+      "offset": 23019,
       "length": 10,
       "value": "\"icon_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22904,
+      "offset": 23061,
       "length": 9,
       "value": "\"actn_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22947,
+      "offset": 23104,
       "length": 11,
       "value": "\"actn_desc\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 22990,
+      "offset": 23147,
       "length": 11,
       "value": "\"corp_desc\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23033,
+      "offset": 23190,
       "length": 11,
       "value": "\"join_desc\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23076,
+      "offset": 23233,
       "length": 9,
       "value": "\"img_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23117,
+      "offset": 23274,
       "length": 9,
       "value": "\"vdo_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23159,
+      "offset": 23316,
       "length": 10,
       "value": "\"vdo_mute\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23202,
+      "offset": 23359,
       "length": 10,
       "value": "\"vdo_skip\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23248,
+      "offset": 23405,
       "length": 11,
       "value": "\"cmpn_type\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23295,
+      "offset": 23452,
       "length": 11,
       "value": "\"cmpn_desc\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23340,
+      "offset": 23497,
       "length": 10,
       "value": "\"pnt_unit\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23385,
+      "offset": 23542,
       "length": 9,
       "value": "\"pnt_amt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23427,
+      "offset": 23584,
       "length": 12,
       "value": "\"multi_desc\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23477,
+      "offset": 23634,
       "length": 10,
       "value": "\"multi_yn\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23523,
+      "offset": 23680,
       "length": 15,
       "value": "\"multi_join_yn\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23577,
+      "offset": 23734,
       "length": 13,
       "value": "\"org_pnt_amt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23626,
+      "offset": 23783,
       "length": 11,
       "value": "\"prd_price\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23677,
+      "offset": 23834,
       "length": 11,
       "value": "\"org_price\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23727,
+      "offset": 23884,
       "length": 10,
       "value": "\"goods_no\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23767,
+      "offset": 23924,
       "length": 9,
       "value": "\"like_yn\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23809,
+      "offset": 23966,
       "length": 12,
       "value": "\"youtube_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23852,
+      "offset": 24009,
       "length": 10,
       "value": "\"app_desc\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23903,
+      "offset": 24060,
       "length": 11,
       "value": "\"check_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23949,
+      "offset": 24106,
       "length": 10,
       "value": "\"cnts_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 23995,
+      "offset": 24152,
       "length": 11,
       "value": "\"cnts_skip\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24087,
+      "offset": 24244,
       "length": 11,
       "value": "\"cnts_type\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24489,
+      "offset": 24646,
       "length": 9,
       "value": "\"cmpn_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24535,
+      "offset": 24692,
       "length": 10,
       "value": "\"cmpn_cnt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24578,
+      "offset": 24735,
       "length": 11,
       "value": "\"detail_yn\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24621,
+      "offset": 24778,
       "length": 8,
       "value": "\"mkt_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24665,
+      "offset": 24822,
       "length": 12,
       "value": "\"mkt_app_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24707,
+      "offset": 24864,
       "length": 9,
       "value": "\"apk_key\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24749,
+      "offset": 24906,
       "length": 12,
       "value": "\"webview_yn\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24796,
+      "offset": 24953,
       "length": 14,
       "value": "\"webview_type\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24840,
+      "offset": 24997,
       "length": 9,
       "value": "\"adid_yn\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24879,
+      "offset": 25036,
       "length": 9,
       "value": "\"os_type\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24922,
+      "offset": 25079,
       "length": 9,
       "value": "\"app_pkg\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 24988,
+      "offset": 25145,
       "length": 9,
       "value": "\"pay_pnt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25026,
+      "offset": 25183,
       "length": 8,
       "value": "\"pay_yn\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25066,
+      "offset": 25223,
       "length": 9,
       "value": "\"pay_cnt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25106,
+      "offset": 25263,
       "length": 8,
       "value": "\"pay_dt\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25149,
+      "offset": 25306,
       "length": 9,
       "value": "\"btn_lbl\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25190,
+      "offset": 25347,
       "length": 11,
       "value": "\"left_hour\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25235,
+      "offset": 25392,
       "length": 11,
       "value": "\"valid_lbl\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25280,
+      "offset": 25437,
       "length": 8,
       "value": "\"cat_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25319,
+      "offset": 25476,
       "length": 8,
       "value": "\"cat_nm\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25358,
+      "offset": 25515,
       "length": 10,
       "value": "\"cat_type\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25398,
+      "offset": 25555,
       "length": 9,
       "value": "\"cat_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25446,
+      "offset": 25603,
       "length": 13,
       "value": "\"filter_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25491,
+      "offset": 25648,
       "length": 11,
       "value": "\"filter_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25536,
+      "offset": 25693,
       "length": 11,
       "value": "\"filter_nm\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25580,
+      "offset": 25737,
       "length": 12,
       "value": "\"filter_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25631,
+      "offset": 25788,
       "length": 8,
       "value": "\"crt_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25675,
+      "offset": 25832,
       "length": 10,
       "value": "\"crt_type\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25722,
+      "offset": 25879,
       "length": 11,
       "value": "\"crt_title\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25770,
+      "offset": 25927,
       "length": 19,
       "value": "\"accpt_filter_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25825,
+      "offset": 25982,
       "length": 10,
       "value": "\"pos_type\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25870,
+      "offset": 26027,
       "length": 8,
       "value": "\"ord_no\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25910,
+      "offset": 26067,
       "length": 11,
       "value": "\"layout_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 25951,
+      "offset": 26108,
       "length": 13,
       "value": "\"app_id_list\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26001,
+      "offset": 26158,
       "length": 8,
       "value": "\"bnr_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26043,
+      "offset": 26200,
       "length": 8,
       "value": "\"bnr_nm\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26083,
+      "offset": 26240,
       "length": 10,
       "value": "\"clck_url\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26127,
+      "offset": 26284,
       "length": 3,
       "value": "\"I\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26159,
+      "offset": 26316,
       "length": 3,
       "value": "\"W\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26202,
+      "offset": 26359,
       "length": 54,
       "value": "\"https:\/\/ap.tnkfactory.com\/tnk\/ad.icon.main?app_id=%d\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26305,
+      "offset": 26462,
       "length": 53,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/support.helpv2.main?\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26361,
+      "offset": 26518,
       "length": 53,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/support.helpv2.main?\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26467,
+      "offset": 26624,
       "length": 13,
       "value": "\"action=rwd&\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26530,
+      "offset": 26687,
       "length": 13,
       "value": "\"action=faq&\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26594,
+      "offset": 26751,
       "length": 14,
       "value": "\"action=main&\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26757,
+      "offset": 26914,
       "length": 69,
       "value": "\"https:\/\/www.tnpick.com\/sho\/api.redr.main?action=tnk_cpsmy&a=%@&n=%@\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26909,
+      "offset": 27066,
       "length": 50,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/cpp.history.main?\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 26962,
+      "offset": 27119,
       "length": 50,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/cpp.history.main?\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 27093,
+      "offset": 27250,
       "length": 63,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/cpp.weboff.main?action=partner\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 27159,
+      "offset": 27316,
       "length": 63,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/cpp.weboff.main?action=partner\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 27379,
+      "offset": 27536,
       "length": 62,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/ko\/cashpopplus_lgu_terms.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 27444,
+      "offset": 27601,
       "length": 62,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/ko\/cashpopplus_lgu_terms.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 27587,
+      "offset": 27744,
       "length": 59,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/ko\/cashpopplus_lgu_pp.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 27647,
+      "offset": 27804,
       "length": 59,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/ko\/cashpopplus_lgu_pp.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 27788,
+      "offset": 27945,
       "length": 65,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/ko\/cashpopplus_lgu_pp_agree.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 27854,
+      "offset": 28011,
       "length": 65,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/ko\/cashpopplus_lgu_pp_agree.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 28403,
+      "offset": 28560,
       "length": 167,
       "value": "\"https:\/\/sandbox-link.kakaopay.com\/t\/payweb?url=https%3A%2F%2Fsandbox-fest.kakaopay.com%2Fkaffeine%3Ft_src%3Dtalkpay%26t_ch%3Dtnk_service%26t_obj%3Dbenefit_point_home\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 28573,
+      "offset": 28730,
       "length": 151,
       "value": "\"https:\/\/link.kakaopay.com\/t\/payweb?url=https%3A%2F%2Ffest.kakaopay.com%2Fkaffeine%3Ft_src%3Dtalkpay%26t_ch%3Dtnk_service%26t_obj%3Dbenefit_point_home\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 29296,
+      "offset": 29453,
       "length": 194,
       "value": "\"https:\/\/sandbox-link.kakaopay.com\/t\/payweb?base=benefit&url=https%3A%2F%2Fsandbox-gauntlet.kakaopay.com%2Fcontents%2Fpaypoint%3Ft_src%3Dtalkpay%26t_ch%3Dtnk%26t_obj%3Dbenefit_paypoint_partners\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 29492,
+      "offset": 29649,
       "length": 178,
       "value": "\"https:\/\/link.kakaopay.com\/t\/payweb?base=benefit&url=https%3A%2F%2Fgauntlet.kakaopay.com%2Fcontents%2Fpaypoint%3Ft_src%3Dtalkpay%26t_ch%3Dtnk%26t_obj%3Dbenefit_paypoint_partners\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 29754,
+      "offset": 29911,
       "length": 62,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/ko\/cashpopplus_kkp_terms.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 29819,
+      "offset": 29976,
       "length": 62,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/ko\/cashpopplus_kkp_terms.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 29968,
+      "offset": 30125,
       "length": 59,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/ko\/cashpopplus_kkp_pp.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30028,
+      "offset": 30185,
       "length": 59,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/ko\/cashpopplus_kkp_pp.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30175,
+      "offset": 30332,
       "length": 65,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/ko\/cashpopplus_kkp_pp_agree.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30241,
+      "offset": 30398,
       "length": 65,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/ko\/cashpopplus_kkp_pp_agree.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30385,
+      "offset": 30542,
       "length": 67,
       "value": "\"https:\/\/dev.tnkfactory.com\/tnk\/ko\/cashpopplus_kkp_pp_consent.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30453,
+      "offset": 30610,
       "length": 67,
       "value": "\"https:\/\/www.tnkfactory.com\/tnk\/ko\/cashpopplus_kkp_pp_consent.html\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30595,
+      "offset": 30752,
       "length": 25,
       "value": "\"__default_custom_data__\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30659,
+      "offset": 30816,
       "length": 26,
       "value": "\"__default_placement_id__\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30770,
+      "offset": 30927,
       "length": 20,
       "value": "\"global_header_kind\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30828,
+      "offset": 30985,
       "length": 24,
       "value": "\"global_header_reuse_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30894,
+      "offset": 31051,
       "length": 20,
       "value": "\"global_footer_kind\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 30952,
+      "offset": 31109,
       "length": 24,
       "value": "\"global_footer_reuse_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31016,
+      "offset": 31173,
       "length": 26,
       "value": "\"list_cps_search_reuse_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31082,
+      "offset": 31239,
       "length": 17,
       "value": "\"background_kind\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31190,
+      "offset": 31347,
       "length": 23,
       "value": "\"list_ad_item_reuse_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31251,
+      "offset": 31408,
       "length": 27,
       "value": "\"list_ad_item_recommend_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31312,
+      "offset": 31469,
       "length": 25,
       "value": "\"list_info_item_reuse_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31376,
+      "offset": 31533,
       "length": 30,
       "value": "\"list_section_header_reuse_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31443,
+      "offset": 31600,
       "length": 36,
       "value": "\"list_section_empty_header_reuse_id\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31549,
+      "offset": 31706,
       "length": 9,
       "value": "\"cpp.str\""
     },
     {
       "filePath": "\/Users\/tnk\/Desktop\/TNK\/tnk_ios_project\/SdkSources\/rwd2\/Constants.swift",
       "kind": "StringLiteral",
-      "offset": 31619,
+      "offset": 31776,
       "length": 26,
       "value": "\"list_search_tag_reuse_id\""
     },
@@ -135875,49 +137379,63 @@
     {
       "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 18429,
+      "offset": 18431,
+      "length": 17,
+      "value": "\"toss_arrow_down\""
+    },
+    {
+      "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 18582,
+      "length": 15,
+      "value": "\"toss_arrow_up\""
+    },
+    {
+      "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
+      "kind": "StringLiteral",
+      "offset": 18733,
       "length": 16,
       "value": "\"toss_check_off\""
     },
     {
       "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 18579,
+      "offset": 18883,
       "length": 15,
       "value": "\"toss_check_on\""
     },
     {
       "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 18714,
+      "offset": 19018,
       "length": 7,
       "value": "\"trash\""
     },
     {
       "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 18859,
+      "offset": 19163,
       "length": 17,
       "value": "\"uplus_check_off\""
     },
     {
       "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 19012,
+      "offset": 19316,
       "length": 16,
       "value": "\"uplus_check_on\""
     },
     {
       "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 19156,
+      "offset": 19460,
       "length": 11,
       "value": "\"welcomImg\""
     },
     {
       "filePath": "\/Users\/tnk\/Library\/Developer\/Xcode\/DerivedData\/TnkRwdSdk2-fbbqidykdrqwzdgyaqjwxhjbthys\/Build\/Intermediates.noindex\/ArchiveIntermediates\/TnkRwdSdk2\/IntermediateBuildFilesPath\/TnkRwdSdk2.build\/Release-iphoneos\/TnkRwdSdk2.build\/DerivedSources\/GeneratedAssetSymbols.swift",
       "kind": "StringLiteral",
-      "offset": 19297,
+      "offset": 19601,
       "length": 13,
       "value": "\"x_close_btn\""
     }
