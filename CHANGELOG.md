@@ -173,3 +173,10 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
     버전이 기록되던 문제 수정 (pubspec 버전과 동일하게 유지)
   * `s.platform` 을 9.0 -> 12.0 으로 정정
     (벤더링하는 TnkRwdSdk2.xcframework 의 MinimumOSVersion 이 12.0 이다)
+
+## 0.8.7
+* iOS : SKT air 커스텀 UI(`setPubCustomUi(1)`) 에서 `setCategoryAndFilter` 카테고리/필터 랜딩 지원
+  * 기존에는 커스텀 UI 경로에 랜딩 값이 전달되지 않아 항상 첫 번째(간편) 탭으로 열렸습니다.
+  * `TnkRwdSdk2.xcframework` 갱신 (`SktAirRwdPlus.landingData` 추가)
+* iOS : `setCategoryAndFilter` 를 호출하지 않은 경우 랜딩 값을 빈 문자열 대신 `nil` 로 전달
+  * 빈 문자열도 랜딩 진입으로 처리되어 일반 진입에서 추천 팝업이 표시되지 않던 문제 수정 (기본 UI / 커스텀 UI 공통)
