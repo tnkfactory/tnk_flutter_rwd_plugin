@@ -688,7 +688,8 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
 
         if sktAirUi != nil {
             sktAirUi?.offerwallListener = self
-            sktAirUi?.landingData = landingData
+            // 빈 문자열을 넘기면 SDK 가 랜딩 진입으로 간주해 추천 팝업을 숨기므로 nil 로 넘긴다.
+            sktAirUi?.landingData = landingData.isEmpty ? nil : landingData
             sktAirUi?.showOfferwall(topVC)
             print("### show custom ui")
         } else {
@@ -726,7 +727,8 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
         //offerWall.showWelcomeMsg = false
         //offerWall.title = "광고보고 미션참여"
         //offerWall.landingData = "4//0"
-        vc!.landingData = landingData
+        // 빈 문자열을 넘기면 SDK 가 랜딩 진입으로 간주해 추천 팝업을 숨기므로 nil 로 넘긴다.
+        vc!.landingData = landingData.isEmpty ? nil : landingData
 
         //self.navigationController?.pushViewController(offerWall, animated: true)
 
