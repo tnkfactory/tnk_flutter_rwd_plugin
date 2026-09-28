@@ -55,6 +55,10 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             }
             result("success")
 
+        case "applicationStarted":
+            TnkSession.sharedInstance()?.applicationStarted()
+            result("success")
+
         case "setCategoryAndFilter":
             if let args = call.arguments as? [String: Any],
                let category = args["category"] as? Int,

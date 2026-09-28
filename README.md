@@ -63,6 +63,7 @@ MethodChannel('tnk_flutter_rwd').setMethodCallHandler(getOfferWallEvent);
 | --- | ---- | :-----: | :-: |
 | `setUserName(userName)` | 사용자 식별 값 설정 | ✅ | ✅ |
 | `setCOPPA(coppa)` | COPPA 대상 여부 설정 | ✅ | ✅ |
+| `applicationStarted()` | 앱 실행 알림 (실행형 광고 적립) | ✅ | ✅ |
 | `showATTPopup()` | ATT 추적 동의 팝업 | ➖ (무동작) | ✅ |
 | `showAdList(title, [appId])` | 오퍼월 표시 | ✅ | ✅ |
 | `setCategoryAndFilter(category, filter)` | 오퍼월 초기 카테고리/필터 | ✅ | ✅ |

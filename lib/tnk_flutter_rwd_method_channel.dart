@@ -60,6 +60,10 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return version;
   }
   @override
+  Future<String?> applicationStarted() async {
+    return await methodChannel.invokeMethod<String>('applicationStarted');
+  }
+  @override
   Future<String?> showATTPopup() async {
     final version = await methodChannel.invokeMethod<String>('showATTPopup', <String, dynamic>{"att show":"att show"});
     return version;

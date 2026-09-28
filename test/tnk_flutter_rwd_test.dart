@@ -21,6 +21,8 @@ class MockTnkFlutterRwdPlatform
   @override
   Future<String?> setCOPPA(bool coppa) => Future.value('onShow');
   @override
+  Future<String?> applicationStarted() => Future.value('success');
+  @override
   Future<String?> showATTPopup() => Future.value('onShow');
   @override
   Future<int?> getEarnPoint() => Future.value();

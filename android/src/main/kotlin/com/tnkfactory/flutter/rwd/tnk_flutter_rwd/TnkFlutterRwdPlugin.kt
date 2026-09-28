@@ -189,6 +189,11 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     result.success("success")
                 }
 
+                "applicationStarted" -> {
+                    offerwall.applicationStarted()
+                    result.success("success")
+                }
+
                 "setUserName" -> {
                     offerwall.setUserName(call.argument("user_name") as? String ?: "")
                     result.success("success")

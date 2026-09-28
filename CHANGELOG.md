@@ -180,3 +180,7 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * `TnkRwdSdk2.xcframework` 갱신 (`SktAirRwdPlus.landingData` 추가)
 * iOS : `setCategoryAndFilter` 를 호출하지 않은 경우 랜딩 값을 빈 문자열 대신 `nil` 로 전달
   * 빈 문자열도 랜딩 진입으로 처리되어 일반 진입에서 추천 팝업이 표시되지 않던 문제 수정 (기본 UI / 커스텀 UI 공통)
+
+## 0.8.8
+* AOS / iOS : `applicationStarted()` 추가
+  * 앱 실행 시점에 호출하면 네이티브 SDK 의 `applicationStarted()` 를 호출해 실행형 광고의 참여 완료를 서버에 알립니다.

@@ -50,6 +50,9 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
   Future<String?> setCOPPA(bool coppa) {
     throw UnimplementedError('showAdList() has not been implemented.');
   }
+  Future<String?> applicationStarted() {
+    throw UnimplementedError('applicationStarted() has not been implemented.');
+  }
   Future<String?> showATTPopup() {
     throw UnimplementedError('showATTPopup() has not been implemented.');
   }

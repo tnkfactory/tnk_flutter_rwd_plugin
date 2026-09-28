@@ -34,6 +34,11 @@ class TnkFlutterRwd {
     return TnkFlutterRwdPlatform.instance.setCOPPA(coppa);
   }
 
+  /// 앱 실행 시점에 호출한다. 실행형 광고의 참여 완료(적립)를 서버에 알린다.
+  Future<String?> applicationStarted() {
+    return TnkFlutterRwdPlatform.instance.applicationStarted();
+  }
+
   Future<String?> showATTPopup() {
     return TnkFlutterRwdPlatform.instance.showATTPopup();
   }
