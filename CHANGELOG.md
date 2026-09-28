@@ -184,3 +184,9 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
 ## 0.8.8
 * AOS / iOS : `applicationStarted()` 추가
   * 앱 실행 시점에 호출하면 네이티브 SDK 의 `applicationStarted()` 를 호출해 실행형 광고의 참여 완료를 서버에 알립니다.
+
+## 0.8.9
+* Android TNK SDK 8.09.33 적용 (8.09.31 → 8.09.33)
+  * 이벤트 인앱 웹뷰 조회 중 앱을 백그라운드로 보내면 앱이 종료되던 문제 수정
+  * 전체화면 웹뷰에서 새 창 링크(`target="_blank"`, `window.open`)를 누르면 앱이 종료되거나 반응이 없던 문제 수정
+  * `getEventLink` 를 메인 스레드에서 호출하면 항상 실패하던 문제 수정
