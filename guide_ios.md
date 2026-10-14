@@ -630,6 +630,45 @@ await TnkFlutterRwd().setCustomUnitIcon(paramMap);
 
 ---
 
+#### setOfferwallTheme / getOfferwallTheme
+
+오퍼월 화면의 테마를 지정합니다. (iOS SDK 5.95 부터) 오퍼월을 열기 전에, 앱 시작 시 한 번 설정하는 것을 권장합니다.
+SDK 의 `TnkStyles.offerwallTheme` 에 연결됩니다.
+
+##### Method
+
+```dart
+Future<String?> setOfferwallTheme(String theme)   // 정상 처리 시 "success"
+Future<String?> getOfferwallTheme()               // "light" | "dark" | "system" | "unspecified"
+```
+
+##### Parameters
+
+| 값 | 동작 |
+| --- | --- |
+| `"light"` | 단말 설정과 무관하게 라이트 테마로 고정합니다. |
+| `"dark"` | 단말 설정과 무관하게 다크 테마로 고정합니다. |
+| `"system"` | **iOS 에서는 `"unspecified"` 와 똑같이 동작합니다.** |
+| `"unspecified"` | SDK 가 테마에 관여하지 않습니다. 기본값입니다. |
+
+> iOS 에는 "시스템 설정을 따른다" 는 값이 없어, `"system"` 을 지정해도 SDK 는 화면의 테마를 건드리지 않고 **매체 앱의 설정을 그대로 물려받습니다.**
+> 앱이 Info.plist 의 `UIUserInterfaceStyle` 등으로 라이트/다크를 고정해 두었다면 단말 설정이 아니라 앱에 고정된 값을 따릅니다.
+> 반드시 라이트 또는 다크로 보여주려면 `"light"` / `"dark"` 를 지정하세요. Android 의 `"system"` 과 동작이 다르므로 유의하세요.
+
+##### 적용 범위
+
+오퍼월 목록 화면, 광고 상세 웹뷰, 이벤트 웹뷰, 다이얼로그와 상태바 아이콘의 명암이 지정한 테마로 맞춰집니다.
+웹 페이지 내부의 색상은 웹이 결정하므로, 다크 스타일이 없는 페이지는 그대로 표시됩니다.
+
+##### 적용예시
+
+```dart
+await TnkFlutterRwd().setOfferwallTheme("dark");
+await TnkFlutterRwd().showAdList("무료 충전소");
+```
+
+---
+
 ### 바. 이벤트 웹페이지
 
 #### showEventWebPage

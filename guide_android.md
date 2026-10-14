@@ -120,7 +120,7 @@ Java를 사용하는 경우도 동일하게 `io.flutter.embedding.android.Flutte
 
 ### 라이브러리 등록
 
-TNK SDK(`com.tnkfactory:rwd:8.09.33`)는 TNK Maven 저장소에서 제공됩니다.
+TNK SDK(`com.tnkfactory:rwd:8.09.39`)는 TNK Maven 저장소에서 제공됩니다.
 
 프로젝트 파일 내에 `{projectroot}/android/build.gradle` 파일에 아래와 같이 저장소를 추가합니다.
 
@@ -678,6 +678,44 @@ Android에서 호출하면 `MissingPluginException` 이 발생하므로 `Platfor
 if (Platform.isIOS) {
   await TnkFlutterRwd().setCustomUIDefault(paramMap);
 }
+```
+
+---
+
+#### setOfferwallTheme / getOfferwallTheme
+
+오퍼월 화면의 테마를 지정합니다. 오퍼월을 열기 전에, 앱 시작 시 한 번 설정하는 것을 권장합니다.
+
+##### Method
+
+```dart
+Future<String?> setOfferwallTheme(String theme)   // 정상 처리 시 "success"
+Future<String?> getOfferwallTheme()               // "light" | "dark" | "system" | "unspecified"
+```
+
+##### Parameters
+
+| 값 | 동작 |
+| --- | --- |
+| `"light"` | 단말 설정과 무관하게 라이트 테마로 고정합니다. |
+| `"dark"` | 단말 설정과 무관하게 다크 테마로 고정합니다. |
+| `"system"` | 단말의 다크모드 설정을 따릅니다. |
+| `"unspecified"` | SDK 가 테마에 관여하지 않습니다. 기본값입니다. |
+
+알 수 없는 값은 `"unspecified"` 로 처리합니다.
+
+##### 적용 범위 (SDK 8.09.39 기준)
+
+오퍼월 목록, 광고 상세, 쇼핑 상품 검색·카테고리 창, SDK 다이얼로그에 적용되며 **포인트 스토어에는 적용되지 않습니다.**
+`"system"` / `"unspecified"` 에서 오퍼월을 보는 중 단말 다크모드를 바꾸면, 보던 카테고리·스크롤 위치를 유지한 채 바로 바뀝니다.
+이를 위해 플러그인의 `AdWallActivity` 선언에 `configChanges` 의 `uiMode` 가 포함되어 있습니다. (플러그인 매니페스트가 자동 병합되므로 별도 설정은 필요 없습니다.
+앱 매니페스트에서 `AdWallActivity` 를 직접 재선언하는 경우에는 `screenSize|smallestScreenSize|orientation|screenLayout|keyboardHidden|uiMode` 를 포함하세요.)
+
+##### 적용예시
+
+```dart
+await TnkFlutterRwd().setOfferwallTheme("dark");
+await TnkFlutterRwd().showAdList("무료 충전소");
 ```
 
 ---

@@ -190,3 +190,17 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * 이벤트 인앱 웹뷰 조회 중 앱을 백그라운드로 보내면 앱이 종료되던 문제 수정
   * 전체화면 웹뷰에서 새 창 링크(`target="_blank"`, `window.open`)를 누르면 앱이 종료되거나 반응이 없던 문제 수정
   * `getEventLink` 를 메인 스레드에서 호출하면 항상 실패하던 문제 수정
+
+## 0.8.10
+* iOS TNK SDK 5.95 적용 (5.94 → 5.95)
+* 오퍼월 테마 API 추가: `setOfferwallTheme(String)` / `getOfferwallTheme()` (`"light"` | `"dark"` | `"system"` | `"unspecified"`)
+  * Android 는 `TnkAdConfig.setOfferwallTheme`, iOS 는 `TnkStyles.offerwallTheme` 에 연결됩니다
+  * iOS 에서 `"system"` 은 `"unspecified"` 와 똑같이 동작합니다
+  * 오퍼월을 열기 전에(앱 시작 시 한 번) 설정합니다
+  * Android 적용 범위(SDK 8.09.39 기준): 오퍼월 목록·광고 상세·쇼핑 검색/카테고리·SDK 다이얼로그 (포인트 스토어 제외)
+* Android `AdWallActivity` 의 `configChanges` 에 `uiMode` 추가 — `"system"` / `"unspecified"` 에서 단말 다크모드를 바꿔도 오퍼월이 처음 화면으로 돌아가지 않고 바로 반영됩니다
+* Android TNK SDK 8.09.39 적용 (8.09.33 → 8.09.39)
+  * Placement `onItemClick` 에서 개인정보 수집 동의 팝업을 **거부**하면 로딩 화면이 닫히지 않고 응답도 오지 않던 문제 수정
+    * 이제 로딩 화면이 닫히고 `res_code` `"-1"`, `res_message` "개인정보 수집 동의가 필요합니다." 를 반환합니다
+  * `adDetail` / `adJoin` / `adAction` 진행 중 동의 팝업이 결정 없이 닫혀도(화면 종료 등) 실패로 응답합니다
+  * 오퍼월을 닫아도 오퍼월 화면이 메모리에 남던 문제 수정
