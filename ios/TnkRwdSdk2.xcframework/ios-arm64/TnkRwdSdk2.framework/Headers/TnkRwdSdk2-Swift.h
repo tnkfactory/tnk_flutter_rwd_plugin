@@ -2149,6 +2149,27 @@ typedef SWIFT_ENUM(NSInteger, LogLevel, open) {
   LogLevelError = 4,
 };
 
+/// 오퍼월 테마. <code>TnkStyles.offerwallTheme</code> 에 지정한다. (Android <code>TnkOfferwallTheme</code> 과 같은 값)
+typedef SWIFT_ENUM(NSInteger, TnkOfferwallTheme, open) {
+/// SDK 가 관여하지 않는다(기본값).
+  TnkOfferwallThemeUnspecified = 0,
+  TnkOfferwallThemeLight = 1,
+  TnkOfferwallThemeDark = 2,
+/// 단말 설정을 따른다. iOS 에서는 <code>.unspecified</code> 와 같게 동작한다.
+  TnkOfferwallThemeSystem = 3,
+};
+
+/// 개인정보 수집동의 해제(철회) 리스너. (2026.09.18)
+/// 사용자가 오퍼월 내 “내 정보” 화면 등에서 수집동의를 해제하면 매체사 앱에 알리기 위해 사용한다.
+/// TnkSession.setPrivacyAgreementListener(_:) 로 설정한다.
+SWIFT_PROTOCOL("_TtP10TnkRwdSdk227TnkPrivacyAgreementListener_")
+@protocol TnkPrivacyAgreementListener <NSObject>
+/// 동의 상태였던 수집동의가 해제된 시점에 메인 스레드에서 호출된다.
+/// 이미 해제된 상태에서 다시 해제 처리가 일어나는 경우에는 호출되지 않는다.
+/// 즉 동의 -> 해제 로 바뀌는 순간에만 한 번 전달된다.
+- (void)didPrivacyAgreementRevoked;
+@end
+
 @class TnkStyles;
 SWIFT_PROTOCOL("_TtP10TnkRwdSdk224TnkRwdPlusCustomDelegate_")
 @protocol TnkRwdPlusCustomDelegate
@@ -2223,6 +2244,13 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) TnkSession * _Nullable
 - (TnkSession * _Nonnull)setCOPPA:(BOOL)coppa;
 - (TnkSession * _Nonnull)setGDPRConsent:(BOOL)gdpr;
 - (TnkSession * _Nonnull)setAgreePrivacyPolicy:(BOOL)agreed;
+/// 개인정보 수집동의 해제(철회) 시 통보받을 리스너를 등록한다. (2026.09.18)
+/// 사용자가 오퍼월 내 “내 정보” 화면에서 수집동의를 철회하여 동의 상태가 해제되면
+/// didPrivacyAgreementRevoked() 가 메인 스레드에서 한 번 호출된다.
+/// 이미 해제된 상태에서 다시 해제 처리가 일어나면 호출되지 않는다.
+/// \param listener 통보받을 리스너. weak 로 참조하므로 매체사가 보관해야 한다. nil 을 넣으면 등록을 해제한다.
+///
+- (TnkSession * _Nonnull)setPrivacyAgreementListener:(id <TnkPrivacyAgreementListener> _Nullable)listener;
 - (NSString * _Nonnull)sdkVersion SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)getFaqPageUrl SWIFT_WARN_UNUSED_RESULT;
 - (NSString * _Nonnull)getHelpDeskUrl SWIFT_WARN_UNUSED_RESULT;
@@ -2262,6 +2290,34 @@ SWIFT_CLASS("_TtC10TnkRwdSdk29TnkStyles")
 @property (nonatomic, strong) AlertOption * _Nonnull alertStyle;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkStyles * _Nonnull shared;)
 + (TnkStyles * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+/// 오퍼월과 오퍼월에서 열리는 SDK 네이티브 화면(목록·상세 웹뷰·다이얼로그·상태바)의 테마.
+/// Android 의 <code>TnkOfferwallTheme</code> 과 같은 4개 값을 쓴다.
+/// <ul>
+///   <li>
+///     <code>.light</code>  : 라이트 고정. forceLightMode = true 와 같은 효과.
+///   </li>
+///   <li>
+///     <code>.dark</code>   : 다크 고정.
+///   </li>
+///   <li>
+///     <code>.system</code> : 단말 설정을 따른다. <em>iOS 에서는 <code>.unspecified</code> 와 같게 동작한다.</em>
+///     (<code>UIUserInterfaceStyle</code> 에 “시스템” 값이 따로 없어 SDK 가 override 하지 않는 것으로 처리한다.
+///     매체 앱이 Info.plist 의 UIUserInterfaceStyle 등으로 라이트/다크를 고정해 두었다면 그 값을 따른다)
+///   </li>
+///   <li>
+///     <code>.unspecified</code> : SDK 가 관여하지 않는다(기본값). 기존 동작과 같다.
+///   </li>
+/// </ul>
+/// <em>forceLightMode 와의 우선순위</em>
+/// <code>.light</code>/<code>.dark</code> 로 지정하면 forceLightMode 보다 우선한다.
+/// <code>.system</code>/<code>.unspecified</code> 이고 forceLightMode == true 이면 라이트가 적용된다.
+/// <em>fixedDetailWebViewUIStyle 과의 관계</em>
+/// TnkLayout.shared.fixedDetailWebViewUIStyle 은 상세 웹뷰 콘텐츠만을
+/// 별도로 지정하는 기존 경로다. 이 값이 <code>.unspecified</code> 가 아니면 웹뷰 콘텐츠에는
+/// 해당 값이 우선 적용된다(웹 렌더러 색상 제어용 경로가 따로 필요한 매체를 위해 유지).
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) enum TnkOfferwallTheme offerwallTheme;)
++ (enum TnkOfferwallTheme)offerwallTheme SWIFT_WARN_UNUSED_RESULT;
++ (void)setOfferwallTheme:(enum TnkOfferwallTheme)value;
 @property (nonatomic) BOOL useDetailRoundCornerHeader;
 @property (nonatomic) BOOL isCloseButtonRight;
 @property (nonatomic) BOOL isPresentAnimated;
