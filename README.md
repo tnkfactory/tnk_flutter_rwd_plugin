@@ -1,5 +1,5 @@
 # tnk_flutter_rwd
-[![pub package](https://img.shields.io/badge/Flutter-0.8.10-blue)](./CHANGELOG.md)
+[![pub package](https://img.shields.io/badge/Flutter-0.8.11-blue)](./CHANGELOG.md)
 [![Android](https://img.shields.io/badge/Android_SDK-8.09.39-blue)](./guide_android.md)
 [![iOS](https://img.shields.io/badge/iOS_SDK-5.95-blue)](./guide_ios.md)
 
@@ -58,7 +58,7 @@ flutter pub add tnk_flutter_rwd
 또는 `pubspec.yaml` 에 직접 추가합니다.
 ```yaml
 dependencies:
-  tnk_flutter_rwd: ^0.8.10
+  tnk_flutter_rwd: ^0.8.11
 ```
 - 설치 후 아래 플랫폼별 설정(App ID 등록, 권한, 저장소 추가 등)이 필요합니다
 - 테스트 상태에서는 테스트 장비를 개발 장비로 등록해야 광고 목록이 정상적으로 나타납니다 — [테스트 단말기 등록 방법](https://tnkfactory.github.io/incentive/reg_test_device)
@@ -482,7 +482,7 @@ await _tnk.closeAdDetail();    // 광고 상세 화면 닫기
 await _tnk.closeAllView();     // 모든 화면 닫기
 ```
 - **iOS 전용** — 오퍼월 또는 광고 상세 화면을 코드로 닫습니다
-- Android 는 오퍼월이 별도 Activity 로 표시되어 사용자가 뒤로가기로 닫습니다. Android 에서 호출하면 `MissingPluginException` 이 발생하므로 `Platform.isIOS` 로 분기하세요
+- Android 는 오퍼월이 별도 Activity 로 표시되어 사용자가 뒤로가기로 닫습니다. Android 에서 호출하면 아무 동작 없이 `"fail"` 을 반환합니다 (0.8.10 이하는 `MissingPluginException` 이 발생하므로 `Platform.isIOS` 로 분기하세요)
 - 광고 참여 후 앱으로 돌아왔을 때 화면을 닫는 패턴
 
 ```dart
@@ -579,7 +579,7 @@ String? result = await _tnk.onItemClick(adItem.app_id.toString());
 | `setOfferwallTheme` · `getOfferwallTheme` | ✅ | ✅ (`"system"` 은 `"unspecified"` 와 동일) |
 | `showEventWebPage` · `openTnkEventScheme` | ✅ | ✅ |
 | `openEventWebView` | ✅ | ❌ |
-| `closeOfferwall` · `closeAdDetail` · `closeAllView` | ❌ | ✅ |
+| `closeOfferwall` · `closeAdDetail` · `closeAllView` | ➖ | ✅ |
 | `getPlacementJsonData` · `onItemClick` | ✅ | ✅ |
 
 - ✅ 지원 / ➖ 호출 가능하나 동작 없음 / ❌ 미지원 (`Platform.isIOS` 등으로 분기 필요)

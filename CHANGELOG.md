@@ -204,3 +204,9 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
     * 이제 로딩 화면이 닫히고 `res_code` `"-1"`, `res_message` "개인정보 수집 동의가 필요합니다." 를 반환합니다
   * `adDetail` / `adJoin` / `adAction` 진행 중 동의 팝업이 결정 없이 닫혀도(화면 종료 등) 실패로 응답합니다
   * 오퍼월을 닫아도 오퍼월 화면이 메모리에 남던 문제 수정
+
+## 0.8.11
+* Android : `setUseTermsPopup` 설정값이 전달되지 않던 문제 수정
+  * 0.8.10 이하 Android 에서는 `setUseTermsPopup(true)` 를 호출해도 약관 팝업 사용이 꺼졌습니다
+* Android : `closeOfferwall` / `closeAdDetail` / `closeAllView` 호출 시 `MissingPluginException` 대신 `"fail"` 을 반환
+  * 화면 닫기는 iOS 전용입니다. Android 오퍼월은 사용자가 뒤로가기로 닫습니다

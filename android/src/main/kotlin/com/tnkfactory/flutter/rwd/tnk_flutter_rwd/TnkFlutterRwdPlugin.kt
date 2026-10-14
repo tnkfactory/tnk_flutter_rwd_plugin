@@ -374,7 +374,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 "setUseTermsPopup" -> {
-                    TnkAdConfig.useTermsPopup = call.argument("use_yn") as? Boolean ?: false
+                    // Dart·iOS 는 "is_use" 로 보낸다. 0.8.10 까지는 "use_yn" 을 읽어 항상 false 가 됐다.
+                    TnkAdConfig.useTermsPopup = call.argument("is_use") as? Boolean ?: false
                     result.success("success")
                 }
 
@@ -541,6 +542,10 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         result.success("fail")
                     }
                 }
+
+                // iOS 전용 API. Android 오퍼월은 별도 Activity 라 사용자가 뒤로가기로 닫는다.
+                // 예전에는 처리하지 않아 MissingPluginException 이 났다. 미지원을 "fail" 로 알린다.
+                "closeOfferwall", "closeAdDetail", "closeAllView" -> result.success("fail")
 
                 else -> result.notImplemented()
 

@@ -64,8 +64,11 @@ class _MyAppState extends State<MyApp>
     if (state == AppLifecycleState.resumed) {
       // 앱이 활성화 될때
       print('앱이 활성화 될때');
-      _tnkFlutterRwdPlugin.closeAdDetail();
-      _tnkFlutterRwdPlugin.closeOfferwall();
+      // 화면 닫기는 iOS 전용이다(Android 는 "fail" 을 반환한다)
+      if (Platform.isIOS) {
+        _tnkFlutterRwdPlugin.closeAdDetail();
+        _tnkFlutterRwdPlugin.closeOfferwall();
+      }
     } else if (state == AppLifecycleState.inactive) {
       // 앱이 비활성화 될때
       print('앱이 비활성화 될때');
@@ -168,8 +171,10 @@ class _MyAppState extends State<MyApp>
 
   Future<void> sleepAndClose() async {
     sleep(const Duration(seconds: 10));
-    _tnkFlutterRwdPlugin.closeAdDetail();
-    _tnkFlutterRwdPlugin.closeOfferwall();
+    if (Platform.isIOS) {
+      _tnkFlutterRwdPlugin.closeAdDetail();
+      _tnkFlutterRwdPlugin.closeOfferwall();
+    }
   }
 
   Future<void> showATTPopup() async {

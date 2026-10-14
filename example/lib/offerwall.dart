@@ -367,8 +367,11 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       // _tnkFlutterRwdPlugin.closeAdDetail();
 
       // sleep(const Duration(seconds: 10));
-      _tnkFlutterRwdPlugin.closeAdDetail();
-      _tnkFlutterRwdPlugin.closeOfferwall();
+      // 화면 닫기는 iOS 전용이다(Android 는 "fail" 을 반환한다)
+      if (Platform.isIOS) {
+        _tnkFlutterRwdPlugin.closeAdDetail();
+        _tnkFlutterRwdPlugin.closeOfferwall();
+      }
     } on Exception {
       return;
     }
