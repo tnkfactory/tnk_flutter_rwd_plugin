@@ -173,6 +173,17 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 return
             }
 
+            // 테마는 전역 설정이라 Activity 가 없어도 쓸 수 있다. (앱 시작 시 호출 가능)
+            if (call.method == "setOfferwallTheme") {
+                TnkAdConfig.setOfferwallTheme(TnkOfferwallTheme.from(call.argument<String>("theme") ?: ""))
+                result.success("success")
+                return
+            }
+            if (call.method == "getOfferwallTheme") {
+                result.success(TnkAdConfig.getOfferwallTheme().value)
+                return
+            }
+
             // Activity 에 attach 되기 전/후에 호출되면 예전에는 lateinit 예외가 났다.
             val activity = mActivity
             val offerwall = this.offerwall

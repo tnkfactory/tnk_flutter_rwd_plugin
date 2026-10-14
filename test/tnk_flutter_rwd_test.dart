@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:flutter/src/services/message_codec.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd.dart';
 import 'package:tnk_flutter_rwd/tnk_flutter_rwd_platform_interface.dart';
@@ -118,7 +118,10 @@ class MockTnkFlutterRwdPlatform
   }
 
   @override
-  Future<String?> adJoin(int appId, [int actionId = 0]) {
+  Future<String?> adJoin(int appId,
+      [int actionId = 0,
+      bool useTopViewController = false,
+      bool fullscreen = false]) {
     throw UnimplementedError();
   }
 
@@ -157,9 +160,25 @@ class MockTnkFlutterRwdPlatform
     throw UnimplementedError();
   }
 
+  @override
+  Future<bool?> isUserTermsAgree() {
+    throw UnimplementedError();
+  }
+
+  String themeValue = 'unspecified';
+
+  @override
+  Future<String?> setOfferwallTheme(String theme) {
+    themeValue = theme;
+    return Future.value('success');
+  }
+
+  @override
+  Future<String?> getOfferwallTheme() => Future.value(themeValue);
 }
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   final TnkFlutterRwdPlatform initialPlatform = TnkFlutterRwdPlatform.instance;
 
   test('$MethodChannelTnkFlutterRwd is the default instance', () {
@@ -172,5 +191,59 @@ void main() {
     TnkFlutterRwdPlatform.instance = fakePlatform;
 
     expect(await tnkFlutterRwdPlugin.getPlatformVersion(), '42');
+  });
+
+  group('offerwall theme', () {
+    test('normalizeOfferwallTheme maps known values and falls back to unspecified', () {
+      expect(TnkFlutterRwd.normalizeOfferwallTheme('light'), 'light');
+      expect(TnkFlutterRwd.normalizeOfferwallTheme('DARK'), 'dark');
+      expect(TnkFlutterRwd.normalizeOfferwallTheme(' System '), 'system');
+      expect(TnkFlutterRwd.normalizeOfferwallTheme('unspecified'), 'unspecified');
+      expect(TnkFlutterRwd.normalizeOfferwallTheme('sepia'), 'unspecified');
+      expect(TnkFlutterRwd.normalizeOfferwallTheme(''), 'unspecified');
+      expect(TnkFlutterRwd.normalizeOfferwallTheme(null), 'unspecified');
+    });
+
+    test('setOfferwallTheme passes a normalized value to the platform', () async {
+      final fake = MockTnkFlutterRwdPlatform();
+      TnkFlutterRwdPlatform.instance = fake;
+      final plugin = TnkFlutterRwd();
+
+      expect(await plugin.setOfferwallTheme('Dark'), 'success');
+      expect(fake.themeValue, 'dark');
+      expect(await plugin.getOfferwallTheme(), 'dark');
+
+      await plugin.setOfferwallTheme('nonsense');
+      expect(await plugin.getOfferwallTheme(), 'unspecified');
+    });
+  });
+
+  group('method channel', () {
+    const channel = MethodChannel('tnk_flutter_rwd');
+    final calls = <MethodCall>[];
+
+    setUp(() {
+      calls.clear();
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(channel, (call) async {
+        calls.add(call);
+        return call.method == 'getOfferwallTheme' ? 'light' : 'success';
+      });
+    });
+
+    tearDown(() {
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(channel, null);
+    });
+
+    test('setOfferwallTheme / getOfferwallTheme use the expected channel calls', () async {
+      final platform = MethodChannelTnkFlutterRwd();
+      expect(await platform.setOfferwallTheme('dark'), 'success');
+      expect(calls.single.method, 'setOfferwallTheme');
+      expect(calls.single.arguments, {'theme': 'dark'});
+
+      expect(await platform.getOfferwallTheme(), 'light');
+      expect(calls.last.method, 'getOfferwallTheme');
+    });
   });
 }

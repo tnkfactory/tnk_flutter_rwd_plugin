@@ -6,7 +6,7 @@
     <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
     <application>
         <activity android:name="com.tnkfactory.ad.AdWallActivity"
-                  android:configChanges="screenSize|smallestScreenSize|orientation|screenLayout|keyboardHidden"
+                  android:configChanges="screenSize|smallestScreenSize|orientation|screenLayout|keyboardHidden|uiMode"
                   android:screenOrientation="portrait"
                   android:exported="false"
                   android:windowSoftInputMode="adjustResize"

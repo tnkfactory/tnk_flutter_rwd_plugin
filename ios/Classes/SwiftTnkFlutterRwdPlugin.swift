@@ -164,6 +164,24 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             }
             break
 
+        case "setOfferwallTheme":
+            let theme = (call.arguments as? [String: Any])?["theme"] as? String ?? ""
+            switch theme.lowercased() {
+            case "light": TnkStyles.offerwallTheme = .light
+            case "dark": TnkStyles.offerwallTheme = .dark
+            case "system": TnkStyles.offerwallTheme = .system
+            default: TnkStyles.offerwallTheme = .unspecified
+            }
+            result("success")
+
+        case "getOfferwallTheme":
+            switch TnkStyles.offerwallTheme {
+            case .light: result("light")
+            case .dark: result("dark")
+            case .system: result("system")
+            default: result("unspecified")
+            }
+
         case "setNoUsePointIcon":
             setNoUsePoinIcon()
             result("setNoUsePointIcon")

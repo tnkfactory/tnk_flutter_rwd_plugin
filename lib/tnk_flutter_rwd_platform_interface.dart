@@ -147,4 +147,12 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
     throw UnimplementedError('showAdListWithPlacement has not been implemented');
   }
 
+  Future<String?> setOfferwallTheme(String theme) {
+    throw UnimplementedError('setOfferwallTheme has not been implemented');
+  }
+
+  Future<String?> getOfferwallTheme() {
+    throw UnimplementedError('getOfferwallTheme has not been implemented');
+  }
+
 }

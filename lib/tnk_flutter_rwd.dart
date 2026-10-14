@@ -200,4 +200,37 @@ class TnkFlutterRwd {
   Future<String?> showAdListWithPlacement(String placementId, int categoryId, int filterId) {
     return TnkFlutterRwdPlatform.instance.showAdListWithPlacement(placementId, categoryId, filterId);
   }
+
+  /// 오퍼월 화면의 테마를 지정한다. 오퍼월을 열기 전에, 앱 시작 시 한 번 설정하는 것을 권장한다.
+  ///
+  /// [theme] 은 `"light"`, `"dark"`, `"system"`, `"unspecified"` 중 하나이며
+  /// 대소문자를 구분하지 않는다. 알 수 없는 값은 `"unspecified"` 로 처리한다.
+  ///
+  /// - `light` / `dark` : 단말 설정과 무관하게 고정한다.
+  /// - `system` : Android 는 단말 다크모드를 따른다. iOS 는 `unspecified` 와 똑같이 동작한다.
+  /// - `unspecified` : SDK 가 테마에 관여하지 않는다 (기본값).
+  ///
+  /// 정상 처리되면 `"success"` 를 반환한다.
+  Future<String?> setOfferwallTheme(String theme) {
+    return TnkFlutterRwdPlatform.instance.setOfferwallTheme(normalizeOfferwallTheme(theme));
+  }
+
+  /// 현재 설정된 오퍼월 테마(`"light"`, `"dark"`, `"system"`, `"unspecified"`)를 반환한다.
+  /// 설정한 적이 없으면 `"unspecified"` 이다.
+  Future<String?> getOfferwallTheme() {
+    return TnkFlutterRwdPlatform.instance.getOfferwallTheme();
+  }
+
+  /// 테마 문자열을 `light`/`dark`/`system`/`unspecified` 중 하나로 정규화한다.
+  static String normalizeOfferwallTheme(String? theme) {
+    final value = theme?.trim().toLowerCase();
+    switch (value) {
+      case 'light':
+      case 'dark':
+      case 'system':
+        return value!;
+      default:
+        return 'unspecified';
+    }
+  }
 }

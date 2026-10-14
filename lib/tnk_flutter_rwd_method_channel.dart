@@ -215,4 +215,16 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
 
   }
 
+  @override
+  Future<String?> setOfferwallTheme(String theme) async {
+    final result = await methodChannel.invokeMethod<String>('setOfferwallTheme', <String, dynamic>{"theme": theme});
+    return result;
+  }
+
+  @override
+  Future<String?> getOfferwallTheme() async {
+    final result = await methodChannel.invokeMethod<String>('getOfferwallTheme');
+    return result;
+  }
+
 }

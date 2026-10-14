@@ -25,6 +25,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   int _queryPoint = 0;
 
   String _tnkResult = 'Unknown';
+  String _theme = 'unspecified';
 
   List<TnkPlacementAdItem> adList = [];
 
@@ -34,6 +35,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     // showAdList();
     showATTPopup();
+    loadOfferwallTheme();
   }
 
   @override
@@ -66,6 +68,8 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
         child: Column(
           children: [
             _buildInfoRow('결과', _tnkResult),
+            const Divider(),
+            _buildInfoRow('오퍼월 테마', _theme),
             const Divider(),
             _buildInfoRow('적립 가능한 포인트', '$_myPoint'),
             const Divider(),
@@ -111,6 +115,15 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
             showEventPage(eventId);
           }},
           {'label': 'No Privacy Alert', 'onPressed': setNoUsePrivacyAlert},
+        ]),
+        const SizedBox(height: 16),
+        // 오퍼월을 열기 전에 설정해야 반영된다. (앱에서는 시작 시 한 번 설정 권장)
+        // iOS 에서 system 은 unspecified 와 똑같이 동작한다.
+        _buildSection('오퍼월 테마', Colors.teal, [
+          {'label': 'light', 'onPressed': () => setOfferwallTheme('light')},
+          {'label': 'dark', 'onPressed': () => setOfferwallTheme('dark')},
+          {'label': 'system', 'onPressed': () => setOfferwallTheme('system')},
+          {'label': 'unspecified', 'onPressed': () => setOfferwallTheme('unspecified')},
         ]),
         const SizedBox(height: 16),
         _buildSection('기타', Colors.green, [
@@ -184,6 +197,28 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     );
   }
 
+
+  /// 오퍼월 테마를 지정하고, 실제로 적용된 값을 읽어 화면에 표시한다.
+  Future<void> setOfferwallTheme(String theme) async {
+    try {
+      await _tnkFlutterRwdPlugin.setOfferwallTheme(theme);
+      await loadOfferwallTheme();
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> loadOfferwallTheme() async {
+    try {
+      final theme = await _tnkFlutterRwdPlugin.getOfferwallTheme() ?? 'unspecified';
+      if (!mounted) return;
+      setState(() {
+        _theme = theme;
+      });
+    } on PlatformException catch (e) {
+      print(e);
+    }
+  }
 
   Future<void> showAdListWithPlacement() async {
     try {
