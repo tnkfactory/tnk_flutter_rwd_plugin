@@ -189,7 +189,9 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       bottom: 16,
       right: 16,
       child: FloatingActionButton.extended(
-        onPressed: setCustomUiAndShowOfferwall,
+        // 기본 오퍼월을 연다. 매체 전용 UI(iOS setPubCustomUi)를 보려면 '광고 이벤트 > Custom UI' 를 누른 뒤 이 버튼을 누른다.
+        // (iOS 는 Custom UI 설정이 앱을 다시 시작할 때까지 유지된다. 전용 UI 를 한 번에 여는 예제는 setCustomUiAndShowOfferwall)
+        onPressed: showAdList,
         // onPressed: showAdListWithPlacement,
         icon: const Icon(Icons.tv),
         label: const Text('오퍼월'),
@@ -298,11 +300,11 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
     String platformVersion;
 
     try {
-      // await _tnkFlutterRwdPlugin.setUserName("jameson");
+      await _tnkFlutterRwdPlugin.setUserName("testUser"); // 매체의 사용자 식별값을 넣는다
       await _tnkFlutterRwdPlugin.setCOPPA(false);
 
       // _tnkFlutterRwdPlugin.setUseTermsPopup(true);
-      _tnkFlutterRwdPlugin.setCategoryAndFilter(4, 0);
+      // 특정 탭으로 열려면 오퍼월을 열기 전에 지정한다. 예) 쇼핑 탭: setCategoryAndFilter(4, 0)
       platformVersion = await _tnkFlutterRwdPlugin.showAdList("미션 수행하기") ??
           'Unknown platform version';
     } on PlatformException {
