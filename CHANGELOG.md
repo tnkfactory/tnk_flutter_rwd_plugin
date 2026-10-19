@@ -216,4 +216,8 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * 오퍼월 목록 · 광고 상세 · 마이메뉴 · 검색 · 포인트 스토어 화면의 폭 상한(440pt)을 없앴습니다. iPad · 가로 화면 · 폴더블에서 화면 폭을 모두 사용합니다
   * 플레이스먼트 `onItemClick` 의 completion 이 호출되지 않던 경로 수정
   * 오퍼월을 열고 닫을 때마다 메모리가 늘던 누수 수정
-* Android TNK SDK 는 8.09.39 그대로입니다
+* iOS TNK SDK 5.99 적용 (5.98 → 5.99), Android TNK SDK 8.09.40 적용 (8.09.39 → 8.09.40)
+* 개인정보 수집동의 '동의' / '해제' 이벤트를 Dart 로 받는 `setPrivacyAgreementListener` 추가 (Android / iOS)
+  * 사용자가 동의 팝업에서 동의하거나, 오퍼월에서 수집동의를 해제할 때 매체사 앱의 콜백이 호출됩니다
+  * 미동의/해제 → 동의로 바뀔 때 `onAgreed` 1회, 동의 → 해제로 바뀔 때 `onRevoked` 1회
+  * `setUserTermsAgree` 로 앱이 직접 바꾼 값은 iOS 에서는 이벤트로 전달되지 않고 Android 에서는 전달됩니다

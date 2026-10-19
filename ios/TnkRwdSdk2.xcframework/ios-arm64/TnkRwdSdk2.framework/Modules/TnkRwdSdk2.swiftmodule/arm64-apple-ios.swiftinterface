@@ -2621,6 +2621,7 @@ extension TnkRwdSdk2.TnkTermWebViewController : WebKit.WKNavigationDelegate, Web
 }
 @objc public protocol TnkPrivacyAgreementListener : ObjectiveC.NSObjectProtocol {
   @objc func didPrivacyAgreementRevoked()
+  @objc optional func didPrivacyAgreementAgreed()
 }
 @_hasMissingDesignatedInitializers @objc public class TnkSession : ObjectiveC.NSObject {
   @objc public static var shared: TnkRwdSdk2.TnkSession?

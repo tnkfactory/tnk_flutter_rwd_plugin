@@ -99,6 +99,10 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
     /// when the Flutter Engine is detached from the Activity
     private var channel: MethodChannel? = null
+
+    // 개인정보 수집동의 이벤트(네이티브 -> Dart) 전용 채널. 기본 채널의 핸들러를 앱이 직접 쓰는 경우가 있어 분리했다.
+    private var privacyChannel: MethodChannel? = null
+    private var privacyListener: TnkPrivacyAgreementListener? = null
     private var mActivity: Activity? = null
     private var offerwall: TnkOfferwall? = null
     private var placementView: AdPlacementView? = null
@@ -109,7 +113,35 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "tnk_flutter_rwd").also {
             it.setMethodCallHandler(this)
         }
+        privacyChannel = MethodChannel(flutterPluginBinding.binaryMessenger, "tnk_flutter_rwd/privacy")
         setTnkAnalytics()
+    }
+
+    /** SDK 가 메인 스레드에서 호출한다. Dart 쪽 핸들러가 없어도 invokeMethod 는 오류 없이 무시된다. */
+    private fun setPrivacyListener(enabled: Boolean) {
+        if (!enabled) {
+            clearPrivacyListener()
+            return
+        }
+        val listener = object : TnkPrivacyAgreementListener {
+            override fun onPrivacyAgreementRevoked() {
+                privacyChannel?.invokeMethod("onPrivacyAgreementRevoked", null)
+            }
+
+            override fun onPrivacyAgreementAgreed() {
+                privacyChannel?.invokeMethod("onPrivacyAgreementAgreed", null)
+            }
+        }
+        privacyListener = listener
+        TnkSession.setPrivacyAgreementListener(listener)
+    }
+
+    /** SDK 정적 필드가 플러그인을 강하게 붙잡으므로 엔진 분리/해제 시 null 로 되돌린다. */
+    private fun clearPrivacyListener() {
+        if (privacyListener != null) {
+            TnkSession.setPrivacyAgreementListener(null)
+            privacyListener = null
+        }
     }
 
     fun setTnkAnalytics() {
@@ -181,6 +213,13 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             }
             if (call.method == "getOfferwallTheme") {
                 result.success(TnkAdConfig.getOfferwallTheme().value)
+                return
+            }
+
+            // 개인정보 수집동의 리스너 등록은 Activity 없이도 가능하다.
+            if (call.method == "setPrivacyAgreementListener") {
+                setPrivacyListener(call.argument<Boolean>("enabled") ?: false)
+                result.success("success")
                 return
             }
 
@@ -622,6 +661,8 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
         Log.d(TAG, "onDetachedFromEngine")
         channel?.setMethodCallHandler(null)
         channel = null
+        privacyChannel = null
+        clearPrivacyListener()
         clearTnkAnalytics()
     }
 

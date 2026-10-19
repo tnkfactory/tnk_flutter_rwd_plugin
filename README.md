@@ -33,7 +33,7 @@ TnkAd SDK는 Tnk의 광고 네트워크 상에서 광고앱이나 매체앱을 �
 - [오퍼월 표시](#3-오퍼월-표시) — `showAdList` `setCategoryAndFilter` `showAdListWithPlacement`
 - [광고 상세 / 참여](#4-광고-상세--참여) — `presentAdDetailView` `adJoin` `adAction`
 - [포인트 조회 및 인출](#5-포인트-조회-및-인출) — `getEarnPoint` `getQueryPoint` `purchaseItem` `withdrawPoints` `showMyEarnPointList`
-- [개인정보 / 약관 동의](#6-개인정보--약관-동의) — `setNoUsePrivacyAlert` `setUseTermsPopup` `setUserTermsAgree` `isUserTermsAgree`
+- [개인정보 / 약관 동의](#6-개인정보--약관-동의) — `setNoUsePrivacyAlert` `setUseTermsPopup` `setUserTermsAgree` `isUserTermsAgree` `setPrivacyAgreementListener`
 - [오퍼월 UI 커스터마이징](#7-오퍼월-ui-커스터마이징) — `setNoUsePointIcon` `setCustomUnitIcon` `setCustomUIDefault` `setPubCustomUi` `setOfferwallTheme` `getOfferwallTheme`
 - [이벤트 웹페이지 / 딥링크](#8-이벤트-웹페이지--딥링크) — `showEventWebPage` `openEventWebView` `openTnkEventScheme`
 - [화면 닫기 (iOS 전용)](#9-화면-닫기-ios-전용) — `closeOfferwall` `closeAdDetail` `closeAllView`
@@ -364,6 +364,28 @@ if (!agreed) {
 ```
 - 사용자가 약관에 동의했는지 조회합니다
 - iOS 는 `setNoUsePrivacyAlert()` 로 팝업을 끈 경우에도 `true` 를 반환합니다
+<br/>
+
+#### setPrivacyAgreementListener
+```dart
+await _tnk.setPrivacyAgreementListener(
+  onAgreed: () {
+    // 사용자가 개인정보 수집에 동의함 -> 매체사 API 호출
+  },
+  onRevoked: () {
+    // 사용자가 개인정보 수집동의를 해제함 -> 매체사 API 호출
+  },
+);
+
+// 등록 해제
+await _tnk.setPrivacyAgreementListener();
+```
+- 사용자가 개인정보 수집에 **동의하거나 해제할 때** 호출됩니다 (Android / iOS)
+- 저장된 값이 미동의/해제에서 동의로 바뀔 때 `onAgreed` 가 1회, 동의에서 해제로 바뀔 때 `onRevoked` 가 1회 호출됩니다
+- 앱이 `setUserTermsAgree()` 로 직접 바꾼 값은 iOS 에서는 이벤트로 전달되지 않고, Android 에서는 전달됩니다. 사용자 동의·해제를 받을 목적이라면 이 차이에 기대지 마세요
+- 둘 중 하나만 넘겨도 됩니다. 다시 호출하면 이전 등록이 교체되고, 둘 다 생략하면 해제됩니다
+- 앱 시작 시(오퍼월을 열기 전) 한 번 등록합니다. 콜백은 메인 isolate 에서 호출됩니다
+- `tnk_flutter_rwd` 채널과 별도 채널을 쓰므로 앱이 `setMethodCallHandler` 를 직접 쓰고 있어도 충돌하지 않습니다
 <br/><br/>
 
 ### 7. 오퍼월 UI 커스터마이징

@@ -175,6 +175,16 @@ class MockTnkFlutterRwdPlatform
 
   @override
   Future<String?> getOfferwallTheme() => Future.value(themeValue);
+
+  @override
+  Future<String?> setPrivacyAgreementListener({VoidCallback? onAgreed, VoidCallback? onRevoked}) {
+    privacyAgreed = onAgreed;
+    privacyRevoked = onRevoked;
+    return Future.value('success');
+  }
+
+  VoidCallback? privacyAgreed;
+  VoidCallback? privacyRevoked;
 }
 
 void main() {
@@ -244,6 +254,85 @@ void main() {
 
       expect(await platform.getOfferwallTheme(), 'light');
       expect(calls.last.method, 'getOfferwallTheme');
+    });
+  });
+
+  group('privacy agreement listener', () {
+    const channel = MethodChannel('tnk_flutter_rwd');
+    const privacy = MethodChannel('tnk_flutter_rwd/privacy');
+    final calls = <MethodCall>[];
+
+    // 네이티브가 이벤트를 보내는 것을 흉내낸다.
+    Future<void> emit(String method) async {
+      await TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .handlePlatformMessage(privacy.name,
+              const StandardMethodCodec().encodeMethodCall(MethodCall(method)), (_) {});
+    }
+
+    setUp(() {
+      calls.clear();
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(channel, (call) async {
+        calls.add(call);
+        return 'success';
+      });
+    });
+
+    tearDown(() {
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(channel, null);
+      privacy.setMethodCallHandler(null);
+    });
+
+    test('registers natively and dispatches agreed / revoked to the callbacks', () async {
+      final platform = MethodChannelTnkFlutterRwd();
+      var agreed = 0, revoked = 0;
+      expect(await platform.setPrivacyAgreementListener(onAgreed: () => agreed++, onRevoked: () => revoked++), 'success');
+      expect(calls.single.method, 'setPrivacyAgreementListener');
+      expect(calls.single.arguments, {'enabled': true});
+
+      await emit('onPrivacyAgreementAgreed');
+      expect([agreed, revoked], [1, 0]);
+      await emit('onPrivacyAgreementRevoked');
+      expect([agreed, revoked], [1, 1]);
+    });
+
+    test('works with only one callback; the other event is ignored without error', () async {
+      final platform = MethodChannelTnkFlutterRwd();
+      var revoked = 0;
+      await platform.setPrivacyAgreementListener(onRevoked: () => revoked++);
+      await emit('onPrivacyAgreementAgreed');
+      await emit('onPrivacyAgreementRevoked');
+      expect(revoked, 1);
+    });
+
+    test('null callbacks unregister natively and events are then ignored', () async {
+      final platform = MethodChannelTnkFlutterRwd();
+      var agreed = 0;
+      await platform.setPrivacyAgreementListener(onAgreed: () => agreed++);
+      await platform.setPrivacyAgreementListener();
+      expect(calls.last.arguments, {'enabled': false});
+      await emit('onPrivacyAgreementAgreed');
+      expect(agreed, 0);
+    });
+
+    test('a later registration replaces the earlier one', () async {
+      final platform = MethodChannelTnkFlutterRwd();
+      var first = 0, second = 0;
+      await platform.setPrivacyAgreementListener(onAgreed: () => first++);
+      await platform.setPrivacyAgreementListener(onAgreed: () => second++);
+      await emit('onPrivacyAgreementAgreed');
+      expect([first, second], [0, 1]);
+    });
+
+    test('TnkFlutterRwd forwards the callbacks to the platform', () async {
+      final fake = MockTnkFlutterRwdPlatform();
+      TnkFlutterRwdPlatform.instance = fake;
+      void a() {}
+      void r() {}
+      await TnkFlutterRwd().setPrivacyAgreementListener(onAgreed: a, onRevoked: r);
+      expect(fake.privacyAgreed, a);
+      expect(fake.privacyRevoked, r);
     });
   });
 }

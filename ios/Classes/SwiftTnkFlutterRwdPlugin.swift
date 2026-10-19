@@ -3,10 +3,15 @@ import TnkRwdSdk2
 import UIKit
 
 public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
-                                       OfferwallEventListener
+                                       OfferwallEventListener,
+                                       TnkPrivacyAgreementListener
 {
 
     static var channel: FlutterMethodChannel? = nil
+    // 개인정보 수집동의 이벤트(네이티브 -> Dart) 전용 채널
+    static var privacyChannel: FlutterMethodChannel? = nil
+    // SDK 는 리스너를 weak 으로 들고 있으므로 플러그인 인스턴스를 강하게 보관한다.
+    static var instance: SwiftTnkFlutterRwdPlugin? = nil
     static var placementView: FlutterPlacementView? = nil
 
     var vc: AdOfferwallViewController? = nil
@@ -31,8 +36,27 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             name: "tnk_flutter_rwd",
             binaryMessenger: registrar.messenger()
         )
+        privacyChannel = FlutterMethodChannel(
+            name: "tnk_flutter_rwd/privacy",
+            binaryMessenger: registrar.messenger()
+        )
         let instance = SwiftTnkFlutterRwdPlugin()
+        SwiftTnkFlutterRwdPlugin.instance = instance
         registrar.addMethodCallDelegate(instance, channel: channel!)
+    }
+
+    public func detachFromEngine(for registrar: FlutterPluginRegistrar) {
+        TnkSession.sharedInstance()?.setPrivacyAgreementListener(nil)
+        SwiftTnkFlutterRwdPlugin.privacyChannel = nil
+    }
+
+    // MARK: TnkPrivacyAgreementListener (메인 스레드)
+    public func didPrivacyAgreementRevoked() {
+        SwiftTnkFlutterRwdPlugin.privacyChannel?.invokeMethod("onPrivacyAgreementRevoked", arguments: nil)
+    }
+
+    public func didPrivacyAgreementAgreed() {
+        SwiftTnkFlutterRwdPlugin.privacyChannel?.invokeMethod("onPrivacyAgreementAgreed", arguments: nil)
     }
 
     public func handle(
@@ -53,6 +77,12 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             } else {
                 TnkSession.sharedInstance()?.setCOPPA(false)
             }
+            result("success")
+
+        case "setPrivacyAgreementListener":
+            let args = call.arguments as? [String: Any]
+            let enabled = args?["enabled"] as? Bool ?? false
+            TnkSession.sharedInstance()?.setPrivacyAgreementListener(enabled ? self : nil)
             result("success")
 
         case "applicationStarted":

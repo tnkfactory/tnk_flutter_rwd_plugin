@@ -227,4 +227,30 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return result;
   }
 
+  /// 네이티브 -> Dart 개인정보 수집동의 이벤트 전용 채널.
+  /// 기본 채널은 앱이 직접 setMethodCallHandler 로 쓰는 경우가 있어(tnkAnalytics 등) 핸들러가 덮어써지지 않도록 분리한다.
+  @visibleForTesting
+  final privacyChannel = const MethodChannel('tnk_flutter_rwd/privacy');
+
+  @override
+  Future<String?> setPrivacyAgreementListener({VoidCallback? onAgreed, VoidCallback? onRevoked}) async {
+    if (onAgreed == null && onRevoked == null) {
+      privacyChannel.setMethodCallHandler(null);
+    } else {
+      privacyChannel.setMethodCallHandler((MethodCall call) async {
+        switch (call.method) {
+          case 'onPrivacyAgreementAgreed':
+            onAgreed?.call();
+            break;
+          case 'onPrivacyAgreementRevoked':
+            onRevoked?.call();
+            break;
+        }
+        return null;
+      });
+    }
+    return await methodChannel.invokeMethod<String>(
+        'setPrivacyAgreementListener', <String, dynamic>{"enabled": onAgreed != null || onRevoked != null});
+  }
+
 }

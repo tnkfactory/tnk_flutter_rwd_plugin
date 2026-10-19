@@ -155,4 +155,8 @@ abstract class TnkFlutterRwdPlatform extends PlatformInterface {
     throw UnimplementedError('getOfferwallTheme has not been implemented');
   }
 
+  Future<String?> setPrivacyAgreementListener({VoidCallback? onAgreed, VoidCallback? onRevoked}) {
+    throw UnimplementedError('setPrivacyAgreementListener has not been implemented');
+  }
+
 }

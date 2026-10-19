@@ -95,6 +95,17 @@ class TnkFlutterRwd {
     return TnkFlutterRwdPlatform.instance.isUserTermsAgree();
   }
 
+  /// 개인정보 수집동의 상태 변화 이벤트를 받는다.
+  ///
+  /// - [onAgreed]: 사용자가 미동의/해제 상태에서 동의로 바뀔 때 1회
+  /// - [onRevoked]: 사용자가 동의 상태에서 해제로 바뀔 때 1회
+  ///
+  /// 매체가 `setUserTermsAgree` 로 직접 저장한 값은 이벤트로 오지 않는다.
+  /// 둘 다 null 이면 등록을 해제한다. 다시 호출하면 이전 등록은 교체된다.
+  Future<String?> setPrivacyAgreementListener({VoidCallback? onAgreed, VoidCallback? onRevoked}) {
+    return TnkFlutterRwdPlatform.instance.setPrivacyAgreementListener(onAgreed: onAgreed, onRevoked: onRevoked);
+  }
+
   Future<String?> setCustomUnitIcon(HashMap<String, String> map) {
     return TnkFlutterRwdPlatform.instance.setCustomUnitIcon(map);
   }

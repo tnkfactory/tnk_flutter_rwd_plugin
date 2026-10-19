@@ -2176,6 +2176,14 @@ SWIFT_PROTOCOL("_TtP10TnkRwdSdk227TnkPrivacyAgreementListener_")
 /// 이미 해제된 상태에서 다시 해제 처리가 일어나는 경우에는 호출되지 않는다.
 /// 즉 동의 -> 해제 로 바뀌는 순간에만 한 번 전달된다.
 - (void)didPrivacyAgreementRevoked;
+@optional
+/// 수집동의가 동의 상태가 된 시점에 메인 스레드에서 호출된다. (2026.10)
+/// 저장된 값이 해제(또는 미저장) -> 동의 로 바뀌는 순간에만 한 번 전달된다.
+/// 이미 동의 상태에서 다시 동의 처리되면 호출되지 않는다.
+/// 오퍼월 동의 팝업, openPrivacyTermAlert 의 ‘동의’ 등 SDK 의 모든 동의 경로에서 호출된다.
+/// 매체사 자체 동의(setAgreePrivacyPolicy)는 SDK 저장값이 바뀌지 않으므로 전달되지 않는다.
+/// optional 이므로 기존 리스너 구현체는 수정 없이 그대로 빌드된다.
+- (void)didPrivacyAgreementAgreed;
 @end
 
 @class TnkStyles;
@@ -2256,6 +2264,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) TnkSession * _Nullable
 /// 사용자가 오퍼월 내 “내 정보” 화면에서 수집동의를 철회하여 동의 상태가 해제되면
 /// didPrivacyAgreementRevoked() 가 메인 스레드에서 한 번 호출된다.
 /// 이미 해제된 상태에서 다시 해제 처리가 일어나면 호출되지 않는다.
+/// 반대로 해제(또는 미저장) 상태에서 동의 상태가 되면 didPrivacyAgreementAgreed() 가 한 번 호출된다(구현은 선택).
 /// \param listener 통보받을 리스너. weak 로 참조하므로 매체사가 보관해야 한다. nil 을 넣으면 등록을 해제한다.
 ///
 - (TnkSession * _Nonnull)setPrivacyAgreementListener:(id <TnkPrivacyAgreementListener> _Nullable)listener;
