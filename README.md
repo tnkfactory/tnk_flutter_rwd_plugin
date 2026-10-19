@@ -1,7 +1,7 @@
 # tnk_flutter_rwd
-[![pub package](https://img.shields.io/badge/Flutter-0.8.12-blue)](./CHANGELOG.md)
-[![Android](https://img.shields.io/badge/Android_SDK-8.09.39-blue)](./guide_android.md)
-[![iOS](https://img.shields.io/badge/iOS_SDK-5.98-blue)](./guide_ios.md)
+[![pub package](https://img.shields.io/badge/Flutter-0.8.13-blue)](./CHANGELOG.md)
+[![Android](https://img.shields.io/badge/Android_SDK-8.09.40-blue)](./guide_android.md)
+[![iOS](https://img.shields.io/badge/iOS_SDK-5.99-blue)](./guide_ios.md)
 
 티엔케이팩토리 오퍼월(보상형 광고) Flutter 플러그인입니다. (Android / iOS)
 
@@ -58,7 +58,7 @@ flutter pub add tnk_flutter_rwd
 또는 `pubspec.yaml` 에 직접 추가합니다.
 ```yaml
 dependencies:
-  tnk_flutter_rwd: ^0.8.12
+  tnk_flutter_rwd: ^0.8.13
 ```
 - 설치 후 아래 플랫폼별 설정(App ID 등록, 권한, 저장소 추가 등)이 필요합니다
 - 테스트 상태에서는 테스트 장비를 개발 장비로 등록해야 광고 목록이 정상적으로 나타납니다 — [테스트 단말기 등록 방법](https://tnkfactory.github.io/incentive/reg_test_device)
