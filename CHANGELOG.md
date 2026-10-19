@@ -210,3 +210,10 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * 0.8.10 이하 Android 에서는 `setUseTermsPopup(true)` 를 호출해도 약관 팝업 사용이 꺼졌습니다
 * Android : `closeOfferwall` / `closeAdDetail` / `closeAllView` 호출 시 `MissingPluginException` 대신 `"fail"` 을 반환
   * 화면 닫기는 iOS 전용입니다. Android 오퍼월은 사용자가 뒤로가기로 닫습니다
+
+## 0.8.12
+* iOS TNK SDK 5.98 적용 (5.95 → 5.98)
+  * 오퍼월 목록 · 광고 상세 · 마이메뉴 · 검색 · 포인트 스토어 화면의 폭 상한(440pt)을 없앴습니다. iPad · 가로 화면 · 폴더블에서 화면 폭을 모두 사용합니다
+  * 플레이스먼트 `onItemClick` 의 completion 이 호출되지 않던 경로 수정
+  * 오퍼월을 열고 닫을 때마다 메모리가 늘던 누수 수정
+* Android TNK SDK 는 8.09.39 그대로입니다
