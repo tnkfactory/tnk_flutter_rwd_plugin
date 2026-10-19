@@ -719,6 +719,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk215AdOfferwallView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController * _Nonnull)viewController OBJC_DESIGNATED_INITIALIZER;
 - (void)didMoveToSuperview;
+- (void)safeAreaInsetsDidChange;
 - (void)didMoveToWindow;
 - (void)loadData;
 - (void)didMyMenuButtonClicked;
@@ -1973,6 +1974,13 @@ typedef SWIFT_ENUM(NSInteger, TnkCode, open) {
   TnkCodeNoContentsUrl = 113,
   TnkCodeInvocationError = 200,
   TnkCodeStoreApiError = 201,
+  TnkCodeUserCanceled = 1001,
+  TnkCodeCannotPresent = 1002,
+  TnkCodeAdNotFound = 1003,
+  TnkCodeDuplicateCall = 1004,
+  TnkCodeSdkNotInitialized = 1101,
+  TnkCodeLoginRequired = 1102,
+  TnkCodeTrackingNotAllowed = 1103,
 };
 
 SWIFT_CLASS("_TtC10TnkRwdSdk28TnkColor")
@@ -2100,8 +2108,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkLayout * 
 @property (nonatomic) BOOL menuFilterHidden;
 @property (nonatomic) CGFloat listViewTopMargin;
 @property (nonatomic) CGFloat listViewBottomMargin;
-@property (nonatomic) CGFloat listViewMaxWidth;
-@property (nonatomic) CGFloat listViewMinWidth;
+@property (nonatomic) CGFloat listViewMaxWidth SWIFT_DEPRECATED_MSG("5.97 부터 사용하지 않는다. SDK 화면은 폭 상한 없이 화면(safe area) 폭을 모두 쓴다.");
+@property (nonatomic) CGFloat listViewMinWidth SWIFT_DEPRECATED_MSG("5.97 부터 사용하지 않는다.");
 @property (nonatomic, strong) UIImage * _Nullable listViewTopButtonImage;
 @property (nonatomic) CGSize listViewTopButtonSize;
 @property (nonatomic, strong) UIImage * _Nullable listViewFilterButtonImage;
@@ -3201,6 +3209,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk215AdOfferwallView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder SWIFT_UNAVAILABLE;
 - (nonnull instancetype)initWithFrame:(CGRect)frame viewController:(UIViewController * _Nonnull)viewController OBJC_DESIGNATED_INITIALIZER;
 - (void)didMoveToSuperview;
+- (void)safeAreaInsetsDidChange;
 - (void)didMoveToWindow;
 - (void)loadData;
 - (void)didMyMenuButtonClicked;
@@ -4455,6 +4464,13 @@ typedef SWIFT_ENUM(NSInteger, TnkCode, open) {
   TnkCodeNoContentsUrl = 113,
   TnkCodeInvocationError = 200,
   TnkCodeStoreApiError = 201,
+  TnkCodeUserCanceled = 1001,
+  TnkCodeCannotPresent = 1002,
+  TnkCodeAdNotFound = 1003,
+  TnkCodeDuplicateCall = 1004,
+  TnkCodeSdkNotInitialized = 1101,
+  TnkCodeLoginRequired = 1102,
+  TnkCodeTrackingNotAllowed = 1103,
 };
 
 SWIFT_CLASS("_TtC10TnkRwdSdk28TnkColor")
@@ -4582,8 +4598,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkLayout * 
 @property (nonatomic) BOOL menuFilterHidden;
 @property (nonatomic) CGFloat listViewTopMargin;
 @property (nonatomic) CGFloat listViewBottomMargin;
-@property (nonatomic) CGFloat listViewMaxWidth;
-@property (nonatomic) CGFloat listViewMinWidth;
+@property (nonatomic) CGFloat listViewMaxWidth SWIFT_DEPRECATED_MSG("5.97 부터 사용하지 않는다. SDK 화면은 폭 상한 없이 화면(safe area) 폭을 모두 쓴다.");
+@property (nonatomic) CGFloat listViewMinWidth SWIFT_DEPRECATED_MSG("5.97 부터 사용하지 않는다.");
 @property (nonatomic, strong) UIImage * _Nullable listViewTopButtonImage;
 @property (nonatomic) CGSize listViewTopButtonSize;
 @property (nonatomic, strong) UIImage * _Nullable listViewFilterButtonImage;
