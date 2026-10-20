@@ -162,10 +162,6 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * `true` 로 호출하면 바텀시트(`pageSheet`) 가 아니라 `overFullScreen` 으로 표시합니다.
   * 상단 여백과 둥근 모서리는 광고 상세 화면 내부 레이아웃이라 이 옵션으로는 바뀌지 않습니다.
 * iOS : showMyEarnPointList 크래시 수정
-  * `map["type"]` 을 `as! Int` 로 강제 캐스팅해, 매체가 `{"type": "1"}` 처럼 문자열로 넘기면
-    `Could not cast value of type 'NSTaggedPointerString' to 'NSNumber'` 로 죽었습니다.
-  * 이 값은 iOS·Android 모두 사용하지 않으므로 캐스팅을 제거했습니다.
-* guide_ios.md 갱신 (adJoin 파라메터 및 주의사항 추가)
 
 ## 0.8.6
 * iOS : podspec 정보 정정
@@ -186,22 +182,18 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * 앱 실행 시점에 호출하면 네이티브 SDK 의 `applicationStarted()` 를 호출해 실행형 광고의 참여 완료를 서버에 알립니다.
 
 ## 0.8.9
-* Android TNK SDK 8.09.33 적용 (8.09.31 → 8.09.33)
-  * 이벤트 인앱 웹뷰 조회 중 앱을 백그라운드로 보내면 앱이 종료되던 문제 수정
-  * 전체화면 웹뷰에서 새 창 링크(`target="_blank"`, `window.open`)를 누르면 앱이 종료되거나 반응이 없던 문제 수정
-  * `getEventLink` 를 메인 스레드에서 호출하면 항상 실패하던 문제 수정
+* 이벤트 인앱 웹뷰 조회 중 앱을 백그라운드로 보내면 앱이 종료되던 문제 수정
+* 전체화면 웹뷰에서 새 창 링크(`target="_blank"`, `window.open`)를 누르면 앱이 종료되거나 반응이 없던 문제 수정
+* `getEventLink` 를 메인 스레드에서 호출하면 항상 실패하던 문제 수정
 
 ## 0.8.10
-* iOS TNK SDK 5.95 적용 (5.94 → 5.95)
 * 오퍼월 테마 API 추가: `setOfferwallTheme(String)` / `getOfferwallTheme()` (`"light"` | `"dark"` | `"system"` | `"unspecified"`)
   * Android 는 `TnkAdConfig.setOfferwallTheme`, iOS 는 `TnkStyles.offerwallTheme` 에 연결됩니다
   * iOS 에서 `"system"` 은 `"unspecified"` 와 똑같이 동작합니다
   * 오퍼월을 열기 전에(앱 시작 시 한 번) 설정합니다
-  * Android 적용 범위(SDK 8.09.39 기준): 오퍼월 목록·광고 상세·쇼핑 검색/카테고리·SDK 다이얼로그 (포인트 스토어 제외)
-* Android `AdWallActivity` 의 `configChanges` 에 `uiMode` 추가 — `"system"` / `"unspecified"` 에서 단말 다크모드를 바꿔도 오퍼월이 처음 화면으로 돌아가지 않고 바로 반영됩니다
-* Android TNK SDK 8.09.39 적용 (8.09.33 → 8.09.39)
-  * Placement `onItemClick` 에서 개인정보 수집 동의 팝업을 **거부**하면 로딩 화면이 닫히지 않고 응답도 오지 않던 문제 수정
-    * 이제 로딩 화면이 닫히고 `res_code` `"-1"`, `res_message` "개인정보 수집 동의가 필요합니다." 를 반환합니다
+  * Android `AdWallActivity` 의 `configChanges` 에 `uiMode` 추가 — `"system"` / `"unspecified"` 에서 단말 다크모드를 바꿔도 오퍼월이 처음 화면으로 돌아가지 않고 바로 반영됩니다
+* Placement `onItemClick` 에서 개인정보 수집 동의 팝업을 **거부**하면 로딩 화면이 닫히지 않고 응답도 오지 않던 문제 수정
+  * 이제 로딩 화면이 닫히고 `res_code` `"-1"`, `res_message` "개인정보 수집 동의가 필요합니다." 를 반환합니다
   * `adDetail` / `adJoin` / `adAction` 진행 중 동의 팝업이 결정 없이 닫혀도(화면 종료 등) 실패로 응답합니다
   * 오퍼월을 닫아도 오퍼월 화면이 메모리에 남던 문제 수정
 
@@ -212,19 +204,11 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * 화면 닫기는 iOS 전용입니다. Android 오퍼월은 사용자가 뒤로가기로 닫습니다
 
 ## 0.8.12
-* iOS TNK SDK 5.98 적용 (5.95 → 5.98)
-  * 오퍼월 목록 · 광고 상세 · 마이메뉴 · 검색 · 포인트 스토어 화면의 폭 상한(440pt)을 없앴습니다. iPad · 가로 화면 · 폴더블에서 화면 폭을 모두 사용합니다
-  * 플레이스먼트 `onItemClick` 의 completion 이 호출되지 않던 경로 수정
-  * 오퍼월을 열고 닫을 때마다 메모리가 늘던 누수 수정
-* iOS TNK SDK 5.99 적용 (5.98 → 5.99), Android TNK SDK 8.09.40 적용 (8.09.39 → 8.09.40)
+* iOS 반응형 UI디자인 적용 
+* 플레이스먼트 `onItemClick` 의 completion 이 호출되지 않던 경로 수정
 * 개인정보 수집동의 '동의' / '해제' 이벤트를 Dart 로 받는 `setPrivacyAgreementListener` 추가 (Android / iOS)
   * 사용자가 동의 팝업에서 동의하거나, 오퍼월에서 수집동의를 해제할 때 매체사 앱의 콜백이 호출됩니다
   * 미동의/해제 → 동의로 바뀔 때 `onAgreed` 1회, 동의 → 해제로 바뀔 때 `onRevoked` 1회
-  * `setUserTermsAgree` 로 앱이 직접 바꾼 값은 iOS 에서는 이벤트로 전달되지 않고 Android 에서는 전달됩니다
 
 ## 0.8.13
-* iOS TNK SDK 5.99 재빌드본 적용 (버전 표기는 5.99 그대로)
-  * 전체 화면으로 열리는 광고 상세에서 화면 위쪽 모서리가 둥글게 잘려 보이던 문제 수정
-  * 0.8.12 에 들어간 5.99 와 공개 API 가 같습니다. 앱 코드는 고치지 않아도 됩니다
-* Android TNK SDK 는 8.09.40 그대로입니다
-* README 의 SDK 버전 배지를 실제 적용 버전(Android 8.09.40, iOS 5.99)으로 수정
+* 전체 화면으로 열리는 광고 상세에서 화면 위쪽 모서리가 둥글게 잘려 보이던 문제 수정
