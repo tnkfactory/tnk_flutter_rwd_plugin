@@ -212,3 +212,9 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
 
 ## 0.8.13
 * 전체 화면으로 열리는 광고 상세에서 화면 위쪽 모서리가 둥글게 잘려 보이던 문제 수정
+
+## 0.8.14
+* Android : TNK SDK 8.09.42 적용
+  * 앱 시작 직후 설치 리퍼러 조회 중 ANR 이 나던 문제 수정
+  * SDK 가 필요한 R8 규칙을 직접 포함합니다. 앱 proguard 설정의 `-keep class com.tnkfactory.** { *;}` 는 지우는 것을 권장합니다
+  * Kotlin 2.1 이상이 필요합니다

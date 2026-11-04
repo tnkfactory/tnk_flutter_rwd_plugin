@@ -120,7 +120,9 @@ Java를 사용하는 경우도 동일하게 `io.flutter.embedding.android.Flutte
 
 ### 라이브러리 등록
 
-TNK SDK(`com.tnkfactory:rwd:8.09.39`)는 TNK Maven 저장소에서 제공됩니다.
+TNK SDK(`com.tnkfactory:rwd:8.09.42`)는 TNK Maven 저장소에서 제공됩니다.
+
+Kotlin 2.1 이상이 필요합니다(`ext.kotlin_version` 또는 `settings.gradle` 의 `org.jetbrains.kotlin.android` 버전).
 
 프로젝트 파일 내에 `{projectroot}/android/build.gradle` 파일에 아래와 같이 저장소를 추가합니다.
 
