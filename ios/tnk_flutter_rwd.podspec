@@ -15,8 +15,8 @@ tnkfactory rwd sdk for flutter
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  # 벤더링하는 TnkRwdSdk2.xcframework 의 MinimumOSVersion 이 12.0 이다.
-  s.platform = :ios, '12.0'
+  # 벤더링하는 TnkRwdSdk2.xcframework 의 최소 지원 버전(iOS 15.0)에 맞춘다.
+  s.platform = :ios, '15.0'
 
   # Flutter.framework does not contain a i386 slice.
     s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }

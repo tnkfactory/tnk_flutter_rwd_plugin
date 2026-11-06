@@ -212,3 +212,7 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
 
 ## 0.8.13
 * 전체 화면으로 열리는 광고 상세에서 화면 위쪽 모서리가 둥글게 잘려 보이던 문제 수정
+
+## Unreleased
+* iOS 최소 지원 버전을 15.0 으로 올렸습니다 (기존 12.0)
+  * 앱의 iOS Deployment Target 과 Podfile `platform :ios` 를 15.0 이상으로 맞춰야 합니다

@@ -8,6 +8,7 @@
 - Dart SDK : >= 2.18.5 < 4.0.0
 - Flutter : >= 2.5.0
 - Android Minimum API Level : 21
+- iOS Minimum Version : 15.0
 - iOS : `TnkRwdSdk2.xcframework` 가 플러그인에 포함되어 있습니다
 
 TnkAd SDK는 Tnk의 광고 네트워크 상에서 광고앱이나 매체앱을 개발하기 위하여 제공되는 통합 SDK이며 아래의 기능들을 사용하실 수 있습니다.
