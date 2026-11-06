@@ -7,5 +7,4 @@ framework module TnkRwdSdk2 {
 
 module TnkRwdSdk2.Swift {
   header "TnkRwdSdk2-Swift.h"
-  requires objc
 }
