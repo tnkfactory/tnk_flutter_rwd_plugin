@@ -1,6 +1,6 @@
 # tnk_flutter_rwd
 [![pub package](https://img.shields.io/badge/Flutter-0.8.14-blue)](./CHANGELOG.md)
-[![Android](https://img.shields.io/badge/Android_SDK-8.09.42-blue)](./guide_android.md)
+[![Android](https://img.shields.io/badge/Android_SDK-8.09.43-blue)](./guide_android.md)
 [![iOS](https://img.shields.io/badge/iOS_SDK-5.991-blue)](./guide_ios.md)
 
 티엔케이팩토리 오퍼월(보상형 광고) Flutter 플러그인입니다. (Android / iOS)
