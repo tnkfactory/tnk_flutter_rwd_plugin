@@ -213,6 +213,12 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
 ## 0.8.13
 * 전체 화면으로 열리는 광고 상세에서 화면 위쪽 모서리가 둥글게 잘려 보이던 문제 수정
 
-## Unreleased
-* iOS 최소 지원 버전을 15.0 으로 올렸습니다 (기존 12.0)
-  * 앱의 iOS Deployment Target 과 Podfile `platform :ios` 를 15.0 이상으로 맞춰야 합니다
+## 0.8.14
+* Android : TNK SDK 8.09.42 적용
+  * 앱 시작 직후 설치 리퍼러 조회 중 ANR 이 나던 문제 수정
+  * SDK 가 필요한 R8 규칙을 직접 포함합니다. 앱 proguard 설정의 `-keep class com.tnkfactory.** { *;}` 는 지우는 것을 권장합니다
+  * Kotlin 2.1 이상이 필요합니다
+* iOS : TNK SDK 5.991 적용
+  * iOS 최소 지원 버전을 15.0 으로 올렸습니다 (기존 12.0)
+    * 앱의 iOS Deployment Target 과 Podfile `platform :ios` 를 15.0 이상으로 맞춰야 합니다
+  * 가로 화면 등에서 추천 팝업의 '닫기' 버튼이 시스템 영역에 가려 누를 수 없던 문제 수정

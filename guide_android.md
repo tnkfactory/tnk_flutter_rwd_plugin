@@ -120,7 +120,9 @@ Java를 사용하는 경우도 동일하게 `io.flutter.embedding.android.Flutte
 
 ### 라이브러리 등록
 
-TNK SDK(`com.tnkfactory:rwd:8.09.39`)는 TNK Maven 저장소에서 제공됩니다.
+TNK SDK(`com.tnkfactory:rwd:8.09.42`)는 TNK Maven 저장소에서 제공됩니다.
+
+Kotlin 2.1 이상이 필요합니다(`ext.kotlin_version` 또는 `settings.gradle` 의 `org.jetbrains.kotlin.android` 버전).
 
 프로젝트 파일 내에 `{projectroot}/android/build.gradle` 파일에 아래와 같이 저장소를 추가합니다.
 
@@ -163,7 +165,10 @@ task clean(type: Delete) {
 
 ### Proguard 사용
 
-Proguard를 사용하실 경우 Proguard 설정내에 아래 내용을 반드시 넣어주세요.
+SDK 에 필요한 R8/ProGuard 규칙은 SDK(AAR) 안에 들어 있습니다. **앱에 따로 추가할 규칙은 없습니다.**
+
+이전 가이드대로 아래 줄을 넣어 두셨다면 지워 주세요.
+이 줄이 있으면 앱의 R8 이 TNK SDK 코드를 줄이거나 난독화하지 못합니다.
 
 ```
 -keep class com.tnkfactory.** { *;}
