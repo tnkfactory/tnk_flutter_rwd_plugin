@@ -687,6 +687,8 @@ Future<String?> setOfferwallOpaqueNavigationBar(bool opaque, {String? color})
 ##### 적용 범위
 오퍼월 목록과 그 안에서 열리는 상세 화면의 앱바 배경, 앱바 버튼의 글라스 배경이 사라집니다. 기본값은 투명 앱바이며, 다음 오퍼월 표시부터 반영됩니다. Android 에서는 아무 일도 하지 않고 `"success"` 를 반환합니다.
 
+앱바 제목·버튼 글자색은 테마에 따라 정해지고 `color` 에 맞춰 바뀌지 않습니다. 밝은 색을 지정하면 다크 모드에서 흰 글자가 잘 보이지 않으니, 밝은 색은 `setOfferwallTheme("light")` 와 함께 쓰거나 `color` 를 생략하세요.
+
 ##### 적용예시
 
 ```dart
