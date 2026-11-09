@@ -669,6 +669,33 @@ await TnkFlutterRwd().showAdList("무료 충전소");
 
 ---
 
+#### setOfferwallOpaqueNavigationBar
+
+iOS 26 이상의 리퀴드 글라스 앱바·버튼 대신 단색 불투명 앱바를 사용합니다.
+
+##### Method
+```dart
+Future<String?> setOfferwallOpaqueNavigationBar(bool opaque, {String? color})
+```
+
+##### Parameters
+| 이름 | 설명 |
+|---|---|
+| `opaque` | `true` 불투명 앱바, `false` 기본(투명) 앱바 |
+| `color` | (선택) 앱바 배경색 `"#RRGGBB"`. 생략하거나 형식이 맞지 않으면 오퍼월 목록 배경색(라이트/다크 자동 대응) |
+
+##### 적용 범위
+오퍼월 목록과 그 안에서 열리는 상세 화면의 앱바 배경, 앱바 버튼의 글라스 배경이 사라집니다. 기본값은 투명 앱바이며, 다음 오퍼월 표시부터 반영됩니다. Android 에서는 아무 일도 하지 않고 `"success"` 를 반환합니다.
+
+##### 적용예시
+
+```dart
+await TnkFlutterRwd().setOfferwallOpaqueNavigationBar(true);
+await TnkFlutterRwd().showAdList("무료 충전소");
+```
+
+---
+
 ### 바. 이벤트 웹페이지
 
 #### showEventWebPage

@@ -26,6 +26,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
 
   String _tnkResult = 'Unknown';
   String _theme = 'unspecified';
+  String _navBar = '투명(기본)';
 
   List<TnkPlacementAdItem> adList = [];
 
@@ -70,6 +71,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
             _buildInfoRow('결과', _tnkResult),
             const Divider(),
             _buildInfoRow('오퍼월 테마', _theme),
+            _buildInfoRow('오퍼월 앱바', _navBar),
             const Divider(),
             _buildInfoRow('적립 가능한 포인트', '$_myPoint'),
             const Divider(),
@@ -124,6 +126,13 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
           {'label': 'dark', 'onPressed': () => setOfferwallTheme('dark')},
           {'label': 'system', 'onPressed': () => setOfferwallTheme('system')},
           {'label': 'unspecified', 'onPressed': () => setOfferwallTheme('unspecified')},
+        ]),
+        const SizedBox(height: 16),
+        // iOS 전용. 다음 오퍼월 표시부터 반영된다. Android 는 아무 일도 하지 않는다.
+        _buildSection('오퍼월 앱바 (iOS)', Colors.indigo, [
+          {'label': '불투명 켬', 'onPressed': () => setOpaqueNavBar(true)},
+          {'label': '불투명 켬(#FFF3E0)', 'onPressed': () => setOpaqueNavBar(true, color: '#FFF3E0')},
+          {'label': '불투명 끔', 'onPressed': () => setOpaqueNavBar(false)},
         ]),
         const SizedBox(height: 16),
         _buildSection('기타', Colors.green, [
@@ -207,6 +216,19 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       await loadOfferwallTheme();
     } on PlatformException catch (e) {
       print(e);
+    }
+  }
+
+  /// 오퍼월 앱바 불투명 옵션을 지정하고 화면에 표시한다. (iOS 전용)
+  Future<void> setOpaqueNavBar(bool opaque, {String? color}) async {
+    try {
+      await _tnkFlutterRwdPlugin.setOfferwallOpaqueNavigationBar(opaque, color: color);
+      if (!mounted) return;
+      setState(() {
+        _navBar = opaque ? (color == null ? '불투명' : '불투명 $color') : '투명(기본)';
+      });
+    } on PlatformException catch (e) {
+      debugPrint(e.toString());
     }
   }
 

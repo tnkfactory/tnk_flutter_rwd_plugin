@@ -462,6 +462,19 @@ String? theme = await _tnk.getOfferwallTheme();   // "dark"
 - **iOS** (SDK 5.95 기준) 적용 범위: 오퍼월 목록 · 광고 상세 웹뷰 · 이벤트 웹뷰 · 다이얼로그와 상태바 아이콘의 명암
   - iOS 에는 "시스템 설정을 따른다" 는 값이 없어 `"system"` 은 `"unspecified"` 와 같습니다. 매체 앱이 `UIUserInterfaceStyle` 로 라이트/다크를 고정했다면 단말 설정이 아니라 **앱에 고정된 값**을 따릅니다. 반드시 라이트 또는 다크로 보여주려면 `"light"` / `"dark"` 를 지정하세요
 - 웹 페이지 내부의 색상은 웹이 결정하므로, 다크 스타일이 없는 페이지는 그대로 표시됩니다
+<br/>
+
+#### setOfferwallOpaqueNavigationBar
+```dart
+// 앱 시작 시 한 번, 오퍼월을 열기 전에 설정합니다
+await _tnk.setOfferwallOpaqueNavigationBar(true);                    // 불투명 앱바
+await _tnk.setOfferwallOpaqueNavigationBar(true, color: "#FFF3E0");  // 배경색 지정 (선택)
+await _tnk.setOfferwallOpaqueNavigationBar(false);                   // 기본(투명)으로 되돌림
+```
+- **iOS 전용** — iOS 26 이상의 리퀴드 글라스 앱바·버튼 대신 단색 불투명 앱바를 씁니다. 기본값은 호출하지 않았을 때와 같은 투명 앱바입니다
+- `color` 는 `"#RRGGBB"` 형식이며 생략하거나 형식이 맞지 않으면 오퍼월 목록 배경색(라이트/다크 자동 대응)을 씁니다
+- 다음 오퍼월 표시부터 반영됩니다. Android 에서 호출해도 아무 일도 하지 않고 `"success"` 를 반환합니다
+- 이 옵션은 SDK 5.991 이후 불투명 앱바 옵션이 포함된 iOS SDK 빌드가 필요합니다
 <br/><br/>
 
 ### 8. 이벤트 웹페이지 / 딥링크
@@ -600,6 +613,7 @@ String? result = await _tnk.onItemClick(adItem.app_id.toString());
 | `setCustomUIDefault` | ❌ | ✅ |
 | `setPubCustomUi` | ➖ | ✅ |
 | `setOfferwallTheme` · `getOfferwallTheme` | ✅ | ✅ (`"system"` 은 `"unspecified"` 와 동일) |
+| `setOfferwallOpaqueNavigationBar` | ➖ | ✅ |
 | `showEventWebPage` · `openTnkEventScheme` | ✅ | ✅ |
 | `openEventWebView` | ✅ | ❌ |
 | `closeOfferwall` · `closeAdDetail` · `closeAllView` | ➖ | ✅ |

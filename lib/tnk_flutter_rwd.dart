@@ -232,6 +232,20 @@ class TnkFlutterRwd {
     return TnkFlutterRwdPlatform.instance.getOfferwallTheme();
   }
 
+  /// 오퍼월 상단 앱바를 불투명하게 할지 정한다. iOS 전용이며 Android 에서는 아무 일도 하지 않고 `"success"` 를 반환한다.
+  ///
+  /// iOS 26 이상의 리퀴드 글라스 앱바·버튼 대신 단색 불투명 앱바를 쓰고 싶을 때 `true` 로 한 번 호출한다.
+  /// 오퍼월을 열기 전에, 앱 시작 시 한 번 설정하는 것을 권장하며 다음 오퍼월 표시부터 반영된다.
+  ///
+  /// [opaque] 가 `false` 이면 기본 동작(투명 앱바)으로 되돌린다.
+  /// [color] 는 `"#RRGGBB"` 형식의 앱바 배경색이다. 생략하거나 형식이 맞지 않으면
+  /// 오퍼월 목록 배경과 같은 색(라이트/다크 자동 대응)을 쓴다. [opaque] 가 `false` 이면 무시한다.
+  ///
+  /// 정상 처리되면 `"success"` 를 반환한다.
+  Future<String?> setOfferwallOpaqueNavigationBar(bool opaque, {String? color}) {
+    return TnkFlutterRwdPlatform.instance.setOfferwallOpaqueNavigationBar(opaque, color: color);
+  }
+
   /// 테마 문자열을 `light`/`dark`/`system`/`unspecified` 중 하나로 정규화한다.
   static String normalizeOfferwallTheme(String? theme) {
     final value = theme?.trim().toLowerCase();

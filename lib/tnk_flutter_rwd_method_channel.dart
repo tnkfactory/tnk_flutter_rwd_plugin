@@ -227,6 +227,13 @@ class MethodChannelTnkFlutterRwd extends TnkFlutterRwdPlatform {
     return result;
   }
 
+  @override
+  Future<String?> setOfferwallOpaqueNavigationBar(bool opaque, {String? color}) async {
+    final result = await methodChannel.invokeMethod<String>(
+        'setOfferwallOpaqueNavigationBar', <String, dynamic>{"opaque": opaque, "color": color});
+    return result;
+  }
+
   /// 네이티브 -> Dart 개인정보 수집동의 이벤트 전용 채널.
   /// 기본 채널은 앱이 직접 setMethodCallHandler 로 쓰는 경우가 있어(tnkAnalytics 등) 핸들러가 덮어써지지 않도록 분리한다.
   @visibleForTesting

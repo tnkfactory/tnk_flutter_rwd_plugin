@@ -212,6 +212,15 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
             default: result("unspecified")
             }
 
+        case "setOfferwallOpaqueNavigationBar":
+            // 오퍼월 앱바를 불투명(단색)으로 한다. 다음 오퍼월 표시부터 반영된다.
+            let args = call.arguments as? [String: Any]
+            let opaque = args?["opaque"] as? Bool ?? false
+            TnkLayout.shared.navigationBarStyle = opaque ? .opaque : .transparent
+            // 색은 "#RRGGBB" 만 받는다. 없거나 형식이 틀리면 nil -> SDK 기본(목록 배경색, 라이트/다크 대응)
+            TnkLayout.shared.navigationBarBackgroundColor = opaque ? Self.safeHexColor(args?["color"] as? String) : nil
+            result("success")
+
         case "setNoUsePointIcon":
             setNoUsePoinIcon()
             result("setNoUsePointIcon")
@@ -1757,6 +1766,15 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
     //    }
 
     // Color hexString -> Int
+    /// "#RRGGBB" 를 UIColor 로. 형식이 맞지 않으면 nil (크래시 없음).
+    private static func safeHexColor(_ str: String?) -> UIColor? {
+        guard var s = str?.trimmingCharacters(in: .whitespaces), s.hasPrefix("#") else { return nil }
+        s.removeFirst()
+        guard s.count == 6, let v = UInt32(s, radix: 16) else { return nil }
+        return UIColor(red: CGFloat((v >> 16) & 0xff) / 255, green: CGFloat((v >> 8) & 0xff) / 255,
+                       blue: CGFloat(v & 0xff) / 255, alpha: 1)
+    }
+
     private func hexaStringToInt(_hexaStr: String) -> Int {
         if _hexaStr.hasPrefix("#") {
             let tmp = _hexaStr.trimmingCharacters(in: ["#"])

@@ -176,6 +176,16 @@ class MockTnkFlutterRwdPlatform
   @override
   Future<String?> getOfferwallTheme() => Future.value(themeValue);
 
+  bool? opaqueNavBar;
+  String? opaqueNavBarColor;
+
+  @override
+  Future<String?> setOfferwallOpaqueNavigationBar(bool opaque, {String? color}) {
+    opaqueNavBar = opaque;
+    opaqueNavBarColor = color;
+    return Future.value('success');
+  }
+
   @override
   Future<String?> setPrivacyAgreementListener({VoidCallback? onAgreed, VoidCallback? onRevoked}) {
     privacyAgreed = onAgreed;
@@ -201,6 +211,14 @@ void main() {
     TnkFlutterRwdPlatform.instance = fakePlatform;
 
     expect(await tnkFlutterRwdPlugin.getPlatformVersion(), '42');
+  });
+
+  test('setOfferwallOpaqueNavigationBar passes opaque and color to the platform', () async {
+    final fake = MockTnkFlutterRwdPlatform();
+    TnkFlutterRwdPlatform.instance = fake;
+    expect(await TnkFlutterRwd().setOfferwallOpaqueNavigationBar(true, color: '#FFFFFF'), 'success');
+    expect(fake.opaqueNavBar, true);
+    expect(fake.opaqueNavBarColor, '#FFFFFF');
   });
 
   group('offerwall theme', () {
@@ -254,6 +272,16 @@ void main() {
 
       expect(await platform.getOfferwallTheme(), 'light');
       expect(calls.last.method, 'getOfferwallTheme');
+    });
+
+    test('setOfferwallOpaqueNavigationBar sends opaque and color', () async {
+      final platform = MethodChannelTnkFlutterRwd();
+      expect(await platform.setOfferwallOpaqueNavigationBar(true, color: '#112233'), 'success');
+      expect(calls.single.method, 'setOfferwallOpaqueNavigationBar');
+      expect(calls.single.arguments, {'opaque': true, 'color': '#112233'});
+
+      await platform.setOfferwallOpaqueNavigationBar(true);
+      expect(calls.last.arguments, {'opaque': true, 'color': null});
     });
   });
 

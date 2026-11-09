@@ -216,6 +216,12 @@ class TnkFlutterRwdPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 return
             }
 
+            // iOS 전용 앱바 옵션. Android 는 할 일이 없지만 MissingPluginException 이 나지 않게 성공으로 답한다.
+            if (call.method == "setOfferwallOpaqueNavigationBar") {
+                result.success("success")
+                return
+            }
+
             // 개인정보 수집동의 리스너 등록은 Activity 없이도 가능하다.
             if (call.method == "setPrivacyAgreementListener") {
                 setPrivacyListener(call.argument<Boolean>("enabled") ?: false)
