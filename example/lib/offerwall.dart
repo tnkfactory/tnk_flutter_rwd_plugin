@@ -25,8 +25,10 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   int _queryPoint = 0;
 
   String _tnkResult = 'Unknown';
-  String _theme = 'unspecified';
-  String _navBar = '투명(기본)';
+  // 오퍼월 화면 설정 (오퍼월을 열기 전에 지정하면 다음 표시부터 반영된다)
+  String _theme = 'system'; // 'system' | 'light' | 'dark'
+  bool _opaqueBar = false; // 불투명 앱바 (iOS 전용)
+  String? _barColor; // null = 기본색(목록 배경색), 아니면 '#RRGGBB'
 
   List<TnkPlacementAdItem> adList = [];
 
@@ -50,7 +52,9 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
               children: [
                 const SizedBox(height: 20),
                 _buildInfoCard(),
-                const SizedBox(height: 24),
+                const SizedBox(height: 12),
+                _buildScreenSettingsCard(),
+                const SizedBox(height: 16),
                 _buildButtonSections(),
               ],
             ),
@@ -70,12 +74,74 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
           children: [
             _buildInfoRow('결과', _tnkResult),
             const Divider(),
-            _buildInfoRow('오퍼월 테마', _theme),
-            _buildInfoRow('오퍼월 앱바', _navBar),
-            const Divider(),
             _buildInfoRow('적립 가능한 포인트', '$_myPoint'),
             const Divider(),
             _buildInfoRow('내 포인트', '$_queryPoint'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// 오퍼월 화면 설정 카드: 불투명 앱바(iOS 전용) 스위치 / 앱바 색 / 테마.
+  Widget _buildScreenSettingsCard() {
+    const color = Colors.teal;
+    final isIOS = Platform.isIOS;
+    return Card(
+      elevation: 2,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              '오퍼월 화면 설정',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: color),
+            ),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(isIOS ? '불투명 앱바 (iOS)' : '불투명 앱바 (iOS 전용)'),
+              subtitle: isIOS ? null : const Text('Android 에서는 적용되지 않습니다'),
+              value: _opaqueBar,
+              onChanged: (on) => setOpaqueNavBar(on, color: _barColor),
+            ),
+            Row(
+              children: [
+                const Text('앱바 색  '),
+                Expanded(
+                  child: SegmentedButton<String>(
+                    showSelectedIcon: false,
+                    segments: const [
+                      ButtonSegment(value: 'default', label: Text('기본')),
+                      ButtonSegment(value: '#FFF3E0', label: Text('#FFF3E0')),
+                    ],
+                    selected: {_barColor ?? 'default'},
+                    // 불투명이 꺼져 있으면 색은 쓰이지 않으므로 비활성
+                    onSelectionChanged: _opaqueBar
+                        ? (v) => setOpaqueNavBar(true, color: v.first == 'default' ? null : v.first)
+                        : null,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                const Text('테마  '),
+                Expanded(
+                  child: SegmentedButton<String>(
+                    showSelectedIcon: false,
+                    segments: const [
+                      ButtonSegment(value: 'system', label: Text('시스템')),
+                      ButtonSegment(value: 'light', label: Text('라이트')),
+                      ButtonSegment(value: 'dark', label: Text('다크')),
+                    ],
+                    selected: {_theme},
+                    onSelectionChanged: (v) => setOfferwallTheme(v.first),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -117,22 +183,6 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
             showEventPage(eventId);
           }},
           {'label': 'No Privacy Alert', 'onPressed': setNoUsePrivacyAlert},
-        ]),
-        const SizedBox(height: 16),
-        // 오퍼월을 열기 전에 설정해야 반영된다. (앱에서는 시작 시 한 번 설정 권장)
-        // iOS 에서 system 은 unspecified 와 똑같이 동작한다.
-        _buildSection('오퍼월 테마', Colors.teal, [
-          {'label': 'light', 'onPressed': () => setOfferwallTheme('light')},
-          {'label': 'dark', 'onPressed': () => setOfferwallTheme('dark')},
-          {'label': 'system', 'onPressed': () => setOfferwallTheme('system')},
-          {'label': 'unspecified', 'onPressed': () => setOfferwallTheme('unspecified')},
-        ]),
-        const SizedBox(height: 16),
-        // iOS 전용. 다음 오퍼월 표시부터 반영된다. Android 는 아무 일도 하지 않는다.
-        _buildSection('오퍼월 앱바 (iOS)', Colors.indigo, [
-          {'label': '불투명 켬', 'onPressed': () => setOpaqueNavBar(true)},
-          {'label': '불투명 켬(#FFF3E0)', 'onPressed': () => setOpaqueNavBar(true, color: '#FFF3E0')},
-          {'label': '불투명 끔', 'onPressed': () => setOpaqueNavBar(false)},
         ]),
         const SizedBox(height: 16),
         _buildSection('기타', Colors.green, [
@@ -209,27 +259,37 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   }
 
 
-  /// 오퍼월 테마를 지정하고, 실제로 적용된 값을 읽어 화면에 표시한다.
+  /// 오퍼월 테마를 지정하고, 실제로 적용된 값을 읽어 화면에 반영한다.
   Future<void> setOfferwallTheme(String theme) async {
     try {
       await _tnkFlutterRwdPlugin.setOfferwallTheme(theme);
       await loadOfferwallTheme();
+      _showResult('테마: $theme');
     } on PlatformException catch (e) {
-      print(e);
+      _showResult('테마 오류: $e');
     }
   }
 
-  /// 오퍼월 앱바 불투명 옵션을 지정하고 화면에 표시한다. (iOS 전용)
+  /// 오퍼월 앱바 불투명 옵션과 색을 지정한다. (iOS 전용, Android 는 아무 일도 하지 않는다)
   Future<void> setOpaqueNavBar(bool opaque, {String? color}) async {
     try {
       await _tnkFlutterRwdPlugin.setOfferwallOpaqueNavigationBar(opaque, color: color);
       if (!mounted) return;
       setState(() {
-        _navBar = opaque ? (color == null ? '불투명' : '불투명 $color') : '투명(기본)';
+        _opaqueBar = opaque;
+        _barColor = color;
       });
+      _showResult('불투명 앱바: ${opaque ? '켬 ${color ?? '(기본색)'}' : '끔'}');
     } on PlatformException catch (e) {
-      debugPrint(e.toString());
+      _showResult('앱바 오류: $e');
     }
+  }
+
+  void _showResult(String text) {
+    if (!mounted) return;
+    setState(() {
+      _tnkResult = text;
+    });
   }
 
   Future<void> loadOfferwallTheme() async {
@@ -237,10 +297,11 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
       final theme = await _tnkFlutterRwdPlugin.getOfferwallTheme() ?? 'unspecified';
       if (!mounted) return;
       setState(() {
-        _theme = theme;
+        // iOS 에서 unspecified 는 system 과 똑같이 동작하므로 '시스템'으로 표시한다.
+        _theme = theme == 'unspecified' ? 'system' : theme;
       });
     } on PlatformException catch (e) {
-      print(e);
+      _showResult('테마 오류: $e');
     }
   }
 
