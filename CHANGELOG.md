@@ -219,7 +219,8 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
   * SDK 가 필요한 R8 규칙을 직접 포함합니다. 앱 proguard 설정의 `-keep class com.tnkfactory.** { *;}` 는 지우는 것을 권장합니다
   * 앱 release 빌드에서 TNK SDK 코드도 함께 줄이고 난독화합니다. 크래시 리포트의 TNK 클래스 이름은 앱의 `mapping.txt` 로 복원됩니다
   * Kotlin 2.1 이상이 필요합니다
-* iOS : TNK SDK 5.991 적용
+* iOS : TNK SDK 5.992 적용
   * iOS 최소 지원 버전을 15.0 으로 올렸습니다 (기존 12.0)
     * 앱의 iOS Deployment Target 과 Podfile `platform :ios` 를 15.0 이상으로 맞춰야 합니다
-  * 가로 화면 등에서 추천 팝업의 '닫기' 버튼이 시스템 영역에 가려 누를 수 없던 문제 수정
+  * 오퍼월 앱바를 단색 불투명으로 표시하는 `setOfferwallOpaqueNavigationBar` 추가 (iOS 26 이상 리퀴드 글라스 앱바·버튼 대응)
+  * 가로 화면 등에서 추천 팝업·이벤트 웹뷰의 '닫기' 버튼이 시스템 영역에 가려 누를 수 없던 문제 수정

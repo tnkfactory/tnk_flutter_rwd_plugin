@@ -1,7 +1,7 @@
 # tnk_flutter_rwd
 [![pub package](https://img.shields.io/badge/Flutter-0.8.14-blue)](./CHANGELOG.md)
 [![Android](https://img.shields.io/badge/Android_SDK-8.09.43-blue)](./guide_android.md)
-[![iOS](https://img.shields.io/badge/iOS_SDK-5.991-blue)](./guide_ios.md)
+[![iOS](https://img.shields.io/badge/iOS_SDK-5.992-blue)](./guide_ios.md)
 
 티엔케이팩토리 오퍼월(보상형 광고) Flutter 플러그인입니다. (Android / iOS)
 
@@ -475,7 +475,7 @@ await _tnk.setOfferwallOpaqueNavigationBar(false);                   // 기본(�
 - `color` 는 `"#RRGGBB"` 형식이며 생략하거나 형식이 맞지 않으면 오퍼월 목록 배경색(라이트/다크 자동 대응)을 씁니다
 - 앱바 제목·버튼 글자색은 테마에 따라 정해지고 `color` 에 맞춰 바뀌지 않습니다. 밝은 색을 지정하면 다크 모드에서 흰 글자가 잘 보이지 않으니, 밝은 색은 `setOfferwallTheme("light")` 와 함께 쓰거나 `color` 를 생략하세요
 - 다음 오퍼월 표시부터 반영됩니다. Android 에서 호출해도 아무 일도 하지 않고 `"success"` 를 반환합니다
-- 이 옵션은 SDK 5.991 이후 불투명 앱바 옵션이 포함된 iOS SDK 빌드가 필요합니다
+- 0.8.14 부터 사용할 수 있습니다
 <br/><br/>
 
 ### 8. 이벤트 웹페이지 / 딥링크
