@@ -800,6 +800,7 @@ SWIFT_CLASS("_TtC10TnkRwdSdk215AdOfferwallView")
 @class NSBundle;
 SWIFT_CLASS("_TtC10TnkRwdSdk226TnkBaseStyleViewController")
 @interface TnkBaseStyleViewController : UIViewController
+- (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLoad;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
@@ -1654,6 +1655,11 @@ SWIFT_CLASS("_TtC10TnkRwdSdk216MyMenuViewLayout")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+typedef SWIFT_ENUM(NSInteger, NavigationBarStyle, open) {
+  NavigationBarStyleTransparent = 0,
+  NavigationBarStyleOpaque = 1,
+};
+
 SWIFT_CLASS("_TtC10TnkRwdSdk222NoAdListItemViewLayout")
 @interface NoAdListItemViewLayout : AdListItemViewLayout
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
@@ -2160,6 +2166,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkLayout * 
 @property (nonatomic, strong) UIColor * _Nullable navigationBarItemTintColor;
 @property (nonatomic, copy) NSString * _Nonnull navigationBarTitle;
 @property (nonatomic, copy) NSDictionary<NSAttributedStringKey, id> * _Nonnull navigationBarTitleAttribute;
+@property (nonatomic) enum NavigationBarStyle navigationBarStyle;
+@property (nonatomic, strong) UIColor * _Nullable navigationBarBackgroundColor;
 @property (nonatomic) CGFloat navigationItemWidth;
 @property (nonatomic) CGFloat navigationItemHeight;
 @property (nonatomic) NSInteger helpButtonBadgePosition;
@@ -2170,6 +2178,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkLayout * 
 @property (nonatomic, strong) ImageAttribute * _Nonnull privacyNotAgreedInfoImage;
 @property (nonatomic) enum MenuBound menuPinToVisibleBounds;
 @property (nonatomic) BOOL viewScrollTopToSafeArea;
+@property (nonatomic) BOOL listViewEdgeToEdge;
 @property (nonatomic) BOOL menuMenuHidden;
 @property (nonatomic) BOOL menuFilterHidden;
 @property (nonatomic) CGFloat listViewTopMargin;
