@@ -123638,14 +123638,14 @@
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/AdListMenuView.swift",
       "kind": "BooleanLiteral",
-      "offset": 673,
+      "offset": 1052,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/AdListMenuView.swift",
       "kind": "IntegerLiteral",
-      "offset": 1288,
+      "offset": 1667,
       "length": 2,
       "value": "-1"
     },
@@ -124065,70 +124065,42 @@
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
       "kind": "IntegerLiteral",
-      "offset": 2863,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2872,
-      "length": 2,
-      "value": "20"
-    },
-    {
-      "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2907,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2917,
-      "length": 2,
-      "value": "20"
-    },
-    {
-      "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
-      "kind": "IntegerLiteral",
-      "offset": 37108,
+      "offset": 36497,
       "length": 2,
       "value": "24"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
       "kind": "IntegerLiteral",
-      "offset": 37154,
+      "offset": 36543,
       "length": 2,
       "value": "12"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
       "kind": "IntegerLiteral",
-      "offset": 37200,
+      "offset": 36589,
       "length": 2,
       "value": "26"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
       "kind": "IntegerLiteral",
-      "offset": 37246,
+      "offset": 36635,
       "length": 3,
       "value": "135"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
       "kind": "IntegerLiteral",
-      "offset": 37296,
+      "offset": 36685,
       "length": 2,
       "value": "70"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/admenu\/RecommendItemMenuView.swift",
       "kind": "IntegerLiteral",
-      "offset": 37344,
+      "offset": 36733,
       "length": 2,
       "value": "10"
     },
@@ -128572,43 +128544,57 @@
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8809,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallView.swift",
       "kind": "BooleanLiteral",
-      "offset": 8446,
+      "offset": 9081,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallView.swift",
       "kind": "BooleanLiteral",
-      "offset": 8557,
+      "offset": 9128,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallView.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9239,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallView.swift",
       "kind": "BooleanLiteral",
-      "offset": 30120,
+      "offset": 38650,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallView.swift",
       "kind": "BooleanLiteral",
-      "offset": 31131,
+      "offset": 39661,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallView.swift",
       "kind": "BooleanLiteral",
-      "offset": 31159,
+      "offset": 39689,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallView.swift",
       "kind": "IntegerLiteral",
-      "offset": 44507,
+      "offset": 53366,
       "length": 1,
       "value": "0"
     },
@@ -128643,14 +128629,14 @@
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallViewDiffable.swift",
       "kind": "Array",
-      "offset": 4515,
+      "offset": 2991,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/AdOfferwallViewDiffable.swift",
       "kind": "Array",
-      "offset": 4614,
+      "offset": 3090,
       "length": 2,
       "value": "[]"
     },
