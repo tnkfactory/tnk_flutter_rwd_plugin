@@ -1,5 +1,5 @@
 name: tnk_flutter_rwd
-description: tnk rwd sdk flutter plugin support android.
+description: Flutter plugin for the TNK RWD SDK - reward offerwall, placement ads and point APIs for Android and iOS.
 version: 0.8.14
 homepage: https://github.com/tnkfactory/tnk_flutter_rwd_plugin
 
