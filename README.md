@@ -466,12 +466,11 @@ String? theme = await _tnk.getOfferwallTheme();   // "dark"
 
 #### setOfferwallOpaqueNavigationBar
 ```dart
-// 앱 시작 시 한 번, 오퍼월을 열기 전에 설정합니다
-await _tnk.setOfferwallOpaqueNavigationBar(true);                    // 불투명 앱바
+// 앱 시작 시 한 번, 오퍼월을 열기 전에 설정합니다 (호출하지 않으면 불투명 앱바)
 await _tnk.setOfferwallOpaqueNavigationBar(true, color: "#FFF3E0");  // 배경색 지정 (선택)
-await _tnk.setOfferwallOpaqueNavigationBar(false);                   // 기본(투명)으로 되돌림
+await _tnk.setOfferwallOpaqueNavigationBar(false);                   // 0.8.13 까지의 투명 앱바로
 ```
-- **iOS 전용** — iOS 26 이상의 리퀴드 글라스 앱바·버튼 대신 단색 불투명 앱바를 씁니다. 기본값은 호출하지 않았을 때와 같은 투명 앱바입니다
+- **iOS 전용** — iOS 26 이상의 리퀴드 글라스 앱바·버튼 대신 단색 불투명 앱바를 씁니다. **0.8.14 부터 기본값이 불투명입니다** (호출하지 않아도 적용). 투명 앱바를 쓰려면 `false` 를 넘기세요
 - `color` 는 `"#RRGGBB"` 형식이며 생략하거나 형식이 맞지 않으면 오퍼월 목록 배경색(라이트/다크 자동 대응)을 씁니다
 - 앱바 제목·버튼 글자색은 테마에 따라 정해지고 `color` 에 맞춰 바뀌지 않습니다. 밝은 색을 지정하면 다크 모드에서 흰 글자가 잘 보이지 않으니, 밝은 색은 `setOfferwallTheme("light")` 와 함께 쓰거나 `color` 를 생략하세요
 - 다음 오퍼월 표시부터 반영됩니다. Android 에서 호출해도 아무 일도 하지 않고 `"success"` 를 반환합니다

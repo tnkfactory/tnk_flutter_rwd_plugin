@@ -222,6 +222,6 @@ setUserTermsAgree(agree) // 약관동의 상태 변경하는 함수 추가
 * iOS : TNK SDK 5.992 적용
   * iOS 최소 지원 버전을 15.0 으로 올렸습니다 (기존 12.0)
     * 앱의 iOS Deployment Target 과 Podfile `platform :ios` 를 15.0 이상으로 맞춰야 합니다
-  * 오퍼월 앱바를 단색 불투명으로 표시하는 `setOfferwallOpaqueNavigationBar` 추가 (iOS 26 이상 리퀴드 글라스 앱바·버튼 대응)
+  * 오퍼월 앱바를 단색 불투명으로 표시하도록 기본값 변경 (iOS 26 이상 리퀴드 글라스 앱바·버튼 대응). 예전 투명 앱바는 `setOfferwallOpaqueNavigationBar(false)`
   * 가로 화면 등에서 추천 팝업·이벤트 웹뷰의 '닫기' 버튼이 시스템 영역에 가려 누를 수 없던 문제 수정
   * 오퍼월 추천 팝업이 상단 앱바까지 덮도록 표시 방식 개선

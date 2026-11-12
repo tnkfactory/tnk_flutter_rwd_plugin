@@ -27,7 +27,7 @@ class _OfferwallItem extends State<OfferwallItem> with WidgetsBindingObserver {
   String _tnkResult = 'Unknown';
   // 오퍼월 화면 설정 (오퍼월을 열기 전에 지정하면 다음 표시부터 반영된다)
   String _theme = 'system'; // 'system' | 'light' | 'dark'
-  bool _opaqueBar = false; // 불투명 앱바 (iOS 전용)
+  bool _opaqueBar = true; // 불투명 앱바 (iOS 전용). SDK 기본값(불투명)과 맞춘다
   String? _barColor; // null = 기본색(목록 배경색), 아니면 '#RRGGBB'
 
   List<TnkPlacementAdItem> adList = [];
