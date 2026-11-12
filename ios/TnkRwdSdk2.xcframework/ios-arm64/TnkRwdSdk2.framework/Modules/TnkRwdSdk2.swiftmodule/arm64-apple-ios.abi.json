@@ -26229,7 +26229,8 @@
               "Preconcurrency",
               "Custom",
               "Override",
-              "AccessControl"
+              "AccessControl",
+              "RawDocComment"
             ],
             "funcSelfKind": "NonMutating"
           },
@@ -128998,7 +128999,7 @@
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/TnkExtension.swift",
       "kind": "BooleanLiteral",
-      "offset": 1824,
+      "offset": 2610,
       "length": 5,
       "value": "false"
     },
@@ -133849,21 +133850,21 @@
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Partners\/skt_air\/Sources\/privacy\/SKT_BottomSheetAlertViewController.swift",
       "kind": "StringLiteral",
-      "offset": 247,
+      "offset": 556,
       "length": 5,
       "value": "\"예\""
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Partners\/skt_air\/Sources\/privacy\/SKT_BottomSheetAlertViewController.swift",
       "kind": "StringLiteral",
-      "offset": 341,
+      "offset": 650,
       "length": 11,
       "value": "\"아니오\""
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Partners\/skt_air\/Sources\/privacy\/SKT_BottomSheetAlertViewController.swift",
       "kind": "StringLiteral",
-      "offset": 441,
+      "offset": 750,
       "length": 2,
       "value": "\"\""
     },

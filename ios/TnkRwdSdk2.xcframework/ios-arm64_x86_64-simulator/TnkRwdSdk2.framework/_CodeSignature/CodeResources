@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		/dG8GtdCp+hMxb6EortUV07kVhs=
+		ax+C1rVKqRkDeUVnfdCTppgN3c4=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		/dG8GtdCp+hMxb6EortUV07kVhs=
+		ax+C1rVKqRkDeUVnfdCTppgN3c4=
 		</data>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -96,7 +96,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8/0cAmHlGA3KsNbPVTDog+YBpkfgS27RMcvmnw9Q4eM=
+			GquH3cmqpI7V3CrJtS3a5eD6tFt24RR/CfdhuxwHan0=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -124,7 +124,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8/0cAmHlGA3KsNbPVTDog+YBpkfgS27RMcvmnw9Q4eM=
+			GquH3cmqpI7V3CrJtS3a5eD6tFt24RR/CfdhuxwHan0=
 			</data>
 		</dict>
 		<key>Modules/TnkRwdSdk2.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
