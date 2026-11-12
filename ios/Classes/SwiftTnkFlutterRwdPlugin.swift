@@ -214,11 +214,13 @@ public class SwiftTnkFlutterRwdPlugin: NSObject, FlutterPlugin,
 
         case "setOfferwallOpaqueNavigationBar":
             // 오퍼월 앱바를 불투명(단색)으로 한다. 다음 오퍼월 표시부터 반영된다.
+            // TnkLayout.shared 가 아니라 TnkStyles 에 넣는다. TnkLayout 은 처음 쓰일 때 그 순간의 TnkStyles 로
+            // 기본 레이아웃을 만들어서, setPubCustomUi 보다 먼저 불리면 매체 디자인 색이 일부 화면에 안 들어간다.
             let args = call.arguments as? [String: Any]
             let opaque = args?["opaque"] as? Bool ?? false
-            TnkLayout.shared.navigationBarStyle = opaque ? .opaque : .transparent
+            TnkStyles.navigationBarStyle = opaque ? .opaque : .transparent
             // 색은 "#RRGGBB" 만 받는다. 없거나 형식이 틀리면 nil -> SDK 기본(목록 배경색, 라이트/다크 대응)
-            TnkLayout.shared.navigationBarBackgroundColor = opaque ? Self.safeHexColor(args?["color"] as? String) : nil
+            TnkStyles.navigationBarBackgroundColor = opaque ? Self.safeHexColor(args?["color"] as? String) : nil
             result("success")
 
         case "setNoUsePointIcon":

@@ -103861,13 +103861,10 @@
             "mangledName": "$s10TnkRwdSdk20A6LayoutC18navigationBarStyleAA010NavigationfG0Ovp",
             "moduleName": "TnkRwdSdk2",
             "declAttributes": [
-              "HasInitialValue",
-              "HasStorage",
               "AccessControl",
               "ObjC",
               "RawDocComment"
             ],
-            "hasStorage": true,
             "accessors": [
               {
                 "kind": "Accessor",
@@ -103885,7 +103882,6 @@
                 "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkLayout(im)navigationBarStyle",
                 "mangledName": "$s10TnkRwdSdk20A6LayoutC18navigationBarStyleAA010NavigationfG0Ovg",
                 "moduleName": "TnkRwdSdk2",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -103912,7 +103908,6 @@
                 "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkLayout(im)setNavigationBarStyle:",
                 "mangledName": "$s10TnkRwdSdk20A6LayoutC18navigationBarStyleAA010NavigationfG0Ovs",
                 "moduleName": "TnkRwdSdk2",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -103963,13 +103958,10 @@
             "mangledName": "$s10TnkRwdSdk20A6LayoutC28navigationBarBackgroundColorSo7UIColorCSgvp",
             "moduleName": "TnkRwdSdk2",
             "declAttributes": [
-              "HasInitialValue",
-              "HasStorage",
               "AccessControl",
               "ObjC",
               "RawDocComment"
             ],
-            "hasStorage": true,
             "accessors": [
               {
                 "kind": "Accessor",
@@ -103995,7 +103987,6 @@
                 "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkLayout(im)navigationBarBackgroundColor",
                 "mangledName": "$s10TnkRwdSdk20A6LayoutC28navigationBarBackgroundColorSo7UIColorCSgvg",
                 "moduleName": "TnkRwdSdk2",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -104030,7 +104021,6 @@
                 "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkLayout(im)setNavigationBarBackgroundColor:",
                 "mangledName": "$s10TnkRwdSdk20A6LayoutC28navigationBarBackgroundColorSo7UIColorCSgvs",
                 "moduleName": "TnkRwdSdk2",
-                "implicit": true,
                 "declAttributes": [
                   "ObjC"
                 ],
@@ -120633,6 +120623,238 @@
           },
           {
             "kind": "Var",
+            "name": "navigationBarStyle",
+            "printedName": "navigationBarStyle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "NavigationBarStyle",
+                "printedName": "TnkRwdSdk2.NavigationBarStyle",
+                "usr": "c:@M@TnkRwdSdk2@E@NavigationBarStyle"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(cpy)navigationBarStyle",
+            "mangledName": "$s10TnkRwdSdk20A6StylesC18navigationBarStyleAA010NavigationfG0OvpZ",
+            "moduleName": "TnkRwdSdk2",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NavigationBarStyle",
+                    "printedName": "TnkRwdSdk2.NavigationBarStyle",
+                    "usr": "c:@M@TnkRwdSdk2@E@NavigationBarStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(cm)navigationBarStyle",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC18navigationBarStyleAA010NavigationfG0OvgZ",
+                "moduleName": "TnkRwdSdk2",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NavigationBarStyle",
+                    "printedName": "TnkRwdSdk2.NavigationBarStyle",
+                    "usr": "c:@M@TnkRwdSdk2@E@NavigationBarStyle"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(cm)setNavigationBarStyle:",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC18navigationBarStyleAA010NavigationfG0OvsZ",
+                "moduleName": "TnkRwdSdk2",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk20A6StylesC18navigationBarStyleAA010NavigationfG0OvMZ",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC18navigationBarStyleAA010NavigationfG0OvMZ",
+                "moduleName": "TnkRwdSdk2",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "navigationBarBackgroundColor",
+            "printedName": "navigationBarBackgroundColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(cpy)navigationBarBackgroundColor",
+            "mangledName": "$s10TnkRwdSdk20A6StylesC28navigationBarBackgroundColorSo7UIColorCSgvpZ",
+            "moduleName": "TnkRwdSdk2",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(cm)navigationBarBackgroundColor",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC28navigationBarBackgroundColorSo7UIColorCSgvgZ",
+                "moduleName": "TnkRwdSdk2",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@TnkRwdSdk2@objc(cs)TnkStyles(cm)setNavigationBarBackgroundColor:",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC28navigationBarBackgroundColorSo7UIColorCSgvsZ",
+                "moduleName": "TnkRwdSdk2",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10TnkRwdSdk20A6StylesC28navigationBarBackgroundColorSo7UIColorCSgvMZ",
+                "mangledName": "$s10TnkRwdSdk20A6StylesC28navigationBarBackgroundColorSo7UIColorCSgvMZ",
+                "moduleName": "TnkRwdSdk2",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "useDetailRoundCornerHeader",
             "printedName": "useDetailRoundCornerHeader",
             "children": [
@@ -128783,7 +129005,7 @@
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/impl\/TnkNavigationBarStyler.swift",
       "kind": "IntegerLiteral",
-      "offset": 8356,
+      "offset": 8342,
       "length": 1,
       "value": "0"
     },
@@ -136994,399 +137216,399 @@
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 10142,
+      "offset": 10608,
       "length": 2,
       "value": "33"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 10197,
+      "offset": 10663,
       "length": 2,
       "value": "33"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 10466,
+      "offset": 10932,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 10587,
+      "offset": 11053,
       "length": 2,
       "value": "32"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 10643,
+      "offset": 11109,
       "length": 2,
       "value": "32"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 10741,
+      "offset": 11207,
       "length": 2,
       "value": "14"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 11006,
+      "offset": 11472,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 11131,
+      "offset": 11597,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "StringLiteral",
-      "offset": 11228,
+      "offset": 11694,
       "length": 15,
       "value": "\"menu_off_left\""
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 11252,
+      "offset": 11718,
       "length": 10,
       "value": "0xff151515"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 11271,
+      "offset": 11737,
       "length": 10,
       "value": "0xffd3d3d3"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 11423,
+      "offset": 11889,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 11524,
+      "offset": 11990,
       "length": 2,
       "value": "10"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 11842,
+      "offset": 12308,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 11984,
+      "offset": 12450,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 12317,
+      "offset": 12783,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "FloatLiteral",
-      "offset": 12326,
+      "offset": 12792,
       "length": 3,
       "value": "4.5"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 12339,
+      "offset": 12805,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "FloatLiteral",
-      "offset": 12349,
+      "offset": 12815,
       "length": 3,
       "value": "4.5"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 12425,
+      "offset": 12891,
       "length": 2,
       "value": "40"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 12437,
+      "offset": 12903,
       "length": 2,
       "value": "40"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 12543,
+      "offset": 13009,
       "length": 2,
       "value": "80"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 12615,
+      "offset": 13081,
       "length": 2,
       "value": "80"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "StringLiteral",
-      "offset": 12719,
+      "offset": 13185,
       "length": 13,
       "value": "\"alert_error\""
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 12811,
+      "offset": 13277,
       "length": 3,
       "value": "320"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 12888,
+      "offset": 13354,
       "length": 3,
       "value": "330"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "StringLiteral",
-      "offset": 12997,
+      "offset": 13463,
       "length": 10,
       "value": "\"pp_alert\""
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "BooleanLiteral",
-      "offset": 13234,
+      "offset": 13700,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 13270,
+      "offset": 13736,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "BooleanLiteral",
-      "offset": 13797,
+      "offset": 14263,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "BooleanLiteral",
-      "offset": 14696,
+      "offset": 15162,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "BooleanLiteral",
-      "offset": 14750,
+      "offset": 15216,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "BooleanLiteral",
-      "offset": 14860,
+      "offset": 15326,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 16039,
+      "offset": 16505,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 16173,
+      "offset": 16639,
       "length": 1,
       "value": "8"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 16227,
+      "offset": 16693,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 16842,
+      "offset": 17308,
       "length": 3,
       "value": "440"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 16972,
+      "offset": 17438,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "StringLiteral",
-      "offset": 17414,
+      "offset": 17880,
       "length": 12,
       "value": "\"top_button\""
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 17494,
+      "offset": 17960,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 17506,
+      "offset": 17972,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "StringLiteral",
-      "offset": 17600,
+      "offset": 18066,
       "length": 8,
       "value": "\"filter\""
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 17679,
+      "offset": 18145,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 17691,
+      "offset": 18157,
       "length": 2,
       "value": "50"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "IntegerLiteral",
-      "offset": 17879,
+      "offset": 18345,
       "length": 2,
       "value": "16"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "StringLiteral",
-      "offset": 17963,
+      "offset": 18429,
       "length": 12,
       "value": "\"down_arrow\""
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "Dictionary",
-      "offset": 19043,
+      "offset": 19509,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "Dictionary",
-      "offset": 19109,
+      "offset": 19575,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "Dictionary",
-      "offset": 19160,
+      "offset": 19626,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "Dictionary",
-      "offset": 19210,
+      "offset": 19676,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "Dictionary",
-      "offset": 19266,
+      "offset": 19732,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "Dictionary",
-      "offset": 19375,
+      "offset": 19841,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "Dictionary",
-      "offset": 19438,
+      "offset": 19904,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "Dictionary",
-      "offset": 19496,
+      "offset": 19962,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "BooleanLiteral",
-      "offset": 19719,
+      "offset": 20185,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "BooleanLiteral",
-      "offset": 19920,
+      "offset": 20386,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkLayout.swift",
       "kind": "BooleanLiteral",
-      "offset": 19969,
+      "offset": 20435,
       "length": 5,
       "value": "false"
     },
@@ -139276,70 +139498,70 @@
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28288,
+      "offset": 29076,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28337,
+      "offset": 29125,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28494,
+      "offset": 29282,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28609,
+      "offset": 29397,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28671,
+      "offset": 29459,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28732,
+      "offset": 29520,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28789,
+      "offset": 29577,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28849,
+      "offset": 29637,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28909,
+      "offset": 29697,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/hanago\/IdeaProjects\/tnk-rwd\/tnk-rwd-ios\/Core\/Sources\/rwd2\/TnkStyles.swift",
       "kind": "BooleanLiteral",
-      "offset": 28996,
+      "offset": 29784,
       "length": 5,
       "value": "false"
     }

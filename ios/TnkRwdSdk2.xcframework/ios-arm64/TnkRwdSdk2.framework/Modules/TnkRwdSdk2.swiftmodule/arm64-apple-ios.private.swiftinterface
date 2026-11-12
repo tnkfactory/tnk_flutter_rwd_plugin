@@ -2043,8 +2043,14 @@ extension UIKit::UIImage {
   @objc public var navigationBarItemTintColor: UIKit::UIColor?
   @objc public var navigationBarTitle: Swift::String
   @objc public var navigationBarTitleAttribute: [Foundation::NSAttributedString.Foundation::Key : Any]
-  @objc public var navigationBarStyle: TnkRwdSdk2::NavigationBarStyle
-  @objc public var navigationBarBackgroundColor: UIKit::UIColor?
+  @objc public var navigationBarStyle: TnkRwdSdk2::NavigationBarStyle {
+    @objc get
+    @objc set
+  }
+  @objc public var navigationBarBackgroundColor: UIKit::UIColor? {
+    @objc get
+    @objc set
+  }
   @objc public var navigationItemWidth: CoreFoundation::CGFloat
   @objc public var navigationItemHeight: CoreFoundation::CGFloat
   @objc public var helpButtonBadgePosition: Swift::Int
@@ -2356,6 +2362,8 @@ extension TnkRwdSdk2::TnkSession {
   @objc public var alertStyle: TnkRwdSdk2::TnkStyles.TnkRwdSdk2::AlertOption
   @objc public static let shared: TnkRwdSdk2::TnkStyles
   @objc public static var offerwallTheme: TnkRwdSdk2::TnkOfferwallTheme
+  @objc public static var navigationBarStyle: TnkRwdSdk2::NavigationBarStyle
+  @objc public static var navigationBarBackgroundColor: UIKit::UIColor?
   @objc public var useDetailRoundCornerHeader: Swift::Bool
   @objc public var isCloseButtonRight: Swift::Bool
   @objc public var isPresentAnimated: Swift::Bool

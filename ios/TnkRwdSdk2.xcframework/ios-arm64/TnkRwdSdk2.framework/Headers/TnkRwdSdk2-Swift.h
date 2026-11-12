@@ -2410,6 +2410,17 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TnkStyles * 
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class) enum TnkOfferwallTheme offerwallTheme;)
 + (enum TnkOfferwallTheme)offerwallTheme SWIFT_WARN_UNUSED_RESULT;
 + (void)setOfferwallTheme:(enum TnkOfferwallTheme)value;
+/// 오퍼월 앱바 배경 스타일. 기본값 <code>.transparent</code>(기존 동작). 오퍼월을 띄우기 전에 설정한다.
+/// <code>.opaque</code> 이면 앱바를 단색으로 칠하고, iOS 26 이상의 리퀴드 글라스 버튼 배경을 끈다.
+/// TnkLayout 을 만들지 않으므로 <code>TnkStyles</code> 커스터마이징보다 먼저 설정해도 된다.
+/// (<code>TnkLayout.shared.navigationBarStyle</code> 도 같은 값을 읽고 쓰지만, TnkLayout 을 그 시점에 만든다)
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class) enum NavigationBarStyle navigationBarStyle;)
++ (enum NavigationBarStyle)navigationBarStyle SWIFT_WARN_UNUSED_RESULT;
++ (void)setNavigationBarStyle:(enum NavigationBarStyle)value;
+/// <code>navigationBarStyle == .opaque</code> 일 때 앱바 배경색. nil 이면 오퍼월 목록 배경색(라이트/다크 대응)을 쓴다.
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, strong) UIColor * _Nullable navigationBarBackgroundColor;)
++ (UIColor * _Nullable)navigationBarBackgroundColor SWIFT_WARN_UNUSED_RESULT;
++ (void)setNavigationBarBackgroundColor:(UIColor * _Nullable)value;
 @property (nonatomic) BOOL useDetailRoundCornerHeader;
 @property (nonatomic) BOOL isCloseButtonRight;
 @property (nonatomic) BOOL isPresentAnimated;
