@@ -6,7 +6,7 @@
 	<dict>
 		<key>ios-arm64/TnkRwdSdk2.framework/Assets.car</key>
 		<data>
-		DBfQ7vpPCeDArdKUj1r0UqEkdxs=
+		EMXbK43tji+kcnJCHpGxQmAbk+M=
 		</data>
 		<key>ios-arm64/TnkRwdSdk2.framework/Headers/TnkRwdSdk2-Swift.h</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>ios-arm64/TnkRwdSdk2.framework/TnkRwdSdk2</key>
 		<data>
-		QmvysCGSGRwsS7ZQjFtvqtdTfXA=
+		ceDyG+xt5sQdEo06OtUVfbJPYlU=
 		</data>
 		<key>ios-arm64_x86_64-simulator/TnkRwdSdk2.framework/Assets.car</key>
 		<data>
-		DBfQ7vpPCeDArdKUj1r0UqEkdxs=
+		EMXbK43tji+kcnJCHpGxQmAbk+M=
 		</data>
 		<key>ios-arm64_x86_64-simulator/TnkRwdSdk2.framework/Headers/TnkRwdSdk2-Swift.h</key>
 		<data>
@@ -122,11 +122,11 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/TnkRwdSdk2.framework/TnkRwdSdk2</key>
 		<data>
-		FPXzxcGNoCei5xjmO1/aSMrT1Kg=
+		r0ks2fuK6elNtIJOliSQxmEt3ms=
 		</data>
 		<key>ios-arm64_x86_64-simulator/TnkRwdSdk2.framework/_CodeSignature/CodeResources</key>
 		<data>
-		JiCbDzTktxFwdt6YTucVagGn5AA=
+		acbf2LyAgwcWYJ2VxINaUP2U0pY=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -135,7 +135,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Xb5hN6w8kwuGc4CiefCHJeVd2iMgPpP7aDjS44RxkVc=
+			MNuoBAKyvBZIOVfx9CrQBPhW3IbHpamUVmBeTCLz61Q=
 			</data>
 		</dict>
 		<key>ios-arm64/TnkRwdSdk2.framework/Headers/TnkRwdSdk2-Swift.h</key>
@@ -219,14 +219,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			IQ43IzwM2G+yNfdMSr/WzQXl7s1kzI7dqw105RVSisI=
+			leVKBaktf4Ovn2l+5QvViaY8AjfHXcH1xABEgZ4ge68=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/TnkRwdSdk2.framework/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Xb5hN6w8kwuGc4CiefCHJeVd2iMgPpP7aDjS44RxkVc=
+			MNuoBAKyvBZIOVfx9CrQBPhW3IbHpamUVmBeTCLz61Q=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/TnkRwdSdk2.framework/Headers/TnkRwdSdk2-Swift.h</key>
@@ -338,14 +338,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eLvD7pPloTqnmYSft76+z+GWsyn6Ef6NgLrIpNYGhZQ=
+			ogMzRx/bQbQRTQiAdCOWwuE3Iy44hD7PARkJ5lBZqRE=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/TnkRwdSdk2.framework/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VtnfC+Oy20Y2csCdEDiX+oaVVbWpWk7pyyzLGhxCz7U=
+			gmm7Q2UY0DZJqmE6xyK0UX8AeiBQR9dV8RMx5p3RrFM=
 			</data>
 		</dict>
 	</dict>
